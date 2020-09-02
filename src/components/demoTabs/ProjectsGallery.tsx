@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { DemoLayout, CardLayout } from '../../pages/Demo'
 import { useSelector, useDispatch } from 'react-redux'
 import { rootReducerT } from '../../store'
-import { Typography, Chip, Button } from '@material-ui/core'
+import { Typography, Chip, Button, makeStyles } from '@material-ui/core'
 import { sortedProjectDataT, SELECTED_SUBJECT } from '../../actions/types'
 import { BorderLinearProgress } from '../../styles/materialUiStyles'
 import galaxyPhoneFrame from '../../assets/galaxys8Frame.png'
@@ -10,11 +10,11 @@ import macbookFrame from '../../assets/macbookFrame.png'
 import SubjectImageShowcase from './projectGallery/SubjectImageShowcase'
 import { AccordionComponent, TextFormated } from './reusableComps/DemoSectionOneComps'
 
-//Todo: add open source tab...
 function ProjectsGallery() {
   const { currentSubjectViewing, projectDataCollection } = useSelector((state: rootReducerT) => state)
   const [sortedProjectData, setSortedProjectData] = useState<sortedProjectDataT>()
   const dispatch = useDispatch()
+  const classes = useStyles();
 
   useEffect(() => {
     if (typeof currentSubjectViewing === 'number' && projectDataCollection[currentSubjectViewing]) {
@@ -57,7 +57,7 @@ function ProjectsGallery() {
                 </div>
               </div>}
             detailsSection={
-              <div className="column">
+              <div className="">
                 <TextFormated title='Title:' content={sortedProjectData?.general.title} />
                 <TextFormated title='Description:' content={sortedProjectData?.general.description} />
                 <TextFormated title='Platform:' content={sortedProjectData?.general.type} />
@@ -68,7 +68,7 @@ function ProjectsGallery() {
             summarySection={
               <Typography>Github repo links & more</Typography>}
             detailsSection={
-              <div className="column">
+              <div className="">
                 <TextFormated title='Frontend source code' content={sortedProjectData?.links.frontend} />
                 <TextFormated title='Server source code' content={sortedProjectData?.links.server} />
                 <TextFormated title='Blog' content={sortedProjectData?.links.blog} />
@@ -89,7 +89,7 @@ function ProjectsGallery() {
         </>
       }
       searchFeatureSection={ /* //* we're going to control the search input field from here */
-        <div className='column'>
+        <div className=''>
           {projectDataCollection.map((project, index) =>
             <>
               <Button className="searchResultBtn" onClick={() => console.log(project._id)}>{project.title}</Button>
@@ -145,3 +145,11 @@ function ProjectsGallery() {
 }
 
 export default ProjectsGallery
+
+
+
+const useStyles = makeStyles((theme) => ({
+  class: {
+  
+  }
+}));

@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import configureStore from './store';
 import './styles/main.sass'
 
+//~ go through all components and replace sass styles where possible
 function App() {
   const store = configureStore()
   return (
@@ -15,21 +16,3 @@ function App() {
 }
 
 export default App;
-
-//* supposed to be preformant way of using scroll
-// export function debounce(func, wait = 5, immediate = true) {
-//   let timeout;
-//   return function () {
-//     const context: any = this;
-//     const args = arguments;
-//     const later = function () {
-//       timeout = null;
-//       if (!immediate) func.apply(context, args);
-//     };
-//     const callNow = immediate && !timeout;
-//     clearTimeout(timeout);
-//     timeout = setTimeout(later, wait);
-//     if (callNow) func.apply(context, args);
-//   };
-// } // IDK WTF this is. Whatever
-//* =====

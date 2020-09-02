@@ -9,7 +9,8 @@ function useFetchAllPortfolioData() {
 
   useEffect(() => {
     if (!projectDataCollection.length && !techDataCollection.length) dispatch(fetchAllProjectData())
-  }, [dispatch, projectDataCollection, techDataCollection])
+    // eslint-disable-next-line
+  }, [])
 
 }
 
