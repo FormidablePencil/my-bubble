@@ -8,7 +8,8 @@ function useFetchAllPortfolioData() {
   const { projectDataCollection, techDataCollection } = useSelector((state: rootReducerT) => state)
 
   useEffect(() => {
-    if (!projectDataCollection.length && !techDataCollection.length) dispatch(fetchAllProjectData())
+    if (!projectDataCollection.length && !techDataCollection.length)
+      dispatch(fetchAllProjectData())
     // eslint-disable-next-line
   }, [])
 

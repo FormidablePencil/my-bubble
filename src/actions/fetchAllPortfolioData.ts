@@ -4,7 +4,6 @@ const fetchAllProjectData = () => async (dispatch) => {
   const fetchedData = await fetch('http://localhost:8000/retrieveAllData')
   if (fetchedData.status === 404) return 
   const data = await fetchedData.json()
-  console.log(data);
   dispatch({ type: FETCHED_ALL_PROJECT_DATA, payload: data.projectCollection })
   dispatch({ type: FETCHED_ALL_TECH_DATA, payload: data.techCollection })
 }

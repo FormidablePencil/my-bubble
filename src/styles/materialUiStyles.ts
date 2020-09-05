@@ -1,4 +1,4 @@
-import { createMuiTheme } from "@material-ui/core";
+import { createMuiTheme, Grid } from "@material-ui/core";
 import { withStyles, createStyles, LinearProgress, Theme } from "@material-ui/core";
 import MuiAccordion from '@material-ui/core/Accordion';
 
@@ -55,3 +55,9 @@ export const BorderLinearProgress = withStyles((theme: Theme) =>
     },
   }),
 )(LinearProgress);
+
+export const GridFlex = withStyles({
+  root: {
+    flex: 1
+  }
+})(Grid);

@@ -1,11 +1,17 @@
-@import ./1-helpers/variables
+*
+  margin: 0
+  padding: 0
 
-@import ./2-tools/tools
-  
-@import ./3-basic/typography
-@import ./3-basic/global
-@import ./3-basic/buttons
+‰ul
+  list-style-type: none
 
-@import ./4-layout/navbar
+@font-face
+  font-family: 'KaushanScript-Regular'
+  src: local('KaushanScript-Regular'), url('../assets/fonts/KaushanScript-Regular.ttf') format('truetype')
 
-@import ./6-pages/demoPg/demo
+@font-face
+  font-family: 'JosefinSans-Medium'
+  src: local('JosefinSans-Medium'), url('../assets/fonts/JosefinSans-Medium.ttf') format('truetype')
+
+$fontFamilyBasic: JosefinSans-Medium
+$fontFamilyCursive: KaushanScript-Regular

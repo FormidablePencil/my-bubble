@@ -1,11 +1,9 @@
 import React from 'react';
-import './App.css';
-import { DemoRoutes } from './pages/Demo';
+import { DemoRoutes } from './Routes';
 import { Provider } from 'react-redux';
 import configureStore from './store';
 import './styles/main.sass'
 
-//~ go through all components and replace sass styles where possible
 function App() {
   const store = configureStore()
   return (
