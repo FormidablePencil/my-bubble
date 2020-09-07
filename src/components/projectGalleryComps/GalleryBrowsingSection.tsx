@@ -25,7 +25,7 @@ function GalleryBrowsingSection({ projectDataCollection }) {
         if (!project.showInPorfolio) return null
         return (
           <CardLayout
-            onCardClick={(techIndexInCollection) => onCardClick(index)}
+            onCardClick={() => onCardClick(index)}
             firstSection={
               <>
                 <img

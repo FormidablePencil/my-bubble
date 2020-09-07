@@ -1,34 +1,38 @@
 import React, { useState } from 'react'
-import { Grid, Paper, Typography, makeStyles } from '@material-ui/core'
+import { Grid, Paper, Typography, makeStyles, useMediaQuery } from '@material-ui/core'
 import { AiOutlineSetting, AiOutlineSearch } from 'react-icons/ai'
-
-//plan to replace all of sass with material-ui:
-//*  convert technologies tab section styles and then convert template.
+import SearchAndContentDetailsTogether from './SearchAndContentDetailsTogether';
+import OnScrollContainer from './OnScrollContainer';
+import { navbarHeight } from '../../styles/materialUiStyles';
 
 export function TabPageTemplate({ contentVisualSection, contentDetailsSection, searchFeatureSection, browsingSection }) {
   const [selectedTab, setSelectedTab] = useState(0)
   const classes = useStyles();
-  const viewingContentDetails = true
-  // const imageInWords = 'React-Native'
+  const tabletOrSmaller = useMediaQuery((theme: any) => theme.breakpoints.down('md'));
 
   const onClickTab = (tab) => setSelectedTab(tab)
 
   return (
-    <Grid container justify='center' alignItems='center'>
-      <Grid item container>
-        <Paper className={classes.contentDetailsSection} elevation={10}>
-          {/* //* ===== contentVisualSection ===== */}
-          <div className={classes.subjectImgContainer}>
-            {contentVisualSection}
+    <Grid container justify='center' alignItems='center' style={{ overflow: 'hidden', height: `calc(100vh - ${navbarHeight})` }}>
+      <OnScrollContainer>
+        {/* //* ===== contentVisualSection ===== */}
+        <div className={classes.subjectImgContainer}>
+          {contentVisualSection}
+        </div>
+        {/* //* ===== contentDetailsSection ===== */}
+        <Grid container className={classes.subjectInfoContainer}>
+          <div className={classes.content}>
+            {!tabletOrSmaller ?
+              <>{contentDetailsSection}</>
+              : <SearchAndContentDetailsTogether
+                contentDetailsSection={contentDetailsSection}
+                searchFeatureSection={searchFeatureSection} />
+            }
           </div>
-          {/* //* ===== contentDetailsSection ===== */}
-          <Grid container className={classes.subjectInfoContainer}>
-            <div className={classes.content}>
-              {contentDetailsSection}
-            </div>
-          </Grid>
+        </Grid>
 
-          {/* //* ===== searchFeatureSection ===== */}
+        {/* //* ===== searchFeatureSection ===== */}
+        {!tabletOrSmaller &&
           <div
             className={classes.searchFeatureOuterContainerViewMode}>
             <div className={classes.tabContainer}>
@@ -48,9 +52,8 @@ export function TabPageTemplate({ contentVisualSection, contentDetailsSection, s
               {searchFeatureSection}
             </div>
           </div>
-
-        </Paper>
-      </Grid>
+        }
+      </OnScrollContainer>
       {/* //* ===== browsingSection ===== */}
       <Grid
         className={classes.browsingSectionRelevance}
@@ -63,54 +66,59 @@ export function TabPageTemplate({ contentVisualSection, contentDetailsSection, s
 }
 
 const useStyles = makeStyles((theme) => ({
-  subjectInfoContainer: {
-    margin: '0em 3em 0em 3em',
-    flex: 2
-  },
-  content: {
-    flex: 1,
-    borderRadius: '1em',
-    backgroundColor: 'grey',
-    margin: '.5em'
-  },
+
+  // {/* //* ===== contentVisualSection ===== */}
   subjectImgContainer: {
-    backgroundColor: 'orange',
-    padding: '.5em',
-    borderRadius: '1em',
+    background: theme.palette.primary[100],
+    borderRadius: '5px',
     flex: 1.5,
     display: 'flex',
     width: '10px',
-    height: '20em',
   },
-  browsingSectionRelevance: {
+
+
+  // {/* //* ===== contentDetailsSection ===== */}
+  subjectInfoContainer: {
+    position: 'relative',
+    margin: '0em 3em 0em 3em',
+    flex: 2,
+    borderRadius: '5px',
+    overflowY: 'hidden',
+    background: 'orange',
+  },
+  content: {
+    flex: 1,
     backgroundColor: 'grey',
-    margin: '0em 1.5em 0em 1.5em',
-    padding: '1.5em 0em 1.5em 0em',
+    overflowY: 'scroll',
+    height: '15em'
+  },
+
+
+  // {/* //* ===== searchFeatureSection ===== */ }
+  searchFeatureOuterContainerViewMode: {
+    position: 'relative',
+    backgroundColor: theme.palette.primary.main,
+    overflow: 'hidden'
+  },
+  tabContainer: {
+    position: 'absolute',
+    top: '-21px',
+    zIndex: -1,
+    right: '10px',
+    justifyContent: 'flex-end',
+    display: 'flex'
   },
   searchInput: {
     margin: '1em',
     flex: 1,
     width: '100%',
-    color: 'orange',
+    color: 'black',
     height: '3em',
     borderRadius: '1em'
   },
   searchResultSection: {
     background: 'white',
     borderWidth: '0px 2px 2px 2px',
-  },
-  contentDetailsSection: {
-    display: 'flex',
-    flexDirection: 'row',
-    backgroundColor: 'transparent',
-    minHeight: '20em',
-    padding: '2em 2em 2em 2em',
-    width: '100%',
-    zIndex: 2
-  },
-  searchFeatureOuterContainerViewMode: {
-    position: 'relative',
-    backgroundColor: 'orange',
   },
   tab: {
     width: '5em',
@@ -136,13 +144,16 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row'
   },
-  tabContainer: {
-    position: 'absolute',
-    top: '-21px',
-    zIndex: -1,
-    right: '10px',
-    justifyContent: 'flex-end',
-    display: 'flex'
-  },
 
+
+  // {/* //* ===== browsingSection ===== */}
+  browsingSectionRelevance: {
+    overflowY: 'scroll',
+    flex: 1,
+    // height: '52vh',
+    height: '100%',
+    background: theme.palette.background.default,
+    margin: '0em 1em 1em 1em',
+    padding: '1.5em 0em 1.5em 0em',
+  },
 }));

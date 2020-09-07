@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   line: {
     width: '90%',
     '&:not(:last-child)': {
-      background: 'orange',
+      background: 'grey',
       height: '.5px'
     }
   },

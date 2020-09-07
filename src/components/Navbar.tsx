@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, makeStyles, Grid, Typography } from '@material-ui/core'
 import { useLocation } from 'react-router-dom';
+import { tabEffectShadowProp } from '../styles/materialUiStyles';
 
 function Navbar() {
   const pathName = useLocation().pathname
@@ -8,6 +9,10 @@ function Navbar() {
   const classes = useStyles();
 
   const tabs = [
+    {
+      tabTitle: 'Home',
+      path: '/',
+    },
     {
       tabTitle: 'Project Gallery',
       path: '/projects',
@@ -19,8 +24,7 @@ function Navbar() {
   ]
 
   return (
-    <Grid container className={classes.navbar} justify='space-between'>
-      {/* {pathNamePartial === '' && */}
+    <Grid container className={classes.navbar} justify='space-between' alignContent='center'>
       <div className={classes.tabsContainer}>
         {tabs.map(tab =>
           <Link
@@ -33,7 +37,9 @@ function Navbar() {
           </Link>
         )}
       </div>
-      {/* } */}
+      <Grid item className={classes.rightSide}>
+        <Typography className={classes.name} variant='h4'>Dennis Aleksandrov</Typography>
+      </Grid>
     </Grid>
   )
 }
@@ -44,9 +50,8 @@ export default Navbar
 const useStyles = makeStyles((theme) => ({
   navbar: {
     height: '3.2em',
-    position: 'relative',
-    zIndex: 50,
-    backgroundColor: 'grey',
+    zIndex: 1,
+    backgroundColor: theme.palette.primary.main,
   },
   tabsContainer: {
     marginLeft: '3em',
@@ -58,15 +63,15 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'transparent',
   },
   tab: {
-    height: '2.7em',
-    width: '12em',
+    height: '2.2em',
+    width: '9em',
     borderRadius: '1em 1em 0em 0em',
     margin: '0em 0em -.5px 1em',
-    backgroundColor: 'black',
+    background: 'rgb(180,170,239)',
     opacity: .7,
+    boxShadow: '0px -1px 0px .5px rgba(0,0,0,.2)',
     '&:hover': {
       opacity: .8,
-      backgroundColor: 'black',
       cursor: 'pointer'
     }
   },
@@ -74,6 +79,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 20,
     opacity: 1,
     pointerEvents: 'none',
+    boxShadow: tabEffectShadowProp,
     '&:hover': {
       cursor: 'default',
       opacity: 1
@@ -81,5 +87,11 @@ const useStyles = makeStyles((theme) => ({
   },
   fullHeight: {
     height: '100%'
+  },
+  rightSide: {
+    
+  },
+  name: {
+    color: 'white',
   }
 }));

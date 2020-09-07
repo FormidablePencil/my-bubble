@@ -1,25 +1,27 @@
-import { createMuiTheme, Grid } from "@material-ui/core";
+import { createMuiTheme, Grid, Container } from "@material-ui/core";
 import { withStyles, createStyles, LinearProgress, Theme } from "@material-ui/core";
 import MuiAccordion from '@material-ui/core/Accordion';
 
 const customTheme = createMuiTheme({
   palette: {
-    // primary: {
-    // },
+    primary: {
+      main: '#7680DE',
+      100: '#EBEBFF',
+    },
+    background: {
+      default: '#E2E6F3',
+    },
+
+
     // secondary: {
     // },
     text: {
-      // primary: '#340373',
-      primary: '#323232',
-      secondary: '#222'
     }
   },
   typography: {
     // body1: { fontFamily: '' },
   }
 })
-
-export default customTheme
 
 export const AccordionCustom = withStyles({
   root: {
@@ -61,3 +63,15 @@ export const GridFlex = withStyles({
     flex: 1
   }
 })(Grid);
+
+export const ContainerFullHeight = withStyles({
+  root: {
+    height: '100%',
+    display: 'flex',
+  }
+})(Container);
+
+export const navbarHeight = '3.2em'
+export const tabEffectShadowProp = '0px -4px 3px 1px rgba(0,0,0,0.2)'
+
+export default customTheme

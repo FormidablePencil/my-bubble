@@ -11,7 +11,7 @@ const CardLayout = ({ firstSection, infoSection, onCardClick }) => {
   const classes = useStyles();
   return (
     <Paper className={classes.card} id='hoverEffect' /*//* hover effect: zoom in and brightness higher */
-      onClick={() => onCardClick()}
+      onClick={onCardClick}
     >
       <Grid container justify='center' alignItems='center'>{firstSection}</Grid>
       <Grid container>{infoSection}</Grid>

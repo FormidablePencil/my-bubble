@@ -51,7 +51,7 @@ function GalleryContentVisualSection() {
                         <img className={classes.img} src={url} alt='app' />
                       </div>
                     )
-                  }
+                  } else return null
                 })}
             </Grid>
           </div>
@@ -69,7 +69,6 @@ export default GalleryContentVisualSection
 const useStyles = makeStyles((theme) => ({
   content: {
     overflow: 'hidden',
-    background: 'white',
   },
   imgMain: {
     width: '200px',
@@ -87,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
   },
   moreimgsGalleryContainer: {
     width: '7em',
-    backgroundColor: 'grey'
+    backgroundColor: 'grey',
   },
   scrollableImageSelector: {
     width: '7em',

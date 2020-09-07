@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { rootReducerT } from '../store'
 import { useSelector } from 'react-redux'
-import { TabPageTemplate } from '../components/TabPageTemplate'
+import { TabPageTemplate } from '../components/tabPageTemplateComps/TabPageTemplate'
 import TechContentDetailsSection from '../components/techPageComps/TechContentDetailsSection'
 import TechBrowsingSection from '../components/techPageComps/TechBrowsingSection'
 import TechContentVisualSection from '../components/techPageComps/TechContentVisualSection'
+import { useMediaQuery } from '@material-ui/core'
 
 function TechnologiesPage() {
   const { techDataCollection, currentTechViewing } = useSelector((state: rootReducerT) => state)
+  const matches = useMediaQuery((theme: any) => theme.breakpoints.up('sm'));
 
   //* should be moved to seperate useHook file and move to main parent; DemoSection comp
   const [loading, setLoading] = useState(true)
@@ -15,20 +17,26 @@ function TechnologiesPage() {
     if (typeof currentTechViewing === 'number' && techDataCollection.length !== 0) setLoading(false)
   }, [currentTechViewing, techDataCollection])
 
-  return (
-    <TabPageTemplate
-      contentVisualSection={
-        <TechContentVisualSection loading={loading} />
-      }
-      contentDetailsSection={
-        <TechContentDetailsSection loading={loading} />
-      }
-      searchFeatureSection={<></>}
-      browsingSection={
-        <TechBrowsingSection />
-      }
-    />
-  )
+  if (matches) {
+    return (
+      <TabPageTemplate
+        contentVisualSection={
+          <TechContentVisualSection loading={loading} />
+        }
+        contentDetailsSection={
+          <TechContentDetailsSection loading={loading} />
+        }
+        searchFeatureSection={<></>}
+        browsingSection={
+          <TechBrowsingSection />
+        }
+      />
+    )
+  } else {
+    return (
+      <>mobile view</>
+    )
+  }
 }
 
 export default TechnologiesPage
