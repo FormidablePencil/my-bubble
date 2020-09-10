@@ -1,20 +1,56 @@
-import React, { useState } from 'react'
-import { Grid, Paper, Typography, makeStyles, useMediaQuery } from '@material-ui/core'
+import React, { useState, cloneElement, Children } from 'react'
+import { Grid, Typography, makeStyles, useMediaQuery, Button } from '@material-ui/core'
 import { AiOutlineSetting, AiOutlineSearch } from 'react-icons/ai'
 import SearchAndContentDetailsTogether from './SearchAndContentDetailsTogether';
-import OnScrollContainer from './OnScrollContainer';
-import { navbarHeight } from '../../styles/materialUiStyles';
+import { navbarHeight } from '../../../../styles/materialUiStyles';
+import useDetailsSectionAnim from '../../../../hooks/useDetailsSectionAnim';
+import { animated } from 'react-spring';
 
 export function TabPageTemplate({ contentVisualSection, contentDetailsSection, searchFeatureSection, browsingSection }) {
   const [selectedTab, setSelectedTab] = useState(0)
   const classes = useStyles();
   const tabletOrSmaller = useMediaQuery((theme: any) => theme.breakpoints.down('md'));
 
+  const {
+    showDetailsSection,
+    hideDetailsSection,
+    animToggleAppearenceOfDetailsSection,
+    browsingSectionRef,
+    shrunkElement
+  } = useDetailsSectionAnim()
+
   const onClickTab = (tab) => setSelectedTab(tab)
 
+  const browsingSectionWithProps = Children.map(browsingSection, (child, index) =>
+    cloneElement(child, {
+      showDetailsSection: showDetailsSection,
+    })
+  )
+
   return (
-    <Grid container justify='center' alignItems='center' style={{ overflow: 'hidden', height: `calc(100vh - ${navbarHeight})` }}>
-      <OnScrollContainer>
+    <Grid container justify='center'
+      style={{
+        overflow: 'hidden',
+        height: `calc(100vh - ${navbarHeight})`,
+        position: 'relative'
+      }}>
+
+      {/* //~ modularize */}
+      {/* //~ check of BrowsingSection can scroll */}
+      {/* //~ There must be some sort of indicator for when component has stopped animating. Create on with onRest... */}
+      <Grid container justify='space-between' className={classes.tabbar}>
+        <Grid item>123</Grid>
+        {!shrunkElement &&
+          <Grid item>
+            <Button onClick={hideDetailsSection}>close. Show if no scroll</Button>
+          </Grid>
+        }
+      </Grid>
+
+
+      <animated.div
+        style={animToggleAppearenceOfDetailsSection}
+        className={classes.detailsSection}>
         {/* //* ===== contentVisualSection ===== */}
         <div className={classes.subjectImgContainer}>
           {contentVisualSection}
@@ -53,19 +89,38 @@ export function TabPageTemplate({ contentVisualSection, contentDetailsSection, s
             </div>
           </div>
         }
-      </OnScrollContainer>
+      </animated.div>
       {/* //* ===== browsingSection ===== */}
-      <Grid
-        className={classes.browsingSectionRelevance}
-        container item
-        justify='space-evenly' alignItems='center'>
-        {browsingSection}
-      </Grid>
+      <animated.div
+        onScroll={hideDetailsSection}
+        ref={browsingSectionRef}
+        className={classes.animatedWrapperBrowsingSection}>
+        <Grid container justify='space-evenly'>
+          {browsingSectionWithProps}
+        </Grid>
+      </animated.div>
     </Grid>
   )
 }
 
 const useStyles = makeStyles((theme) => ({
+  tabbar: {
+    height: '3.5em',
+    width: '100%',
+    zIndex: 100,
+    backgroundColor: '#B6ADEF',
+    boxShadow: '0px 7px 4px -2px rgba(0,0,0,0.2)',
+  },
+  detailsSection: {
+    marginTop: '3em',
+    display: 'flex',
+    flexDirection: 'row',
+    position: "absolute",
+    backgroundColor: '#B6ADEF',
+    width: '100%',
+    zIndex: 3,
+    height: '20em'
+  },
 
   // {/* //* ===== contentVisualSection ===== */}
   subjectImgContainer: {
@@ -84,7 +139,6 @@ const useStyles = makeStyles((theme) => ({
     flex: 2,
     borderRadius: '5px',
     overflowY: 'hidden',
-    background: 'orange',
   },
   content: {
     flex: 1,
@@ -147,13 +201,15 @@ const useStyles = makeStyles((theme) => ({
 
 
   // {/* //* ===== browsingSection ===== */}
-  browsingSectionRelevance: {
+  animatedWrapperBrowsingSection: {
     overflowY: 'scroll',
-    flex: 1,
-    // height: '52vh',
-    height: '100%',
+    width: '80%',
+    height: '82vh',
     background: theme.palette.background.default,
     margin: '0em 1em 1em 1em',
     padding: '1.5em 0em 1.5em 0em',
+  },
+  browsingSectionRelevance: {
+    // height: '80vh',
   },
 }));

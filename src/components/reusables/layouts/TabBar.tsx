@@ -15,8 +15,7 @@ function TabBar({ onChangeFocusedTab, tabProps, defaultTab }) {
     <div className={classes.relative}>
       <Grid container direction='row' className={classes.container}>
         {tabProps.map(prop =>
-          <Grid item
-          >
+          <Grid item key={prop.title}>
             <Button
               className={`
                 ${classes.tab} 

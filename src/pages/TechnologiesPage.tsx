@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { rootReducerT } from '../store'
 import { useSelector } from 'react-redux'
-import { TabPageTemplate } from '../components/tabPageTemplateComps/TabPageTemplate'
+import { TabPageTemplate } from '../components/reusables/layouts/tabPageTemplateComps/TabPageTemplate'
 import TechContentDetailsSection from '../components/techPageComps/TechContentDetailsSection'
 import TechBrowsingSection from '../components/techPageComps/TechBrowsingSection'
 import TechContentVisualSection from '../components/techPageComps/TechContentVisualSection'

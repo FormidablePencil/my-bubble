@@ -6,10 +6,10 @@ function GallerySearchFeatureSection({ projectDataCollection }) {
   return (
     <div>
       {projectDataCollection.map((project, index) =>
-        <>
+        <div key={project.title}>
           <Typography>{project.title}</Typography>
           <div className={`${classes.line} ${index % 2 === 1 && classes.oddLine}`} />
-        </>
+        </div>
       )}
     </div>
   )

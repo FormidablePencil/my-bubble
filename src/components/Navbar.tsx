@@ -28,6 +28,7 @@ function Navbar() {
       <div className={classes.tabsContainer}>
         {tabs.map(tab =>
           <Link
+          key={tab.tabTitle}
             href={tab.path}
             className={`${classes.tab} ${pathName === tab.path && classes.activeTab}`}
           >
@@ -50,7 +51,7 @@ export default Navbar
 const useStyles = makeStyles((theme) => ({
   navbar: {
     height: '3.2em',
-    zIndex: 1,
+    zIndex: 50,
     backgroundColor: theme.palette.primary.main,
   },
   tabsContainer: {
@@ -63,6 +64,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'transparent',
   },
   tab: {
+    color: 'white',
     height: '2.2em',
     width: '9em',
     borderRadius: '1em 1em 0em 0em',

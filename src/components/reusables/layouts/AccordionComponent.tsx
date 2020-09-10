@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { AccordionSummary, AccordionDetails, makeStyles } from "@material-ui/core"
-import { AccordionCustom } from "../../styles/materialUiStyles"
+import { AccordionCustom } from "../../../styles/materialUiStyles"
 import { AiFillCaretLeft } from 'react-icons/ai'
 
 export const AccordionComponent = ({ initiallyExpanded = false, summarySection, detailsSection }) => {

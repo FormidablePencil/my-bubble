@@ -1,5 +1,5 @@
 import React from 'react'
-import HomeAbout from '../components/HomeAbout'
+import HomeAbout from '../reusables/ContentComps/HomeAbout'
 
 function DesktopHomeTab() {
   return (

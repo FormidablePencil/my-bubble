@@ -1,8 +1,8 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core'
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import MobileHomeTab from '../components/tabs/mobile/Mobile-HomeTab';
-import DesktopHomeTab from '../components/tabs/desktop/Desktop-HomeTab';
+import MobileHomeTab from '../components/mobile/Mobile-HomeTab';
+import DesktopHomeTab from '../components/desktop/Desktop-HomeTab';
 
 function HomePage() {
   const mobile = useMediaQuery((theme: any) => theme.breakpoints.down('xs'));

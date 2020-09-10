@@ -1,10 +1,10 @@
 import React from 'react'
 import { Button, makeStyles, Grid } from '@material-ui/core'
 import { FaChevronCircleLeft, FaChevronCircleRight } from 'react-icons/fa'
-import ScrollArea from 'react-scrollbar'
+// import ScrollArea from 'react-scrollbar'
 import { useSelector } from 'react-redux'
-import { rootReducerT } from '../../store'
-import { GridFlex } from '../../styles/materialUiStyles';
+import { rootReducerT } from '../../../../store'
+import { GridFlex } from '../../../../styles/materialUiStyles';
 
 function GalleryContentVisualSection() {
   const { projectDataCollection, currentSubjectViewing } = useSelector((state: rootReducerT) => state)
@@ -34,7 +34,8 @@ function GalleryContentVisualSection() {
 
       {/* //* selectional images section */}
       <Grid item>
-        <ScrollArea
+        {/* //~ ScrollArea is outdated */}
+        {/* <ScrollArea 
           speed={0.8}
           // className="area"
           contentClassName="scrollArea"
@@ -55,7 +56,7 @@ function GalleryContentVisualSection() {
                 })}
             </Grid>
           </div>
-        </ScrollArea>
+        </ScrollArea> */}
       </Grid>
 
     </Grid >

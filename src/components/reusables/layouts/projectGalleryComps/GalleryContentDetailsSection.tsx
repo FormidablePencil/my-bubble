@@ -1,8 +1,8 @@
 import React from 'react'
 import { Grid, Typography, Chip } from '@material-ui/core'
-import { BorderLinearProgress } from '../../styles/materialUiStyles'
-import { AccordionComponent } from '../reusables/AccordionComponent'
-import TextFormated from '../reusables/TextFormated';
+import { BorderLinearProgress } from '../../../../styles/materialUiStyles'
+import { AccordionComponent } from '../AccordionComponent'
+import TextFormated from '../TextFormated';
 
 function GalleryContentDetailsSection({sortedProjectData}) {
   return (
@@ -14,7 +14,7 @@ function GalleryContentDetailsSection({sortedProjectData}) {
           <Grid container>
             <Typography variant='h5'>General</Typography>
             <Grid item container>
-              <Typography variant='h6'>Complete</Typography>
+              <Typography variant='h5'>Complete</Typography>
               <BorderLinearProgress color='primary' variant="determinate" value={50} />
             </Grid>
           </Grid>

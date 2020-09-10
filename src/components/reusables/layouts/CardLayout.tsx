@@ -1,6 +1,6 @@
 import React from 'react'
-import { projectDataT } from '../../reducers/projectDataReducer';
-import { techDataT } from '../../reducers/techDataReducer';
+import { projectDataT } from '../../../reducers/projectDataReducer';
+import { techDataT } from '../../../reducers/techDataReducer';
 import { Paper, Grid, makeStyles } from '@material-ui/core'
 
 interface CardLayoutT {
@@ -22,15 +22,15 @@ const CardLayout = ({ firstSection, infoSection, onCardClick }) => {
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    transition: 'transform 0.2s ease-in-out',
-    position: 'relative',
     margin: '1.5em 0em 1.5em 0em',
-    height: '20em',
-    width: '600px',
+    height: '15em',
+    width: '30em',
     display: 'flex',
     alignItems: 'normal',
-    borderRadius: '1em',
-    overflow: 'hidden'
+    borderRadius: '.5em',
+    overflow: 'hidden',
+    background: '#F9F8FF'
+    // 'hover'
   }
 }));
 

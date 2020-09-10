@@ -6,4 +6,5 @@ const staticData = {
   }
 }
 
+
 export default staticData

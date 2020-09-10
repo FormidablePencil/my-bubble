@@ -1,9 +1,9 @@
 import React from 'react'
-import { AccordionComponent } from '../reusables/AccordionComponent'
+import { AccordionComponent } from '../reusables/layouts/AccordionComponent'
 import { Typography, Button } from '@material-ui/core'
 import { useSelector } from 'react-redux'
 import { rootReducerT } from '../../store'
-import TextFormated from '../reusables/TextFormated'
+import TextFormated from '../reusables/layouts/TextFormated'
 
 function TechContentDetailsSection({ loading }) {
   const { techDataCollection, currentTechViewing } = useSelector((state: rootReducerT) => state)

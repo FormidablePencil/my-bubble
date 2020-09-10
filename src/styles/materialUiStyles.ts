@@ -18,8 +18,19 @@ const customTheme = createMuiTheme({
     text: {
     }
   },
+
   typography: {
-    // body1: { fontFamily: '' },
+    allVariants: {
+      fontFamily: 'JosefinSans-Medium',
+      color: '#625899'
+    },
+    h5: {
+      fontSize: '1.2em',
+      lineHeight: 1,
+    },
+    body1: {
+      color: '#757591'
+    },
   }
 })
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import TabBar from '../reusables/TabBar'
+import TabBar from '../TabBar'
 
 const SearchAndContentDetailsTogether = ({ contentDetailsSection, searchFeatureSection }) => {
   const defaultTab = 'Details'

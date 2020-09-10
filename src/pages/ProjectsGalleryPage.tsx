@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { rootReducerT } from '../store'
 import { sortedProjectDataT } from '../actions/types'
-import { TabPageTemplate } from '../components/tabPageTemplateComps/TabPageTemplate'
-import GalleryContentVisualSection from '../components/projectGalleryComps/GalleryContentVisualSection'
-import GalleryBrowsingSection from '../components/projectGalleryComps/GalleryBrowsingSection'
-import GalleryContentDetailsSection from '../components/projectGalleryComps/GalleryContentDetailsSection'
-import GallerySearchFeatureSection from '../components/projectGalleryComps/GallerySearchFeatureSection'
+import { TabPageTemplate } from '../components/reusables/layouts/tabPageTemplateComps/TabPageTemplate'
+import GalleryContentVisualSection from '../components/reusables/layouts/projectGalleryComps/GalleryContentVisualSection'
+import GalleryBrowsingSection from '../components/reusables/layouts/projectGalleryComps/GalleryBrowsingSection'
+import GalleryContentDetailsSection from '../components/reusables/layouts/projectGalleryComps/GalleryContentDetailsSection'
+import GallerySearchFeatureSection from '../components/reusables/layouts/projectGalleryComps/GallerySearchFeatureSection'
 import { useMediaQuery } from '@material-ui/core'
+import MobileProjectGallery from '../components/mobile/Mobile-ProjectGallery'
 
 //~ focus in making this component and it's sub components work
 
@@ -37,26 +38,28 @@ function ProjectsGalleryPage() {
     }
   }, [currentSubjectViewing, projectDataCollection])
 
-if (tabletOrLarger) {
-  return (
-    <TabPageTemplate
-    contentVisualSection={
-      <GalleryContentVisualSection />
-    }
-    contentDetailsSection={
-      <GalleryContentDetailsSection sortedProjectData={sortedProjectData} />
-    }
-    searchFeatureSection={
-      <GallerySearchFeatureSection projectDataCollection={projectDataCollection} />
-    }
-    browsingSection={
-      <GalleryBrowsingSection projectDataCollection={projectDataCollection} />
-    }
-    />
+  if (tabletOrLarger) {
+    return (
+      <TabPageTemplate
+        contentVisualSection={
+          <GalleryContentVisualSection />
+        }
+        contentDetailsSection={
+          <GalleryContentDetailsSection sortedProjectData={sortedProjectData} />
+        }
+        searchFeatureSection={
+          <GallerySearchFeatureSection projectDataCollection={projectDataCollection} />
+        }
+        browsingSection={
+          <GalleryBrowsingSection projectDataCollection={projectDataCollection} />
+        }
+      />
     )
   } else {
     return (
-      <>mobile view</>
+      <MobileProjectGallery
+        projectDataCollection={projectDataCollection}
+      />
     )
   }
 }
