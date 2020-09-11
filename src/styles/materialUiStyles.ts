@@ -7,14 +7,15 @@ const customTheme = createMuiTheme({
     primary: {
       main: '#7680DE',
       100: '#EBEBFF',
+      800: '#B4AAEF',
+    },
+    secondary: {
+      main: '#3C4068',
     },
     background: {
       default: '#E2E6F3',
+
     },
-
-
-    // secondary: {
-    // },
     text: {
     }
   },
@@ -84,5 +85,7 @@ export const ContainerFullHeight = withStyles({
 
 export const navbarHeight = '3.2em'
 export const tabEffectShadowProp = '0px -4px 3px 1px rgba(0,0,0,0.2)'
+export const swipebarHeightInEm = '3em'
+export const swipebarHeightInPx = 48
 
 export default customTheme

@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core'
 
 function DeviceFrameAndImg({ projectContent }) {
   const classes = useStyles();
-  
+
   const imageStyles = (type) => {
     const contentImageStyles = type === 'mobile' ? classes.mobileImg : classes.webImg
     const frameImgStyles = type === 'mobile' ? classes.mobileFrame : classes.webFrame
@@ -14,17 +14,20 @@ function DeviceFrameAndImg({ projectContent }) {
   const galaxyPhoneFrame = require('../../../assets/galaxys8Frame.png')
 
 
-  return (
-    <div className={classes.container}>
-      <img
-        className={imageStyles(projectContent.type).contentImageStyles}
-        src={projectContent.images && projectContent.images[0]}
-        alt='application' />
-      <img className={imageStyles(projectContent.type).frameImgStyles}
-        src={projectContent.type === 'mobile' ? galaxyPhoneFrame : macbookFrame}
-        alt='frame' />
-    </div>
-  )
+  if (projectContent) {
+    return (
+      <div className={classes.container}>
+        <img
+          className={imageStyles(projectContent.type).contentImageStyles}
+          src={projectContent.images && projectContent.images[0]}
+          alt='application' />
+        <img className={imageStyles(projectContent.type).frameImgStyles}
+          src={projectContent.type === 'mobile' ? galaxyPhoneFrame : macbookFrame}
+          alt='frame' />
+      </div>
+    )
+  }
+  else return <>load skeleton</>
 }
 
 export default DeviceFrameAndImg
@@ -42,6 +45,8 @@ const useStyles = makeStyles((theme) => ({
     width: '11.6em',
     objectFit: 'contain',
     position: 'relative',
+    marginTop: -5,
+    marginBottom: -5,
   },
   mobileImg: {
     position: 'absolute',

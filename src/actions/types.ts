@@ -4,6 +4,9 @@ export const SELECTED_PROJECT = 'SELECTED_PROJECT'
 export const SELECTED_TECH = 'SELECTED_TECH'
 export const SELECTED_SUBJECT = 'SELECTED_SUBJECT'
 
+export const OPEN_CONTENT_DETAILS = 'OPEN_CONTENT_DETAILS'
+export const CLOSE_CONTENT_DETAILS = 'CLOSE_CONTENT_DETAILS'
+
 export interface sortedProjectDataT {
   status: number
   general: {

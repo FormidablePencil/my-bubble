@@ -2,9 +2,9 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { SELECTED_TECH } from '../../actions/types';
 import { rootReducerT } from '../../store';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Grid } from '@material-ui/core';
 
-function TechBrowsingSection() {
+function TechBrowsingSection({ onClickItem }: { onClickItem?}) {
   const { techDataCollection } = useSelector((state: rootReducerT) => state)
   const dispatch = useDispatch()
   const classes = useStyles();
@@ -15,28 +15,30 @@ function TechBrowsingSection() {
   return (
     <>
       {techDataCollection.map((tech, index) =>
-        <div
-          key={tech._id}
-          onClick={() => onClickbrowsingSectionElement(index)}
-          className={classes.techCardContainer}
-          id='hoverEffect'
+        <Grid item
         >
-          <img className={classes.techImg} src={tech.image} alt={tech.technology} />
-          {/* <>{tech.description} {tech.technology}</> */}
-        </div>
-      )}
+          <div
+            key={tech._id}
+            onClick={
+              onClickItem ? () => onClickItem(index) : () => onClickbrowsingSectionElement(index)
+            }
+            className={classes.techCardContainer}
+            id='hoverEffect'
+          >
+            <img className={classes.techImg} src={tech.image} alt={tech.technology} />
+            {/* <>{tech.description} {tech.technology}</> */}
+          </div>
+        </Grid>
+      )
+      }
     </>
   )
 }
 
-export default TechBrowsingSection
-
-
-
 const useStyles = makeStyles((theme) => ({
   techCardContainer: {
-    width: '10em',
-    height: '10em',
+    width: '7.5em',
+    height: '7.5em',
     background: 'white',
     margin: '2em',
     borderRadius: '5em',
@@ -54,3 +56,5 @@ const useStyles = makeStyles((theme) => ({
     objectFit: 'contain'
   }
 }));
+
+export default TechBrowsingSection

@@ -6,6 +6,7 @@ import TechContentDetailsSection from '../components/techPageComps/TechContentDe
 import TechBrowsingSection from '../components/techPageComps/TechBrowsingSection'
 import TechContentVisualSection from '../components/techPageComps/TechContentVisualSection'
 import { useMediaQuery } from '@material-ui/core'
+import MobileTechGallery from '../components/mobile/Mobile-TechGallery'
 
 function TechnologiesPage() {
   const { techDataCollection, currentTechViewing } = useSelector((state: rootReducerT) => state)
@@ -34,7 +35,7 @@ function TechnologiesPage() {
     )
   } else {
     return (
-      <>mobile view</>
+      <MobileTechGallery />
     )
   }
 }

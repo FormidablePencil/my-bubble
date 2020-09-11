@@ -57,9 +57,7 @@ function ProjectsGalleryPage() {
     )
   } else {
     return (
-      <MobileProjectGallery
-        projectDataCollection={projectDataCollection}
-      />
+      <MobileProjectGallery sortedProjectData={sortedProjectData} />
     )
   }
 }

@@ -4,10 +4,10 @@ import { BorderLinearProgress } from '../../../../styles/materialUiStyles'
 import { AccordionComponent } from '../AccordionComponent'
 import TextFormated from '../TextFormated';
 
-function GalleryContentDetailsSection({sortedProjectData}) {
+function GalleryContentDetailsSection({ sortedProjectData }) {
   return (
     <>
-    {/* //* general section */}
+      {/* //* general section */}
       <AccordionComponent
         initiallyExpanded={true}
         summarySection={
@@ -27,7 +27,7 @@ function GalleryContentDetailsSection({sortedProjectData}) {
           </Grid>
         } />
 
-    {/* //* links section */}
+      {/* //* links section */}
       <AccordionComponent
         initiallyExpanded={false}
         summarySection={
@@ -42,7 +42,7 @@ function GalleryContentDetailsSection({sortedProjectData}) {
         }
       />
 
-    {/* //* techs utilized section */}
+      {/* //* techs utilized section */}
       <AccordionComponent
         initiallyExpanded={false}
         summarySection={

@@ -6,9 +6,10 @@ import TechnologiesPage from './pages/TechnologiesPage';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import { makeStyles, useMediaQuery, Button } from '@material-ui/core';
-import { tabEffectShadowProp } from './styles/materialUiStyles';
+import { tabEffectShadowProp, swipebarHeightInEm } from './styles/materialUiStyles';
 import useFullHeightResponsive from './hooks/useFullHeightResponsive';
 import MobileNavMenu from './components/mobile/components/MobileNavMenu';
+import { IoIosMenu } from 'react-icons/io';
 // import reactNative from '../assets/techLogo/reactNativeLogo.png';
 
 //~ how will cards be different on desktop and mobile? Figma should help
@@ -34,7 +35,9 @@ export function DemoRoutes() {
           <Navbar />}
         <div className={classes.contentContainer}>
           {mobile && !mobileNavModalOpen
-            && <Button className={classes.navIcon} onClick={() => setMobileNavModalOpen(true)}>O</Button>}
+            && <Button className={classes.navIcon} onClick={() => setMobileNavModalOpen(true)}>
+              <IoIosMenu color='white' size={30} />
+            </Button>}
           <Switch>
             <Route exact path="/">
               <HomePage />
@@ -56,8 +59,10 @@ export function DemoRoutes() {
 const useStyles = makeStyles((theme) => ({
   container: {
     position: "relative",
+    overflowY: 'hidden',
   },
   contentContainer: {
+    paddingTop: swipebarHeightInEm,
     height: '100%',
     position: "relative",
     zIndex: 1,
@@ -65,7 +70,9 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: tabEffectShadowProp
   },
   navIcon: {
+    zIndex: 15,
     position: "absolute",
-    
+    top: 2,
+    right: 0
   }
 }));
