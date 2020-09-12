@@ -9,6 +9,7 @@ import { SELECTED_SUBJECT } from '../../actions/types'
 import { useSpring } from 'react-spring'
 import { swipebarHeightInPx } from '../../styles/materialUiStyles';
 import { config } from 'react-spring'
+import CompensateForSwipableTabHeight from './reusableComps/CompensateForSwipableTabHeight'
 
 
 
@@ -37,7 +38,7 @@ function MobileProjectGallery({ sortedProjectData }) {
       disableGutters>
       <Grid container direction='column' wrap='nowrap'>
         <MobileContentDetailsSection
-        sortedProjectData={sortedProjectData}
+          sortedProjectData={sortedProjectData}
           xy={xy} set={set}
           viewingProjects={true} />
         {projectDataCollection.map((project, index) => {
@@ -64,6 +65,9 @@ function MobileProjectGallery({ sortedProjectData }) {
               </Grid>
             )
         })}
+        <Grid item>
+          <CompensateForSwipableTabHeight moreHeight={'2em'} />
+        </Grid>
       </Grid>
     </ContainerFullHeight>
   )
@@ -71,7 +75,10 @@ function MobileProjectGallery({ sortedProjectData }) {
 
 const useStyles = makeStyles((theme) => ({
   container: {
+    paddingTop: '2em',
     overflowY: 'scroll',
+    display: 'flex',
+    flexDirection: "column",
   },
   itemContainer: {
     marginBottom: '3em',

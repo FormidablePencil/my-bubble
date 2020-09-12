@@ -39,7 +39,6 @@ export function TabPageTemplate({ contentVisualSection, contentDetailsSection, s
       {/* //~ check of BrowsingSection can scroll */}
       {/* //~ There must be some sort of indicator for when component has stopped animating. Create on with onRest... */}
       <Grid container justify='space-between' className={classes.tabbar}>
-        <Grid item>123</Grid>
         {!shrunkElement &&
           <Grid item>
             <Button onClick={hideDetailsSection}>close. Show if no scroll</Button>
@@ -105,14 +104,14 @@ export function TabPageTemplate({ contentVisualSection, contentDetailsSection, s
 
 const useStyles = makeStyles((theme) => ({
   tabbar: {
-    height: '3.5em',
+    height: '2em',
     width: '100%',
     zIndex: 100,
     backgroundColor: '#B6ADEF',
     boxShadow: '0px 7px 4px -2px rgba(0,0,0,0.2)',
   },
   detailsSection: {
-    marginTop: '3em',
+    marginTop: '2em',
     display: 'flex',
     flexDirection: 'row',
     position: "absolute",
@@ -204,12 +203,10 @@ const useStyles = makeStyles((theme) => ({
   animatedWrapperBrowsingSection: {
     overflowY: 'scroll',
     width: '80%',
-    height: '82vh',
+    height: '90vh',
     background: theme.palette.background.default,
-    margin: '0em 1em 1em 1em',
-    padding: '1.5em 0em 1.5em 0em',
+    boxShadow: 'inset 0px 0px 10px -1px rgba(0,0,0,0.25)'
   },
   browsingSectionRelevance: {
-    // height: '80vh',
   },
 }));

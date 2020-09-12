@@ -25,7 +25,10 @@ export function DemoRoutes() {
 
   return (
     <div
-      style={{ height }}
+      style={{
+        height,
+        overflowY: mobile ? 'hidden' : 'visible'
+      }}
       className={classes.container}
     >
       <Router>
@@ -33,7 +36,10 @@ export function DemoRoutes() {
           <MobileNavMenu mobileNavModalOpen={mobileNavModalOpen}
             setMobileNavModalOpen={setMobileNavModalOpen} /> :
           <Navbar />}
-        <div className={classes.contentContainer}>
+        <div
+          className={classes.contentContainer}
+          style={mobile ? { paddingTop: swipebarHeightInEm } : {}}
+        >
           {mobile && !mobileNavModalOpen
             && <Button className={classes.navIcon} onClick={() => setMobileNavModalOpen(true)}>
               <IoIosMenu color='white' size={30} />
@@ -59,10 +65,8 @@ export function DemoRoutes() {
 const useStyles = makeStyles((theme) => ({
   container: {
     position: "relative",
-    overflowY: 'hidden',
   },
   contentContainer: {
-    paddingTop: swipebarHeightInEm,
     height: '100%',
     position: "relative",
     zIndex: 1,

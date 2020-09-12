@@ -9,6 +9,7 @@ import GalleryContentDetailsSection from '../components/reusables/layouts/projec
 import GallerySearchFeatureSection from '../components/reusables/layouts/projectGalleryComps/GallerySearchFeatureSection'
 import { useMediaQuery } from '@material-ui/core'
 import MobileProjectGallery from '../components/mobile/Mobile-ProjectGallery'
+import { swipebarHeightInEm } from '../styles/materialUiStyles'
 
 //~ focus in making this component and it's sub components work
 

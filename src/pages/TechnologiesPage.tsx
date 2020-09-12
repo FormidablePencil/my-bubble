@@ -5,7 +5,7 @@ import { TabPageTemplate } from '../components/reusables/layouts/tabPageTemplate
 import TechContentDetailsSection from '../components/techPageComps/TechContentDetailsSection'
 import TechBrowsingSection from '../components/techPageComps/TechBrowsingSection'
 import TechContentVisualSection from '../components/techPageComps/TechContentVisualSection'
-import { useMediaQuery } from '@material-ui/core'
+import { Grid, useMediaQuery } from '@material-ui/core'
 import MobileTechGallery from '../components/mobile/Mobile-TechGallery'
 
 function TechnologiesPage() {
@@ -29,7 +29,7 @@ function TechnologiesPage() {
         }
         searchFeatureSection={<></>}
         browsingSection={
-          <TechBrowsingSection />
+            <TechBrowsingSection />
         }
       />
     )

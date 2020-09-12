@@ -13,10 +13,9 @@ function TechBrowsingSection({ onClickItem }: { onClickItem?}) {
     dispatch({ type: SELECTED_TECH, payload: techNum });
 
   return (
-    <>
+    <Grid container>
       {techDataCollection.map((tech, index) =>
-        <Grid item
-        >
+        <Grid item>
           <div
             key={tech._id}
             onClick={
@@ -29,9 +28,8 @@ function TechBrowsingSection({ onClickItem }: { onClickItem?}) {
             {/* <>{tech.description} {tech.technology}</> */}
           </div>
         </Grid>
-      )
-      }
-    </>
+      )}
+    </Grid>
   )
 }
 

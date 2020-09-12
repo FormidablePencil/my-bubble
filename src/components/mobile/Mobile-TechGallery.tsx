@@ -5,8 +5,9 @@ import { makeStyles, Grid } from '@material-ui/core'
 import { useSpring } from 'react-spring';
 import { useDispatch } from 'react-redux';
 import { SELECTED_TECH } from '../../actions/types';
-import { swipebarHeightInPx } from '../../styles/materialUiStyles';
+import { swipebarHeightInEm, swipebarHeightInPx } from '../../styles/materialUiStyles';
 import { config } from 'react-spring'
+import CompensateForSwipableTabHeight from './reusableComps/CompensateForSwipableTabHeight';
 
 const { innerHeight } = window
 
@@ -26,11 +27,13 @@ function MobileTechGallery() {
     <>
       <MobileContentDetailsSection
         xy={xy} set={set}
-        viewingProjects={false} />
+        viewingProjects={false}
+      />
       <Grid container justify='center' className={classes.container}>
         <TechBrowsingSection
           onClickItem={onClickItem}
         />
+        <CompensateForSwipableTabHeight moreHeight={'3em'} />
       </Grid>
     </>
   )
