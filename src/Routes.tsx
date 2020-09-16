@@ -44,7 +44,7 @@ export function DemoRoutes() {
           >
             {mobile && !mobileNavModalOpen
               && <Button className={classes.navIcon} onClick={() => setMobileNavModalOpen(true)}>
-                <IoIosMenu color='white' size={30} />
+                <IoIosMenu color='white' size={35} />
               </Button>}
             <Switch>
               <Route exact path="/">
@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
   navIcon: {
     zIndex: 15,
     position: "absolute",
-    top: 2,
-    right: 0
+    top: 0,
+    right: 0,
   }
 }));

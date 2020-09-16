@@ -16,6 +16,7 @@ function MobileProjectGallery({ sortedProjectData }) {
   const classes = useStyles();
   const { projectDataCollection } = useSelector((state: rootReducerT) => state)
   const indexOfItemRendered: any = useRef(null)
+  const amountOfShowableProjects = projectDataCollection.filter(item => item.showInPorfolio && item).length
 
   const dispatch = useDispatch()
   const { translateSwipeableTab } = useContext(ContextSwipeBar)
@@ -55,17 +56,15 @@ function MobileProjectGallery({ sortedProjectData }) {
                 <Grid item onClick={() => onClickItem(index)}>
                   <DeviceFrameAndImg projectContent={project} />
                 </Grid>
-                <LineSeperator
-                  overrideStyles={{
-                    margin: '3em 0em 3em 0em',
-                    alignSelf: indexOfItemRendered.current % 2 === 0 ? 'flex-start' : 'flex-end',
-                  }} />
 
-                {/* <div
-                  style={{
-                    alignSelf: indexOfItemRendered.current % 2 === 0 ? 'flex-start' : 'flex-end'
-                  }}
-                className={classes.lineSeperator} /> */}
+                {index !== amountOfShowableProjects + 1 &&
+                  <LineSeperator
+                    overrideStyles={{
+                      margin: '3em 0em 3em 0em',
+                      alignSelf: indexOfItemRendered.current % 2 === 0 ? 'flex-start' : 'flex-end',
+                    }} />
+                }
+
               </Grid>
             )
         })}

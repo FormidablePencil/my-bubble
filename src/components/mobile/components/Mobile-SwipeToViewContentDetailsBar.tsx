@@ -3,7 +3,7 @@ import { animated } from 'react-spring'
 import { makeStyles, Grid, Typography, Button } from '@material-ui/core'
 import { swipebarHeightInEm, swipebarHeightInPx } from '../../../styles/materialUiStyles';
 import { BsArrowBarDown } from 'react-icons/bs';
-import { IoIosArrowBack } from 'react-icons/io';
+import { IoIosArrowRoundBack } from 'react-icons/io';
 import { ContextSwipeBar } from '../../../Routes';
 
 function MobileSwipeToViewContentDetailsBar({ children, selectedProjectImage }) {
@@ -22,7 +22,7 @@ function MobileSwipeToViewContentDetailsBar({ children, selectedProjectImage }) 
       <Button
         className={classes.backBtn}
         onClick={translateSwipeableTab}
-      ><IoIosArrowBack color='white' size={20} /></Button>
+      ><IoIosArrowRoundBack color='white' size={35} /></Button>
       <div className={classes.content}>
         {children}
       </div>
@@ -58,7 +58,7 @@ function MobileSwipeToViewContentDetailsBar({ children, selectedProjectImage }) 
 const useStyles = makeStyles((theme) => ({
   backBtn: {
     position: "absolute",
-    top: 5,
+    top: 2,
     left: 0,
   },
   detailsSectionWrapper: {

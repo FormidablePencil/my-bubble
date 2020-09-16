@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import MobileSwipeToViewContentDetailsBar from './Mobile-SwipeToViewContentDetailsBar'
 import { makeStyles, Grid, Typography, Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core';
 import { useSelector } from 'react-redux';
@@ -8,8 +8,8 @@ import LineSeperator from '../../reusables/layouts/LineSeperator';
 import CompensateForSwipableTabHeight from '../reusableComps/CompensateForSwipableTabHeight';
 import GalleryContentDetailsSection, { GalleryContentMoreDetailsSection } from '../../reusables/layouts/projectGalleryComps/GalleryContentDetailsSection';
 import TechContentDetailsSection from '../../techPageComps/TechContentDetailsSection';
-import { animated, config, useSpring } from 'react-spring';
-import usePrevious from '../../../hooks/usePrevious';
+import { animated } from 'react-spring';
+import useContentDetailsImageAnim from '../../../hooks/useContentDetailsImageAnim';
 
 
 /* //* Somehow I need to make make this comp slidable gesture and the page to follow it. */
@@ -18,6 +18,7 @@ import usePrevious from '../../../hooks/usePrevious';
 //when clicked on card then pull up project details screen and load a skeleton. Keep the content present and have the bar show the selected project.
 
 //project details section will be one page with project gallery.  
+
 function MobileContentDetailsSection({ viewingProjects, sortedProjectData }: {
   viewingProjects, sortedProjectData?
 }) {
@@ -27,40 +28,7 @@ function MobileContentDetailsSection({ viewingProjects, sortedProjectData }: {
     currentTechViewing, techDataCollection
   } = useSelector((state: rootReducerT) => state)
 
-  const [accordionOpen, setAccordionOpen] = useState(null)
-
-  const prevAccordionOpen = usePrevious(accordionOpen)
-  const imageAnim = useSpring({
-    to: !accordionOpen
-      ? async (next, cancel) => {
-        if (accordionOpen !== null)
-          // next({ transform: 'scale(1)', margin: 100, })
-        // setTimeout(() => {
-          next({ transform: 'scale(.2)', margin: 100, })
-        // }, 500);
-      }
-      : async (next, cancel) => {
-        if (accordionOpen === null && prevAccordionOpen === null)
-          next({ transform: 'scale(.1)', margin: 100, })
-        // return next({ transform: 'scale(1)', margin: 20, })
-        // console.log(accordionOpen, prevAccordionOpen)
-        setTimeout(() => {
-          next({ transform: 'scale(1)', margin: 20, })
-        }, 500);
-      },
-    from: {
-      transform: 'scale(1)',
-      margin: 20,
-    },
-    config: config.default
-  })
-
-  const onClickHandler = (num) => {
-    setAccordionOpen(prev => {
-      if (prev === num) return 0
-      else return num
-    })
-  }
+  const { accordionOpen, imageAnim, onClickHandler } = useContentDetailsImageAnim()
 
   const RenderContent = ({ icon, title, techImg }) => {
     return (
