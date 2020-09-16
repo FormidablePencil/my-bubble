@@ -1,7 +1,8 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core'
 
-function DeviceFrameAndImg({ projectContent }) {
+function DeviceFrameAndImg({ projectContent, mobileContentDetailsSection }:
+  { projectContent, mobileContentDetailsSection?}) {
   const classes = useStyles();
 
   const imageStyles = (type) => {
@@ -16,7 +17,14 @@ function DeviceFrameAndImg({ projectContent }) {
 
   if (projectContent) {
     return (
-      <div className={classes.container}>
+      <div
+        className={classes.container}
+        style={mobileContentDetailsSection ?
+          {
+            transform: 'scale(2)',
+            margin: '1em, 0em 1em, 0em'
+          } : {}}
+      >
         <img
           className={imageStyles(projectContent.type).contentImageStyles}
           src={projectContent.images && projectContent.images[0]}
@@ -36,6 +44,8 @@ export default DeviceFrameAndImg
 
 const useStyles = makeStyles((theme) => ({
   container: {
+    userSelect: 'none',
+    cursor: 'pointer',
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',

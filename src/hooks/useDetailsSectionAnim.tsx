@@ -23,12 +23,12 @@ function useDetailsSectionAnim() {
 
   const animToggleAppearenceOfDetailsSection = useSpring({
     to: shrunkElement ? {
-      transform: 'translateY(-350px)',
+      transform: 'translateY(-355px)',
     } : {
       transform: 'translateY(0px)',
       },
     from: {
-      transform: 'translateY(-350px)',
+      transform: 'translateY(-355px)',
       },
     onRest: () => setAnimCameToCompleteStop(true)
   })

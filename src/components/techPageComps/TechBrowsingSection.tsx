@@ -1,27 +1,37 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { SELECTED_TECH } from '../../actions/types';
 import { rootReducerT } from '../../store';
 import { makeStyles, Grid } from '@material-ui/core';
+import { ContextSwipeBar } from '../../Routes';
 
-function TechBrowsingSection({ onClickItem }: { onClickItem?}) {
+function TechBrowsingSection({ showDetailsSection }: { showDetailsSection?}) {
+  const { translateSwipeableTab } = useContext(ContextSwipeBar)
   const { techDataCollection } = useSelector((state: rootReducerT) => state)
   const dispatch = useDispatch()
   const classes = useStyles();
 
-  const onClickbrowsingSectionElement = (techNum) =>
-    dispatch({ type: SELECTED_TECH, payload: techNum });
+  const onClickbrowsingSectionElement = async (techNum) => {
+    await dispatch({ type: SELECTED_TECH, payload: techNum });
+    if (showDetailsSection)
+      showDetailsSection() /* if TechBrowsingSection is in mobile's comp */
+    else
+      translateSwipeableTab() /* or if TechBrowsingSection is in desktop's comp (TabPageTemplate) */
+  }
 
   return (
-    <Grid container>
+    <Grid container justify='center'>
       {techDataCollection.map((tech, index) =>
         <Grid item>
           <div
             key={tech._id}
             onClick={
-              onClickItem ? () => onClickItem(index) : () => onClickbrowsingSectionElement(index)
+              // onClickItem
+              // ? () => onClickItem(index)
+              // :
+              () => onClickbrowsingSectionElement(index)
             }
-            className={classes.techCardContainer}
+            className={classes.techContainer}
             id='hoverEffect'
           >
             <img className={classes.techImg} src={tech.image} alt={tech.technology} />
@@ -34,7 +44,7 @@ function TechBrowsingSection({ onClickItem }: { onClickItem?}) {
 }
 
 const useStyles = makeStyles((theme) => ({
-  techCardContainer: {
+  techContainer: {
     width: '7.5em',
     height: '7.5em',
     background: 'white',

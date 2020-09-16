@@ -7,6 +7,8 @@ const customTheme = createMuiTheme({
     primary: {
       main: '#7680DE',
       100: '#EBEBFF',
+      200: '#FFFFFF',
+      300: '#D4DAFF',
       800: '#B4AAEF',
     },
     secondary: {
@@ -17,6 +19,7 @@ const customTheme = createMuiTheme({
 
     },
     text: {
+      primary: '#E7E1FF',
     }
   },
 

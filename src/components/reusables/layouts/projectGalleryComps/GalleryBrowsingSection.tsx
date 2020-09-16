@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SELECTED_SUBJECT } from '../../../../actions/types'
 import { makeStyles, Typography, Chip, Grid } from '@material-ui/core'
@@ -18,13 +18,13 @@ function GalleryBrowsingSection(
   const classes = useStyles();
   const dispatch = useDispatch()
 
-  const onCardClick = (techIndexInCollection) => {
+  const onCardClick = async (techIndexInCollection) => {
+    await dispatch({ type: SELECTED_SUBJECT, payload: techIndexInCollection })
     showDetailsSection()
-    dispatch({ type: SELECTED_SUBJECT, payload: techIndexInCollection })
   }
 
   return (
-    <>
+    <Grid container justify='space-evenly' className={classes.container}>
       {projectDataCollection.map((project, index) => {
         let trimTech = false
         if (project.technologies.length >= 4) trimTech = true
@@ -95,7 +95,7 @@ function GalleryBrowsingSection(
         )
       }
       )}
-    </>
+    </Grid>
   )
 }
 
@@ -103,6 +103,9 @@ export default GalleryBrowsingSection
 
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    margin: '1em 0em 1em 0em'
+  },
   firstSection: {
     position: "relative",
     height: '100%',

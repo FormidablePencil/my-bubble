@@ -5,10 +5,11 @@ import { TabPageTemplate } from '../components/reusables/layouts/tabPageTemplate
 import TechContentDetailsSection from '../components/techPageComps/TechContentDetailsSection'
 import TechBrowsingSection from '../components/techPageComps/TechBrowsingSection'
 import TechContentVisualSection from '../components/techPageComps/TechContentVisualSection'
-import { Grid, useMediaQuery } from '@material-ui/core'
+import { useMediaQuery } from '@material-ui/core'
 import MobileTechGallery from '../components/mobile/Mobile-TechGallery'
 
 function TechnologiesPage() {
+
   const { techDataCollection, currentTechViewing } = useSelector((state: rootReducerT) => state)
   const matches = useMediaQuery((theme: any) => theme.breakpoints.up('sm'));
 

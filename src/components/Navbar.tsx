@@ -28,7 +28,7 @@ function Navbar() {
       <div className={classes.tabsContainer}>
         {tabs.map(tab =>
           <Link
-          key={tab.tabTitle}
+            key={tab.tabTitle}
             href={tab.path}
             className={`${classes.tab} ${pathName === tab.path && classes.activeTab}`}
           >
@@ -91,9 +91,16 @@ const useStyles = makeStyles((theme) => ({
     height: '100%'
   },
   rightSide: {
-    
+    display: 'flex',
+    alignItems: 'flex-end',
+    marginRight: 20,
   },
   name: {
-    color: 'white',
-  }
+    display: 'none',
+    [theme.breakpoints.up('md')]: {
+      display: 'inline',
+      fontFamily: 'KaushanScript-Regular',
+      color: theme.palette.primary[100],
+    },
+  },
 }));

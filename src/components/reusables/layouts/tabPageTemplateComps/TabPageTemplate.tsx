@@ -1,13 +1,12 @@
-import React, { useState, cloneElement, Children } from 'react'
-import { Grid, Typography, makeStyles, useMediaQuery, Button } from '@material-ui/core'
-import { AiOutlineSetting, AiOutlineSearch } from 'react-icons/ai'
+import React, { cloneElement, Children } from 'react'
+import { Grid, makeStyles, useMediaQuery, Button } from '@material-ui/core'
 import SearchAndContentDetailsTogether from './SearchAndContentDetailsTogether';
 import { navbarHeight } from '../../../../styles/materialUiStyles';
 import useDetailsSectionAnim from '../../../../hooks/useDetailsSectionAnim';
 import { animated } from 'react-spring';
 
 export function TabPageTemplate({ contentVisualSection, contentDetailsSection, searchFeatureSection, browsingSection }) {
-  const [selectedTab, setSelectedTab] = useState(0)
+  // const [selectedTab, setSelectedTab] = useState(0)
   const classes = useStyles();
   const tabletOrSmaller = useMediaQuery((theme: any) => theme.breakpoints.down('md'));
 
@@ -19,12 +18,10 @@ export function TabPageTemplate({ contentVisualSection, contentDetailsSection, s
     shrunkElement
   } = useDetailsSectionAnim()
 
-  const onClickTab = (tab) => setSelectedTab(tab)
+  // const onClickTab = (tab) => setSelectedTab(tab)
 
   const browsingSectionWithProps = Children.map(browsingSection, (child, index) =>
-    cloneElement(child, {
-      showDetailsSection: showDetailsSection,
-    })
+    cloneElement(child, { showDetailsSection, })
   )
 
   return (
@@ -35,9 +32,6 @@ export function TabPageTemplate({ contentVisualSection, contentDetailsSection, s
         position: 'relative'
       }}>
 
-      {/* //~ modularize */}
-      {/* //~ check of BrowsingSection can scroll */}
-      {/* //~ There must be some sort of indicator for when component has stopped animating. Create on with onRest... */}
       <Grid container justify='space-between' className={classes.tabbar}>
         {!shrunkElement &&
           <Grid item>
@@ -50,44 +44,28 @@ export function TabPageTemplate({ contentVisualSection, contentDetailsSection, s
       <animated.div
         style={animToggleAppearenceOfDetailsSection}
         className={classes.detailsSection}>
-        {/* //* ===== contentVisualSection ===== */}
-        <div className={classes.subjectImgContainer}>
-          {contentVisualSection}
-        </div>
-        {/* //* ===== contentDetailsSection ===== */}
-        <Grid container className={classes.subjectInfoContainer}>
-          <div className={classes.content}>
-            {!tabletOrSmaller ?
-              <>{contentDetailsSection}</>
-              : <SearchAndContentDetailsTogether
-                contentDetailsSection={contentDetailsSection}
-                searchFeatureSection={searchFeatureSection} />
-            }
-          </div>
+        <Grid className={classes.contentDetailsContainer}
+          container justify='center' direction='row' wrap='nowrap'>
+          {/* //* ===== contentVisualSection ===== */}
+          <Grid item>
+            <div className={classes.subjectImgContainer}>
+              {contentVisualSection}
+            </div>
+          </Grid>
+          {/* //* ===== contentDetailsSection ===== */}
+          <Grid container item className={classes.subjectInfoContainer}>
+            <div className={classes.content}>
+              {!tabletOrSmaller ?
+                <>{contentDetailsSection}</>
+                : <SearchAndContentDetailsTogether
+                  contentDetailsSection={contentDetailsSection}
+                  searchFeatureSection={searchFeatureSection} />
+              }
+            </div>
+          </Grid>
         </Grid>
+        {/* </Grid> */}
 
-        {/* //* ===== searchFeatureSection ===== */}
-        {!tabletOrSmaller &&
-          <div
-            className={classes.searchFeatureOuterContainerViewMode}>
-            <div className={classes.tabContainer}>
-              <div onClick={() => onClickTab(0)} className={`${classes.tab} ${selectedTab !== 0 && classes.unselectedTab}`}>
-                <Typography>Search</Typography>
-                <div><AiOutlineSearch size={15} /></div>
-              </div>
-              <div onClick={() => onClickTab(1)} className={`${classes.tab} ${selectedTab !== 1 && classes.unselectedTab} ${classes.filter}`}>
-                <Typography>filter</Typography>
-                <div><AiOutlineSetting size={15} /></div>
-              </div>
-            </div>
-            <div>
-              <input className={classes.searchInput} type="text" name="name" />
-            </div>
-            <div className={classes.searchResultSection}>
-              {searchFeatureSection}
-            </div>
-          </div>
-        }
       </animated.div>
       {/* //* ===== browsingSection ===== */}
       <animated.div
@@ -112,42 +90,50 @@ const useStyles = makeStyles((theme) => ({
   },
   detailsSection: {
     marginTop: '2em',
+    padding: '1em',
+    // marginLeft: '1em',
     display: 'flex',
     flexDirection: 'row',
+    justifyContent: 'center',
+    justifyItems: 'center',
     position: "absolute",
-    backgroundColor: '#B6ADEF',
+    background: theme.palette.primary[300],
     width: '100%',
     zIndex: 3,
-    height: '20em'
+    height: '20em',
+    boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)'
   },
 
+
+  contentDetailsContainer: {
+    height: '20em',
+    width: '80%'
+  },
   // {/* //* ===== contentVisualSection ===== */}
   subjectImgContainer: {
-    background: theme.palette.primary[100],
+    background: 'white',
     borderRadius: '5px',
-    flex: 1.5,
+    overflow: 'hidden',
+    height: '100%',
     display: 'flex',
-    width: '10px',
   },
 
 
   // {/* //* ===== contentDetailsSection ===== */}
   subjectInfoContainer: {
-    position: 'relative',
-    margin: '0em 3em 0em 3em',
-    flex: 2,
+    height: '100%',
     borderRadius: '5px',
-    overflowY: 'hidden',
+    overflow: 'hidden',
+    width: '100%',
+    marginLeft: '1em',
+    background: theme.palette.primary[200],
   },
   content: {
-    flex: 1,
-    backgroundColor: 'grey',
-    overflowY: 'scroll',
-    height: '15em'
+    height: '100%',
   },
 
 
-  // {/* //* ===== searchFeatureSection ===== */ }
+  // {/* //* ===== searchFeatureSection ===== */}
   searchFeatureOuterContainerViewMode: {
     position: 'relative',
     backgroundColor: theme.palette.primary.main,
@@ -203,7 +189,7 @@ const useStyles = makeStyles((theme) => ({
   animatedWrapperBrowsingSection: {
     overflowY: 'scroll',
     width: '80%',
-    height: '90vh',
+    height: `calc(100vh - ${navbarHeight} - 2em)`,
     background: theme.palette.background.default,
     boxShadow: 'inset 0px 0px 10px -1px rgba(0,0,0,0.25)'
   },

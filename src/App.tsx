@@ -8,6 +8,7 @@ import customTheme from './styles/materialUiStyles'
 
 function App() {
   const store = configureStore()
+
   return (
     <Provider store={store}>
       <ThemeProvider theme={customTheme}>

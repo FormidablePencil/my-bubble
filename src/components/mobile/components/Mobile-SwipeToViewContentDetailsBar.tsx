@@ -1,26 +1,15 @@
-import React from 'react'
-import { config, animated } from 'react-spring'
-import { useDrag } from 'react-use-gesture'
-import { makeStyles, Grid, Typography } from '@material-ui/core'
+import React, { useContext } from 'react'
+import { animated } from 'react-spring'
+import { makeStyles, Grid, Typography, Button } from '@material-ui/core'
 import { swipebarHeightInEm, swipebarHeightInPx } from '../../../styles/materialUiStyles';
 import { BsArrowBarDown } from 'react-icons/bs';
+import { IoIosArrowBack } from 'react-icons/io';
+import { ContextSwipeBar } from '../../../Routes';
 
-const { outerHeight, innerHeight } = window
-
-function MobileSwipeToViewContentDetailsBar({ children, selectedProjectImage, xy, set }) {
+function MobileSwipeToViewContentDetailsBar({ children, selectedProjectImage }) {
   const classes = useStyles();
 
-  const bind = useDrag(({ down, movement }) => {
-    if (!down && movement[1] >= outerHeight / 2)
-      return set({ xy: [0, innerHeight - swipebarHeightInPx], config: config.stiff })
-
-    if (movement[1] <= 0)
-      set({ xy: [0, 0], config: config.stiff })
-    else if (movement[1] >= outerHeight)
-      set({ xy: [0, 0], config: config.stiff })
-    else
-      set({ xy: down ? movement : [0, 0], config: config.stiff })
-  })
+  const { xy, translateSwipeableTab } = useContext(ContextSwipeBar)
 
   return (
     <animated.div
@@ -30,27 +19,34 @@ function MobileSwipeToViewContentDetailsBar({ children, selectedProjectImage, xy
       }}
       className={classes.detailsSectionWrapper}
     >
+      <Button
+        className={classes.backBtn}
+        onClick={translateSwipeableTab}
+      ><IoIosArrowBack color='white' size={20} /></Button>
       <div className={classes.content}>
         {children}
       </div>
       <animated.div
-        {...bind()}
+        onClick={translateSwipeableTab}
       >
         <Grid container direction='row' alignItems='center' wrap='nowrap'
           className={classes.swipeBarContainer}
         >
-          <Grid item direction='row' justify='center' container className={classes.sideGrid}>
-            <img className={classes.selectedContentImg} src={selectedProjectImage} alt='' />
-          </Grid>
-          <Grid item container direction='column' justify='center' alignItems='center'>
-            <BsArrowBarDown color='white' />
-            <div>
-              <Typography color='secondary' variant='caption'>
-                Press a project to see more details
+          <Grid item container direction='row' alignItems='center' wrap='nowrap'>
+            <Grid item direction='row' justify='center' container className={classes.sideGrid}>
+              <img
+                draggable="false"
+                className={classes.selectedContentImg} src={selectedProjectImage} alt='' />
+            </Grid>
+            <Grid item container direction='column' justify='center' alignItems='center'>
+              <BsArrowBarDown color='white' />
+              <div>
+                <Typography className={classes.disableSelecting} color='secondary' variant='caption'>
+                  Press a project to see more details
           </Typography>
-            </div>
-          </Grid>
-          <Grid item className={classes.sideGrid}>
+              </div>
+            </Grid>
+            <Grid item className={classes.sideGrid}></Grid>
           </Grid>
         </Grid>
       </animated.div>
@@ -60,21 +56,32 @@ function MobileSwipeToViewContentDetailsBar({ children, selectedProjectImage, xy
 
 
 const useStyles = makeStyles((theme) => ({
+  backBtn: {
+    position: "absolute",
+    top: 5,
+    left: 0,
+  },
   detailsSectionWrapper: {
     position: "absolute",
     zIndex: 10,
     top: `calc(-100vh + ${swipebarHeightInEm})`,
-    // marginTop: swipebarHeight
+    // transform: 'translate(50px, 100px)',
+    // marginTop: - swipebarHeightInEm,
   },
   content: {
     backgroundColor: 'white',
     height: '100vh',
   },
+
   swipeBarContainer: {
+    zIndex: 200,
     width: '100%',
-    marginTop: - swipebarHeightInPx,
+    position: 'absolute',
+    bottom: 0,
+    // marginTop: - swipebarHeightInPx / 2,
     height: swipebarHeightInPx,
     backgroundColor: theme.palette.primary.main,
+    cursor: 'pointer',
   },
   sideGrid: {
     width: '5em',
@@ -84,7 +91,11 @@ const useStyles = makeStyles((theme) => ({
     height: 25,
     objectFit: "cover",
     padding: 3,
-    backgroundColor: theme.palette.primary[800]
+    backgroundColor: theme.palette.primary[800],
+    userSelect: 'none',
+  },
+  disableSelecting: {
+    userSelect: 'none',
   }
 }));
 

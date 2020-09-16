@@ -1,12 +1,12 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core'
+// import { makeStyles } from '@material-ui/core'
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import MobileHomeTab from '../components/mobile/Mobile-HomeTab';
 import DesktopHomeTab from '../components/desktop/Desktop-HomeTab';
 
 function HomePage() {
   const mobile = useMediaQuery((theme: any) => theme.breakpoints.down('xs'));
-  const classes = useStyles();
+  // const classes = useStyles();
 
   return (
     <>
@@ -21,17 +21,17 @@ function HomePage() {
 export default HomePage
 
 
-const useStyles = makeStyles((theme) => ({
-  nameTxt: {
+// const useStyles = makeStyles((theme) => ({
+//   nameTxt: {
 
-  },
-  amAboutTxt: {
+//   },
+//   amAboutTxt: {
 
-  },
-  callToActions: {
+//   },
+//   callToActions: {
 
-  },
-  shadowOverNavbar: {
-    boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.75)',
-  }
-}));
+//   },
+//   shadowOverNavbar: {
+//     boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.75)',
+//   }
+// }));

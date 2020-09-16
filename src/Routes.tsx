@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { createContext, useState } from 'react'
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import ProjectsGalleryPage from './pages/ProjectsGalleryPage';
 import useFetchAllPortfolioData from './hooks/useFetchAllPortfolioData';
@@ -10,9 +10,9 @@ import { tabEffectShadowProp, swipebarHeightInEm } from './styles/materialUiStyl
 import useFullHeightResponsive from './hooks/useFullHeightResponsive';
 import MobileNavMenu from './components/mobile/components/MobileNavMenu';
 import { IoIosMenu } from 'react-icons/io';
-// import reactNative from '../assets/techLogo/reactNativeLogo.png';
+import useSwipableTab from './hooks/useSwipableTab';
 
-//~ how will cards be different on desktop and mobile? Figma should help
+export const ContextSwipeBar: any = createContext(null);
 
 export function DemoRoutes() {
   const classes = useStyles();
@@ -22,42 +22,45 @@ export function DemoRoutes() {
   const [mobileNavModalOpen, setMobileNavModalOpen] = useState(false)
 
   useFetchAllPortfolioData()
+  const { translateSwipeableTab, xy } = useSwipableTab()
 
   return (
-    <div
-      style={{
-        height,
-        overflowY: mobile ? 'hidden' : 'visible'
-      }}
-      className={classes.container}
-    >
-      <Router>
-        {mobile ?
-          <MobileNavMenu mobileNavModalOpen={mobileNavModalOpen}
-            setMobileNavModalOpen={setMobileNavModalOpen} /> :
-          <Navbar />}
-        <div
-          className={classes.contentContainer}
-          style={mobile ? { paddingTop: swipebarHeightInEm } : {}}
-        >
-          {mobile && !mobileNavModalOpen
-            && <Button className={classes.navIcon} onClick={() => setMobileNavModalOpen(true)}>
-              <IoIosMenu color='white' size={30} />
-            </Button>}
-          <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route path="/projects">
-              <ProjectsGalleryPage />
-            </Route>
-            <Route path="/tech">
-              <TechnologiesPage />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-    </div>
+    <ContextSwipeBar.Provider value={{ translateSwipeableTab, xy }}>
+      <div
+        style={{
+          height,
+          overflowY: mobile ? 'hidden' : 'visible'
+        }}
+        className={classes.container}
+      >
+        <Router>
+          {mobile
+            ? <MobileNavMenu mobileNavModalOpen={mobileNavModalOpen}
+              setMobileNavModalOpen={setMobileNavModalOpen} />
+            : <Navbar />}
+          <div
+            className={classes.contentContainer}
+            style={mobile ? { paddingTop: swipebarHeightInEm } : {}}
+          >
+            {mobile && !mobileNavModalOpen
+              && <Button className={classes.navIcon} onClick={() => setMobileNavModalOpen(true)}>
+                <IoIosMenu color='white' size={30} />
+              </Button>}
+            <Switch>
+              <Route exact path="/">
+                <HomePage />
+              </Route>
+              <Route path="/projects">
+                <ProjectsGalleryPage />
+              </Route>
+              <Route path="/tech">
+                <TechnologiesPage />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+      </div>
+    </ContextSwipeBar.Provider>
   )
 }
 
