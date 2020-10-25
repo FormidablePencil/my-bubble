@@ -11,6 +11,7 @@ import useFullHeightResponsive from './hooks/useFullHeightResponsive';
 import MobileNavMenu from './components/mobile/components/MobileNavMenu';
 import { IoIosMenu } from 'react-icons/io';
 import useSwipableTab from './hooks/useSwipableTab';
+import ImageModal from './components/modals/ImageModal';
 
 export const ContextSwipeBar: any = createContext(null);
 
@@ -22,6 +23,7 @@ export function DemoRoutes() {
   const [mobileNavModalOpen, setMobileNavModalOpen] = useState(false)
 
   useFetchAllPortfolioData()
+  
   const { translateSwipeableTab, xy } = useSwipableTab()
 
   return (
@@ -33,6 +35,7 @@ export function DemoRoutes() {
         }}
         className={classes.container}
       >
+      <ImageModal />
         <Router>
           {mobile
             ? <MobileNavMenu mobileNavModalOpen={mobileNavModalOpen}
@@ -73,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     position: "relative",
     zIndex: 1,
-    background: 'linear-gradient(180deg, rgba(180,170,239,1) 0%, rgba(168,234,255,1) 100%)',
+    background: 'linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(99,161,255,1) 0%, rgba(99,122,185,1) 100%)', 
     boxShadow: tabEffectShadowProp
   },
   navIcon: {

@@ -5,20 +5,26 @@ import { sortedProjectDataT } from '../actions/types'
 import { TabPageTemplate } from '../components/reusables/layouts/tabPageTemplateComps/TabPageTemplate'
 import GalleryContentVisualSection from '../components/reusables/layouts/projectGalleryComps/GalleryContentVisualSection'
 import GalleryBrowsingSection from '../components/reusables/layouts/projectGalleryComps/GalleryBrowsingSection'
-import GalleryContentDetailsSection, { GalleryContentMoreDetailsSection } from '../components/reusables/layouts/projectGalleryComps/GalleryContentDetailsSection'
+import GalleryContentDetailsSection from '../components/reusables/layouts/projectGalleryComps/GalleryContentDetailsSection'
 import GallerySearchFeatureSection from '../components/reusables/layouts/projectGalleryComps/GallerySearchFeatureSection'
-import { Grid, makeStyles, useMediaQuery } from '@material-ui/core'
 import MobileProjectGallery from '../components/mobile/Mobile-ProjectGallery'
+import useToggleGridDirection from '../hooks/useToggleGridDirection'
+import useIsTabletOrLarget from '../hooks/useIsTabletOrLarget'
 
 //~ focus in making this component and it's sub components work
 
 function ProjectsGalleryPage() {
-  const { currentSubjectViewing, projectDataCollection } = useSelector((state: rootReducerT) => state)
+  const {
+    currentSubjectViewing,
+    projectDataCollection,
+    contentDetailsSectionDirIsRow
+  } = useSelector((state: rootReducerT) => state)
   const [sortedProjectData, setSortedProjectData] = useState<sortedProjectDataT>()
-  const classes = useStyles();
 
-  const tabletOrLarger = useMediaQuery((theme: any) => theme.breakpoints.up('sm'));
+  const tabletOrLarger = useIsTabletOrLarget()
+  useToggleGridDirection()
 
+  // update state based to the project that is selected
   useEffect(() => {
     if (typeof currentSubjectViewing === 'number' && projectDataCollection[currentSubjectViewing]) {
       setSortedProjectData({
@@ -39,25 +45,36 @@ function ProjectsGalleryPage() {
     }
   }, [currentSubjectViewing, projectDataCollection])
 
+
+
   if (tabletOrLarger) {
     return (
-      <TabPageTemplate
-        contentVisualSection={
-          <GalleryContentVisualSection />
-        }
-        contentDetailsSection={
-          <Grid container direction='row' wrap='nowrap' className={classes.container}>
+      <>
+        {/* {projectDataCollection[currentSubjectViewing] &&
+          <div style={{ zIndex: 5000 }}>
+            <Lightbox
+              medium={projectDataCollection[currentSubjectViewing].images[1]}
+              large={projectDataCollection[currentSubjectViewing].images[1]}
+              alt="Hello World!"
+              onClose={false}
+            />
+          </div>
+        } */}
+        <TabPageTemplate
+          contentVisualSection={
+            <GalleryContentVisualSection />
+          }
+          contentDetailsSection={
             <GalleryContentDetailsSection sortedProjectData={sortedProjectData} />
-            <GalleryContentMoreDetailsSection sortedProjectData={sortedProjectData} />
-          </Grid>
-        }
-        searchFeatureSection={
-          <GallerySearchFeatureSection projectDataCollection={projectDataCollection} />
-        }
-        browsingSection={
-          <GalleryBrowsingSection projectDataCollection={projectDataCollection} />
-        }
-      />
+          }
+          searchFeatureSection={
+            <GallerySearchFeatureSection projectDataCollection={projectDataCollection} />
+          }
+          browsingSection={
+            <GalleryBrowsingSection projectDataCollection={projectDataCollection} />
+          }
+        />
+      </>
     )
   } else {
     return (
@@ -67,10 +84,3 @@ function ProjectsGalleryPage() {
 }
 
 export default ProjectsGalleryPage
-
-
-const useStyles = makeStyles((theme) => ({
-  container: {
-    backgroundColor: theme.palette.primary[100]
-  }
-}));

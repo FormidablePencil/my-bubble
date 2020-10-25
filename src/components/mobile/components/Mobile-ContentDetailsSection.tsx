@@ -6,10 +6,12 @@ import { rootReducerT } from '../../../store';
 import DeviceFrameAndImg from '../../reusables/layouts/DeviceFrameAndImg';
 import LineSeperator from '../../reusables/layouts/LineSeperator';
 import CompensateForSwipableTabHeight from '../reusableComps/CompensateForSwipableTabHeight';
-import GalleryContentDetailsSection, { GalleryContentMoreDetailsSection } from '../../reusables/layouts/projectGalleryComps/GalleryContentDetailsSection';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { GalleryContentDetailSectionFirst, GalleryContentDetailSectionSecond } from '../../reusables/layouts/projectGalleryComps/GalleryContentDetailsSection';
 import TechContentDetailsSection from '../../techPageComps/TechContentDetailsSection';
 import { animated } from 'react-spring';
 import useContentDetailsImageAnim from '../../../hooks/useContentDetailsImageAnim';
+import { accordionTitleColor } from '../../../styles/materialUiStyles';
 
 
 /* //* Somehow I need to make make this comp slidable gesture and the page to follow it. */
@@ -36,7 +38,7 @@ function MobileContentDetailsSection({ viewingProjects, sortedProjectData }: {
         selectedProjectImage={icon}>
         <Grid className={classes.container} container direction='column' wrap='nowrap'>
           <Grid item container className={classes.titleContainer}>
-            <Typography style={{ fontSize: 30 }} color='textPrimary'>{title}</Typography>
+            <Typography style={{ fontSize: 30 }}>{title}</Typography>
           </Grid>
           <Grid item>
             <LineSeperator />
@@ -72,11 +74,14 @@ function MobileContentDetailsSection({ viewingProjects, sortedProjectData }: {
                     className={classes.accordionContainer}
                     onClick={() => onClickHandler(1)}
                   >
-                    <AccordionSummary>
-                      <Typography variant='h6'>Details</Typography>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}>
+                      <Typography
+                        className={classes.accordionTitle}
+                        variant='h6'>Details</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <GalleryContentDetailsSection sortedProjectData={sortedProjectData} />
+                      <GalleryContentDetailSectionFirst sortedProjectData={sortedProjectData} />
                     </AccordionDetails>
                   </Accordion>
                 </Grid>
@@ -87,11 +92,14 @@ function MobileContentDetailsSection({ viewingProjects, sortedProjectData }: {
                     className={classes.accordionContainer}
                     onClick={() => onClickHandler(2)}
                   >
-                    <AccordionSummary>
-                      <Typography variant='h6'>More details</Typography>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}>
+                      <Typography
+                        className={classes.accordionTitle}
+                        variant='h6'>More details</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <GalleryContentMoreDetailsSection sortedProjectData={sortedProjectData} />
+                      <GalleryContentDetailSectionSecond sortedProjectData={sortedProjectData} />
                     </AccordionDetails>
                   </Accordion>
                 </Grid>
@@ -164,4 +172,7 @@ const useStyles = makeStyles((theme) => ({
     width: '90%',
     margin: '.5em 0em .5em 0em',
   },
+  accordionTitle: {
+    color: accordionTitleColor,
+  }
 }));

@@ -22,14 +22,14 @@ const CardLayout = ({ firstSection, infoSection, onCardClick }) => {
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    margin: '1.5em 0em 1.5em 0em',
+    margin: '1.5em 1em 1.5em 0em',
     height: '15em',
     width: '30em',
     display: 'flex',
     alignItems: 'normal',
     borderRadius: '.5em',
     overflow: 'hidden',
-    background: '#F9F8FF'
+    background: theme.palette.primary[400]
     // 'hover'
   }
 }));

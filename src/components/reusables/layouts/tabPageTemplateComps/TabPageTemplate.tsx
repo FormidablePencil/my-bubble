@@ -4,12 +4,12 @@ import SearchAndContentDetailsTogether from './SearchAndContentDetailsTogether';
 import { navbarHeight } from '../../../../styles/materialUiStyles';
 import useDetailsSectionAnim from '../../../../hooks/useDetailsSectionAnim';
 import { animated } from 'react-spring';
+import { useDispatch } from 'react-redux';
+import { TOGGLE_IMAGE_MODAL } from '../../../../actions/types';
 
 export function TabPageTemplate({ contentVisualSection, contentDetailsSection, searchFeatureSection, browsingSection }) {
-  // const [selectedTab, setSelectedTab] = useState(0)
   const classes = useStyles();
-  const tabletOrSmaller = useMediaQuery((theme: any) => theme.breakpoints.down('md'));
-
+  const dispatch = useDispatch()
   const {
     showDetailsSection,
     hideDetailsSection,
@@ -19,6 +19,8 @@ export function TabPageTemplate({ contentVisualSection, contentDetailsSection, s
   } = useDetailsSectionAnim()
 
   // const onClickTab = (tab) => setSelectedTab(tab)
+  const onClickContentVisualSection = () =>
+    dispatch({type: TOGGLE_IMAGE_MODAL })
 
   const browsingSectionWithProps = Children.map(browsingSection, (child, index) =>
     cloneElement(child, { showDetailsSection, })
@@ -47,21 +49,21 @@ export function TabPageTemplate({ contentVisualSection, contentDetailsSection, s
         <Grid className={classes.contentDetailsContainer}
           container justify='center' direction='row' wrap='nowrap'>
           {/* //* ===== contentVisualSection ===== */}
+
           <Grid item>
-            <div className={classes.subjectImgContainer}>
+            <div
+              className={classes.subjectImgContainer}
+              onClick={onClickContentVisualSection}>
               {contentVisualSection}
             </div>
           </Grid>
+
           {/* //* ===== contentDetailsSection ===== */}
           <Grid container item className={classes.subjectInfoContainer}>
-            <div className={classes.content}>
-              {!tabletOrSmaller ?
-                <>{contentDetailsSection}</>
-                : <SearchAndContentDetailsTogether
-                  contentDetailsSection={contentDetailsSection}
-                  searchFeatureSection={searchFeatureSection} />
-              }
-            </div>
+            <>{contentDetailsSection}</>
+            {/* <SearchAndContentDetailsTogether
+                 contentDetailsSection={contentDetailsSection}
+                 searchFeatureSection={searchFeatureSection} /> */}
           </Grid>
         </Grid>
         {/* </Grid> */}
@@ -85,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
     height: '2em',
     width: '100%',
     zIndex: 100,
-    backgroundColor: '#B6ADEF',
+    backgroundColor: theme.palette.primary[800],
     boxShadow: '0px 7px 4px -2px rgba(0,0,0,0.2)',
   },
   detailsSection: {
@@ -111,7 +113,9 @@ const useStyles = makeStyles((theme) => ({
   },
   // {/* //* ===== contentVisualSection ===== */}
   subjectImgContainer: {
-    background: 'white',
+    background: theme.palette.primary[400],
+    border: '2px solid',
+    borderColor: theme.palette.primary[800],
     borderRadius: '5px',
     overflow: 'hidden',
     height: '100%',
@@ -123,13 +127,11 @@ const useStyles = makeStyles((theme) => ({
   subjectInfoContainer: {
     height: '100%',
     borderRadius: '5px',
-    overflow: 'hidden',
     width: '100%',
     marginLeft: '1em',
-    background: theme.palette.primary[200],
-  },
-  content: {
-    height: '100%',
+    background: theme.palette.primary[400],
+    border: '2px solid',
+    borderColor: theme.palette.primary[800],
   },
 
 

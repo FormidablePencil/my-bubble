@@ -33,13 +33,13 @@ function Navbar() {
             className={`${classes.tab} ${pathName === tab.path && classes.activeTab}`}
           >
             <Grid className={classes.fullHeight} container justify='center' alignItems='center'>
-              <Typography variant='body1'>{tab.tabTitle}</Typography>
+              <Typography color='textPrimary' variant='body1'>{tab.tabTitle}</Typography>
             </Grid>
           </Link>
         )}
       </div>
       <Grid item className={classes.rightSide}>
-        <Typography className={classes.name} variant='h4'>Dennis Aleksandrov</Typography>
+        <Typography color='textPrimary' className={classes.name} variant='h4'>Dennis Aleksandrov</Typography>
       </Grid>
     </Grid>
   )
@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
     width: '9em',
     borderRadius: '1em 1em 0em 0em',
     margin: '0em 0em -.5px 1em',
-    background: 'rgb(180,170,239)',
+    background: theme.palette.primary[800],
     opacity: .7,
     boxShadow: '0px -1px 0px .5px rgba(0,0,0,.2)',
     '&:hover': {
@@ -100,7 +100,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       display: 'inline',
       fontFamily: 'KaushanScript-Regular',
-      color: theme.palette.primary[100],
     },
   },
 }));

@@ -5,21 +5,23 @@ import MuiAccordion from '@material-ui/core/Accordion';
 const customTheme = createMuiTheme({
   palette: {
     primary: {
-      main: '#7680DE',
-      100: '#EBEBFF',
+      main: '#3944AB',
+      100: '#CEDEFF',
       200: '#FFFFFF',
-      300: '#D4DAFF',
-      800: '#B4AAEF',
+      300: '#87A3E3',
+      400: '#E6EEFF',
+      // 800: '#748CCB',
+      800: 'rgb(100, 122, 184)',
     },
     secondary: {
       main: '#3C4068',
     },
     background: {
-      default: '#E2E6F3',
+      default: '#9FB9EA',
 
     },
     text: {
-      primary: '#E7E1FF',
+      primary: '#E0E7FF',
     }
   },
 
@@ -34,9 +36,11 @@ const customTheme = createMuiTheme({
     },
     body1: {
       color: '#757591'
+
     },
   }
 })
+export const accordionTitleColor = '#484EAA'
 
 export const AccordionCustom = withStyles({
   root: {
