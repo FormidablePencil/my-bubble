@@ -22,6 +22,7 @@ const customTheme = createMuiTheme({
     },
     text: {
       primary: '#E0E7FF',
+      secondary: '#35397C',
     }
   },
 

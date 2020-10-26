@@ -39,7 +39,7 @@ function Navbar() {
         )}
       </div>
       <Grid item className={classes.rightSide}>
-        <Typography color='textPrimary' className={classes.name} variant='h4'>Dennis Aleksandrov</Typography>
+        <Typography className={classes.name} variant='h4'>Dennis Aleksandrov</Typography>
       </Grid>
     </Grid>
   )
@@ -96,6 +96,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 20,
   },
   name: {
+    color: 'white',
     display: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'inline',

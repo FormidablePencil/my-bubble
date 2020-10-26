@@ -1,8 +1,8 @@
 const staticData = {
   homeAbout: {
     name: 'Dennis Aleksandrov',
-    paragraph: 'Web and App developer',
-    paragraph2: 'Mern Stack developer',
+    paragraph: "I develop apps for mobile and the web",
+    paragraph2: 'Primary stack Mern',
   }
 }
 
