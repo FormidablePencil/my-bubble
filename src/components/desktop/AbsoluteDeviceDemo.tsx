@@ -13,13 +13,15 @@ function AbsoluteDeviceDemo() {
     position: "absolute",
     left: md ? '5%' : '10%',
     top: "33%",
-    transform: sm ? 'scale(1)' : 'scale(1.5)'
+    transform: md ? 'scale(1)' : 'scale(1.5)',
+    opacity: sm ? 0 : 1
   }
   const rightStyles: any = {
     position: "absolute",
     right: md ? '5%' : '10%',
     top: "30%",
-    transform: sm ? 'scale(1)' : 'scale(1.5)'
+    transform: md ? 'scale(1)' : 'scale(1.5)',
+    opacity: sm ? 0 : 1
   }
 
   return (

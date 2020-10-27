@@ -4,10 +4,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useSelector } from "react-redux";
 import { rootReducerT } from "../store";
-import { Grid, makeStyles } from "@material-ui/core";
+import { Grid, makeStyles, useMediaQuery } from "@material-ui/core";
+import { Link } from 'react-router-dom'
 
 const ReactSlider = () => {
   const { techDataCollection } = useSelector((state: rootReducerT) => state)
+  const sm = useMediaQuery((theme: any) => theme.breakpoints.down('sm'))
   const classes = useStyles();
 
   const settings = {
@@ -15,12 +17,12 @@ const ReactSlider = () => {
     infinite: true,
     autoplay: true,
     speed: 1300,
-    slidesToShow: 3,
+    slidesToShow: sm ? 3 : 6,
     slidesToScroll: 3,
   }
 
   return (
-    <div>
+    <Link to='/technologies'>
       <Slider
         {...settings}>
         {
@@ -37,7 +39,7 @@ const ReactSlider = () => {
           )
         }
       </Slider>
-    </div>
+    </Link>
   );
 }
 

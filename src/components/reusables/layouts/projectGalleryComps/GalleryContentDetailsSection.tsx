@@ -3,7 +3,6 @@ import { Grid, Typography, Chip, makeStyles } from '@material-ui/core'
 import TextFormated from '../TextFormated';
 import { useSelector } from 'react-redux';
 import { rootReducerT } from '../../../../store';
-import useIsTabletOrLarget from '../../../../hooks/useIsTabletOrLarget';
 
 const GalleryContentDetailsSection = ({ sortedProjectData }) => {
   const classes = useStyles();
@@ -14,7 +13,7 @@ const GalleryContentDetailsSection = ({ sortedProjectData }) => {
       container
       direction={contentDetailsSectionDirIsRow ? 'row' : 'column'}
       wrap='nowrap'
-      className={classes.parentContainer}>
+      className={`${classes.parentContainer} scrollbar-visible`}>
       <GalleryContentDetailSectionFirst sortedProjectData={sortedProjectData} />
       {contentDetailsSectionDirIsRow &&
         <div className={classes.divider} />
@@ -109,7 +108,6 @@ const GalleryContentDetailSectionSecond = (
 
   const toggleShowLine = (ref) => {
     if (ref) {
-      console.log(ref.clientHeight, 'fdffd')
       if (!contentDetailsSectionDirIsRow)
         setShowLine(false)
       else if (ref.clientHeight < 200)
@@ -178,11 +176,9 @@ const useStyles = makeStyles((theme) => ({
     padding: '15px 15px 15px 15px',
     overflowY: 'scroll',
     overflowX: 'hidden',
-    
   },
   contentDetailsContainer: {
     position: 'relative',
-    height: '100%',
   },
 
   line: {

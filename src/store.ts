@@ -6,6 +6,7 @@ import currentSubjectViewingReducer, { currentlyViewingT } from './reducers/curr
 import currentTechViewingReducer from './reducers/currentTechViewingReducer'
 import contentDetailsSectionDirIsRowReducer from './reducers/contentDetailsSectionDirIsRowReducer'
 import ImageModelToggleReducer from './reducers/ImageModelToggleReducer'
+import contentDetailSectionIsClosedReducer from './reducers/contentDetailSectionIsClosedReducer'
 
 export interface rootReducerT {
   projectDataCollection: projectDataT[],
@@ -14,6 +15,7 @@ export interface rootReducerT {
   currentTechViewing: currentlyViewingT,
   contentDetailsSectionDirIsRow: boolean,
   ImageModelToggle: boolean,
+  contentDetailSectionIsClosed: boolean
 }
 const rootReducer = combineReducers<rootReducerT>({
   projectDataCollection: projectDataReducer,
@@ -22,6 +24,7 @@ const rootReducer = combineReducers<rootReducerT>({
   currentTechViewing: currentTechViewingReducer,
   contentDetailsSectionDirIsRow: contentDetailsSectionDirIsRowReducer,
   ImageModelToggle: ImageModelToggleReducer,
+  contentDetailSectionIsClosed: contentDetailSectionIsClosedReducer
 })
 
 const initialState = {}

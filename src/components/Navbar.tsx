@@ -3,10 +3,13 @@ import { Link, makeStyles, Grid, Typography } from '@material-ui/core'
 import { useLocation } from 'react-router-dom';
 import { tabEffectShadowProp } from '../styles/materialUiStyles';
 
+
 function Navbar() {
   const pathName = useLocation().pathname
-  // const pathNamePartial = pathName.slice(0, 5)
   const classes = useStyles();
+  const { pathname } = useLocation()
+  // const pathNamePartial = pathName.slice(0, 5)
+  const atHomeScreen = pathname === '/'
 
   const tabs = [
     {
@@ -19,7 +22,7 @@ function Navbar() {
     },
     {
       tabTitle: 'Technologies',
-      path: '/tech',
+      path: '/technologies',
     },
   ]
 
@@ -39,7 +42,10 @@ function Navbar() {
         )}
       </div>
       <Grid item className={classes.rightSide}>
-        <Typography className={classes.name} variant='h4'>Dennis Aleksandrov</Typography>
+        {!atHomeScreen &&
+          <Typography
+            className={classes.name} variant='h4'>Dennis Aleksandrov</Typography>
+        }
       </Grid>
     </Grid>
   )
@@ -52,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
   navbar: {
     height: '3.2em',
     zIndex: 50,
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.primary[500],
   },
   tabsContainer: {
     marginLeft: '3em',

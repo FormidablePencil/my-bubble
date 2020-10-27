@@ -5,11 +5,12 @@ import MuiAccordion from '@material-ui/core/Accordion';
 const customTheme = createMuiTheme({
   palette: {
     primary: {
-      main: '#3944AB',
+      main: '#C2DAFF',
       100: '#CEDEFF',
       200: '#FFFFFF',
       300: '#87A3E3',
       400: '#E6EEFF',
+      500: '#3944AB',
       // 800: '#748CCB',
       800: 'rgb(100, 122, 184)',
     },

@@ -39,7 +39,7 @@ function SelectableImagesSection({mobilePlatformImages}) {
 const useStyles = makeStyles((theme) => ({
   imageContainer: {
     border: '.5px solid',
-    borderColor: theme.palette.primary.main
+    borderColor: theme.palette.primary[500]
   },
   img: {
     width: '100%',

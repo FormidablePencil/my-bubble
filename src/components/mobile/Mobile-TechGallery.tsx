@@ -9,9 +9,9 @@ function MobileTechGallery() {
 
   return (
     <>
-      <MobileContentDetailsSection
+      {/* <MobileContentDetailsSection
         viewingProjects={false}
-      />
+      /> */}
       <Grid container justify='center' className={classes.container}>
         <TechBrowsingSection />
         <CompensateForSwipableTabHeight moreHeight={'3em'} />

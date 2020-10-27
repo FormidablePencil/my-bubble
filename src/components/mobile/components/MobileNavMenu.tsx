@@ -22,7 +22,7 @@ function MobileNavMenu({ mobileNavModalOpen, setMobileNavModalOpen }) {
           </Grid>
           <Grid item>
             <Button variant='contained' color='primary'>
-              <Link to='/tech'>Tech</Link>
+              <Link to='/technologies'>Tech</Link>
             </Button>
           </Grid>
         </Grid>

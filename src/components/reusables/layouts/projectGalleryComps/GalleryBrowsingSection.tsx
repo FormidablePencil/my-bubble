@@ -8,7 +8,7 @@ import DeviceFrameAndImg from '../DeviceFrameAndImg';
 import { projectDataT } from '../../../../reducers/projectDataReducer'
 
 function GalleryBrowsingSection(
-  { projectDataCollection, showDetailsSection }:
+  { projectDataCollection }:
     { projectDataCollection: projectDataT[], showDetailsSection?}) {
 
 
@@ -16,82 +16,82 @@ function GalleryBrowsingSection(
   // const [trimTech, setTrimTech] = useState(false)
 
   const classes = useStyles();
-  const dispatch = useDispatch()
-
-  const onCardClick = async (techIndexInCollection) => {
-    await dispatch({ type: SELECTED_SUBJECT, payload: techIndexInCollection })
-    showDetailsSection()
-  }
 
   return (
-    <Grid container justify='space-evenly' className={classes.container}>
+    <Grid
+      spacing={6}
+      container
+      justify='space-evenly'
+      className={classes.container}>
       {projectDataCollection.map((project, index) => {
         let trimTech = false
         if (project.technologies.length >= 4) trimTech = true
         if (!project.showInPorfolio) return null
         return (
-          <CardLayout
-            key={index}
-            onCardClick={() => onCardClick(index)}
-            firstSection={
-              <Grid container justify='center' alignItems='center' className={classes.firstSection}>
-                <Typography className={
-                  `${project.type === 'mobile'
-                    ? classes.projectTitleMobile
-                    : classes.projectTitleWebsite}
+          <Grid item>
+            <CardLayout
+              techIndexInCollection={index}
+              key={index}
+              firstSection={
+                <Grid container justify='center' alignItems='center' className={classes.firstSection}>
+                  <Typography className={
+                    `${project.type === 'mobile'
+                      ? classes.projectTitleMobile
+                      : classes.projectTitleWebsite}
                   
                     ${project.title.length > 22
-                  && classes.multilineTitle}
+                    && classes.multilineTitle}
                     `
-                }>{project.title}</Typography>
-                <Grid item className={classes.techImagePositioning}>
-                  <DeviceFrameAndImg projectContent={project} />
+                  }>{project.title}</Typography>
+                  <Grid item className={classes.techImagePositioning}>
+                    <DeviceFrameAndImg projectContent={project} />
+                  </Grid>
                 </Grid>
-              </Grid>
-            }
-            infoSection={
-              <Grid className={classes.infoSection} container direction='column'>
-                {/* <Grid item container>
+              }
+              infoSection={
+                <Grid className={classes.infoSection} container direction='column'>
+                  {/* <Grid item container>
                   <Typography className={classes.title} variant='h6'>{project.title}</Typography>
                 </Grid> */}
 
-                <Grid item container
-                  className={classes.flex2}
-                  direction='column'>
-                  <Typography variant='h6'>Brief description:</Typography>
-                  <Typography className={classes.body} variant='body1'>{project.description}sdsdsdda12</Typography>
-                </Grid>
+                  <Grid item container
+                    className={classes.flex2}
+                    direction='column'>
+                    <Typography variant='h6'>Brief description:</Typography>
+                    <Typography className={classes.body} variant='body1'>{project.description}sdsdsdda12</Typography>
+                  </Grid>
 
-                <Grid item container
-                  className={classes.flex1}
-                  direction='column'>
-                  <Typography variant='h5' display='inline'>Technologies:</Typography>
-                  <div>
-                    {project.technologies.map((tech, index) => {
-                      if (trimTech && index >= 4) {
-                        if (index === 4)
-                          return (<>...</>)
-                        else if (index > 4)
-                          return null
-                      }
-                      const techData = techDataCollection.filter(doc => doc.technology === tech)[0]
-                      if (techData && techData.image)
-                        return <img
-                          key={techData.image}
-                          className={classes.techImg}
-                          src={techData.image}
-                          alt={tech} />
-                      else
-                        return <Chip
-                          className={classes.chip}
-                          key={tech}
-                          label={tech} />
-                      // return <Chip className={classes.chip} key={tech} label={tech} />
-                    })}
-                  </div>
+                  <Grid item container
+                    className={classes.flex1}
+                    direction='column'>
+                    <Typography variant='h5' display='inline'>Technologies:</Typography>
+                    <div>
+                      {project.technologies.map((tech, index) => {
+                        if (trimTech && index >= 4) {
+                          if (index === 4)
+                            return (<>...</>)
+                          else if (index > 4)
+                            return null
+                        }
+                        const techData = techDataCollection.filter(doc => doc.technology === tech)[0]
+                        if (techData && techData.image)
+                          return <img
+                            key={techData.image}
+                            className={classes.techImg}
+                            src={techData.image}
+                            alt={tech} />
+                        else
+                          return <Chip
+                            className={classes.chip}
+                            key={tech}
+                            label={tech} />
+                        // return <Chip className={classes.chip} key={tech} label={tech} />
+                      })}
+                    </div>
+                  </Grid>
                 </Grid>
-              </Grid>
-            } />
+              } />
+          </Grid>
         )
       }
       )}

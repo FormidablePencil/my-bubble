@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Grid, Link, makeStyles, Typography } from '@material-ui/core'
+import { Button, Grid, Link, makeStyles, Typography } from '@material-ui/core'
 import staticData from '../../../staticData'
 import ReactSlider from '../../ReactSlider';
 import DeviceFrameAndImg from '../layouts/DeviceFrameAndImg';
 import { useSelector } from 'react-redux';
 import { rootReducerT } from '../../../store';
 import AbsoluteDeviceDemo from '../../desktop/AbsoluteDeviceDemo';
+import { useHistory } from 'react-router-dom';
 
 function HomeAbout() {
   const classes = useStyles();
@@ -28,6 +29,11 @@ function HomeAbout() {
   //   return () => window.removeEventListener('resize', ToggleDeviceFramesInHomePagePresent)
   // }, [])
 
+  let history = useHistory();
+
+  const handleCallToAction = () => {
+    history.push('/projects')
+  }
 
 
   return (
@@ -40,23 +46,26 @@ function HomeAbout() {
           direction='column'
           wrap='nowrap'
           className={classes.wrapper}>
-
-
+            
           <Grid
             spacing={1}
             container
             alignItems='center'
             direction='column'
             className={classes.textContainer}>
-            <Grid item style={{ marginBottom: '1em' }}>
+            <Grid item>
               <Typography color='textPrimary' variant='h3'>{staticData.homeAbout.name}</Typography>
-              <div className={`${classes.horizontalDivider} ${classes.longDivider}`} />
             </Grid>
-            <Grid item style={{ marginBottom: '1em' }}>
+            <div className={`${classes.horizontalDivider} ${classes.longDivider}`} />
+            <Grid item>
               <Typography color='textPrimary' variant='h4'>{staticData.homeAbout.paragraph2}</Typography>
-              <div className={`${classes.horizontalDivider} ${classes.regDivider}`} />
             </Grid>
+            <div className={`${classes.horizontalDivider} ${classes.regDivider}`} />
             <Grid container direction='column' item alignItems='center' style={{ marginBottom: '1em' }}>
+              <Typography color='textSecondary' style={{ fontSize: 24 }}>
+                Email:
+                formidablepencil@gmail.com
+              </Typography>
               <Typography color='textSecondary' style={{ fontSize: 24 }}>
                 Checkout my code on <a href="www.google.com">github</a>
               </Typography>
@@ -67,6 +76,14 @@ function HomeAbout() {
                 Ping me on <a href="www.google.com">LinkedIn</a>
               </Typography>
             </Grid>
+            <Button
+              onClick={handleCallToAction}
+              className={classes.callToAction}
+              variant='contained'
+              color='primary'
+            >
+              View Projects
+            </Button>
           </Grid>
         </Grid>
       </div>
@@ -97,8 +114,9 @@ const useStyles = makeStyles((theme) => ({
     bottom: 100,
   },
   horizontalDivider: {
+    marginBottom: '1em',
     border: '1px solid',
-    borderColor: theme.palette.primary.main,
+    borderColor: theme.palette.primary[500],
   },
   shortDivider: {
     width: 200
@@ -108,5 +126,9 @@ const useStyles = makeStyles((theme) => ({
   },
   longDivider: {
     width: 400
+  },
+  callToAction: {
+    // background: 'orange',
+    marginTop: '1.5em'
   },
 }));

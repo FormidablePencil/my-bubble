@@ -26,11 +26,13 @@ function TechnologiesPage() {
           <TechContentVisualSection loading={loading} />
         }
         contentDetailsSection={
-          <TechContentDetailsSection loading={loading} />
+          <></>
+          /* //~ removed because uneccessary */
+          // <TechContentDetailsSection loading={loading} />
         }
         searchFeatureSection={<></>}
         browsingSection={
-            <TechBrowsingSection />
+          <TechBrowsingSection />
         }
       />
     )

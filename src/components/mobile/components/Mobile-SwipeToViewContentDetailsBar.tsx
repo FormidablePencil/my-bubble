@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
     // marginTop: - swipebarHeightInPx / 2,
     height: swipebarHeightInPx,
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.primary[500],
     cursor: 'pointer',
   },
   sideGrid: {

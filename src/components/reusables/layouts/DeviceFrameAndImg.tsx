@@ -45,7 +45,6 @@ export default DeviceFrameAndImg
 const useStyles = makeStyles((theme) => ({
   container: {
     userSelect: 'none',
-    cursor: 'pointer',
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',

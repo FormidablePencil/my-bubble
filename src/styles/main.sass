@@ -18,3 +18,24 @@ html
 
 $fontFamilyBasic: JosefinSans-Medium
 $fontFamilyCursive: KaushanScript-Regular
+
+@import ./scrollBarVisible.sass
+@import ./animations.sass
+
+.my-node-enter
+  // opacity: 0
+  transform: rotateX(0deg)
+
+  &-active
+    // opacity: 1
+    transform: rotateX(180deg)
+    transition: transform 500ms ease-out
+
+.my-node-exit
+  // opacity: 1
+  transform: rotateX(180deg)
+
+  &-active
+    // opacity: 0
+    transform: rotateX(0deg)
+    transition: transform 500ms ease-out

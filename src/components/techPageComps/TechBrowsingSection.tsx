@@ -25,12 +25,7 @@ function TechBrowsingSection({ showDetailsSection }: { showDetailsSection?}) {
         <Grid item>
           <div
             key={tech._id}
-            onClick={
-              // onClickItem
-              // ? () => onClickItem(index)
-              // :
-              () => onClickbrowsingSectionElement(index)
-            }
+            // onClick={() => onClickbrowsingSectionElement(index)}
             className={classes.techContainer}
             id='hoverEffect'
           >

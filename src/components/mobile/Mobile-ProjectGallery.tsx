@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from 'react'
 import DeviceFrameAndImg from '../reusables/layouts/DeviceFrameAndImg'
-import { ContainerFullHeight } from '../../styles/materialUiStyles'
-import { Grid, makeStyles, Typography } from '@material-ui/core'
+import { ContainerFullHeight, swipebarHeightInEm } from '../../styles/materialUiStyles'
+import { Grid, makeStyles, Typography, useMediaQuery } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import { rootReducerT } from '../../store'
 import MobileContentDetailsSection from './components/Mobile-ContentDetailsSection'
@@ -17,6 +17,8 @@ function MobileProjectGallery({ sortedProjectData }) {
   const { projectDataCollection } = useSelector((state: rootReducerT) => state)
   const indexOfItemRendered: any = useRef(null)
   const amountOfShowableProjects = projectDataCollection.filter(item => item.showInPorfolio && item).length
+  const xs = useMediaQuery((theme: any) => theme.breakpoints.down('xs'));
+
 
   const dispatch = useDispatch()
   const { translateSwipeableTab } = useContext(ContextSwipeBar)
@@ -31,7 +33,9 @@ function MobileProjectGallery({ sortedProjectData }) {
     <ContainerFullHeight
       className={classes.container}
       disableGutters>
-      <Grid container direction='column'>
+      <Grid
+        style={xs ? { paddingTop: swipebarHeightInEm } : {}}
+        container direction='column'>
 
         {/* //~ ======= more details section ======= */}
         <MobileContentDetailsSection

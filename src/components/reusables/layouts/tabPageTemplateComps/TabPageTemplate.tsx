@@ -1,30 +1,48 @@
-import React, { cloneElement, Children } from 'react'
-import { Grid, makeStyles, useMediaQuery, Button } from '@material-ui/core'
-import SearchAndContentDetailsTogether from './SearchAndContentDetailsTogether';
+import React, { cloneElement, Children, useState } from 'react'
+import { Grid, makeStyles, Button, Container } from '@material-ui/core'
 import { navbarHeight } from '../../../../styles/materialUiStyles';
 import useDetailsSectionAnim from '../../../../hooks/useDetailsSectionAnim';
 import { animated } from 'react-spring';
-import { useDispatch } from 'react-redux';
-import { TOGGLE_IMAGE_MODAL } from '../../../../actions/types';
+import { useDispatch, useSelector } from 'react-redux';
+import { TOGGLE_CONTENT_DETAILS_SECTION, TOGGLE_IMAGE_MODAL } from '../../../../actions/types';
+import { rootReducerT } from '../../../../store';
+import DropdownBtn from '../../../mobile/reusableComps/DropdownBtn';
+import { useLocation } from 'react-router-dom';
+
+
+
 
 export function TabPageTemplate({ contentVisualSection, contentDetailsSection, searchFeatureSection, browsingSection }) {
+  const { contentDetailSectionIsClosed } = useSelector((state: rootReducerT) => state)
   const classes = useStyles();
   const dispatch = useDispatch()
+  const { pathname } = useLocation()
   const {
-    showDetailsSection,
-    hideDetailsSection,
     animToggleAppearenceOfDetailsSection,
     browsingSectionRef,
-    shrunkElement
   } = useDetailsSectionAnim()
+
 
   // const onClickTab = (tab) => setSelectedTab(tab)
   const onClickContentVisualSection = () =>
-    dispatch({type: TOGGLE_IMAGE_MODAL })
+    dispatch({ type: TOGGLE_IMAGE_MODAL })
 
-  const browsingSectionWithProps = Children.map(browsingSection, (child, index) =>
-    cloneElement(child, { showDetailsSection, })
-  )
+  const closeBtnAnimStyles: any = {
+    fadeOut: {
+      animation: 'x 1s',
+      opacity: 0,
+      // animationName: Radium.keyframes(fadeOut, 'fadeOut')
+    }
+  }
+
+  const duration = 300;
+
+  const hideDetailsSection = () =>
+    !contentDetailSectionIsClosed &&
+    dispatch({ type: TOGGLE_CONTENT_DETAILS_SECTION })
+
+  const onClickDropdown = () =>
+    dispatch({ type: TOGGLE_CONTENT_DETAILS_SECTION })
 
   return (
     <Grid container justify='center'
@@ -34,12 +52,20 @@ export function TabPageTemplate({ contentVisualSection, contentDetailsSection, s
         position: 'relative'
       }}>
 
-      <Grid container justify='space-between' className={classes.tabbar}>
-        {!shrunkElement &&
-          <Grid item>
-            <Button onClick={hideDetailsSection}>close. Show if no scroll</Button>
+      <Grid container className={classes.tabbar}>
+        <Container>
+          <Grid
+            className={classes.dropdownContainer}
+            item
+            container
+            justify='flex-end'>
+            {pathname === '/projects' &&
+              <DropdownBtn
+                toggleOn={contentDetailSectionIsClosed}
+                onClick={onClickDropdown} />
+            }
           </Grid>
-        }
+        </Container>
       </Grid>
 
 
@@ -75,10 +101,10 @@ export function TabPageTemplate({ contentVisualSection, contentDetailsSection, s
         ref={browsingSectionRef}
         className={classes.animatedWrapperBrowsingSection}>
         <Grid container justify='space-evenly'>
-          {browsingSectionWithProps}
+          {browsingSection}
         </Grid>
       </animated.div>
-    </Grid>
+    </Grid >
   )
 }
 
@@ -138,7 +164,7 @@ const useStyles = makeStyles((theme) => ({
   // {/* //* ===== searchFeatureSection ===== */}
   searchFeatureOuterContainerViewMode: {
     position: 'relative',
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.primary[500],
     overflow: 'hidden'
   },
   tabContainer: {
@@ -197,4 +223,7 @@ const useStyles = makeStyles((theme) => ({
   },
   browsingSectionRelevance: {
   },
+  dropdownContainer: {
+    paddingRight: '2em'
+  }
 }));

@@ -1,42 +1,30 @@
 import { useSpring } from "react-spring"
 import { useState, useRef } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { rootReducerT } from "../store"
+import { TOGGLE_CONTENT_DETAILS_SECTION } from "../actions/types"
 
 function useDetailsSectionAnim() {
-  const [shrunkElement, setShrunkElement] = useState(true)
-  const [animCameToCompleteStop, setAnimCameToCompleteStop] = useState(true)
+  const { contentDetailSectionIsClosed } = useSelector((state: rootReducerT) => state)
+  // const [animCameToCompleteStop, setAnimCameToCompleteStop] = useState(false)
 
   const browsingSectionRef: any = useRef(null)
 
-  const hideDetailsSection = () => {
-    if (!shrunkElement && animCameToCompleteStop) {
-      setAnimCameToCompleteStop(false)
-      setShrunkElement(prev => !prev && true)
-    }
-  }
-
-  const showDetailsSection = (e) => {
-    if (animCameToCompleteStop) {
-      setAnimCameToCompleteStop(false)
-      setShrunkElement(false) //also when clicking on a card 
-    }
-  }
-
   const animToggleAppearenceOfDetailsSection = useSpring({
-    to: shrunkElement ? {
+    to: contentDetailSectionIsClosed ? {
       transform: 'translateY(-355px)',
     } : {
-      transform: 'translateY(0px)',
+        transform: 'translateY(0px)',
       },
     from: {
       transform: 'translateY(-355px)',
-      },
-    onRest: () => setAnimCameToCompleteStop(true)
+    },
+    // onRest: () => setAnimCameToCompleteStop(true)
   })
 
   return {
-    animToggleAppearenceOfDetailsSection, showDetailsSection,
-    hideDetailsSection,
-    browsingSectionRef, shrunkElement
+    animToggleAppearenceOfDetailsSection,
+    browsingSectionRef
   }
 }
 
