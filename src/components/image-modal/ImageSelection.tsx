@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { MODAL_IMAGE_SELECTED } from '../../actions/types';
 import { rootReducerT } from '../../store'
-import { AbsoluteYoutubePlayIcon } from '../mobile/reusableComps/AbsoluteIcons';
+import { AbsoluteYoutubePlayIcon } from '../reusables/AbsoluteIcons';
 
 function ImageSelection({ passedDownClasses }) {
   const [onMouseEnterYoutubeIcon, setOnMouseEnterYoutubeIcon] = useState(false)

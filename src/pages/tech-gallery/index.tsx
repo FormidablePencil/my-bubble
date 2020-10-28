@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { rootReducerT } from '../../store'
 import { useSelector } from 'react-redux'
-import PageTemplate from '../PageTemplate'
-import TechBrowsingSection from '../../components/project-gallery-comps/browsing-section/TechBrowsingSection'
-import TechContentVisualSection from '../../components/project-gallery-comps/visual-section/TechContentVisualSection'
+import PageTemplate from '../template'
+import TechBrowsingSection from '../../components/project-gallery-components/browsing-section/TechBrowsingSection'
 import { useMediaQuery } from '@material-ui/core'
-import MobileTechGallery from '../../components/mobile/Mobile-TechGallery'
+import MobileTechGallery from '../../components/mobile/tech-gallery-components'
 
 function TechnologiesPage() {
 
@@ -22,12 +21,10 @@ function TechnologiesPage() {
     return (
       <PageTemplate
         contentVisualSection={
-          <TechContentVisualSection loading={loading} />
+          <></>
         }
         contentDetailsSection={
           <></>
-          /* //~ removed because uneccessary */
-          // <TechContentDetailsSection loading={loading} />
         }
         searchFeatureSection={<></>}
         browsingSection={

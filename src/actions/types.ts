@@ -11,19 +11,3 @@ export const TOGGLE_IMAGE_MODAL = 'TOGGLE_IMAGE_MODAL'
 export const TOGGLE_CONTENT_DETAILS_SECTION = 'TOGGLE_CONTENT_DETAILS_SECTION'
 export const CLOSE_CONTENT_DETAILS_SECTION = 'CLOSE_CONTENT_DETAILS_SECTION'
 export const MODAL_IMAGE_SELECTED = 'MODAL_IMAGE_SELECTED'
-
-export interface sortedProjectDataT {
-  status: number
-  general: {
-    title: string
-    description: string
-    type: string
-  }
-  links: {
-    frontend: string
-    server: string
-    relevant: {}
-    blog: string
-  },
-  technologies: []
-}

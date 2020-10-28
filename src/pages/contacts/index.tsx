@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { rootReducerT } from '../../store';
 import { useHistory } from 'react-router-dom';
 import ReactSlider from '../../components/carousel-tech';
-import AbsoluteDeviceDemo from '../../components/desktop/AbsoluteDeviceDemo';
+import AbsoluteProjectDemo from '../../components/absolute-project-demo';
 
 function ContactsPage() {
   const classes = useStyles();
@@ -21,7 +21,7 @@ function ContactsPage() {
 
   return (
     <div className={classes.overflowX}>
-      <AbsoluteDeviceDemo />
+      <AbsoluteProjectDemo />
       <div className={classes.container}>
         <Grid
           justify='center'
