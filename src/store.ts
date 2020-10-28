@@ -5,8 +5,9 @@ import thunk from 'redux-thunk'
 import currentSubjectViewingReducer, { currentlyViewingT } from './reducers/currentSubjectViewingReducer'
 import currentTechViewingReducer from './reducers/currentTechViewingReducer'
 import contentDetailsSectionDirIsRowReducer from './reducers/contentDetailsSectionDirIsRowReducer'
-import ImageModelToggleReducer from './reducers/ImageModelToggleReducer'
+import imageModelToggleReducer from './reducers/imageModelToggleReducer'
 import contentDetailSectionIsClosedReducer from './reducers/contentDetailSectionIsClosedReducer'
+import modalImageSelectedReducer from './reducers/modalImageSelectedReducer'
 
 export interface rootReducerT {
   projectDataCollection: projectDataT[],
@@ -14,8 +15,9 @@ export interface rootReducerT {
   currentSubjectViewing: currentlyViewingT,
   currentTechViewing: currentlyViewingT,
   contentDetailsSectionDirIsRow: boolean,
-  ImageModelToggle: boolean,
-  contentDetailSectionIsClosed: boolean
+  imageModelToggle: boolean,
+  contentDetailSectionIsClosed: boolean,
+  modalImageSelected: number,
 }
 const rootReducer = combineReducers<rootReducerT>({
   projectDataCollection: projectDataReducer,
@@ -23,8 +25,9 @@ const rootReducer = combineReducers<rootReducerT>({
   currentSubjectViewing: currentSubjectViewingReducer,
   currentTechViewing: currentTechViewingReducer,
   contentDetailsSectionDirIsRow: contentDetailsSectionDirIsRowReducer,
-  ImageModelToggle: ImageModelToggleReducer,
-  contentDetailSectionIsClosed: contentDetailSectionIsClosedReducer
+  imageModelToggle: imageModelToggleReducer,
+  contentDetailSectionIsClosed: contentDetailSectionIsClosedReducer,
+  modalImageSelected: modalImageSelectedReducer,
 })
 
 const initialState = {}

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { projectDataT } from '../../../reducers/projectDataReducer';
 import { techDataT } from '../../../reducers/techDataReducer';
 import { Paper, Grid, makeStyles } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux';
 import { rootReducerT } from '../../../store';
-import { CLOSE_CONTENT_DETAILS_SECTION, SELECTED_SUBJECT, TOGGLE_CONTENT_DETAILS_SECTION } from '../../../actions/types';
+import { SELECTED_SUBJECT, TOGGLE_CONTENT_DETAILS_SECTION } from '../../../actions/types';
 
 interface CardLayoutT {
   projectData: techDataT & projectDataT
@@ -27,7 +27,11 @@ const CardLayout = ({ firstSection, infoSection, techIndexInCollection }) => {
       className="ohHoverAnim">
       <Paper className={`${classes.card}`} id='hoverEffect' /*//* hover effect: zoom in and brightness higher */
       >
-        <Grid container justify='center' alignItems='center'>{firstSection}</Grid>
+        <Grid
+          container
+          justify='center'
+          alignItems='center'
+        >{firstSection}</Grid>
         <Grid container>{infoSection}</Grid>
         {/* <div className="absoluteLayer" id='hoverEffect' /> */}
       </Paper>
@@ -37,7 +41,6 @@ const CardLayout = ({ firstSection, infoSection, techIndexInCollection }) => {
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    // margin: '1.5em 1em 1.5em 1em',
     height: '15em',
     width: '30em',
     display: 'flex',
@@ -45,8 +48,8 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '.5em',
     overflow: 'hidden',
     background: theme.palette.primary[400]
-    // 'hover'
-  }
+  },
+
 }));
 
 export default CardLayout

@@ -1,6 +1,5 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { SELECTED_SUBJECT } from '../../../../actions/types'
+import { useSelector } from 'react-redux'
 import { makeStyles, Typography, Chip, Grid } from '@material-ui/core'
 import CardLayout from '../CardLayout';
 import { rootReducerT } from '../../../../store';
@@ -10,12 +9,11 @@ import { projectDataT } from '../../../../reducers/projectDataReducer'
 function GalleryBrowsingSection(
   { projectDataCollection }:
     { projectDataCollection: projectDataT[], showDetailsSection?}) {
-
-
   const techDataCollection = useSelector((state: rootReducerT) => state.techDataCollection)
-  // const [trimTech, setTrimTech] = useState(false)
-
   const classes = useStyles();
+
+  const truncateText = text => text.length > 140 ? text.substring(0, 140) : text
+  
 
   return (
     <Grid
@@ -32,6 +30,8 @@ function GalleryBrowsingSection(
             <CardLayout
               techIndexInCollection={index}
               key={index}
+
+
               firstSection={
                 <Grid container justify='center' alignItems='center' className={classes.firstSection}>
                   <Typography className={
@@ -48,6 +48,8 @@ function GalleryBrowsingSection(
                   </Grid>
                 </Grid>
               }
+
+
               infoSection={
                 <Grid className={classes.infoSection} container direction='column'>
                   {/* <Grid item container>
@@ -58,7 +60,9 @@ function GalleryBrowsingSection(
                     className={classes.flex2}
                     direction='column'>
                     <Typography variant='h6'>Brief description:</Typography>
-                    <Typography className={classes.body} variant='body1'>{project.description}sdsdsdda12</Typography>
+                    <Typography className={classes.briefDescription} variant='body1'>
+                      {truncateText(project.description)}
+                    </Typography>
                   </Grid>
 
                   <Grid item container
@@ -145,9 +149,9 @@ const useStyles = makeStyles((theme) => ({
   flex2: {
     flex: 2
   },
-  body: {
+  briefDescription: {
     marginLeft: '1em',
-    fontSize: '.8em'
+    fontSize: '.8em',
   },
   chip: {
     // backgroundColor: '',
@@ -158,5 +162,5 @@ const useStyles = makeStyles((theme) => ({
     height: '2em',
     width: '2em',
     margin: '.3em'
-  }
+  },
 }));

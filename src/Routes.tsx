@@ -11,7 +11,7 @@ import useFullHeightResponsive from './hooks/useFullHeightResponsive';
 import MobileNavMenu from './components/mobile/components/MobileNavMenu';
 import { IoIosMenu } from 'react-icons/io';
 import useSwipableTab from './hooks/useSwipableTab';
-import ImageModal from './components/modals/ImageModal';
+import ImageModal from './components/imageModal/index';
 import BottomNav from './components/layouts/BottomNav';
 
 export const ContextSwipeBar: any = createContext(null);
