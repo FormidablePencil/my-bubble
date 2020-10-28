@@ -1,10 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { makeStyles, Typography, Chip, Grid } from '@material-ui/core'
-import CardLayout from '../CardLayout';
-import { rootReducerT } from '../../../../store';
-import DeviceFrameAndImg from '../DeviceFrameAndImg';
-import { projectDataT } from '../../../../reducers/projectDataReducer'
+import CardLayout from '../../CardLayout';
+import { rootReducerT } from '../../../../../store';
+import DeviceFrameAndImg from '../../DeviceFrameAndImg';
+import { projectDataT } from '../../../../../reducers/projectDataReducer'
 
 function GalleryBrowsingSection(
   { projectDataCollection }:
@@ -141,7 +141,6 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     textAlign: 'center',
     width: '100%',
-    backgroundColor: 'orange'
   },
   flex1: {
     flex: 1

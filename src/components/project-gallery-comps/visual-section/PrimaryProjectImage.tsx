@@ -2,6 +2,7 @@ import { Grid, makeStyles } from '@material-ui/core'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { rootReducerT } from '../../../../../store'
+import { imageBoardColor } from '../../../../../styles/materialUiStyles'
 import { AbsoluteYoutubePlayIcon } from '../../../../mobile/reusableComps/AbsoluteIcons'
 
 function PrimaryProjectImage() {
@@ -39,8 +40,8 @@ function PrimaryProjectImage() {
             height: 60,
             width: 60,
           }}
-          />
-        }
+        />
+      }
     </div>
   )
 }
@@ -54,12 +55,14 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '-.6em',
   },
   imgMainMobile: {
-    border: '1px solid black',
+    border: '1px solid',
+    borderColor: imageBoardColor,
     width: '100%',
     height: '100%',
   },
   imgMainDesktop: {
-    border: '1px solid black',
+    border: '1px solid',
+    borderColor: imageBoardColor,
     width: '100%',
     height: '100%',
   },

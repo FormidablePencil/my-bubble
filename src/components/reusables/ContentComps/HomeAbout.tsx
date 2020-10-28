@@ -128,7 +128,6 @@ const useStyles = makeStyles((theme) => ({
     width: 400
   },
   callToAction: {
-    // background: 'orange',
     marginTop: '1.5em'
   },
 }));

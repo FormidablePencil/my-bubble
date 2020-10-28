@@ -1,9 +1,10 @@
 import { Grid, makeStyles } from '@material-ui/core'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
-import { rootReducerT } from '../../../../store';
-import { useValidatorsRedux } from './GalleryContentVisual';
-import { AbsoluteSearchIcon } from '../../../mobile/reusableComps/AbsoluteIcons';
+import { rootReducerT } from '../../../../../store';
+import { useValidatorsRedux } from './../visual-section';
+import { AbsoluteSearchIcon } from '../../../../mobile/reusableComps/AbsoluteIcons';
+import { imageBoardColor } from '../../../../../styles/materialUiStyles';
 
 function SelectableImagesSection({ mobilePlatformImages, onClick }) {
   const [onMouseEnterYoutubeIcon, setOnMouseEnterYoutubeIcon] = useState(null)
@@ -56,7 +57,8 @@ const useStyles = makeStyles((theme) => ({
 
   },
   imageContainer: {
-    border: '1px solid rgba(0,0,0,.3)',
+    border: '1px solid',
+    borderColor: imageBoardColor,
     background: 'white',
     position: 'relative',
     opacity: 1,

@@ -1,15 +1,13 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext } from 'react'
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import ProjectsGalleryPage from './pages/ProjectsGalleryPage';
 import useFetchAllPortfolioData from './hooks/useFetchAllPortfolioData';
 import TechnologiesPage from './pages/TechnologiesPage';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
-import { makeStyles, useMediaQuery, Button } from '@material-ui/core';
+import { makeStyles, useMediaQuery } from '@material-ui/core';
 import { tabEffectShadowProp } from './styles/materialUiStyles';
 import useFullHeightResponsive from './hooks/useFullHeightResponsive';
-import MobileNavMenu from './components/mobile/components/MobileNavMenu';
-import { IoIosMenu } from 'react-icons/io';
 import useSwipableTab from './hooks/useSwipableTab';
 import ImageModal from './components/imageModal/index';
 import BottomNav from './components/layouts/BottomNav';
@@ -20,9 +18,6 @@ export function DemoRoutes() {
   const classes = useStyles();
   const xs = useMediaQuery((theme: any) => theme.breakpoints.down('xs'));
   const height = useFullHeightResponsive()
-  const [mobileNavModalOpen, setMobileNavModalOpen] = useState(false)
-
-
   const { translateSwipeableTab, xy } = useSwipableTab()
   useFetchAllPortfolioData()
 
@@ -37,24 +32,14 @@ export function DemoRoutes() {
         style={containerStyles}
         className={classes.container}
       >
+
         <ImageModal />
+
         <Router>
 
-
-          {xs ?
-            <MobileNavMenu
-              mobileNavModalOpen={mobileNavModalOpen}
-              setMobileNavModalOpen={setMobileNavModalOpen} />
-            : <Navbar />
-          }
+          {!xs && <Navbar />}
 
           <div className={classes.contentContainer}>
-
-            {xs && !mobileNavModalOpen &&
-              <Button className={classes.navIcon} onClick={() => setMobileNavModalOpen(true)}>
-                <IoIosMenu color='white' size={35} />
-              </Button>
-            }
 
             <Switch>
               <Route exact path="/">

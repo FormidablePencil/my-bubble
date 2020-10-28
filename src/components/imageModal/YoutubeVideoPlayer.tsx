@@ -13,6 +13,8 @@ const YoutubeVideoPlayer = ({ youtubeVideoUrl }) => {
   else
     return (
       <ReactPlayer
+        controls
+        volume={0.1}
         className={`
             ${classes.centerAbsolutePositioning}
             ${classes.player}

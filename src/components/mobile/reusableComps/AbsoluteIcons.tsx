@@ -2,20 +2,32 @@ import React from 'react'
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import { makeStyles } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+import { AiTwotoneCheckCircle } from 'react-icons/ai';
 
 export function AbsoluteYoutubePlayIcon({ fillRed, overRideStyles }: { fillRed, overRideStyles?}) {
   const classes = useStyles();
   return (
-    <YouTubeIcon
-      style={{
-        ...overRideStyles,
-        fill: fillRed ? '#FB2300' : 'rgba(0,0,0,.8)'
-      }}
-      className={`
-      ${classes.youtubeIcon}
+    <div>
+      <YouTubeIcon
+        style={{
+          ...overRideStyles,
+          fill: fillRed ? '#FB2300' : '#242424'
+        }}
+        className={`
+        ${classes.youtubeIcon}
+        ${classes.centerAbsolutePositioning}
+        `}
+        />
+      <AiTwotoneCheckCircle
+        style={{
+          ...overRideStyles,
+        }}
+        className={`
+      ${classes.circle}
       ${classes.centerAbsolutePositioning}
       `}
-    />
+      />
+    </div>
   )
 }
 
@@ -42,6 +54,12 @@ const useStyles = makeStyles((theme) => ({
     width: 40,
     top: 0,
     zIndex: 200,
+  },
+  circle: {
+    height: 40,
+    width: 40,
+    fill: 'white',
+    transform: 'scale(.5)'
   },
   centerAbsolutePositioning: {
     position: "absolute",

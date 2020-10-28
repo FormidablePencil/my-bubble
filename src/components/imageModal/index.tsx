@@ -48,18 +48,20 @@ function ImageModal() {
           />
 
         </Grid>
-
         {platform === 'mobile' &&
           <YoutubeVideoPlayer
-            youtubeVideoUrl={'https://www.youtube.com/watch?v=ysz5S6PUM-U'}
+            youtubeVideoUrl={projectDataCollection[currentSubjectViewing].video}
           />
         }
 
         <div className={classes.modalContainer}>
           <Lightbox
+            hideZoom
+            hideDownload
+            imageBackgroundColor={'rgba(0,0,0,.0)'}
             large={
               platform === 'mobile' && modalImageSelected === 0
-                ? ''
+                ? require('../../assets/transparent.png')
                 : projectDataCollection[currentSubjectViewing].images[modalImageSelected]
             }
             onClose={toggleImageModel}

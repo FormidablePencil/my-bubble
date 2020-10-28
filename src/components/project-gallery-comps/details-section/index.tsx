@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { Grid, Typography, Chip, makeStyles } from '@material-ui/core'
-import TextFormated from '../TextFormated';
 import { useSelector } from 'react-redux';
-import { rootReducerT } from '../../../../store';
+import TextFormated from '../../reusables/layouts/TextFormated';
+import { rootReducerT } from '../../../store';
 
 const GalleryContentDetailsSection = ({ sortedProjectData }) => {
   const classes = useStyles();

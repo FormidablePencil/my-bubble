@@ -22,6 +22,7 @@ export interface projectDataT {
     map?: any
     length?: any
   }
+  video: string
 }
 const initialState = []
 

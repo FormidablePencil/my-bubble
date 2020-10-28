@@ -7,11 +7,11 @@ import DeviceFrameAndImg from '../../reusables/layouts/DeviceFrameAndImg';
 import LineSeperator from '../../reusables/layouts/LineSeperator';
 import CompensateForSwipableTabHeight from '../reusableComps/CompensateForSwipableTabHeight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { GalleryContentDetailSectionFirst, GalleryContentDetailSectionSecond } from '../../reusables/layouts/projectGalleryComps/GalleryContentDetailsSection';
 import TechContentDetailsSection from '../../techPageComps/TechContentDetailsSection';
 import { animated } from 'react-spring';
 import useContentDetailsImageAnim from '../../../hooks/useContentDetailsImageAnim';
 import { accordionTitleColor } from '../../../styles/materialUiStyles';
+import { GalleryContentDetailSectionFirst, GalleryContentDetailSectionSecond } from '../../project-gallery-comps/details-section';
 
 
 /* //* Somehow I need to make make this comp slidable gesture and the page to follow it. */

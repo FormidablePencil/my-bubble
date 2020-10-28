@@ -22,6 +22,7 @@ export function TabPageTemplate({ contentVisualSection, contentDetailsSection, s
     browsingSectionRef,
   } = useDetailsSectionAnim()
 
+  
 
   // const onClickTab = (tab) => setSelectedTab(tab)
   const onClickContentVisualSection = () =>

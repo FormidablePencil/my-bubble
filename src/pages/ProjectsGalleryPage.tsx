@@ -2,14 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { rootReducerT } from '../store'
 import { sortedProjectDataT } from '../actions/types'
-import { TabPageTemplate } from '../components/reusables/layouts/tabPageTemplateComps/TabPageTemplate'
-import GalleryContentVisualSection from '../components/reusables/layouts/projectGalleryComps/GalleryContentVisual'
-import GalleryBrowsingSection from '../components/reusables/layouts/projectGalleryComps/GalleryBrowsingSection'
-import GalleryContentDetailsSection from '../components/reusables/layouts/projectGalleryComps/GalleryContentDetailsSection'
-import GallerySearchFeatureSection from '../components/reusables/layouts/projectGalleryComps/GallerySearchFeatureSection'
 import MobileProjectGallery from '../components/mobile/Mobile-ProjectGallery'
 import useToggleGridDirection from '../hooks/useToggleGridDirection'
 import useIsTabletOrLarget from '../hooks/useIsTabletOrLarget'
+import ProjectGallery from '../components/reusables/layouts/project-gallery-comps'
 
 //~ focus in making this component and it's sub components work
 
@@ -46,41 +42,14 @@ function ProjectsGalleryPage() {
   }, [currentSubjectViewing, projectDataCollection])
 
 
-
-  if (tabletOrLarger) {
-    return (
-      <>
-        {/* {projectDataCollection[currentSubjectViewing] &&
-          <div style={{ zIndex: 5000 }}>
-            <Lightbox
-              medium={projectDataCollection[currentSubjectViewing].images[1]}
-              large={projectDataCollection[currentSubjectViewing].images[1]}
-              alt="Hello World!"
-              onClose={false}
-            />
-          </div>
-        } */}
-        <TabPageTemplate
-          contentVisualSection={
-            <GalleryContentVisualSection />
-          }
-          contentDetailsSection={
-            <GalleryContentDetailsSection sortedProjectData={sortedProjectData} />
-          }
-          searchFeatureSection={
-            <GallerySearchFeatureSection projectDataCollection={projectDataCollection} />
-          }
-          browsingSection={
-            <GalleryBrowsingSection projectDataCollection={projectDataCollection} />
-          }
-        />
-      </>
-    )
-  } else {
-    return (
-      <MobileProjectGallery sortedProjectData={sortedProjectData} />
-    )
-  }
+  if (tabletOrLarger)
+    return <ProjectGallery
+      sortedProjectData={sortedProjectData}
+      projectDataCollection={projectDataCollection}
+    />
+  else
+    return <MobileProjectGallery
+      sortedProjectData={sortedProjectData} />
 }
 
 export default ProjectsGalleryPage
