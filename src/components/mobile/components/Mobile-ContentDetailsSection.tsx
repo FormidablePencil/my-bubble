@@ -3,11 +3,11 @@ import MobileSwipeToViewContentDetailsBar from './Mobile-SwipeToViewContentDetai
 import { makeStyles, Grid, Typography, Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { rootReducerT } from '../../../store';
-import DeviceFrameAndImg from '../../reusables/layouts/DeviceFrameAndImg';
-import LineSeperator from '../../reusables/layouts/LineSeperator';
+import DeviceFrameAndImg from '../../reusables/DeviceFrameAndImg';
+import LineSeperator from '../../reusables/LineSeperator';
 import CompensateForSwipableTabHeight from '../reusableComps/CompensateForSwipableTabHeight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import TechContentDetailsSection from '../../techPageComps/TechContentDetailsSection';
+import TechContentDetailsSection from '../../project-gallery-comps/details-section/TechContentDetailsSection';
 import { animated } from 'react-spring';
 import useContentDetailsImageAnim from '../../../hooks/useContentDetailsImageAnim';
 import { accordionTitleColor } from '../../../styles/materialUiStyles';

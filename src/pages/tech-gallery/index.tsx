@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { rootReducerT } from '../store'
+import { rootReducerT } from '../../store'
 import { useSelector } from 'react-redux'
-import { TabPageTemplate } from '../components/reusables/layouts/tabPageTemplateComps/TabPageTemplate'
-import TechBrowsingSection from '../components/techPageComps/TechBrowsingSection'
-import TechContentVisualSection from '../components/techPageComps/TechContentVisualSection'
+import PageTemplate from '../PageTemplate'
+import TechBrowsingSection from '../../components/project-gallery-comps/browsing-section/TechBrowsingSection'
+import TechContentVisualSection from '../../components/project-gallery-comps/visual-section/TechContentVisualSection'
 import { useMediaQuery } from '@material-ui/core'
-import MobileTechGallery from '../components/mobile/Mobile-TechGallery'
+import MobileTechGallery from '../../components/mobile/Mobile-TechGallery'
 
 function TechnologiesPage() {
 
@@ -20,7 +20,7 @@ function TechnologiesPage() {
 
   if (matches) {
     return (
-      <TabPageTemplate
+      <PageTemplate
         contentVisualSection={
           <TechContentVisualSection loading={loading} />
         }

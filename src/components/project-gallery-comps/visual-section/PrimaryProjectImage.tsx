@@ -1,9 +1,11 @@
 import { Grid, makeStyles } from '@material-ui/core'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { rootReducerT } from '../../../../../store'
-import { imageBoardColor } from '../../../../../styles/materialUiStyles'
-import { AbsoluteYoutubePlayIcon } from '../../../../mobile/reusableComps/AbsoluteIcons'
+import { rootReducerT } from '../../../store';
+import { imageBoardColor } from '../../../styles/materialUiStyles';
+import { AbsoluteYoutubePlayIcon } from '../../mobile/reusableComps/AbsoluteIcons';
+
+
 
 function PrimaryProjectImage() {
   const { projectDataCollection, currentSubjectViewing } = useSelector((state: rootReducerT) => state)

@@ -2,7 +2,7 @@ import { makeStyles, useMediaQuery } from '@material-ui/core'
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { rootReducerT } from '../../store';
-import DeviceFrameAndImg from '../reusables/layouts/DeviceFrameAndImg';
+import DeviceFrameAndImg from '../reusables/DeviceFrameAndImg';
 
 function AbsoluteDeviceDemo() {
   const { projectDataCollection } = useSelector((state: rootReducerT) => state)

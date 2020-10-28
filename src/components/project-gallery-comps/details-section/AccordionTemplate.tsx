@@ -3,7 +3,7 @@ import { AccordionSummary, AccordionDetails, makeStyles } from "@material-ui/cor
 import { AccordionCustom } from "../../../styles/materialUiStyles"
 import { AiFillCaretLeft } from 'react-icons/ai'
 
-export const AccordionComponent = ({ initiallyExpanded = false, summarySection, detailsSection }) => {
+const AccordionTemplate = ({ initiallyExpanded = false, summarySection, detailsSection }) => {
   const [expanded, setExpanded] = useState(initiallyExpanded)
   const classes = useStyles()
   return (
@@ -29,3 +29,4 @@ const useStyles = makeStyles((theme) => ({
   
   }
 }));
+export default AccordionTemplate

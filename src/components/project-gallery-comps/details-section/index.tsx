@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Grid, Typography, Chip, makeStyles } from '@material-ui/core'
 import { useSelector } from 'react-redux';
-import TextFormated from '../../reusables/layouts/TextFormated';
+import TextFormated from './TextFormated';
 import { rootReducerT } from '../../../store';
 
 const GalleryContentDetailsSection = ({ sortedProjectData }) => {

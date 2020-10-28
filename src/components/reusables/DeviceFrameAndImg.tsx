@@ -11,8 +11,8 @@ function DeviceFrameAndImg({ projectContent, mobileContentDetailsSection }:
     return { contentImageStyles, frameImgStyles }
   }
 
-  const macbookFrame = require('../../../assets/macbookFrame.png')
-  const galaxyPhoneFrame = require('../../../assets/galaxys8Frame.png')
+  const macbookFrame = require('../../assets/macbookFrame.png')
+  const galaxyPhoneFrame = require('../../assets/galaxys8Frame.png')
 
 
   if (projectContent) {
@@ -35,7 +35,7 @@ function DeviceFrameAndImg({ projectContent, mobileContentDetailsSection }:
       </div>
     )
   }
-  else return <>load skeleton</>
+  else return null
 }
 
 export default DeviceFrameAndImg

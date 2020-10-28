@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { rootReducerT } from '../store'
-import { sortedProjectDataT } from '../actions/types'
-import MobileProjectGallery from '../components/mobile/Mobile-ProjectGallery'
-import useToggleGridDirection from '../hooks/useToggleGridDirection'
-import useIsTabletOrLarget from '../hooks/useIsTabletOrLarget'
-import ProjectGallery from '../components/reusables/layouts/project-gallery-comps'
+import { rootReducerT } from '../../store'
+import { sortedProjectDataT } from '../../actions/types'
+import MobileProjectGallery from '../../components/mobile/Mobile-ProjectGallery'
+import useToggleGridDirection from '../../hooks/useToggleGridDirection'
+import useIsTabletOrLarget from '../../hooks/useIsTabletOrLarget'
+import ProjectGallery from '../../components/project-gallery-comps'
 
 //~ focus in making this component and it's sub components work
 

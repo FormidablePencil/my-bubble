@@ -1,14 +1,8 @@
 import React from 'react'
-import { projectDataT } from '../../../reducers/projectDataReducer';
-import { techDataT } from '../../../reducers/techDataReducer';
 import { Paper, Grid, makeStyles } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux';
 import { rootReducerT } from '../../../store';
 import { SELECTED_SUBJECT, TOGGLE_CONTENT_DETAILS_SECTION } from '../../../actions/types';
-
-interface CardLayoutT {
-  projectData: techDataT & projectDataT
-}
 
 const CardLayout = ({ firstSection, infoSection, techIndexInCollection }) => {
   const { contentDetailSectionIsClosed } = useSelector((state: rootReducerT) => state)
@@ -25,7 +19,7 @@ const CardLayout = ({ firstSection, infoSection, techIndexInCollection }) => {
     <div
       onClick={onCardClick}
       className="ohHoverAnim">
-      <Paper className={`${classes.card}`} id='hoverEffect' /*//* hover effect: zoom in and brightness higher */
+      <Paper className={`${classes.card}`} id='hoverEffect'
       >
         <Grid
           container
@@ -33,7 +27,6 @@ const CardLayout = ({ firstSection, infoSection, techIndexInCollection }) => {
           alignItems='center'
         >{firstSection}</Grid>
         <Grid container>{infoSection}</Grid>
-        {/* <div className="absoluteLayer" id='hoverEffect' /> */}
       </Paper>
     </div>
   )

@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useSelector } from "react-redux";
-import { rootReducerT } from "../store";
+import { rootReducerT } from "../../store";
 import { Grid, makeStyles, useMediaQuery } from "@material-ui/core";
 import { Link } from 'react-router-dom'
 

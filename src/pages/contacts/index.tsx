@@ -1,33 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Grid, Link, makeStyles, Typography } from '@material-ui/core'
-import staticData from '../../../staticData'
-import ReactSlider from '../../ReactSlider';
-import DeviceFrameAndImg from '../layouts/DeviceFrameAndImg';
+import React from 'react'
+import { Button, Grid, makeStyles, Typography } from '@material-ui/core'
+import staticData from '../../staticData'
 import { useSelector } from 'react-redux';
-import { rootReducerT } from '../../../store';
-import AbsoluteDeviceDemo from '../../desktop/AbsoluteDeviceDemo';
+import { rootReducerT } from '../../store';
 import { useHistory } from 'react-router-dom';
+import ReactSlider from '../../components/carousel-tech';
+import AbsoluteDeviceDemo from '../../components/desktop/AbsoluteDeviceDemo';
 
-function HomeAbout() {
+function ContactsPage() {
   const classes = useStyles();
   const { projectDataCollection } = useSelector((state: rootReducerT) => state)
-
   /* Contacts: github, linkedIn & email. Get to know me: self presentation site link. */
-
-  // const [deviceFramesInHomePagePresent, setDeviceFramesInHomePagePresent] = useState(false)
-
-  // const ToggleDeviceFramesInHomePagePresent = () => {
-  //   console.log(window.innerHeight);
-  //   if (window.innerHeight < 800)
-  //     setDeviceFramesInHomePagePresent(false)
-  //   else
-  //     setDeviceFramesInHomePagePresent(true)
-  // }
-
-  // useEffect(() => {
-  //   window.addEventListener('resize', ToggleDeviceFramesInHomePagePresent)
-  //   return () => window.removeEventListener('resize', ToggleDeviceFramesInHomePagePresent)
-  // }, [])
 
   let history = useHistory();
 
@@ -46,7 +29,7 @@ function HomeAbout() {
           direction='column'
           wrap='nowrap'
           className={classes.wrapper}>
-            
+
           <Grid
             spacing={1}
             container
@@ -92,9 +75,6 @@ function HomeAbout() {
   )
 }
 
-export default HomeAbout
-
-
 const useStyles = makeStyles((theme) => ({
   overflowX: {
     overflowX: 'hidden'
@@ -131,3 +111,5 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '1.5em'
   },
 }));
+
+export default ContactsPage

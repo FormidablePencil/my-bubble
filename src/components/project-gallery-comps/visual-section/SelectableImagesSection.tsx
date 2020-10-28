@@ -1,10 +1,10 @@
 import { Grid, makeStyles } from '@material-ui/core'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
-import { rootReducerT } from '../../../../../store';
-import { useValidatorsRedux } from './../visual-section';
-import { AbsoluteSearchIcon } from '../../../../mobile/reusableComps/AbsoluteIcons';
-import { imageBoardColor } from '../../../../../styles/materialUiStyles';
+import { useValidatorsRedux } from '.';
+import { rootReducerT } from '../../../store';
+import { imageBoardColor } from '../../../styles/materialUiStyles';
+import { AbsoluteSearchIcon } from '../../mobile/reusableComps/AbsoluteIcons';
 
 function SelectableImagesSection({ mobilePlatformImages, onClick }) {
   const [onMouseEnterYoutubeIcon, setOnMouseEnterYoutubeIcon] = useState(null)

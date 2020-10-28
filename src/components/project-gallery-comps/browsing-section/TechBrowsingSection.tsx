@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { SELECTED_TECH } from '../../actions/types';
-import { rootReducerT } from '../../store';
+import { SELECTED_TECH } from '../../../actions/types';
+import { rootReducerT } from '../../../store';
 import { makeStyles, Grid } from '@material-ui/core';
-import { ContextSwipeBar } from '../../Routes';
+import { ContextSwipeBar } from '../../../Routes';
 
 function TechBrowsingSection({ showDetailsSection }: { showDetailsSection?}) {
   const { translateSwipeableTab } = useContext(ContextSwipeBar)
@@ -14,9 +14,9 @@ function TechBrowsingSection({ showDetailsSection }: { showDetailsSection?}) {
   const onClickbrowsingSectionElement = async (techNum) => {
     await dispatch({ type: SELECTED_TECH, payload: techNum });
     if (showDetailsSection)
-      showDetailsSection() /* if TechBrowsingSection is in mobile's comp */
+      showDetailsSection() 
     else
-      translateSwipeableTab() /* or if TechBrowsingSection is in desktop's comp (TabPageTemplate) */
+      translateSwipeableTab()
   }
 
   return (

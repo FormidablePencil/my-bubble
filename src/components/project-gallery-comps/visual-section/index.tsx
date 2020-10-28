@@ -1,10 +1,10 @@
 import React from 'react'
 import { makeStyles, Grid } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
-import { rootReducerT } from '../../../../../store'
 import SelectableImagesSection from './SelectableImagesSection'
 import PrimaryProjectImage from './PrimaryProjectImage'
-import { MODAL_IMAGE_SELECTED } from '../../../../../actions/types'
+import { rootReducerT } from '../../../store'
+import { MODAL_IMAGE_SELECTED } from '../../../actions/types'
 
 export const useValidatorsRedux = () => {
   const { projectDataCollection, currentSubjectViewing } = useSelector((state: rootReducerT) => state)

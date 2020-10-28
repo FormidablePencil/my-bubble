@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, makeStyles } from '@material-ui/core'
 import { useSelector } from 'react-redux';
-import { rootReducerT } from '../../store';
+import { rootReducerT } from '../../../store';
 
 function TechContentVisualSection({ loading }) {
   const { techDataCollection, currentTechViewing } = useSelector((state: rootReducerT) => state)

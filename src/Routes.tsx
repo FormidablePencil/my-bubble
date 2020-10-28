@@ -1,16 +1,16 @@
 import React, { createContext } from 'react'
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import ProjectsGalleryPage from './pages/ProjectsGalleryPage';
 import useFetchAllPortfolioData from './hooks/useFetchAllPortfolioData';
-import TechnologiesPage from './pages/TechnologiesPage';
-import Navbar from './components/Navbar';
-import HomePage from './pages/HomePage';
+import TechnologiesPage from './pages/tech-gallery';
+import Navbar from './components/layouts/Navbar';
+import ContactsPage from './pages/contacts';
 import { makeStyles, useMediaQuery } from '@material-ui/core';
 import { tabEffectShadowProp } from './styles/materialUiStyles';
 import useFullHeightResponsive from './hooks/useFullHeightResponsive';
 import useSwipableTab from './hooks/useSwipableTab';
-import ImageModal from './components/imageModal/index';
+import ImageModal from './components/image-modal/index';
 import BottomNav from './components/layouts/BottomNav';
+import ProjectsGalleryPage from './pages/project-gallery';
 
 export const ContextSwipeBar: any = createContext(null);
 
@@ -43,7 +43,7 @@ export function DemoRoutes() {
 
             <Switch>
               <Route exact path="/">
-                <HomePage />
+                <ContactsPage />
               </Route>
               <Route path="/projects">
                 <ProjectsGalleryPage />

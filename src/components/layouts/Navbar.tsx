@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, makeStyles, Grid, Typography } from '@material-ui/core'
 import { useLocation } from 'react-router-dom';
-import { tabEffectShadowProp } from '../styles/materialUiStyles';
+import { tabEffectShadowProp } from '../../styles/materialUiStyles';
 
 
 function Navbar() {

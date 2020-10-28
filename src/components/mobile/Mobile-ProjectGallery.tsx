@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from 'react'
-import DeviceFrameAndImg from '../reusables/layouts/DeviceFrameAndImg'
+import DeviceFrameAndImg from '../reusables/DeviceFrameAndImg'
 import { ContainerFullHeight, swipebarHeightInEm } from '../../styles/materialUiStyles'
 import { Grid, makeStyles, Typography, useMediaQuery } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
@@ -7,7 +7,7 @@ import { rootReducerT } from '../../store'
 import MobileContentDetailsSection from './components/Mobile-ContentDetailsSection'
 import { SELECTED_SUBJECT } from '../../actions/types'
 import CompensateForSwipableTabHeight from './reusableComps/CompensateForSwipableTabHeight'
-import LineSeperator from '../reusables/layouts/LineSeperator'
+import LineSeperator from '../reusables/LineSeperator'
 import { ContextSwipeBar } from '../../Routes'
 
 //make line text closer together and a little margin between text and images

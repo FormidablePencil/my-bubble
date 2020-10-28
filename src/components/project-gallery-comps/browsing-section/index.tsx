@@ -1,10 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { makeStyles, Typography, Chip, Grid } from '@material-ui/core'
-import CardLayout from '../../CardLayout';
-import { rootReducerT } from '../../../../../store';
-import DeviceFrameAndImg from '../../DeviceFrameAndImg';
-import { projectDataT } from '../../../../../reducers/projectDataReducer'
+import { rootReducerT } from '../../../store';
+import { projectDataT } from '../../../reducers/projectDataReducer';
+import DeviceFrameAndImg from '../../reusables/DeviceFrameAndImg';
+import CardLayout from './CardLayout';
 
 function GalleryBrowsingSection(
   { projectDataCollection }:
@@ -13,7 +13,7 @@ function GalleryBrowsingSection(
   const classes = useStyles();
 
   const truncateText = text => text.length > 140 ? text.substring(0, 140) : text
-  
+
 
   return (
     <Grid

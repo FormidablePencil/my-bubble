@@ -1,18 +1,15 @@
-import React, { cloneElement, Children, useState } from 'react'
-import { Grid, makeStyles, Button, Container } from '@material-ui/core'
-import { navbarHeight } from '../../../../styles/materialUiStyles';
-import useDetailsSectionAnim from '../../../../hooks/useDetailsSectionAnim';
+import React from 'react'
+import { Grid, makeStyles, Container } from '@material-ui/core'
+import { navbarHeight } from '../styles/materialUiStyles';
+import useDetailsSectionAnim from '../hooks/useDetailsSectionAnim';
 import { animated } from 'react-spring';
 import { useDispatch, useSelector } from 'react-redux';
-import { TOGGLE_CONTENT_DETAILS_SECTION, TOGGLE_IMAGE_MODAL } from '../../../../actions/types';
-import { rootReducerT } from '../../../../store';
-import DropdownBtn from '../../../mobile/reusableComps/DropdownBtn';
+import { TOGGLE_CONTENT_DETAILS_SECTION, TOGGLE_IMAGE_MODAL } from '../actions/types';
+import { rootReducerT } from '../store';
+import DropdownBtn from '../components/mobile/reusableComps/DropdownBtn';
 import { useLocation } from 'react-router-dom';
 
-
-
-
-export function TabPageTemplate({ contentVisualSection, contentDetailsSection, searchFeatureSection, browsingSection }) {
+function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatureSection, browsingSection }) {
   const { contentDetailSectionIsClosed } = useSelector((state: rootReducerT) => state)
   const classes = useStyles();
   const dispatch = useDispatch()
@@ -23,20 +20,8 @@ export function TabPageTemplate({ contentVisualSection, contentDetailsSection, s
   } = useDetailsSectionAnim()
 
   
-
-  // const onClickTab = (tab) => setSelectedTab(tab)
   const onClickContentVisualSection = () =>
     dispatch({ type: TOGGLE_IMAGE_MODAL })
-
-  const closeBtnAnimStyles: any = {
-    fadeOut: {
-      animation: 'x 1s',
-      opacity: 0,
-      // animationName: Radium.keyframes(fadeOut, 'fadeOut')
-    }
-  }
-
-  const duration = 300;
 
   const hideDetailsSection = () =>
     !contentDetailSectionIsClosed &&
@@ -88,9 +73,6 @@ export function TabPageTemplate({ contentVisualSection, contentDetailsSection, s
           {/* //* ===== contentDetailsSection ===== */}
           <Grid container item className={classes.subjectInfoContainer}>
             <>{contentDetailsSection}</>
-            {/* <SearchAndContentDetailsTogether
-                 contentDetailsSection={contentDetailsSection}
-                 searchFeatureSection={searchFeatureSection} /> */}
           </Grid>
         </Grid>
         {/* </Grid> */}
@@ -120,7 +102,6 @@ const useStyles = makeStyles((theme) => ({
   detailsSection: {
     marginTop: '2em',
     padding: '1em',
-    // marginLeft: '1em',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -132,8 +113,6 @@ const useStyles = makeStyles((theme) => ({
     height: '20em',
     boxShadow: '0px 0px 5px 0px rgba(0,0,0,0.75)'
   },
-
-
   contentDetailsContainer: {
     height: '20em',
     width: '80%'
@@ -228,3 +207,5 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: '2em'
   }
 }));
+
+export default PageTemplate
