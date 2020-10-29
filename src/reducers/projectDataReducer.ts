@@ -1,15 +1,13 @@
 import { FETCHED_ALL_PROJECT_DATA } from "../actions/types"
-// ^3.9.7
+
 export interface projectDataT {
   title: string
   description: string
-  gitRepo: {
-    frontend: string
-    server: string
-  }
-  relevant: {
-    webApp: string
-    blog: string
+  links: {
+    client?: string
+    server?: string
+    cms?: string
+    blog?: string
   }
   status: number
   technologies: []
@@ -18,7 +16,6 @@ export interface projectDataT {
   showInPorfolio: boolean
   images: {
     [index: number]: string
-    //fuction
     map?: any
     length?: any
   }

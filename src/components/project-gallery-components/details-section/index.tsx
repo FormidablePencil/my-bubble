@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import TextFormated from './TextFormated';
 import { rootReducerT } from '../../../store';
 import TechLogo from '../../reusables/TechLogo';
+import { sortedProjectDataT } from '../../../typescript'
 
 const GalleryContentDetailsSection = ({ sortedProjectData }) => {
   const classes = useStyles();
@@ -56,7 +57,7 @@ function GalleryContentDetailSectionFirst(
       <div className={
         showLine ? `
         ${classes.line}
-        ${classes.longLine}
+        ${classes.shortLine}
         ${classes.top}
         ${classes.left}
         `: ''} />
@@ -89,7 +90,7 @@ function GalleryContentDetailSectionFirst(
       <div className={
         showLine ? `
         ${classes.line}
-        ${classes.shortLine}
+        ${classes.longLine}
         ${classes.bottom}
         ${classes.left}
         `: ''} />
@@ -101,7 +102,7 @@ function GalleryContentDetailSectionFirst(
 
 
 const GalleryContentDetailSectionSecond = (
-  { sortedProjectData }: { sortedProjectData }
+  { sortedProjectData }: { sortedProjectData: sortedProjectDataT }
 ) => {
   const classes = useStyles();
   const [showLine, setShowLine] = useState(false)
@@ -124,17 +125,14 @@ const GalleryContentDetailSectionSecond = (
       <div className={
         showLine ? `
         ${classes.line}
-        ${classes.shortLine}
+        ${classes.longLine}
         ${classes.top}
         ${classes.right}
         `: ''} />
-      {/* <Grid item> */}
-      {/* <Typography variant='h6'>Technologies: </Typography> */}
-      {/* </Grid> */}
-      <div className={classes.tech}>
+      <div className={classes.techContainer}>
         <>
-          {sortedProjectData?.technologies.map(tech =>
-            <TechLogo techData={tech} />
+          {sortedProjectData?.technologies.map(techTitle =>
+            <TechLogo techTitle={techTitle} />
           )}
         </>
       </div>
@@ -142,18 +140,16 @@ const GalleryContentDetailSectionSecond = (
       <Grid container item
         ref={ref => toggleShowLine(ref)}
         direction='column'>
-        <TextFormated
-          fontSizeParagraph={12}
-          multiline={true}
-          title='Frontend repo:'
-          content={sortedProjectData?.links.frontend}
-        />
-        <TextFormated
-          fontSizeParagraph={12}
-          multiline={true}
-          title='Server repo:'
-          content={sortedProjectData?.links.server}
-        />
+
+        {sortedProjectData?.links &&
+          Object.keys(sortedProjectData.links).map(key =>
+            <Typography variant='body1'>
+              <a href={sortedProjectData.links[key]}>
+                {key}
+              </a>
+            </Typography>
+          )}
+
         <Grid container>
 
         </Grid>
@@ -161,7 +157,7 @@ const GalleryContentDetailSectionSecond = (
         <div className={
           showLine ? `
         ${classes.line}
-        ${classes.longLine}
+        ${classes.shortLine}
         ${classes.right}
         ${classes.bottom}
         `: ''} />
@@ -182,10 +178,10 @@ const useStyles = makeStyles((theme) => ({
     overflowY: 'scroll',
     overflowX: 'hidden',
   },
-  tech: {
+  techContainer: {
     position: 'absolute',
-    top: -5,
-    right: 0,
+    top: -12,
+    right: -20,
   },
   line: {
     height: 2,

@@ -24,6 +24,7 @@ const Card = (
 
   const onCardClick = async () => {
     await dispatch({ type: SELECTED_SUBJECT, payload: techIndexInCollection })
+
     if (contentDetailSectionIsClosed)
       dispatch({ type: TOGGLE_CONTENT_DETAILS_SECTION })
   }
@@ -77,7 +78,8 @@ const Card = (
             </Typography>
           </Grid>
 
-          <Grid item container
+          <Grid
+            item container
             className={classes.flex1}
             direction='column'
           >
@@ -86,26 +88,23 @@ const Card = (
               display='inline'
             >Technologies:
             </Typography>
-            <Grid container direction='row'>
+            <Grid
+              container
+              direction='row'
+            >
               <>
-                {projectContent.technologies.map((tech, index) => {
+                {projectContent.technologies.map((techTitle, index) => {
                   if (trimTech && index >= 4) {
                     if (index === 4)
                       return <>...</>
                     else if (index > 4)
                       return null
                   }
-                  const techData = techDataCollection.filter(doc => doc.technology === tech)[0]
-                  if (techData && techData.image)
-                    return (
-                      <Grid item key={techData._id}>
-                        <TechLogo
-                          techData={techData}
-                        />
-                      </Grid>
-                    )
-                  else
-                    return null
+                  return (
+                    <Grid item key={techTitle}>
+                      <TechLogo techTitle={techTitle} />
+                    </Grid>
+                  )
                 })}
               </>
             </Grid>
@@ -166,10 +165,6 @@ const useStyles = makeStyles((theme) => ({
   briefDescription: {
     marginLeft: '1em',
     fontSize: '.8em',
-  },
-  chip: {
-    height: '1.5em',
-    margin: '.3em'
   },
 }));
 

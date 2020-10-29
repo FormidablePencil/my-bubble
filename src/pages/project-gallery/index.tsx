@@ -31,10 +31,8 @@ function ProjectsGalleryPage() {
           type: projectDataCollection[currentSubjectViewing].type,
         },
         links: {
-          frontend: projectDataCollection[currentSubjectViewing].gitRepo.frontend,
-          server: projectDataCollection[currentSubjectViewing].gitRepo.server,
-          relevant: projectDataCollection[currentSubjectViewing].relevant.webApp,
-          blog: projectDataCollection[currentSubjectViewing].relevant.blog,
+          client: projectDataCollection[currentSubjectViewing].links.client,
+          server: projectDataCollection[currentSubjectViewing].links.server,
         },
         technologies: projectDataCollection[currentSubjectViewing].technologies,
       })

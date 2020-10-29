@@ -6,10 +6,10 @@ export interface sortedProjectDataT {
     type: string
   }
   links: {
-    frontend: string
-    server: string
-    relevant: {}
-    blog: string
+    client?: string
+    server?: string
+    cms?: string
+    blog?: string
   },
   technologies: []
 }
