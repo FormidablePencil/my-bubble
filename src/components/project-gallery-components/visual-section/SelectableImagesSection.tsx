@@ -22,9 +22,6 @@ function SelectableImagesSection({ mobilePlatformImages, onClick }) {
         && imagesExist
         && projectDataCollection[currentSubjectViewing].images.map((url, index) => {
 
-          let margin = '1px'
-          let ho = false
-
           if (index > 3 || index === 0)
             return null
           else
@@ -54,14 +51,15 @@ function SelectableImagesSection({ mobilePlatformImages, onClick }) {
 
 const useStyles = makeStyles((theme) => ({
   container: {
-
   },
   imageContainer: {
+    cursor: 'pointer',
     border: '1px solid',
     borderColor: imageBoardColor,
     background: 'white',
     position: 'relative',
     opacity: 1,
+    
   },
   imgForWeb: {
     objectFit: 'contain',

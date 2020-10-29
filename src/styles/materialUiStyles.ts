@@ -42,6 +42,12 @@ const customTheme = createMuiTheme({
     },
   }
 })
+
+export const navbarHeight = '3.2em'
+export const tabEffectShadowProp = '0px -4px 3px 1px rgba(0,0,0,0.2)'
+export const swipebarHeightInEm = '3em'
+export const swipebarHeightInPx = 48
+export const imageBoardColor = 'rgba(0,0,0,.3)'
 export const accordionTitleColor = '#484EAA'
 
 export const AccordionCustom = withStyles({
@@ -91,11 +97,5 @@ export const ContainerFullHeight = withStyles({
     display: 'flex',
   }
 })(Container);
-
-export const navbarHeight = '3.2em'
-export const tabEffectShadowProp = '0px -4px 3px 1px rgba(0,0,0,0.2)'
-export const swipebarHeightInEm = '3em'
-export const swipebarHeightInPx = 48
-export const imageBoardColor = 'rgba(0,0,0,.3)'
 
 export default customTheme

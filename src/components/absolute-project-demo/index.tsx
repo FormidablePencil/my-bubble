@@ -36,12 +36,4 @@ function AbsoluteProjectDemo() {
   )
 }
 
-
-const useStyles = makeStyles((theme) => ({
-  demoDeviceLeft: {
-  },
-  demoDeviceRight: {
-  }
-}));
-
 export default AbsoluteProjectDemo

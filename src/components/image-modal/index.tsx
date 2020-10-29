@@ -59,10 +59,10 @@ function ImageModal() {
             hideZoom
             hideDownload
             imageBackgroundColor={'rgba(0,0,0,.0)'}
-            large={
+            large={imageModelToggle &&
               platform === 'mobile' && modalImageSelected === 0
-                ? require('../../assets/transparent.png')
-                : projectDataCollection[currentSubjectViewing].images[modalImageSelected]
+              ? require('../../assets/transparent.png')
+              : projectDataCollection[currentSubjectViewing].images[modalImageSelected]
             }
             onClose={toggleImageModel}
           />

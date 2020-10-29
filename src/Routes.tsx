@@ -11,6 +11,7 @@ import useSwipableTab from './hooks/useSwipableTab';
 import ImageModal from './components/image-modal/index';
 import BottomNav from './components/layouts/BottomNav';
 import ProjectsGalleryPage from './pages/project-gallery';
+import useKeyTrigger from './hooks/useKeyTrigger';
 
 export const ContextSwipeBar: any = createContext(null);
 
@@ -20,6 +21,7 @@ export function DemoRoutes() {
   const height = useFullHeightResponsive()
   const { translateSwipeableTab, xy } = useSwipableTab()
   useFetchAllPortfolioData()
+  useKeyTrigger()
 
   const containerStyles: any = {
     height,

@@ -39,6 +39,7 @@ function PrimaryProjectImage() {
         <AbsoluteYoutubePlayIcon
           fillRed={onMouseEnterYoutubeIcon}
           overRideStyles={{
+            cursor: 'pointer',
             height: 60,
             width: 60,
           }}
@@ -69,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
   },
   primaryImageContainer: {
+    cursor: 'pointer',
     padding: '5px 0px 5px 5px'
   }
 }));

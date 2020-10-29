@@ -19,6 +19,7 @@ function DropdownBtn({ toggleOn, onClick }) {
 
 const useStyles = makeStyles((theme) => ({
   dropdownIcon: {
+    cursor: 'pointer',
     color: 'white',
     fontSize: 50,
     margin: '-.2em 0em 0em .05em',

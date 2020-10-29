@@ -5,6 +5,7 @@ import { rootReducerT } from '../../../store';
 import { projectDataT } from '../../../reducers/projectDataReducer';
 import DeviceFrameAndImg from '../../reusables/DeviceFrameAndImg';
 import CardLayout from './CardLayout';
+import LinesEllipsis from 'react-lines-ellipsis'
 
 function GalleryBrowsingSection(
   { projectDataCollection }:
@@ -61,7 +62,15 @@ function GalleryBrowsingSection(
                     direction='column'>
                     <Typography variant='h6'>Brief description:</Typography>
                     <Typography className={classes.briefDescription} variant='body1'>
-                      {truncateText(project.description)}
+
+                      <LinesEllipsis
+                        text={project.description}
+                        maxLine='5'
+                        ellipsis='...'
+                        trimRight
+                        basedOn='letters'
+                      />
+
                     </Typography>
                   </Grid>
 
