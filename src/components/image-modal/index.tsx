@@ -25,8 +25,6 @@ function ImageModal() {
 
   if (!imageModelToggle)
     return null
-  if (!projectDataCollection[currentSubjectViewing])
-    return null
   else
     return (
       <div>
@@ -50,7 +48,7 @@ function ImageModal() {
         </Grid>
         {platform === 'mobile' &&
           <YoutubeVideoPlayer
-            youtubeVideoUrl={projectDataCollection[currentSubjectViewing].video}
+            youtubeVideoUrl={projectDataCollection[currentSubjectViewing]?.video}
           />
         }
 
@@ -59,10 +57,10 @@ function ImageModal() {
             hideZoom
             hideDownload
             imageBackgroundColor={'rgba(0,0,0,.0)'}
-            large={imageModelToggle &&
+            large={
               platform === 'mobile' && modalImageSelected === 0
-              ? require('../../assets/transparent.png')
-              : projectDataCollection[currentSubjectViewing].images[modalImageSelected]
+                ? require('../../assets/transparent.png')
+                : projectDataCollection[currentSubjectViewing]?.images[modalImageSelected]
             }
             onClose={toggleImageModel}
           />

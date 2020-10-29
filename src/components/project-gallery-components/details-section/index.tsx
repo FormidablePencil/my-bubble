@@ -3,6 +3,7 @@ import { Grid, Typography, Chip, makeStyles } from '@material-ui/core'
 import { useSelector } from 'react-redux';
 import TextFormated from './TextFormated';
 import { rootReducerT } from '../../../store';
+import TechLogo from '../../reusables/TechLogo';
 
 const GalleryContentDetailsSection = ({ sortedProjectData }) => {
   const classes = useStyles();
@@ -46,7 +47,7 @@ function GalleryContentDetailSectionFirst(
 
   return (
     <Grid
-      className={classes.contentDetailsContainer}
+      className={classes.relative}
       container
       direction='column'
       justify='center'
@@ -118,7 +119,7 @@ const GalleryContentDetailSectionSecond = (
   }
 
   return (
-    <Grid item container alignItems='center' style={{ position: 'relative' }}>
+    <Grid item container alignItems='center' className={classes.relative}>
 
       <div className={
         showLine ? `
@@ -127,6 +128,16 @@ const GalleryContentDetailSectionSecond = (
         ${classes.top}
         ${classes.right}
         `: ''} />
+      {/* <Grid item> */}
+      {/* <Typography variant='h6'>Technologies: </Typography> */}
+      {/* </Grid> */}
+      <div className={classes.tech}>
+        <>
+          {sortedProjectData?.technologies.map(tech =>
+            <TechLogo techData={tech} />
+          )}
+        </>
+      </div>
 
       <Grid container item
         ref={ref => toggleShowLine(ref)}
@@ -144,16 +155,7 @@ const GalleryContentDetailSectionSecond = (
           content={sortedProjectData?.links.server}
         />
         <Grid container>
-          <Grid item>
-            <Typography variant='h6'>Technologies: </Typography>
-          </Grid>
-          <Grid item>
-            <>
-              {sortedProjectData?.technologies.map(tech =>
-                <Chip label={tech} variant="default" key={tech} />
-              )}
-            </>
-          </Grid>
+
         </Grid>
 
         <div className={
@@ -171,16 +173,20 @@ const GalleryContentDetailSectionSecond = (
 
 
 const useStyles = makeStyles((theme) => ({
+  relative: {
+    position: 'relative'
+  },
   parentContainer: {
     height: '100%',
     padding: '15px 15px 15px 15px',
     overflowY: 'scroll',
     overflowX: 'hidden',
   },
-  contentDetailsContainer: {
-    position: 'relative',
+  tech: {
+    position: 'absolute',
+    top: -5,
+    right: 0,
   },
-
   line: {
     height: 2,
     background: theme.palette.primary[800],
@@ -204,7 +210,6 @@ const useStyles = makeStyles((theme) => ({
   top: {
     top: 32
   },
-
   divider: {
     background: theme.palette.primary[800],
     width: 2,
