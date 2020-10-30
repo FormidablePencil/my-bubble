@@ -11,6 +11,7 @@ import { animated } from 'react-spring';
 import useContentDetailsImageAnim from '../../../../hooks/useContentDetailsImageAnim';
 import { accordionTitleColor } from '../../../../styles/materialUiStyles';
 import { GalleryContentDetailSectionFirst, GalleryContentDetailSectionSecond } from '../../../project-gallery-components/details-section';
+import SwipableImages from '../../../reusables/SwipableImages';
 
 
 /* //* Somehow I need to make make this comp slidable gesture and the page to follow it. */
@@ -37,7 +38,7 @@ function MobileContentDetailsSection({ viewingProjects, sortedProjectData }: {
         selectedProjectImage={icon}>
         <Grid className={classes.container} container direction='column' wrap='nowrap'>
           <Grid item container className={classes.titleContainer}>
-            <Typography style={{ fontSize: 30 }}>{title}</Typography>
+            <Typography color='textPrimary' style={{ fontSize: 30 }}>{title}</Typography>
           </Grid>
           <Grid item>
             <LineSeperator />
@@ -51,8 +52,9 @@ function MobileContentDetailsSection({ viewingProjects, sortedProjectData }: {
                 onClick={() => onClickHandler(0)}
               >
                 <DeviceFrameAndImg
-                  /* //* increase size of image in mobile details section */
-                  projectContent={projectDataCollection[currentSubjectViewing]} />
+                  projectContent={projectDataCollection[currentSubjectViewing]}>
+                  <SwipableImages projectContent={projectDataCollection[currentSubjectViewing]} />
+                </DeviceFrameAndImg>
               </animated.div>
               :
               <img className={classes.contentImage} src={techImg} alt={title} />
@@ -65,43 +67,43 @@ function MobileContentDetailsSection({ viewingProjects, sortedProjectData }: {
 
           {/* //~ ======= details section */}
           <Grid item container className={classes.contentDetails}>
-              <Grid container>
-                <Grid item container justify='center'>
-                  <Accordion
-                    expanded={accordionOpen === 1}
-                    className={classes.accordionContainer}
-                    onClick={() => onClickHandler(1)}
-                  >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}>
-                      <Typography
-                        className={classes.accordionTitle}
-                        variant='h6'>Details</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <GalleryContentDetailSectionFirst sortedProjectData={sortedProjectData} />
-                    </AccordionDetails>
-                  </Accordion>
-                </Grid>
-
-                <Grid item container justify='center'>
-                  <Accordion
-                    expanded={accordionOpen === 2}
-                    className={classes.accordionContainer}
-                    onClick={() => onClickHandler(2)}
-                  >
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}>
-                      <Typography
-                        className={classes.accordionTitle}
-                        variant='h6'>More details</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <GalleryContentDetailSectionSecond sortedProjectData={sortedProjectData} />
-                    </AccordionDetails>
-                  </Accordion>
-                </Grid>
+            <Grid container>
+              <Grid item container justify='center'>
+                <Accordion
+                  expanded={accordionOpen === 1}
+                  className={classes.accordionContainer}
+                  onClick={() => onClickHandler(1)}
+                >
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}>
+                    <Typography
+                      className={classes.accordionTitle}
+                      variant='h6'>Details</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <GalleryContentDetailSectionFirst sortedProjectData={sortedProjectData} />
+                  </AccordionDetails>
+                </Accordion>
               </Grid>
+
+              <Grid item container justify='center'>
+                <Accordion
+                  expanded={accordionOpen === 2}
+                  className={classes.accordionContainer}
+                  onClick={() => onClickHandler(2)}
+                >
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}>
+                    <Typography
+                      className={classes.accordionTitle}
+                      variant='h6'>More details</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <GalleryContentDetailSectionSecond sortedProjectData={sortedProjectData} />
+                  </AccordionDetails>
+                </Accordion>
+              </Grid>
+            </Grid>
 
           </Grid>
 

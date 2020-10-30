@@ -41,7 +41,7 @@ function MobileSwipeToViewContentDetailsBar({ children, selectedProjectImage }) 
             <Grid item container direction='column' justify='center' alignItems='center'>
               <BsArrowBarDown color='white' />
               <div>
-                <Typography className={classes.disableSelecting} color='secondary' variant='caption'>
+                <Typography className={classes.disableSelecting} color='textPrimary' variant='caption'>
                   Press a project to see more details
           </Typography>
               </div>

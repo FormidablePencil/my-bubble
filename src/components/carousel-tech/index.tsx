@@ -25,19 +25,21 @@ const ReactSlider = () => {
     <Link to='/technologies'>
       <Slider
         {...settings}>
-        {
-          techDataCollection.map((tech, index) =>
-            <div
-              key={tech._id}
-              className={classes.techContainer}
-              id='hoverEffect'
-            // style={{backgroundColor: '#1D1F42'}}
-            >
-              <img className={classes.techImg} src={tech.image} alt={tech.technology} />
-              {/* <>{tech.description} {tech.technology}</> */}
-            </div>
-          )
-        }
+        <>
+          {
+            techDataCollection.map((tech, index) =>
+              <div
+                key={tech._id}
+                className={classes.techContainer}
+                id='hoverEffect'
+              // style={{backgroundColor: '#1D1F42'}}
+              >
+                <img className={classes.techImg} src={tech.image} alt={tech.technology} />
+                {/* <>{tech.description} {tech.technology}</> */}
+              </div>
+            )
+          }
+        </>
       </Slider>
     </Link>
   );

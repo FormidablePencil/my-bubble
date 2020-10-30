@@ -1,19 +1,26 @@
-import React from 'react'
+import React, { Children, cloneElement } from 'react'
 import { makeStyles } from '@material-ui/core'
+import SwipableImages from './SwipableImages';
 
-function DeviceFrameAndImg({ projectContent, mobileContentDetailsSection }:
-  { projectContent, mobileContentDetailsSection?}) {
+function DeviceFrameAndImg({ projectContent, mobileContentDetailsSection, children }:
+  { projectContent, mobileContentDetailsSection?, children?}) {
   const classes = useStyles();
 
+  /* modularize */
   const imageStyles = (type) => {
     const contentImageStyles = type === 'mobile' ? classes.mobileImg : classes.webImg
     const frameImgStyles = type === 'mobile' ? classes.mobileFrame : classes.webFrame
     return { contentImageStyles, frameImgStyles }
   }
-
   const macbookFrame = require('../../assets/macbookFrame.png')
   const galaxyPhoneFrame = require('../../assets/galaxys8Frame.png')
 
+  const childrenWithProps = React.Children.map(children, child => {
+    return cloneElement(child, {
+      imageStyles: imageStyles(projectContent?.type).contentImageStyles,
+      type: projectContent?.type
+    })
+  })
 
   if (projectContent) {
     return (
@@ -25,10 +32,13 @@ function DeviceFrameAndImg({ projectContent, mobileContentDetailsSection }:
             margin: '1em, 0em 1em, 0em'
           } : {}}
       >
-        <img
-          className={imageStyles(projectContent.type).contentImageStyles}
-          src={projectContent.images && projectContent.images[0]}
-          alt='application' />
+
+        {children ? childrenWithProps :
+          <img
+            className={imageStyles(projectContent.type).contentImageStyles}
+            src={projectContent.images && projectContent.images[0]}
+            alt='application' />
+        }
         <img className={imageStyles(projectContent.type).frameImgStyles}
           src={projectContent.type === 'mobile' ? galaxyPhoneFrame : macbookFrame}
           alt='frame' />
@@ -51,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   mobileFrame: {
+    pointerEvents: 'none',
     width: '11.6em',
     objectFit: 'contain',
     position: 'relative',

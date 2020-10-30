@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   lineSeperator: {
     width: 200,
     height: 2,
-    background: 'white'
+    background: theme.palette.primary[300],
+    // background: 'white'
   },
 }));
