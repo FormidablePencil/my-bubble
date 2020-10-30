@@ -5,6 +5,7 @@ import TextFormated from './TextFormated';
 import { rootReducerT } from '../../../store';
 import TechLogo from '../../reusables/TechLogo';
 import { sortedProjectDataT } from '../../../typescript'
+import capitalize from 'lodash/capitalize';
 
 const GalleryContentDetailsSection = ({ sortedProjectData }) => {
   const classes = useStyles();
@@ -17,9 +18,8 @@ const GalleryContentDetailsSection = ({ sortedProjectData }) => {
       wrap='nowrap'
       className={`${classes.parentContainer} scrollbar-visible`}>
       <GalleryContentDetailSectionFirst sortedProjectData={sortedProjectData} />
-      {contentDetailsSectionDirIsRow &&
-        <div className={classes.divider} />
-      }
+      {contentDetailsSectionDirIsRow && <div className={classes.divider} />}
+      <div style={{marginTop: '1em'}} />
       <GalleryContentDetailSectionSecond sortedProjectData={sortedProjectData} />
     </Grid>
   )
@@ -74,13 +74,12 @@ function GalleryContentDetailSectionFirst(
               content={sortedProjectData?.general.title} />
           </Grid>
           <Grid item>
-            <Grid item>
+            <Grid item container direction='row' alignItems='center'>
               <TextFormated
                 title='Platform: '
-                content={
-                  sortedProjectData?.general.type === 'mobile' ?
-                    'android' : 'website'
-                } />
+                content={sortedProjectData?.general.type === 'mobile' ?
+                  'Android' : 'Web'}
+              />
             </Grid>
           </Grid>
         </Grid>
@@ -129,29 +128,52 @@ const GalleryContentDetailSectionSecond = (
         ${classes.top}
         ${classes.right}
         `: ''} />
-      <div className={classes.techContainer}>
-        <>
-          {sortedProjectData?.technologies.map(techTitle =>
-            <TechLogo techTitle={techTitle} />
-          )}
-        </>
-      </div>
 
-      <Grid container item
+
+      <Grid
+        container item
+        direction='column'
         ref={ref => toggleShowLine(ref)}
-        direction='column'>
+      >
 
-        {sortedProjectData?.links &&
-          Object.keys(sortedProjectData.links).map(key =>
-            <Typography variant='body1'>
-              <a href={sortedProjectData.links[key]}>
-                {key}
-              </a>
-            </Typography>
-          )}
+        <>
+          {sortedProjectData?.links &&
+            Object.keys(sortedProjectData.links).map(key => sortedProjectData.links[key] &&
+              <div key={key}>
+                <Typography variant='h6'>
+                  {capitalize(key)} repo
+                </Typography>
+                <Typography
+                  className={classes.href}
+                  variant='body1'>
+                  <a
+                    href={sortedProjectData.links[key]}>
+                    {sortedProjectData.links[key]}
+                  </a>
+                </Typography>
+              </div>
+            )}
+        </>
 
-        <Grid container>
-
+        <Grid
+          item container
+          direction='column'
+          className={classes.techContainer}>
+          <Typography
+            variant='h6'>
+            Technologies
+          </Typography>
+          <Grid
+            item container
+            direction='row'
+            className={classes.body}
+          >
+            <>
+              {sortedProjectData?.technologies.map(techTitle =>
+                <TechLogo techTitle={techTitle} />
+              )}
+            </>
+          </Grid>
         </Grid>
 
         <div className={
@@ -179,9 +201,9 @@ const useStyles = makeStyles((theme) => ({
     overflowX: 'hidden',
   },
   techContainer: {
-    position: 'absolute',
-    top: -12,
-    right: -20,
+    // position: 'absolute',
+    // top: -12,
+    // right: -20,
   },
   line: {
     height: 2,
@@ -210,6 +232,19 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.primary[800],
     width: 2,
     margin: 15
+  },
+  title: {
+    fontSize: '1em'
+  },
+  body: {
+    marginLeft: '1em'
+  },
+  href: {
+    marginLeft: '1em',
+    width: '25em',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
   }
 }));
 
