@@ -10,7 +10,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 const useStyles = makeStyles({
   root: {
     width: '100vw',
-    position: 'absolute',
+    position: 'fixed',
     bottom: 0,
   },
 });

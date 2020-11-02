@@ -14,7 +14,7 @@ function TechBrowsingSection({ showDetailsSection }: { showDetailsSection?}) {
   const onClickbrowsingSectionElement = async (techNum) => {
     await dispatch({ type: SELECTED_TECH, payload: techNum });
     if (showDetailsSection)
-      showDetailsSection() 
+      showDetailsSection()
     else
       translateSwipeableTab()
   }

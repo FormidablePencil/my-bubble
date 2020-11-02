@@ -1,23 +1,27 @@
 import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { SET_FLEX_DIR_OF_CONTENT_DETAILS } from "../actions/types"
+import { useDispatch } from "react-redux"
+import { NAV_ON_MOBILE_PRESENT, SET_FLEX_DIR_OF_CONTENT_DETAILS } from "../actions/types"
 
 const useToggleGridDirection = () => {
   const dispatch = useDispatch()
 
-  const toggleGridDirection = () => {
-    if (window.innerWidth < 1300)
-      dispatch({ type: SET_FLEX_DIR_OF_CONTENT_DETAILS, payload: false })
-    else
-      dispatch({ type: SET_FLEX_DIR_OF_CONTENT_DETAILS, payload: true })
+  const resizeEventHandler = () => {
+    dispatch(updateFlexDirOfContent())
   }
 
-  useEffect(() => {
-    toggleGridDirection()
-    window.addEventListener('resize', toggleGridDirection)
-    return () => window.removeEventListener('resize', toggleGridDirection)
-  }, [])
 
+  useEffect(() => {
+    resizeEventHandler()
+    window.addEventListener('resize', resizeEventHandler)
+    return () => window.removeEventListener('resize', resizeEventHandler)
+  }, [])
+}
+
+const updateFlexDirOfContent = () => dispatch => {
+  if (window.innerWidth < 1300)
+    dispatch({ type: SET_FLEX_DIR_OF_CONTENT_DETAILS, payload: false })
+  else
+    dispatch({ type: SET_FLEX_DIR_OF_CONTENT_DETAILS, payload: true })
 }
 
 export default useToggleGridDirection

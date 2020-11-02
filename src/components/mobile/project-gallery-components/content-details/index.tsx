@@ -13,14 +13,6 @@ import { accordionTitleColor } from '../../../../styles/materialUiStyles';
 import { GalleryContentDetailSectionFirst, GalleryContentDetailSectionSecond } from '../../../project-gallery-components/details-section';
 import SwipableImages from '../../../reusables/SwipableImages';
 
-
-/* //* Somehow I need to make make this comp slidable gesture and the page to follow it. */
-//listen to when bar reaches a certain threshold swipe down automatically down on release, else swipe back up.
-
-//when clicked on card then pull up project details screen and load a skeleton. Keep the content present and have the bar show the selected project.
-
-//project details section will be one page with project gallery.  
-
 function MobileContentDetailsSection({ viewingProjects, sortedProjectData }: {
   viewingProjects, sortedProjectData?
 }) {
@@ -152,7 +144,7 @@ const useStyles = makeStyles((theme) => ({
     overflowY: 'scroll',
   },
   titleContainer: {
-    padding: '3em 3em 0em 3em'
+    padding: '5em 3em 0em 3em'
   },
   imageContainer: {
   },
@@ -169,5 +161,5 @@ const useStyles = makeStyles((theme) => ({
   },
   accordionTitle: {
     color: accordionTitleColor,
-  }
+  },
 }));

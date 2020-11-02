@@ -19,11 +19,19 @@ function MobileSwipeToViewContentDetailsBar({ children, selectedProjectImage }) 
       }}
       className={classes.detailsSectionWrapper}
     >
+
       <Button
         className={classes.backBtn}
         onClick={translateSwipeableTab}
-      ><IoIosArrowRoundBack color='white' size={35} /></Button>
+      >
+        <Grid container alignItems='center' className={classes.backBtnContainer}>
+          <IoIosArrowRoundBack color='white' size={35} />
+          <Typography color='textPrimary' className={classes.backBtnText} variant='body1'>back to projects</Typography>
+        </Grid>
+      </Button>
       <div className={classes.content}>
+
+
         {children}
       </div>
       <animated.div
@@ -56,10 +64,20 @@ function MobileSwipeToViewContentDetailsBar({ children, selectedProjectImage }) 
 
 
 const useStyles = makeStyles((theme) => ({
+  backBtnContainer: {
+    height: swipebarHeightInPx,
+    backgroundColor: theme.palette.primary[500],
+    paddingLeft: '1em',
+    width: '100vh'
+  },
   backBtn: {
+    margin: 0,
+    padding: 0,
+    textTransform: 'none',
     position: "absolute",
-    top: 2,
-    left: 0,
+  },
+  backBtnText: {
+    paddingTop: '.2em'
   },
   detailsSectionWrapper: {
     position: "absolute",
@@ -84,7 +102,8 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
   },
   sideGrid: {
-    width: '5em',
+    paddingLeft: '2em',
+    width: '2.5em',
   },
   selectedContentImg: {
     width: 25,

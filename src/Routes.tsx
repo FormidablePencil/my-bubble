@@ -23,15 +23,14 @@ export function DemoRoutes() {
   useFetchAllPortfolioData()
   useKeyTrigger()
 
-  const containerStyles: any = {
-    height,
-    overflowY: xs ? 'hidden' : 'visible'
+  const mobileHeightStyles: any = {
+    height: xs ? '100vh' : height,
+    overflowY: 'hidden'
   }
 
   return (
     <ContextSwipeBar.Provider value={{ translateSwipeableTab, xy }}>
       <div
-        style={containerStyles}
         className={classes.container}
       >
 
@@ -41,7 +40,9 @@ export function DemoRoutes() {
 
           {!xs && <Navbar />}
 
-          <div className={classes.contentContainer}>
+          <div
+            style={mobileHeightStyles}
+            className={classes.contentContainer}>
 
             <Switch>
               <Route exact path="/">
@@ -69,8 +70,9 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
   },
   contentContainer: {
-    height: '100%',
     position: "relative",
+    overflowY: 'scroll',
+    overflowX: 'hidden',
     zIndex: 1,
     background: 'linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(99,161,255,1) 0%, rgba(99,122,185,1) 100%)',
     boxShadow: tabEffectShadowProp

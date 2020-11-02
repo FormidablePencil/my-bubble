@@ -25,7 +25,6 @@ const ReactSlider = () => {
     <Link to='/technologies'>
       <Slider
         {...settings}>
-        <>
           {
             techDataCollection.map((tech, index) =>
               <div
@@ -39,7 +38,6 @@ const ReactSlider = () => {
               </div>
             )
           }
-        </>
       </Slider>
     </Link>
   );

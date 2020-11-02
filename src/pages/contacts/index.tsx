@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     overflowX: 'hidden'
   },
   container: {
-    height: '70vh',
+    height: '100%',
     overflowX: 'hidden'
   },
   wrapper: {

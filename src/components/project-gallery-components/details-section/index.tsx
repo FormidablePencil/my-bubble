@@ -19,7 +19,7 @@ const GalleryContentDetailsSection = ({ sortedProjectData }) => {
       className={`${classes.parentContainer} scrollbar-visible`}>
       <GalleryContentDetailSectionFirst sortedProjectData={sortedProjectData} />
       {contentDetailsSectionDirIsRow && <div className={classes.divider} />}
-      <div style={{marginTop: '1em'}} />
+      <div style={{ marginTop: '1em' }} />
       <GalleryContentDetailSectionSecond sortedProjectData={sortedProjectData} />
     </Grid>
   )
@@ -48,7 +48,6 @@ function GalleryContentDetailSectionFirst(
 
   return (
     <Grid
-      className={classes.relative}
       container
       direction='column'
       justify='center'
@@ -63,6 +62,7 @@ function GalleryContentDetailSectionFirst(
         `: ''} />
 
       <Grid
+        className={`${classes.constraintContainer} scrollbar-visible`}
         container
         ref={ref => toggleShowLine(ref)}
       >
@@ -131,6 +131,7 @@ const GalleryContentDetailSectionSecond = (
 
 
       <Grid
+        className={`${classes.constraintContainer} scrollbar-visible`}
         container item
         direction='column'
         ref={ref => toggleShowLine(ref)}
@@ -191,6 +192,14 @@ const GalleryContentDetailSectionSecond = (
 
 
 const useStyles = makeStyles((theme) => ({
+  constraintContainer: {
+    borderTop: '1px solid',
+    paddingTop: '1em',
+    borderColor: theme.palette.primary[100],
+    height: '15em',
+    overflowY: 'scroll',
+    overflowX: 'hidden',
+  },
   relative: {
     position: 'relative'
   },
@@ -245,7 +254,7 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis'
-  }
+  },
 }));
 
 export {
