@@ -20,7 +20,7 @@ function TechLogo({ techTitle }) {
   else return null
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   techImg: {
     height: '2em',
     width: '2em',

@@ -56,7 +56,7 @@ function ImageSelection({ passedDownClasses }) {
 }
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   relative: {
     position: 'relative'
   },

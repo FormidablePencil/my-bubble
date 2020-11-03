@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import { makeStyles } from '@material-ui/core';
 
 function SwipableImages(props) {
-  const { projectContent, type, imageStyles } = props
+  const { projectContent } = props
   const classes = useStyles();
 
   const settings = {
@@ -22,11 +22,12 @@ function SwipableImages(props) {
       style={{ position: "absolute", width: '4.9em' }}>
       <Slider
         {...settings}>
-        {projectContent.images.map(image =>
+        {projectContent.images.map(imageData =>
           <img
-          className={classes.imageStyles}
-          src={projectContent.images && image}
-          alt='application' />
+            key={imageData}
+            className={classes.imageStyles}
+            src={projectContent.images && imageData.url}
+            alt='application' />
         )}
       </Slider>
     </div>
@@ -34,7 +35,7 @@ function SwipableImages(props) {
 }
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   imageContainer: {
     // width: '10em',
     // height: '10em',

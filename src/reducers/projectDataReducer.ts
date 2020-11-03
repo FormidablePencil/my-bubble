@@ -13,7 +13,7 @@ export interface projectDataT {
   technologies: []
   type: string
   _id: number
-  showInPorfolio: boolean
+  showInPortfolio: boolean
   images: {
     [index: number]: string
     map?: any

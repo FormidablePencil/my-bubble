@@ -70,7 +70,7 @@ function ImageModal() {
 }
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   imageSectionContainer: {
     width: '6em',
     position: "absolute",

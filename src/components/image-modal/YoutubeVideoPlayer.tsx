@@ -27,7 +27,7 @@ const YoutubeVideoPlayer = ({ youtubeVideoUrl }) => {
 }
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   centerAbsolutePositioning: {
     position: "absolute",
     marginLeft: 'auto',

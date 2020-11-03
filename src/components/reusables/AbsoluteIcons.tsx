@@ -48,7 +48,7 @@ export function AbsoluteSearchIcon({ fillWhite, overRideStyles }: { fillWhite, o
   )
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   youtubeIcon: {
     height: 40,
     width: 40,

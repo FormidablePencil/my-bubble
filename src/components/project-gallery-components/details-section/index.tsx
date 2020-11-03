@@ -171,7 +171,7 @@ const GalleryContentDetailSectionSecond = (
           >
             <>
               {sortedProjectData?.technologies.map(techTitle =>
-                <TechLogo techTitle={techTitle} />
+                <TechLogo key={techTitle} techTitle={techTitle} />
               )}
             </>
           </Grid>

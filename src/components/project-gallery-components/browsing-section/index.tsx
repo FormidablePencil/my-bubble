@@ -19,7 +19,7 @@ function GalleryBrowsingSection(
       {projectDataCollection.map((project, index) => {
         let trimTech = false
         if (project.technologies.length >= 4) trimTech = true
-        if (!project.showInPorfolio) return null
+        if (!project.showInPortfolio) return null
         return (
           <Grid item>
             <Card
@@ -39,7 +39,7 @@ function GalleryBrowsingSection(
 export default GalleryBrowsingSection
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   container: {
     marginTop: '1em',
     marginBottom: '1em',

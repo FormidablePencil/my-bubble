@@ -24,7 +24,7 @@ const AccordionTemplate = ({ initiallyExpanded = false, summarySection, detailsS
 }
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   accordionGeneralSection: {
   
   }

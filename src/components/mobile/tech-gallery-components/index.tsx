@@ -21,7 +21,7 @@ function MobileTechGallery() {
 }
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   container: {
     height: '100%',
     overflowX: 'hidden',

@@ -1,23 +1,11 @@
-import React, { useContext } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { SELECTED_TECH } from '../../../actions/types';
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { rootReducerT } from '../../../store';
 import { makeStyles, Grid } from '@material-ui/core';
-import { ContextSwipeBar } from '../../../Routes';
 
 function TechBrowsingSection({ showDetailsSection }: { showDetailsSection?}) {
-  const { translateSwipeableTab } = useContext(ContextSwipeBar)
   const { techDataCollection } = useSelector((state: rootReducerT) => state)
-  const dispatch = useDispatch()
   const classes = useStyles();
-
-  const onClickbrowsingSectionElement = async (techNum) => {
-    await dispatch({ type: SELECTED_TECH, payload: techNum });
-    if (showDetailsSection)
-      showDetailsSection()
-    else
-      translateSwipeableTab()
-  }
 
   return (
     <Grid container justify='center'>
@@ -25,12 +13,10 @@ function TechBrowsingSection({ showDetailsSection }: { showDetailsSection?}) {
         <Grid item>
           <div
             key={tech._id}
-            // onClick={() => onClickbrowsingSectionElement(index)}
             className={classes.techContainer}
             id='hoverEffect'
           >
             <img className={classes.techImg} src={tech.image} alt={tech.technology} />
-            {/* <>{tech.description} {tech.technology}</> */}
           </div>
         </Grid>
       )}
@@ -38,7 +24,7 @@ function TechBrowsingSection({ showDetailsSection }: { showDetailsSection?}) {
   )
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   techContainer: {
     width: '7.5em',
     height: '7.5em',

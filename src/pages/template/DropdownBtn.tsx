@@ -17,7 +17,7 @@ function DropdownBtn({ toggleOn, onClick }) {
 }
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   dropdownIcon: {
     cursor: 'pointer',
     color: 'white',

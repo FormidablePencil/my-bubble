@@ -49,7 +49,7 @@ function PrimaryProjectImage() {
   )
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   container: {
     height: '100%',
     position: 'relative',

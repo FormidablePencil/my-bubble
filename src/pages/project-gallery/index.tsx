@@ -7,13 +7,12 @@ import useIsTabletOrLarget from '../../hooks/useIsTabletOrLarget'
 import ProjectGallery from '../../components/project-gallery-components'
 import { sortedProjectDataT } from '../../typescript'
 
-//~ focus in making this component and it's sub components work
+//~ focus on making this component and it's sub components work
 
 function ProjectsGalleryPage() {
   const {
     currentSubjectViewing,
     projectDataCollection,
-    contentDetailsSectionDirIsRow
   } = useSelector((state: rootReducerT) => state)
   const [sortedProjectData, setSortedProjectData] = useState<sortedProjectDataT>()
 

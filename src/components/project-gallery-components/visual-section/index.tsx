@@ -26,7 +26,7 @@ function GalleryContentVisualSection() {
   const { projectDataCollection, currentSubjectViewing } = useSelector((state: rootReducerT) => state)
   const classes = useStyles()
   const dispatch = useDispatch()
-  const { subjectIsSelected, isMobile, imagesExist } = useValidatorsRedux()
+  const { isMobile } = useValidatorsRedux()
 
   let mobilePlatformImages = false
   if (projectDataCollection[currentSubjectViewing])
@@ -88,14 +88,5 @@ const useStyles = makeStyles((theme) => ({
   },
   moreImagesSection: {
     background: theme.palette.primary[100]
-    // overflowY: 'scroll',
   },
-  // moreimgsGalleryContainer: {
-  //   width: '7em',
-  //   backgroundColor: 'grey',
-  // },
-  // scrollableImageSelector: {
-  //   width: '7em',
-  //   borderWidth: '.05em'
-  // }
 }));

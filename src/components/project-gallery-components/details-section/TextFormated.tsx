@@ -24,7 +24,7 @@ const TextFormated = ({ title, content, content2, multiline, fontSizeParagraph }
 }
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   multilineTitle: {
     display: 'block'
   },

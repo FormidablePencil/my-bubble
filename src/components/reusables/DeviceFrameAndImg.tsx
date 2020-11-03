@@ -1,6 +1,5 @@
-import React, { Children, cloneElement } from 'react'
+import React, { cloneElement } from 'react'
 import { makeStyles } from '@material-ui/core'
-import SwipableImages from './SwipableImages';
 
 function DeviceFrameAndImg({ projectContent, mobileContentDetailsSection, children }:
   { projectContent, mobileContentDetailsSection?, children?}) {
@@ -36,7 +35,7 @@ function DeviceFrameAndImg({ projectContent, mobileContentDetailsSection, childr
         {children ? childrenWithProps :
           <img
             className={imageStyles(projectContent.type).contentImageStyles}
-            src={projectContent.images && projectContent.images[0]}
+            src={projectContent.images && projectContent.images[0].url}
             alt='application' />
         }
         <img className={imageStyles(projectContent.type).frameImgStyles}
@@ -52,7 +51,7 @@ export default DeviceFrameAndImg
 
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   container: {
     userSelect: 'none',
     position: 'relative',

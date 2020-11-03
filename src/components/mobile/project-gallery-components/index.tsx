@@ -16,7 +16,7 @@ function MobileProjectGallery({ sortedProjectData }) {
   const classes = useStyles();
   const { projectDataCollection } = useSelector((state: rootReducerT) => state)
   const indexOfItemRendered: any = useRef(null)
-  const amountOfShowableProjects = projectDataCollection.filter(item => item.showInPorfolio && item).length
+  const amountOfShowableProjects = projectDataCollection.filter(item => item.showInPortfolio && item).length
   const xs = useMediaQuery((theme: any) => theme.breakpoints.down('xs'));
 
 
@@ -44,8 +44,8 @@ function MobileProjectGallery({ sortedProjectData }) {
 
         {/* //~ ======= gallery section ======= */}
         {projectDataCollection.map((project, index) => {
-          if (project.showInPorfolio) indexOfItemRendered.current++
-          if (!project.showInPorfolio) return null
+          if (project.showInPortfolio) indexOfItemRendered.current++
+          if (!project.showInPortfolio) return null
           else
             return (
               <Grid
@@ -80,7 +80,7 @@ function MobileProjectGallery({ sortedProjectData }) {
   )
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   removeUserSelecting: {
     userSelect: 'none',
     pointerEvents: 'none'

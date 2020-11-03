@@ -65,7 +65,7 @@ export function DemoRoutes() {
 }
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   container: {
     position: "relative",
   },

@@ -44,7 +44,7 @@ const ReactSlider = () => {
 }
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   techContainer: {
     width: '9em',
     height: '7.5em',

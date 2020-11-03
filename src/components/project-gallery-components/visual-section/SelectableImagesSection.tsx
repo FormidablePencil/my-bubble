@@ -9,7 +9,7 @@ import { AbsoluteSearchIcon } from '../../reusables/AbsoluteIcons';
 function SelectableImagesSection({ mobilePlatformImages, onClick }) {
   const [onMouseEnterYoutubeIcon, setOnMouseEnterYoutubeIcon] = useState(null)
   const { projectDataCollection, currentSubjectViewing } = useSelector((state: rootReducerT) => state)
-  const { subjectIsSelected, imagesExist, amountOfImages } = useValidatorsRedux()
+  const { subjectIsSelected, imagesExist } = useValidatorsRedux()
   const classes = useStyles();
 
   return (
@@ -49,7 +49,7 @@ function SelectableImagesSection({ mobilePlatformImages, onClick }) {
 }
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   container: {
   },
   imageContainer: {

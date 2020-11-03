@@ -1,15 +1,12 @@
 import React from 'react'
 import { Button, Grid, makeStyles, Typography } from '@material-ui/core'
 import staticData from '../../staticData'
-import { useSelector } from 'react-redux';
-import { rootReducerT } from '../../store';
 import { useHistory } from 'react-router-dom';
 import ReactSlider from '../../components/carousel-tech';
 import AbsoluteProjectDemo from '../../components/absolute-project-demo';
 
 function ContactsPage() {
   const classes = useStyles();
-  const { projectDataCollection } = useSelector((state: rootReducerT) => state)
   /* Contacts: github, linkedIn & email. Get to know me: self presentation site link. */
 
   let history = useHistory();
