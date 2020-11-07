@@ -1,12 +1,12 @@
 import React from 'react'
 import { makeStyles, Grid } from '@material-ui/core'
-import { projectDataT } from '../../../reducers/projectDataReducer';
 import Card from './Card';
+import { useSelector } from 'react-redux';
+import { rootReducerT } from '../../../store';
 
-function GalleryBrowsingSection(
-  { projectDataCollection }:
-    { projectDataCollection: projectDataT[], showDetailsSection?}) {
+function GalleryBrowsingSection() {
   const classes = useStyles();
+  const { projectDataCollection } = useSelector((state: rootReducerT) => state)
 
 
   return (

@@ -1,20 +1,18 @@
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
-import { NAV_ON_MOBILE_PRESENT, SET_FLEX_DIR_OF_CONTENT_DETAILS } from "../actions/types"
+import { SET_FLEX_DIR_OF_CONTENT_DETAILS } from "../actions/types"
 
 const useToggleGridDirection = () => {
   const dispatch = useDispatch()
 
-  const resizeEventHandler = () => {
-    dispatch(updateFlexDirOfContent())
-  }
-
-
   useEffect(() => {
+    const resizeEventHandler = () => {
+      dispatch(updateFlexDirOfContent())
+    }
     resizeEventHandler()
     window.addEventListener('resize', resizeEventHandler)
     return () => window.removeEventListener('resize', resizeEventHandler)
-  }, [])
+  })
 }
 
 const updateFlexDirOfContent = () => dispatch => {

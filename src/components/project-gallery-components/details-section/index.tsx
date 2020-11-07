@@ -4,10 +4,9 @@ import { useSelector } from 'react-redux';
 import TextFormated from './TextFormated';
 import { rootReducerT } from '../../../store';
 import TechLogo from '../../reusables/TechLogo';
-import { sortedProjectDataT } from '../../../typescript'
 import capitalize from 'lodash/capitalize';
 
-const GalleryContentDetailsSection = ({ sortedProjectData }) => {
+const GalleryContentDetailsSection = () => {
   const classes = useStyles();
   const { contentDetailsSectionDirIsRow } = useSelector((state: rootReducerT) => state)
 
@@ -17,21 +16,23 @@ const GalleryContentDetailsSection = ({ sortedProjectData }) => {
       direction={contentDetailsSectionDirIsRow ? 'row' : 'column'}
       wrap='nowrap'
       className={`${classes.parentContainer} scrollbar-visible`}>
-      <GalleryContentDetailSectionFirst sortedProjectData={sortedProjectData} />
+      <GalleryContentDetailSectionFirst />
       {contentDetailsSectionDirIsRow && <div className={classes.divider} />}
       <div style={{ marginTop: '1em' }} />
-      <GalleryContentDetailSectionSecond sortedProjectData={sortedProjectData} />
+      <GalleryContentDetailSectionSecond />
     </Grid>
   )
 }
 
 
 
-function GalleryContentDetailSectionFirst(
-  { sortedProjectData }:
-    { sortedProjectData }) {
+function GalleryContentDetailSectionFirst() {
   const classes = useStyles();
-  const { contentDetailsSectionDirIsRow } = useSelector((state: rootReducerT) => state)
+  const {
+    contentDetailsSectionDirIsRow,
+    currentSubjectViewing,
+    projectDataCollection
+  } = useSelector((state: rootReducerT) => state)
   const [showLine, setShowLine] = useState(false)
 
 
@@ -71,19 +72,19 @@ function GalleryContentDetailSectionFirst(
           <Grid item>
             <TextFormated
               title='Title: '
-              content={sortedProjectData?.general.title} />
+              content={projectDataCollection[currentSubjectViewing]?.title} />
           </Grid>
           <Grid item>
             <Grid item container direction='row' alignItems='center'>
               <TextFormated
                 title='Platform: '
-                content={sortedProjectData?.general.type === 'mobile' ?
+                content={projectDataCollection[currentSubjectViewing]?.type === 'mobile' ?
                   'Android' : 'Web'}
               />
             </Grid>
           </Grid>
         </Grid>
-        <TextFormated title='Description: ' content={sortedProjectData?.general.description} />
+        <TextFormated title='Description: ' content={projectDataCollection[currentSubjectViewing]?.description} />
       </Grid>
 
       <div className={
@@ -100,12 +101,14 @@ function GalleryContentDetailSectionFirst(
 
 
 
-const GalleryContentDetailSectionSecond = (
-  { sortedProjectData }: { sortedProjectData: sortedProjectDataT }
-) => {
+const GalleryContentDetailSectionSecond = () => {
   const classes = useStyles();
   const [showLine, setShowLine] = useState(false)
-  const { contentDetailsSectionDirIsRow } = useSelector((state: rootReducerT) => state)
+  const {
+    contentDetailsSectionDirIsRow,
+    currentSubjectViewing,
+    projectDataCollection
+  } = useSelector((state: rootReducerT) => state)
 
   const toggleShowLine = (ref) => {
     if (ref) {
@@ -138,8 +141,8 @@ const GalleryContentDetailSectionSecond = (
       >
 
         <>
-          {sortedProjectData?.links &&
-            Object.keys(sortedProjectData.links).map(key => sortedProjectData.links[key] &&
+          {projectDataCollection[currentSubjectViewing]?.links &&
+            Object.keys(projectDataCollection[currentSubjectViewing]?.links).map(key => projectDataCollection[currentSubjectViewing]?.links[key] &&
               <div key={key}>
                 <Typography variant='h6'>
                   {capitalize(key)} repo
@@ -148,8 +151,8 @@ const GalleryContentDetailSectionSecond = (
                   className={classes.href}
                   variant='body1'>
                   <a
-                    href={sortedProjectData.links[key]}>
-                    {sortedProjectData.links[key]}
+                    href={projectDataCollection[currentSubjectViewing].links[key]}>
+                    {projectDataCollection[currentSubjectViewing]?.links[key]}
                   </a>
                 </Typography>
               </div>
@@ -170,7 +173,7 @@ const GalleryContentDetailSectionSecond = (
             className={classes.body}
           >
             <>
-              {sortedProjectData?.technologies.map(techTitle =>
+              {projectDataCollection[currentSubjectViewing]?.technologies.map(techTitle =>
                 <TechLogo key={techTitle} techTitle={techTitle} />
               )}
             </>

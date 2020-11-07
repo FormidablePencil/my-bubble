@@ -3,7 +3,6 @@ import MobileSwipeToViewContentDetailsBar from './Mobile-SwipeToViewContentDetai
 import { makeStyles, Grid, Typography, Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { rootReducerT } from '../../../../store';
-import DeviceFrameAndImg from '../../../reusables/image-in-device/DeviceFrameAndImg';
 import LineSeperator from '../../../reusables/LineSeperator';
 import CompensateForSwipableTabHeight from '../../CompensateForSwipableTabHeight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -11,137 +10,95 @@ import { animated } from 'react-spring';
 import useContentDetailsImageAnim from '../../../../hooks/useContentDetailsImageAnim';
 import { accordionTitleColor } from '../../../../styles/materialUiStyles';
 import { GalleryContentDetailSectionFirst, GalleryContentDetailSectionSecond } from '../../../project-gallery-components/details-section';
-import SwipableImages from '../../../reusables/image-in-device/SwipableImages';
 import ImageInDevice from '../../../reusables/image-in-device/ImageInDevice';
 
-function MobileContentDetailsSection({ viewingProjects, sortedProjectData }: {
-  viewingProjects, sortedProjectData?
-}) {
+function MobileContentDetailsSection() {
   const classes = useStyles();
-  const {
-    currentSubjectViewing, projectDataCollection,
-    currentTechViewing, techDataCollection
-  } = useSelector((state: rootReducerT) => state)
+  const { currentSubjectViewing, projectDataCollection, } = useSelector((state: rootReducerT) => state)
 
   const { accordionOpen, imageAnim, onClickHandler } = useContentDetailsImageAnim()
 
-  const RenderContent = ({ icon, title, techImg }) => {
-    return (
-      <MobileSwipeToViewContentDetailsBar
-        selectedProjectImage={icon}>
-        <Grid className={classes.container} container direction='column' wrap='nowrap'>
-          <Grid item container className={classes.titleContainer}>
-            <Typography color='textPrimary' style={{ fontSize: 30 }}>{title}</Typography>
-          </Grid>
-          <Grid item>
-            <LineSeperator />
-          </Grid>
+  return (
+    <MobileSwipeToViewContentDetailsBar>
+      <Grid className={classes.container} container direction='column' wrap='nowrap'>
+        <Grid item container className={classes.titleContainer}>
+          <Typography color='textPrimary' style={{ fontSize: 30 }}>{projectDataCollection[currentSubjectViewing]?.title}</Typography>
+        </Grid>
+        <Grid item>
+          <LineSeperator />
+        </Grid>
 
-          {/* //~ ===== images section */}
-          <Grid item container justify='center' className={classes.imageContainer}>
-            {viewingProjects ?
-              <animated.div
-                style={imageAnim}
-                onClick={() => onClickHandler(0)}
-              >
-                {/* 
+        {/* //~ ===== images section */}
+        <Grid item container justify='center' className={classes.imageContainer}>
+          <animated.div
+            style={imageAnim}
+            onClick={() => onClickHandler(0)}
+          >
+            {/* 
                 //~ make library
 
   //~ render frame depending on images[?].device
   //~ add a switch to toggle between image and desktop images
 */}
 
-                <ImageInDevice
-                  projectData={sortedProjectData}
-                  indexOfImageIfNotSwipable={0}
-                  swipable={false}
-                />
+            <ImageInDevice
+              projectData={projectDataCollection[currentSubjectViewing]}
+              indexOfImageIfNotSwipable={1}
+              swipable={true}
+              autoPlay={true}
+            />
 
+          </animated.div>
+        </Grid>
 
-              </animated.div>
-              :
-              <img className={classes.contentImage} src={techImg} alt={title} />
-            }
-          </Grid>
-          {/* <Grid item container>
-            <SelectableImagesSection />
-          </Grid> */}
-
-
-          {/* //~ ======= details section */}
-          <Grid item container className={classes.contentDetails}>
-            <Grid container>
-              <Grid item container justify='center'>
-                <Accordion
-                  expanded={accordionOpen === 1}
-                  className={classes.accordionContainer}
-                  onClick={() => onClickHandler(1)}
-                >
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}>
-                    <Typography
-                      className={classes.accordionTitle}
-                      variant='h6'>Details</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <GalleryContentDetailSectionFirst sortedProjectData={sortedProjectData} />
-                  </AccordionDetails>
-                </Accordion>
-              </Grid>
-
-              <Grid item container justify='center'>
-                <Accordion
-                  expanded={accordionOpen === 2}
-                  className={classes.accordionContainer}
-                  onClick={() => onClickHandler(2)}
-                >
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}>
-                    <Typography
-                      className={classes.accordionTitle}
-                      variant='h6'>More details</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <GalleryContentDetailSectionSecond sortedProjectData={sortedProjectData} />
-                  </AccordionDetails>
-                </Accordion>
-              </Grid>
+        {/* //~ ======= details section */}
+        <Grid item container className={classes.contentDetails}>
+          <Grid container>
+            <Grid item container justify='center'>
+              <Accordion
+                expanded={accordionOpen === 1}
+                className={classes.accordionContainer}
+                onClick={() => onClickHandler(1)}
+              >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}>
+                  <Typography
+                    className={classes.accordionTitle}
+                    variant='h6'>Details</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <GalleryContentDetailSectionFirst />
+                </AccordionDetails>
+              </Accordion>
             </Grid>
 
+            <Grid item container justify='center'>
+              <Accordion
+                expanded={accordionOpen === 2}
+                className={classes.accordionContainer}
+                onClick={() => onClickHandler(2)}
+              >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}>
+                  <Typography
+                    className={classes.accordionTitle}
+                    variant='h6'>More details</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <GalleryContentDetailSectionSecond />
+                </AccordionDetails>
+              </Accordion>
+            </Grid>
           </Grid>
 
-          <Grid item container>
-            <CompensateForSwipableTabHeight />
-          </Grid>
         </Grid>
-      </MobileSwipeToViewContentDetailsBar>
-    )
-  }
 
-  if (viewingProjects && projectDataCollection[currentSubjectViewing])
-    return (
-      <RenderContent
-        icon={projectDataCollection[currentSubjectViewing].images[0]}
-        title={projectDataCollection[currentSubjectViewing].title}
-        techImg={null}
-      />
-    )
-  else if (!viewingProjects && techDataCollection[currentTechViewing]) //viewing tech
-    return (
-      <RenderContent
-        icon={techDataCollection[currentTechViewing].image}
-        title={techDataCollection[currentTechViewing].technology}
-        techImg={techDataCollection[currentTechViewing].image}
-      />
-    )
-  else
-    return (
-      <RenderContent
-        icon={null}
-        title={null}
-        techImg={null}
-      />
-    )
+        <Grid item container>
+          <CompensateForSwipableTabHeight />
+        </Grid>
+      </Grid>
+    </MobileSwipeToViewContentDetailsBar>
+  )
 }
 
 export default MobileContentDetailsSection

@@ -24,11 +24,10 @@ function DeviceFrameAndImg({
   const macbookFrame = require('../../../assets/macbookFrame.png')
   const galaxyPhoneFrame = require('../../../assets/galaxys8Frame.png')
 
-  const childrenWithProps = Children.map(children, child => {
+  const childrenWithProps = children && Children.map(children, child => {
     return cloneElement(child, {
-      sdf: 'sdf'
-      // imageStyles: imageStyles(projectContent?.type).contentImageStyles,
-      // showMobileImages: projectContent.images[indexOfImage]?.device === 'mobile',
+      imageStyles: imageStyles(projectContent?.type).contentImageStyles,
+      showMobileImages: projectContent?.images[indexOfImage]?.device === 'mobile',
     })
   })
 
@@ -47,11 +46,11 @@ function DeviceFrameAndImg({
           {children ? childrenWithProps :
             <img
               className={imageStyles(projectContent.type).contentImageStyles}
-              src={projectContent.images && projectContent.images[0]?.url}
+              src={projectContent.images && projectContent.images[indexOfImage]?.url}
               alt='application' />
           }
           <img className={imageStyles(projectContent.type).frameImgStyles}
-            src={projectContent.images[0]?.device === 'mobile' ? galaxyPhoneFrame : macbookFrame}
+            src={projectContent.images?.[indexOfImage]?.device === 'mobile' ? galaxyPhoneFrame : macbookFrame}
             alt='frame' />
         </div>
       </div>

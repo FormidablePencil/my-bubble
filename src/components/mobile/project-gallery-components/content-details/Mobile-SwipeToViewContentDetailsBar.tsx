@@ -1,16 +1,41 @@
 import React, { useContext } from 'react'
-import { animated } from 'react-spring'
+import { animated, useSpring } from 'react-spring'
 import { makeStyles, Grid, Typography, Button } from '@material-ui/core'
 import { swipebarHeightInEm, swipebarHeightInPx } from '../../../../styles/materialUiStyles';
 import { BsArrowBarDown } from 'react-icons/bs';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import { ContextSwipeBar } from '../../../../Routes';
+import { useSelector } from 'react-redux';
+import { rootReducerT } from '../../../../store';
+import { config } from 'react-spring'
+import { isChrome, isMobile, isFirefox } from "react-device-detect";
 
-function MobileSwipeToViewContentDetailsBar({ children, selectedProjectImage }) {
+const { innerHeight } = window
+
+function MobileSwipeToViewContentDetailsBar({ children }) {
   const classes = useStyles();
+  const { detailsSectionToggled, setDetailsSectionToggled } = useContext(ContextSwipeBar)
+  const { currentSubjectViewing, projectDataCollection, } = useSelector((state: rootReducerT) => state)
 
-  const { xy, translateSwipeableTab } = useContext(ContextSwipeBar)
+  const [{ xy }, set] = useSpring(() => ({ xy: [0, 0] })) //~ pass into context
 
+  const translateSwipeableTab = () => {
+    // let yValue = outerHeight - swipebarHeightInPx /* firefox */
+    let yValue = innerHeight - swipebarHeightInPx /* firefox */
+    if (isChrome && isMobile)
+      yValue = innerHeight + 7
+    if (isFirefox)
+      yValue += 2
+
+    if (!detailsSectionToggled) {
+      set({ xy: [0, yValue], config: config.stiff })
+    } else {
+      set({ xy: [0, 0], config: config.stiff })
+    }
+    setDetailsSectionToggled(prev => !prev)
+  }
+
+// replace react-spring with css anim
   return (
     <animated.div
       style={{
@@ -19,7 +44,7 @@ function MobileSwipeToViewContentDetailsBar({ children, selectedProjectImage }) 
       }}
       className={classes.detailsSectionWrapper}
     >
-
+      
       <Button
         className={classes.backBtn}
         onClick={translateSwipeableTab}
@@ -30,8 +55,6 @@ function MobileSwipeToViewContentDetailsBar({ children, selectedProjectImage }) 
         </Grid>
       </Button>
       <div className={classes.content}>
-
-
         {children}
       </div>
       <animated.div
@@ -44,7 +67,14 @@ function MobileSwipeToViewContentDetailsBar({ children, selectedProjectImage }) 
             <Grid item direction='row' justify='center' container className={classes.sideGrid}>
               <img
                 draggable="false"
-                className={classes.selectedContentImg} src={selectedProjectImage} alt='' />
+                className={classes.selectedContentImg}
+                src={
+                  projectDataCollection[currentSubjectViewing]
+                    ? projectDataCollection[currentSubjectViewing].images[0].url
+                    : ''
+                }
+                alt=''
+              />
             </Grid>
             <Grid item container direction='column' justify='center' alignItems='center'>
               <BsArrowBarDown color='white' />

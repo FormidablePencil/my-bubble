@@ -12,4 +12,5 @@ export interface sortedProjectDataT {
     blog?: string
   },
   technologies: []
+  images: any
 }

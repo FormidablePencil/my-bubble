@@ -3,7 +3,6 @@ import { Paper, Grid, makeStyles, Typography } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux';
 import { rootReducerT } from '../../../store';
 import { SELECTED_SUBJECT, TOGGLE_CONTENT_DETAILS_SECTION } from '../../../actions/types';
-import DeviceFrameAndImg from '../../reusables/image-in-device/DeviceFrameAndImg';
 import LinesEllipsis from 'react-lines-ellipsis'
 import TechLogo from '../../reusables/TechLogo';
 import { projectDataT } from '../../../reducers/projectDataReducer';
@@ -19,7 +18,6 @@ const Card = (
     trimTech
   }) => {
   const { contentDetailSectionIsClosed } = useSelector((state: rootReducerT) => state)
-  const techDataCollection = useSelector((state: rootReducerT) => state.techDataCollection)
   const classes = useStyles();
   const dispatch = useDispatch()
 

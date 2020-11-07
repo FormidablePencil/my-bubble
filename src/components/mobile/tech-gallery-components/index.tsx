@@ -1,5 +1,4 @@
 import React from 'react'
-import MobileContentDetailsSection from '../project-gallery-components/content-details'
 import TechBrowsingSection from '../../project-gallery-components/browsing-section/TechBrowsingSection'
 import { makeStyles, Grid } from '@material-ui/core'
 import CompensateForSwipableTabHeight from '../CompensateForSwipableTabHeight';

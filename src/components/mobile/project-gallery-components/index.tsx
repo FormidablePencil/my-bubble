@@ -10,23 +10,19 @@ import LineSeperator from '../../reusables/LineSeperator'
 import { ContextSwipeBar } from '../../../Routes'
 import ImageInDevice from '../../reusables/image-in-device/ImageInDevice'
 
-//make line text closer together and a little margin between text and images
-
-function MobileProjectGallery({ sortedProjectData }) {
+function MobileProjectGallery() {
   const classes = useStyles();
+  const { setDetailsSectionToggled } = useContext(ContextSwipeBar)
   const { projectDataCollection } = useSelector((state: rootReducerT) => state)
   const indexOfItemRendered: any = useRef(null)
   const amountOfShowableProjects = projectDataCollection.filter(item => item.showInPortfolio && item).length
   const xs = useMediaQuery((theme: any) => theme.breakpoints.down('xs'));
 
-
   const dispatch = useDispatch()
-  const { translateSwipeableTab } = useContext(ContextSwipeBar)
 
   const onClickItem = (index) => {
     dispatch({ type: SELECTED_SUBJECT, payload: index })
-    translateSwipeableTab()
-    // set({ xy: [0, innerHeight - swipebarHeightInPx], config: config.stiff })
+    setDetailsSectionToggled(true)
   }
 
   return (
@@ -38,9 +34,7 @@ function MobileProjectGallery({ sortedProjectData }) {
         container direction='column'>
 
         {/* //~ ======= more details section ======= */}
-        <MobileContentDetailsSection
-          sortedProjectData={sortedProjectData}
-          viewingProjects={true} />
+        <MobileContentDetailsSection />
 
         {/* //~ ======= gallery section ======= */}
         {projectDataCollection.map((project, index) => {
@@ -61,8 +55,8 @@ function MobileProjectGallery({ sortedProjectData }) {
                   <ImageInDevice
                     projectData={project}
                     indexOfImageIfNotSwipable={0}
-                    swipable={true}
-                    autoPlay={true}
+                    swipable={false}
+                    autoPlay={false}
                   />
                 </Grid>
 
