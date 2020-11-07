@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useSelector } from "react-redux";
 import { rootReducerT } from "../../store";
-import { Grid, makeStyles, useMediaQuery } from "@material-ui/core";
+import { makeStyles, useMediaQuery } from "@material-ui/core";
 import { Link } from 'react-router-dom'
 
 const ReactSlider = () => {
@@ -31,10 +31,8 @@ const ReactSlider = () => {
                 key={tech._id}
                 className={classes.techContainer}
                 id='hoverEffect'
-              // style={{backgroundColor: '#1D1F42'}}
               >
                 <img className={classes.techImg} src={tech.image} alt={tech.technology} />
-                {/* <>{tech.description} {tech.technology}</> */}
               </div>
             )
           }

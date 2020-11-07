@@ -60,7 +60,7 @@ function ImageModal() {
             large={
               platform === 'mobile' && modalImageSelected === 0
                 ? require('../../assets/transparent.png')
-                : projectDataCollection[currentSubjectViewing]?.images[modalImageSelected]
+                : projectDataCollection[currentSubjectViewing]?.images[modalImageSelected].url
             }
             onClose={toggleImageModel}
           />

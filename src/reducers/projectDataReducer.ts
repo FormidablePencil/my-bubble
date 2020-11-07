@@ -15,7 +15,10 @@ export interface projectDataT {
   _id: number
   showInPortfolio: boolean
   images: {
-    [index: number]: string
+    [index: number]: {
+      url: string
+      device: string
+    }
     map?: any
     length?: any
   }

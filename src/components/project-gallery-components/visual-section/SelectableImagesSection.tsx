@@ -20,7 +20,7 @@ function SelectableImagesSection({ mobilePlatformImages, onClick }) {
       wrap='nowrap'>
       {subjectIsSelected
         && imagesExist
-        && projectDataCollection[currentSubjectViewing].images.map((url, index) => {
+        && projectDataCollection[currentSubjectViewing].images.map((imageProps, index) => {
 
           if (index > 3 || index === 0)
             return null
@@ -40,7 +40,7 @@ function SelectableImagesSection({ mobilePlatformImages, onClick }) {
                 <img className={`
                 ${mobilePlatformImages ? classes.imgForMobile : classes.imgForWeb}
                 ${onMouseEnterYoutubeIcon === index &&
-                  classes.lowOpacity}`} src={url} alt='app' />
+                  classes.lowOpacity}`} src={imageProps.url} alt='app' />
               </Grid>
             )
         })}
@@ -59,7 +59,7 @@ const useStyles = makeStyles(() => ({
     background: 'white',
     position: 'relative',
     opacity: 1,
-    
+
   },
   imgForWeb: {
     objectFit: 'contain',

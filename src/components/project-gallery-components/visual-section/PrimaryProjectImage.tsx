@@ -32,7 +32,7 @@ function PrimaryProjectImage() {
         <img
           className={isMobile ? classes.imgMainMobile : classes.imgMainDesktop}
           src={subjectIsSelected && imagesExist
-            ? projectDataCollection[currentSubjectViewing].images[0]
+            ? projectDataCollection[currentSubjectViewing].images[0].url
             : '123'} alt='' />
       </Grid>
       {isMobile &&

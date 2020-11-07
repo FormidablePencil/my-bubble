@@ -23,7 +23,7 @@ function ImageSelection({ passedDownClasses }) {
 
   return (
     <div>
-      {projectDataCollection[currentSubjectViewing].images.map((url, index) =>
+      {projectDataCollection[currentSubjectViewing].images.map((imageProps, index) =>
         <Grid
           container
           direction='row'
@@ -46,7 +46,7 @@ function ImageSelection({ passedDownClasses }) {
                 platform === 'mobile'
                   ? passedDownClasses.mobileWidth
                   : `${passedDownClasses.desktopWidth} ${classes.desktopHeight}`}
-              src={url}
+              src={imageProps.url}
               alt={projectDataCollection[currentSubjectViewing].title} />
           </div>
         </Grid>

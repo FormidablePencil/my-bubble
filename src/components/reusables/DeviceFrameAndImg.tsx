@@ -1,8 +1,9 @@
 import React, { cloneElement } from 'react'
 import { makeStyles } from '@material-ui/core'
+import { projectDataT } from '../../reducers/projectDataReducer';
 
 function DeviceFrameAndImg({ projectContent, mobileContentDetailsSection, children }:
-  { projectContent, mobileContentDetailsSection?, children?}) {
+  { projectContent: projectDataT, mobileContentDetailsSection?, children?}) {
   const classes = useStyles();
 
   /* modularize */
@@ -17,30 +18,32 @@ function DeviceFrameAndImg({ projectContent, mobileContentDetailsSection, childr
   const childrenWithProps = React.Children.map(children, child => {
     return cloneElement(child, {
       imageStyles: imageStyles(projectContent?.type).contentImageStyles,
-      type: projectContent?.type
+      showMobileImages: projectContent?.images[0]?.device === 'mobile',
     })
   })
 
   if (projectContent) {
     return (
-      <div
-        className={classes.container}
-        style={mobileContentDetailsSection ?
-          {
-            transform: 'scale(2)',
-            margin: '1em, 0em 1em, 0em'
-          } : {}}
-      >
+      <div>
+        <div
+          className={classes.container}
+          style={mobileContentDetailsSection ?
+            {
+              transform: 'scale(2)',
+              margin: '1em, 0em 1em, 0em'
+            } : {}}
+        >
 
-        {children ? childrenWithProps :
-          <img
-            className={imageStyles(projectContent.type).contentImageStyles}
-            src={projectContent.images && projectContent.images[0].url}
-            alt='application' />
-        }
-        <img className={imageStyles(projectContent.type).frameImgStyles}
-          src={projectContent.type === 'mobile' ? galaxyPhoneFrame : macbookFrame}
-          alt='frame' />
+          {children ? childrenWithProps :
+            <img
+              className={imageStyles(projectContent.type).contentImageStyles}
+              src={projectContent.images && projectContent.images[0]?.url}
+              alt='application' />
+          }
+          <img className={imageStyles(projectContent.type).frameImgStyles}
+            src={projectContent.images[0]?.device === 'mobile' ? galaxyPhoneFrame : macbookFrame}
+            alt='frame' />
+        </div>
       </div>
     )
   }

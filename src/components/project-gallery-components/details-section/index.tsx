@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Grid, Typography, Chip, makeStyles } from '@material-ui/core'
+import { Grid, Typography, makeStyles } from '@material-ui/core'
 import { useSelector } from 'react-redux';
 import TextFormated from './TextFormated';
 import { rootReducerT } from '../../../store';

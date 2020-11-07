@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import { makeStyles } from '@material-ui/core';
 
 function SwipableImages(props) {
-  const { projectContent } = props
+  const { projectContent, showMobileImages } = props
   const classes = useStyles();
 
   const settings = {
@@ -15,6 +15,13 @@ function SwipableImages(props) {
     slidesToScroll: 1,
   }
 
+  const ImageComp = ({imageProps}) => <img
+    key={imageProps.url}
+    className={classes.imageStyles}
+    src={projectContent.images && imageProps.url}
+    alt='application' />
+
+
   if (!projectContent)
     return null
   return (
@@ -22,12 +29,13 @@ function SwipableImages(props) {
       style={{ position: "absolute", width: '4.9em' }}>
       <Slider
         {...settings}>
-        {projectContent.images.map(imageData =>
-          <img
-            key={imageData}
-            className={classes.imageStyles}
-            src={projectContent.images && imageData.url}
-            alt='application' />
+        {projectContent.images.map(imageProps => {
+          if (imageProps.device === 'mobile' && showMobileImages)
+            return <ImageComp imageProps={imageProps} />
+          else if (imageProps.device === 'web' && !showMobileImages)
+            return <ImageComp imageProps={imageProps} />
+          else return null
+        }
         )}
       </Slider>
     </div>

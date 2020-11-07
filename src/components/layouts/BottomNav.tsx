@@ -17,7 +17,6 @@ const useStyles = makeStyles({
 
 function BottomNav() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
   const { pathname } = useLocation()
   const history = useHistory()
 

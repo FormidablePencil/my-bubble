@@ -43,9 +43,17 @@ function MobileContentDetailsSection({ viewingProjects, sortedProjectData }: {
                 style={imageAnim}
                 onClick={() => onClickHandler(0)}
               >
+                {/* 
+                //~ make library
+
+  //~ render frame depending on images[?].device
+  //~ add a switch to toggle between image and desktop images
+*/}
+
                 <DeviceFrameAndImg
                   projectContent={projectDataCollection[currentSubjectViewing]}>
-                  <SwipableImages projectContent={projectDataCollection[currentSubjectViewing]} />
+                  <SwipableImages
+                    projectContent={projectDataCollection[currentSubjectViewing]} />
                 </DeviceFrameAndImg>
               </animated.div>
               :
