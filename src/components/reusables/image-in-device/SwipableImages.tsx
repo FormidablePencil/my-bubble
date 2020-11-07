@@ -3,14 +3,14 @@ import Slider from "react-slick";
 import { makeStyles } from '@material-ui/core';
 
 function SwipableImages(props) {
-  const { projectContent, showMobileImages } = props
+  const { projectContent, showMobileImages, autoPlay } = props
   const classes = useStyles();
 
   const settings = {
     dots: false,
     arrows: false,
     infinite: true,
-    autoplay: true,
+    autoplay: autoPlay ? true : false,
     slidesToShow: 1,
     slidesToScroll: 1,
   }

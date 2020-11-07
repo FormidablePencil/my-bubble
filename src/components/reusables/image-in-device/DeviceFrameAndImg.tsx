@@ -1,9 +1,18 @@
-import React, { cloneElement } from 'react'
+import React, { Children, cloneElement } from 'react'
 import { makeStyles } from '@material-ui/core'
-import { projectDataT } from '../../reducers/projectDataReducer';
+import { projectDataT } from '../../../reducers/projectDataReducer';
 
-function DeviceFrameAndImg({ projectContent, mobileContentDetailsSection, children }:
-  { projectContent: projectDataT, mobileContentDetailsSection?, children?}) {
+function DeviceFrameAndImg({
+  indexOfImage,
+  projectContent,
+  mobileContentDetailsSection,
+  children
+}: {
+  indexOfImage: number,
+  projectContent: projectDataT,
+  mobileContentDetailsSection?,
+  children?
+}) {
   const classes = useStyles();
 
   /* modularize */
@@ -12,13 +21,14 @@ function DeviceFrameAndImg({ projectContent, mobileContentDetailsSection, childr
     const frameImgStyles = type === 'mobile' ? classes.mobileFrame : classes.webFrame
     return { contentImageStyles, frameImgStyles }
   }
-  const macbookFrame = require('../../assets/macbookFrame.png')
-  const galaxyPhoneFrame = require('../../assets/galaxys8Frame.png')
+  const macbookFrame = require('../../../assets/macbookFrame.png')
+  const galaxyPhoneFrame = require('../../../assets/galaxys8Frame.png')
 
-  const childrenWithProps = React.Children.map(children, child => {
+  const childrenWithProps = Children.map(children, child => {
     return cloneElement(child, {
-      imageStyles: imageStyles(projectContent?.type).contentImageStyles,
-      showMobileImages: projectContent?.images[0]?.device === 'mobile',
+      sdf: 'sdf'
+      // imageStyles: imageStyles(projectContent?.type).contentImageStyles,
+      // showMobileImages: projectContent.images[indexOfImage]?.device === 'mobile',
     })
   })
 

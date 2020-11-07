@@ -1,5 +1,4 @@
 import React, { useContext, useRef } from 'react'
-import DeviceFrameAndImg from '../../reusables/DeviceFrameAndImg'
 import { ContainerFullHeight, swipebarHeightInEm } from '../../../styles/materialUiStyles'
 import { Grid, makeStyles, Typography, useMediaQuery } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
@@ -9,6 +8,7 @@ import { SELECTED_SUBJECT } from '../../../actions/types'
 import CompensateForSwipableTabHeight from '../CompensateForSwipableTabHeight'
 import LineSeperator from '../../reusables/LineSeperator'
 import { ContextSwipeBar } from '../../../Routes'
+import ImageInDevice from '../../reusables/image-in-device/ImageInDevice'
 
 //make line text closer together and a little margin between text and images
 
@@ -58,7 +58,12 @@ function MobileProjectGallery({ sortedProjectData }) {
                   </Typography>
                 </Grid>
                 <Grid item onClick={() => onClickItem(index)}>
-                  <DeviceFrameAndImg projectContent={project} />
+                  <ImageInDevice
+                    projectData={project}
+                    indexOfImageIfNotSwipable={0}
+                    swipable={true}
+                    autoPlay={true}
+                  />
                 </Grid>
 
                 {index !== amountOfShowableProjects + 1 &&

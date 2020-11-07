@@ -2,7 +2,7 @@ import { useMediaQuery } from '@material-ui/core'
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { rootReducerT } from '../../store';
-import DeviceFrameAndImg from '../reusables/DeviceFrameAndImg';
+import ImageInDevice from '../reusables/image-in-device/ImageInDevice';
 
 function AbsoluteProjectDemo() {
   const { projectDataCollection } = useSelector((state: rootReducerT) => state)
@@ -24,13 +24,21 @@ function AbsoluteProjectDemo() {
     opacity: sm ? 0 : 1
   }
 
+  const FrameAndImage = () =>
+    <ImageInDevice
+      projectData={projectDataCollection[4]}
+      indexOfImageIfNotSwipable={0}
+      swipable={true}
+      autoPlay={true}
+    />
+
   return (
     <div>
       <div style={leftStyles}>
-        <DeviceFrameAndImg projectContent={projectDataCollection[4]} />
+        <FrameAndImage />
       </div>
       <div style={rightStyles}>
-        <DeviceFrameAndImg projectContent={projectDataCollection[2]} />
+        <FrameAndImage />
       </div>
     </div>
   )

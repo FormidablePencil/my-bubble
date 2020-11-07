@@ -3,7 +3,7 @@ import MobileSwipeToViewContentDetailsBar from './Mobile-SwipeToViewContentDetai
 import { makeStyles, Grid, Typography, Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { rootReducerT } from '../../../../store';
-import DeviceFrameAndImg from '../../../reusables/DeviceFrameAndImg';
+import DeviceFrameAndImg from '../../../reusables/image-in-device/DeviceFrameAndImg';
 import LineSeperator from '../../../reusables/LineSeperator';
 import CompensateForSwipableTabHeight from '../../CompensateForSwipableTabHeight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -11,7 +11,8 @@ import { animated } from 'react-spring';
 import useContentDetailsImageAnim from '../../../../hooks/useContentDetailsImageAnim';
 import { accordionTitleColor } from '../../../../styles/materialUiStyles';
 import { GalleryContentDetailSectionFirst, GalleryContentDetailSectionSecond } from '../../../project-gallery-components/details-section';
-import SwipableImages from '../../../reusables/SwipableImages';
+import SwipableImages from '../../../reusables/image-in-device/SwipableImages';
+import ImageInDevice from '../../../reusables/image-in-device/ImageInDevice';
 
 function MobileContentDetailsSection({ viewingProjects, sortedProjectData }: {
   viewingProjects, sortedProjectData?
@@ -50,11 +51,13 @@ function MobileContentDetailsSection({ viewingProjects, sortedProjectData }: {
   //~ add a switch to toggle between image and desktop images
 */}
 
-                <DeviceFrameAndImg
-                  projectContent={projectDataCollection[currentSubjectViewing]}>
-                  <SwipableImages
-                    projectContent={projectDataCollection[currentSubjectViewing]} />
-                </DeviceFrameAndImg>
+                <ImageInDevice
+                  projectData={sortedProjectData}
+                  indexOfImageIfNotSwipable={0}
+                  swipable={false}
+                />
+
+
               </animated.div>
               :
               <img className={classes.contentImage} src={techImg} alt={title} />
