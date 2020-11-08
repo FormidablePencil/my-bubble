@@ -1,6 +1,8 @@
-import React from 'react'
-import Slider from "react-slick";
+import React, { memo, Suspense } from 'react'
 import { makeStyles } from '@material-ui/core';
+
+const Slider = React.lazy(() => import("react-slick"))
+const MemoizedSlider = memo(Slider)
 
 function SwipableImages(props) {
   const { projectContent, showMobileImages, autoPlay } = props
@@ -15,7 +17,7 @@ function SwipableImages(props) {
     slidesToScroll: 1,
   }
 
-  const ImageComp = ({imageProps}) => <img
+  const ImageComp = ({ imageProps }) => <img
     key={imageProps.url}
     className={classes.imageStyles}
     src={projectContent.images && imageProps.url}
@@ -27,17 +29,19 @@ function SwipableImages(props) {
   return (
     <div
       style={{ position: "absolute", width: '4.9em' }}>
-      <Slider
-        {...settings}>
-        {projectContent.images.map(imageProps => {
-          if (imageProps.device === 'mobile' && showMobileImages)
-            return <ImageComp imageProps={imageProps} />
-          else if (imageProps.device === 'web' && !showMobileImages)
-            return <ImageComp imageProps={imageProps} />
-          else return null
-        }
-        )}
-      </Slider>
+      <Suspense fallback={<div> kayy</div>}>
+        <MemoizedSlider
+          {...settings}>
+          {projectContent.images.map(imageProps => {
+            if (imageProps.device === 'mobile' && showMobileImages)
+              return <ImageComp imageProps={imageProps} />
+            else if (imageProps.device === 'web' && !showMobileImages)
+              return <ImageComp imageProps={imageProps} />
+            else return null
+          }
+          )}
+        </MemoizedSlider>
+      </Suspense>
     </div>
   )
 }

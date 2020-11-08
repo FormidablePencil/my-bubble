@@ -8,7 +8,8 @@ import { AbsoluteSearchIcon } from '../../reusables/AbsoluteIcons';
 
 function SelectableImagesSection({ mobilePlatformImages, onClick }) {
   const [onMouseEnterYoutubeIcon, setOnMouseEnterYoutubeIcon] = useState(null)
-  const { projectDataCollection, currentSubjectViewing } = useSelector((state: rootReducerT) => state)
+  const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)
+  const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
   const { subjectIsSelected, imagesExist } = useValidatorsRedux()
   const classes = useStyles();
 

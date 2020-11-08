@@ -8,12 +8,10 @@ import ImageSelection from './ImageSelection';
 import YoutubeVideoPlayer from './YoutubeVideoPlayer';
 
 function ImageModal() {
-  const {
-    currentSubjectViewing,
-    projectDataCollection,
-    imageModelToggle,
-    modalImageSelected,
-  } = useSelector((state: rootReducerT) => state)
+  const imageModelToggle = useSelector((state: rootReducerT) => state.imageModelToggle)
+  const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)
+  const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
+  const modalImageSelected = useSelector((state: rootReducerT) => state.modalImageSelected)
 
   let platform = projectDataCollection[currentSubjectViewing]
     && projectDataCollection[currentSubjectViewing].type
@@ -22,6 +20,21 @@ function ImageModal() {
   const classes = useStyles();
 
   const toggleImageModel = () => dispatch({ type: TOGGLE_IMAGE_MODAL })
+
+  const ModelItSelf = () => <div className={classes.modalContainer}>
+    <Lightbox
+      hideZoom
+      hideDownload
+      imageBackgroundColor={'rgba(0,0,0,.0)'}
+      large={
+        platform === 'mobile' && modalImageSelected === 0
+          ? require('../../assets/transparent.png')
+          : projectDataCollection[currentSubjectViewing]?.images[modalImageSelected].url
+      }
+      onClose={toggleImageModel}
+    />
+  </div>
+
 
   if (!imageModelToggle)
     return null
@@ -52,19 +65,8 @@ function ImageModal() {
           />
         }
 
-        <div className={classes.modalContainer}>
-          <Lightbox
-            hideZoom
-            hideDownload
-            imageBackgroundColor={'rgba(0,0,0,.0)'}
-            large={
-              platform === 'mobile' && modalImageSelected === 0
-                ? require('../../assets/transparent.png')
-                : projectDataCollection[currentSubjectViewing]?.images[modalImageSelected].url
-            }
-            onClose={toggleImageModel}
-          />
-        </div>
+        <ModelItSelf />
+
       </div >
     )
 }

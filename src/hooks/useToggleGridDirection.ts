@@ -12,7 +12,7 @@ const useToggleGridDirection = () => {
     resizeEventHandler()
     window.addEventListener('resize', resizeEventHandler)
     return () => window.removeEventListener('resize', resizeEventHandler)
-  })
+  }, [])
 }
 
 const updateFlexDirOfContent = () => dispatch => {

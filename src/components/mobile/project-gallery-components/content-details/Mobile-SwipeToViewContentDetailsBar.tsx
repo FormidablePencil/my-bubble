@@ -1,97 +1,103 @@
-import React, { useContext } from 'react'
-import { animated, useSpring } from 'react-spring'
+import React, { memo } from 'react'
+import { animated } from 'react-spring'
 import { makeStyles, Grid, Typography, Button } from '@material-ui/core'
 import { swipebarHeightInEm, swipebarHeightInPx } from '../../../../styles/materialUiStyles';
 import { BsArrowBarDown } from 'react-icons/bs';
 import { IoIosArrowRoundBack } from 'react-icons/io';
-import { ContextSwipeBar } from '../../../../Routes';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { rootReducerT } from '../../../../store';
-import { config } from 'react-spring'
-import { isChrome, isMobile, isFirefox } from "react-device-detect";
+// import { config } from 'react-spring'
+// import { isChrome, isMobile, isFirefox } from "react-device-detect";
+import { TOGGLE_DETAILS_SECTION_MOBILE } from '../../../../actions/types';
 
-const { innerHeight } = window
+// const { innerHeight } = window
 
-function MobileSwipeToViewContentDetailsBar({ children }) {
+const MobileSwipeToViewContentDetailsBar = memo(({ children }) => {
+  const detailsSectionToggleMobile = useSelector((state: rootReducerT) => state.detailsSectionToggleMobile)
   const classes = useStyles();
-  const { detailsSectionToggled, setDetailsSectionToggled } = useContext(ContextSwipeBar)
-  const { currentSubjectViewing, projectDataCollection, } = useSelector((state: rootReducerT) => state)
 
-  const [{ xy }, set] = useSpring(() => ({ xy: [0, 0] })) //~ pass into context
+return (
+  <animated.div
+    style={{
+      //@ts-ignore
+      // transform: xy.interpolate((x, y) => `translateY(${y}px)`)
+    }}
+    className={`
+        ${classes.detailsSectionWrapper} 
+        ${detailsSectionToggleMobile ? 'content-details-closed' : 'content-details-open'}
+      `}
+  >
 
-  const translateSwipeableTab = () => {
-    // let yValue = outerHeight - swipebarHeightInPx /* firefox */
-    let yValue = innerHeight - swipebarHeightInPx /* firefox */
-    if (isChrome && isMobile)
-      yValue = innerHeight + 7
-    if (isFirefox)
-      yValue += 2
+    <ToggleDetailsSectionBtn />
 
-    if (!detailsSectionToggled) {
-      set({ xy: [0, yValue], config: config.stiff })
-    } else {
-      set({ xy: [0, 0], config: config.stiff })
-    }
-    setDetailsSectionToggled(prev => !prev)
-  }
+    <div className={classes.content}>
+      {children}
+    </div>
 
-// replace react-spring with css anim
+    <ToggleDetailsSectionBar />
+  </animated.div>
+)
+})
+
+const ToggleDetailsSectionBtn = memo(() => {
+  const classes = useStyles();
+  const dispatch = useDispatch()
+  return <Button
+    className={classes.backBtn}
+    onClick={() => dispatch({ type: TOGGLE_DETAILS_SECTION_MOBILE })}
+  >
+    <Grid container alignItems='center' className={classes.backBtnContainer}>
+      <IoIosArrowRoundBack color='white' size={35} />
+      <Typography color='textPrimary' className={classes.backBtnText} variant='body1'>back to projects</Typography>
+    </Grid>
+  </Button>
+})
+
+const ToggleDetailsSectionBar = memo(() => {
+  const dispatch = useDispatch()
+  const classes = useStyles();
   return (
-    <animated.div
-      style={{
-        //@ts-ignore
-        transform: xy.interpolate((x, y) => `translateY(${y}px)`)
-      }}
-      className={classes.detailsSectionWrapper}
-    >
-      
-      <Button
-        className={classes.backBtn}
-        onClick={translateSwipeableTab}
+    <div
+      onClick={() => dispatch({ type: TOGGLE_DETAILS_SECTION_MOBILE })}>
+      <Grid container direction='row' alignItems='center' wrap='nowrap'
+        className={classes.swipeBarContainer}
       >
-        <Grid container alignItems='center' className={classes.backBtnContainer}>
-          <IoIosArrowRoundBack color='white' size={35} />
-          <Typography color='textPrimary' className={classes.backBtnText} variant='body1'>back to projects</Typography>
-        </Grid>
-      </Button>
-      <div className={classes.content}>
-        {children}
-      </div>
-      <animated.div
-        onClick={translateSwipeableTab}
-      >
-        <Grid container direction='row' alignItems='center' wrap='nowrap'
-          className={classes.swipeBarContainer}
-        >
-          <Grid item container direction='row' alignItems='center' wrap='nowrap'>
-            <Grid item direction='row' justify='center' container className={classes.sideGrid}>
-              <img
-                draggable="false"
-                className={classes.selectedContentImg}
-                src={
-                  projectDataCollection[currentSubjectViewing]
-                    ? projectDataCollection[currentSubjectViewing].images[0].url
-                    : ''
-                }
-                alt=''
-              />
-            </Grid>
-            <Grid item container direction='column' justify='center' alignItems='center'>
-              <BsArrowBarDown color='white' />
-              <div>
-                <Typography className={classes.disableSelecting} color='textPrimary' variant='caption'>
-                  Press a project to see more details
-          </Typography>
-              </div>
-            </Grid>
-            <Grid item className={classes.sideGrid}></Grid>
+        <Grid item container direction='row' alignItems='center' wrap='nowrap'>
+          <Grid item direction='row' justify='center' container className={classes.sideGrid}>
+            <AppLogo />
           </Grid>
+          <Grid item container direction='column' justify='center' alignItems='center'>
+            <BsArrowBarDown color='white' />
+            <div>
+              <Typography className={classes.disableSelecting} color='textPrimary' variant='caption'>
+                Press a project to see more details
+            </Typography>
+            </div>
+          </Grid>
+          <Grid item className={classes.sideGrid}></Grid>
         </Grid>
-      </animated.div>
-    </animated.div>
+      </Grid>
+    </div>
+  )
+})
+
+const AppLogo = () => {
+  const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)
+  const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
+  const classes = useStyles();
+  return (
+    <img
+      draggable="false"
+      className={classes.selectedContentImg}
+      src={
+        projectDataCollection[currentSubjectViewing]
+          ? projectDataCollection[currentSubjectViewing].images[0].url
+          : ''
+      }
+      alt=''
+    />
   )
 }
-
 
 const useStyles = makeStyles((theme) => ({
   backBtnContainer: {

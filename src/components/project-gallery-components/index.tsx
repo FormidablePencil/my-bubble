@@ -7,7 +7,7 @@ import GalleryContentVisualSection from './visual-section'
 function ProjectGallery() {
   return (
     <div>
-      {/* <PageTemplate
+      <PageTemplate
         contentVisualSection={
           <GalleryContentVisualSection />
         }
@@ -20,7 +20,7 @@ function ProjectGallery() {
         browsingSection={
           <GalleryBrowsingSection />
         }
-      /> */}
+      />
     </div>
   )
 }

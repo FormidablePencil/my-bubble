@@ -8,8 +8,8 @@ import { makeStyles, useMediaQuery } from "@material-ui/core";
 import { Link } from 'react-router-dom'
 
 const ReactSlider = () => {
-  const { techDataCollection } = useSelector((state: rootReducerT) => state)
-  const sm = useMediaQuery((theme: any) => theme.breakpoints.down('sm'))
+  const md = useMediaQuery((theme: any) => theme.breakpoints.up('md'))
+  const techDataCollection = useSelector((state: rootReducerT) => state.techDataCollection)
   const classes = useStyles();
 
   const settings = {
@@ -17,30 +17,28 @@ const ReactSlider = () => {
     infinite: true,
     autoplay: true,
     speed: 1300,
-    slidesToShow: sm ? 3 : 6,
     slidesToScroll: 3,
   }
 
   return (
     <Link to='/technologies'>
       <Slider
+        slidesToShow={md ? 6 : 3}
         {...settings}>
-          {
-            techDataCollection.map((tech, index) =>
-              <div
-                key={tech._id}
-                className={classes.techContainer}
-                id='hoverEffect'
-              >
-                <img className={classes.techImg} src={tech.image} alt={tech.technology} />
-              </div>
-            )
-          }
+        {techDataCollection.map((tech, index) =>
+          <div
+            key={tech._id}
+            className={classes.techContainer}
+            id='hoverEffect'
+          >
+            <img className={classes.techImg} src={tech.image} alt={tech.technology} />
+          </div>
+        )}
+        {/* <MapTech /> */}
       </Slider>
     </Link>
   );
 }
-
 
 const useStyles = makeStyles(() => ({
   techContainer: {

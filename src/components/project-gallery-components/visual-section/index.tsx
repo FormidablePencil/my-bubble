@@ -7,7 +7,8 @@ import { rootReducerT } from '../../../store'
 import { MODAL_IMAGE_SELECTED } from '../../../actions/types'
 
 export const useValidatorsRedux = () => {
-  const { projectDataCollection, currentSubjectViewing } = useSelector((state: rootReducerT) => state)
+  const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)
+  const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
   const subjectIsSelected = typeof currentSubjectViewing === 'number'
   const imagesExist = projectDataCollection[currentSubjectViewing]
   let isMobile = false

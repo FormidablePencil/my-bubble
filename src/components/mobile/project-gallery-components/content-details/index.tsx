@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MobileSwipeToViewContentDetailsBar from './Mobile-SwipeToViewContentDetailsBar'
 import { makeStyles, Grid, Typography, Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core';
 import { useSelector } from 'react-redux';
@@ -6,17 +6,25 @@ import { rootReducerT } from '../../../../store';
 import LineSeperator from '../../../reusables/LineSeperator';
 import CompensateForSwipableTabHeight from '../../CompensateForSwipableTabHeight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { animated } from 'react-spring';
-import useContentDetailsImageAnim from '../../../../hooks/useContentDetailsImageAnim';
 import { accordionTitleColor } from '../../../../styles/materialUiStyles';
 import { GalleryContentDetailSectionFirst, GalleryContentDetailSectionSecond } from '../../../project-gallery-components/details-section';
-import ImageInDevice from '../../../reusables/image-in-device/ImageInDevice';
+import ProjectContentImage from './project-content-image/Index';
 
 function MobileContentDetailsSection() {
+  const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)
+  const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
   const classes = useStyles();
-  const { currentSubjectViewing, projectDataCollection, } = useSelector((state: rootReducerT) => state)
 
-  const { accordionOpen, imageAnim, onClickHandler } = useContentDetailsImageAnim()
+  // const { accordionOpen, imageAnim, onClickHandler } = useContentDetailsImageAnim()
+  const [accordionOpen, setAccordionOpen] = useState(null)
+
+  const onClickHandler = (num) => {
+    setAccordionOpen(prev => {
+      if (prev === num) return 0
+      else return num
+    })
+  }
+
 
   return (
     <MobileSwipeToViewContentDetailsBar>
@@ -30,25 +38,8 @@ function MobileContentDetailsSection() {
 
         {/* //~ ===== images section */}
         <Grid item container justify='center' className={classes.imageContainer}>
-          <animated.div
-            style={imageAnim}
-            onClick={() => onClickHandler(0)}
-          >
-            {/* 
-                //~ make library
-
-  //~ render frame depending on images[?].device
-  //~ add a switch to toggle between image and desktop images
-*/}
-
-            <ImageInDevice
-              projectData={projectDataCollection[currentSubjectViewing]}
-              indexOfImageIfNotSwipable={1}
-              swipable={true}
-              autoPlay={true}
-            />
-
-          </animated.div>
+        <ProjectContentImage accordionOpen={accordionOpen} onClickHandler={onClickHandler} />
+ 
         </Grid>
 
         {/* //~ ======= details section */}

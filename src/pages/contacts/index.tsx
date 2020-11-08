@@ -7,14 +7,10 @@ import AbsoluteProjectDemo from '../../components/absolute-project-demo';
 
 function ContactsPage() {
   const classes = useStyles();
+  let history = useHistory();
   /* Contacts: github, linkedIn & email. Get to know me: self presentation site link. */
 
-  let history = useHistory();
-
-  const handleCallToAction = () => {
-    history.push('/projects')
-  }
-
+  const handleCallToAction = () => history.push('/projects')
 
   return (
     <div className={classes.overflowX}>

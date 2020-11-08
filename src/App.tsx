@@ -10,12 +10,15 @@ function App() {
   const store = configureStore()
 
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={customTheme}>
+    <ThemeProvider theme={customTheme}>
+      <Provider store={store}>
         <DemoRoutes />
-      </ThemeProvider>
-    </Provider>
+      </Provider>
+    </ThemeProvider>
   );
 }
 
 export default App;
+
+//* lazy load images and large content. Remove any unnecessary rerenders
+//* replace material-ui's useMediaQuery with another library

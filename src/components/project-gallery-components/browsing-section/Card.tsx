@@ -17,7 +17,7 @@ const Card = (
     techIndexInCollection,
     trimTech
   }) => {
-  const { contentDetailSectionIsClosed } = useSelector((state: rootReducerT) => state)
+  const contentDetailSectionIsClosed = useSelector((state: rootReducerT) => state.contentDetailSectionIsClosed)
   const classes = useStyles();
   const dispatch = useDispatch()
 

@@ -22,7 +22,7 @@ function useOnScreen(ref, rootMargin = '0px') {
       // eslint-disable-next-line
       observer.unobserve(ref.current);
     };
-  }); // Empty array ensures that effect is only run on mount and unmount
+  }, []); // Empty array ensures that effect is only run on mount and unmount
 
   return isIntersecting;
 }

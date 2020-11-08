@@ -10,7 +10,7 @@ import DropdownBtn from './DropdownBtn';
 import { useLocation } from 'react-router-dom';
 
 function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatureSection, browsingSection }) {
-  const { contentDetailSectionIsClosed } = useSelector((state: rootReducerT) => state)
+  const contentDetailSectionIsClosed = useSelector((state: rootReducerT) => state.contentDetailSectionIsClosed)
   const classes = useStyles();
   const dispatch = useDispatch()
   const { pathname } = useLocation()

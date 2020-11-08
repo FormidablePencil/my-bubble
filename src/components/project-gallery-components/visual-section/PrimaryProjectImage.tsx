@@ -8,7 +8,8 @@ import { AbsoluteYoutubePlayIcon } from '../../reusables/AbsoluteIcons';
 
 
 function PrimaryProjectImage() {
-  const { projectDataCollection, currentSubjectViewing } = useSelector((state: rootReducerT) => state)
+  const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)
+  const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
   const [onMouseEnterYoutubeIcon, setOnMouseEnterYoutubeIcon] = useState(false)
   const classes = useStyles();
 

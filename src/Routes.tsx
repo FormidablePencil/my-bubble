@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React from 'react'
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import useFetchAllPortfolioData from './hooks/useFetchAllPortfolioData';
 import TechnologiesPage from './pages/tech-gallery';
@@ -11,14 +11,13 @@ import ImageModal from './components/image-modal/index';
 import BottomNav from './components/layouts/BottomNav';
 import ProjectsGalleryPage from './pages/project-gallery';
 import useKeyTrigger from './hooks/useKeyTrigger';
-
-export const ContextSwipeBar: any = createContext({ });
+import { navbarHeight } from './styles/materialUiStyles';
 
 export function DemoRoutes() {
   const classes = useStyles();
-  const xs = useMediaQuery((theme: any) => theme.breakpoints.down('xs'));
-  const height = useFullHeightResponsive()
-  const [detailsSectionToggled, setDetailsSectionToggled] = useState(false)
+  const xs = useMediaQuery('(min-width:600px)');
+
+  const height = xs ? '100vh' : `calc(100vh - ${navbarHeight})`
 
   useFetchAllPortfolioData()
   useKeyTrigger()
@@ -29,40 +28,37 @@ export function DemoRoutes() {
   }
 
   return (
-    <ContextSwipeBar.Provider value={{
-      detailsSectionToggled, setDetailsSectionToggled
-    }}>
-      <div
-        className={classes.container}
-      >
 
-        <ImageModal />
+    <div
+      className={classes.container}
+    >
 
-        <Router>
+      <ImageModal />
 
-          {!xs && <Navbar />}
+      <Router>
 
-          <div
-            style={mobileHeightStyles}
-            className={classes.contentContainer}>
+        {!xs && <Navbar />}
 
-            <Switch>
-              <Route exact path="/">
-                <ContactsPage />
-              </Route>
-              <Route path="/projects">
-                <ProjectsGalleryPage />
-              </Route>
-              <Route path="/technologies">
-                <TechnologiesPage />
-              </Route>
-            </Switch>
+        <div
+          style={mobileHeightStyles}
+          className={classes.contentContainer}>
 
-            {xs && <BottomNav />}
-          </div>
-        </Router>
-      </div>
-    </ContextSwipeBar.Provider>
+          <Switch>
+            <Route exact path="/">
+              <ContactsPage />
+            </Route>
+            <Route path="/projects">
+              <ProjectsGalleryPage />
+            </Route>
+            <Route path="/technologies">
+              <TechnologiesPage />
+            </Route>
+          </Switch>
+
+          {xs && <BottomNav />}
+        </div>
+      </Router>
+    </div>
   )
 }
 

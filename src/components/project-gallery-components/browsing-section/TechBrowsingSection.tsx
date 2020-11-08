@@ -1,28 +1,27 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
 import { rootReducerT } from '../../../store';
 import { makeStyles, Grid } from '@material-ui/core';
 
-function TechBrowsingSection({ showDetailsSection }: { showDetailsSection?}) {
-  const { techDataCollection } = useSelector((state: rootReducerT) => state)
+const TechBrowsingSection = memo(() => {
+  const techDataCollection = useSelector((state: rootReducerT) => state.techDataCollection)
   const classes = useStyles();
+
+  const TechItemContainer = ({ tech }: { tech }) =>
+    <Grid item>
+      <div className={classes.techContainer} id='hoverEffect'>
+        <img className={classes.techImg} src={tech.image} alt={tech.technology} />
+      </div>
+    </Grid>
 
   return (
     <Grid container justify='center'>
-      {techDataCollection.map((tech, index) =>
-        <Grid item>
-          <div
-            key={tech._id}
-            className={classes.techContainer}
-            id='hoverEffect'
-          >
-            <img className={classes.techImg} src={tech.image} alt={tech.technology} />
-          </div>
-        </Grid>
+      {techDataCollection.map((tech) =>
+        <TechItemContainer key={tech._id} tech={tech} />
       )}
     </Grid>
   )
-}
+})
 
 const useStyles = makeStyles(() => ({
   techContainer: {

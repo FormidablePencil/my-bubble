@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { Grid, Typography, makeStyles } from '@material-ui/core'
 import { useSelector } from 'react-redux';
 import TextFormated from './TextFormated';
@@ -8,7 +8,7 @@ import capitalize from 'lodash/capitalize';
 
 const GalleryContentDetailsSection = () => {
   const classes = useStyles();
-  const { contentDetailsSectionDirIsRow } = useSelector((state: rootReducerT) => state)
+  const contentDetailsSectionDirIsRow = useSelector((state: rootReducerT) => state.contentDetailsSectionDirIsRow)
 
   return (
     <Grid
@@ -28,13 +28,11 @@ const GalleryContentDetailsSection = () => {
 
 function GalleryContentDetailSectionFirst() {
   const classes = useStyles();
-  const {
-    contentDetailsSectionDirIsRow,
-    currentSubjectViewing,
-    projectDataCollection
-  } = useSelector((state: rootReducerT) => state)
-  const [showLine, setShowLine] = useState(false)
+  const contentDetailsSectionDirIsRow = useSelector((state: rootReducerT) => state.contentDetailsSectionDirIsRow)
+  const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
+  const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)
 
+  const [showLine, setShowLine] = useState(false)
 
   const toggleShowLine = (ref) => {
     if (ref) {
@@ -101,14 +99,12 @@ function GalleryContentDetailSectionFirst() {
 
 
 
-const GalleryContentDetailSectionSecond = () => {
+const GalleryContentDetailSectionSecond = memo(() => {
   const classes = useStyles();
   const [showLine, setShowLine] = useState(false)
-  const {
-    contentDetailsSectionDirIsRow,
-    currentSubjectViewing,
-    projectDataCollection
-  } = useSelector((state: rootReducerT) => state)
+  const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
+  const contentDetailsSectionDirIsRow = useSelector((state: rootReducerT) => state.contentDetailsSectionDirIsRow)
+  const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)
 
   const toggleShowLine = (ref) => {
     if (ref) {
@@ -191,7 +187,7 @@ const GalleryContentDetailSectionSecond = () => {
       </Grid>
     </Grid>
   )
-}
+})
 
 
 const useStyles = makeStyles((theme) => ({

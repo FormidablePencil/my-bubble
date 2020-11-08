@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { rootReducerT } from '../../store'
 
 const YoutubeVideoPlayer = ({ youtubeVideoUrl }) => {
-  const { modalImageSelected } = useSelector((state: rootReducerT) => state)
+  const modalImageSelected = useSelector((state: rootReducerT) => state.modalImageSelected)
   const classes = useStyles();
 
   if (modalImageSelected !== 0)

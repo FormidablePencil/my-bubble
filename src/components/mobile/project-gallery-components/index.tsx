@@ -1,29 +1,39 @@
-import React, { useContext, useRef } from 'react'
+import React, { useMemo, useRef } from 'react'
 import { ContainerFullHeight, swipebarHeightInEm } from '../../../styles/materialUiStyles'
 import { Grid, makeStyles, Typography, useMediaQuery } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import { rootReducerT } from '../../../store'
 import MobileContentDetailsSection from './content-details'
-import { SELECTED_SUBJECT } from '../../../actions/types'
+import { SELECTED_SUBJECT, TOGGLE_DETAILS_SECTION_MOBILE } from '../../../actions/types'
 import CompensateForSwipableTabHeight from '../CompensateForSwipableTabHeight'
 import LineSeperator from '../../reusables/LineSeperator'
-import { ContextSwipeBar } from '../../../Routes'
 import ImageInDevice from '../../reusables/image-in-device/ImageInDevice'
 
 function MobileProjectGallery() {
-  const classes = useStyles();
-  const { setDetailsSectionToggled } = useContext(ContextSwipeBar)
-  const { projectDataCollection } = useSelector((state: rootReducerT) => state)
   const indexOfItemRendered: any = useRef(null)
-  const amountOfShowableProjects = projectDataCollection.filter(item => item.showInPortfolio && item).length
-  const xs = useMediaQuery((theme: any) => theme.breakpoints.down('xs'));
+  const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
+  const amountOfShowableProjects = useMemo(() =>
+    projectDataCollection.filter(item =>
+      item.showInPortfolio && item).length, [projectDataCollection])
 
+  const xs = useMediaQuery((theme: any) => theme.breakpoints.down('xs'));
+  const classes = useStyles();
   const dispatch = useDispatch()
 
   const onClickItem = (index) => {
     dispatch({ type: SELECTED_SUBJECT, payload: index })
-    setDetailsSectionToggled(true)
+    dispatch({ type: TOGGLE_DETAILS_SECTION_MOBILE })
   }
+
+  const LineSeperatorComp = ({ index }) => <>
+    {index !== amountOfShowableProjects + 1 &&
+      <LineSeperator
+        overrideStyles={{
+          margin: '3em 0em 3em 0em',
+          alignSelf: indexOfItemRendered.current % 2 === 0 ? 'flex-start' : 'flex-end',
+        }} />
+    }
+  </>
 
   return (
     <ContainerFullHeight
@@ -60,13 +70,9 @@ function MobileProjectGallery() {
                   />
                 </Grid>
 
-                {index !== amountOfShowableProjects + 1 &&
-                  <LineSeperator
-                    overrideStyles={{
-                      margin: '3em 0em 3em 0em',
-                      alignSelf: indexOfItemRendered.current % 2 === 0 ? 'flex-start' : 'flex-end',
-                    }} />
-                }
+
+                <LineSeperatorComp index={index} />
+
 
               </Grid>
             )

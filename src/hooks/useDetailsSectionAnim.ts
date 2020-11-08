@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { rootReducerT } from "../store"
 
 function useDetailsSectionAnim() {
-  const { contentDetailSectionIsClosed } = useSelector((state: rootReducerT) => state)
+  const contentDetailSectionIsClosed = useSelector((state: rootReducerT) => state.contentDetailSectionIsClosed)
 
   const browsingSectionRef: any = useRef(null)
 

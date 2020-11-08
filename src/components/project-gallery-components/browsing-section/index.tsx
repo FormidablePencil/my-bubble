@@ -6,7 +6,7 @@ import { rootReducerT } from '../../../store';
 
 function GalleryBrowsingSection() {
   const classes = useStyles();
-  const { projectDataCollection } = useSelector((state: rootReducerT) => state)
+  const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
 
 
   return (

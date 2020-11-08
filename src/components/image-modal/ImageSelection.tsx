@@ -7,11 +7,10 @@ import { AbsoluteYoutubePlayIcon } from '../reusables/AbsoluteIcons';
 
 function ImageSelection({ passedDownClasses }) {
   const [onMouseEnterYoutubeIcon, setOnMouseEnterYoutubeIcon] = useState(false)
-  const {
-    currentSubjectViewing,
-    projectDataCollection,
-    modalImageSelected,
-  } = useSelector((state: rootReducerT) => state)
+  const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)
+  const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
+  const modalImageSelected = useSelector((state: rootReducerT) => state.modalImageSelected)
+
 
   const classes = useStyles();
   const dispatch = useDispatch()
