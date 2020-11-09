@@ -6,9 +6,10 @@ import { rootReducerT } from '../../../store';
 import TechLogo from '../../reusables/TechLogo';
 import capitalize from 'lodash/capitalize';
 
-const GalleryContentDetailsSection = () => {
+const GalleryContentDetailsSection = memo(() => {
   const classes = useStyles();
   const contentDetailsSectionDirIsRow = useSelector((state: rootReducerT) => state.contentDetailsSectionDirIsRow)
+  console.log(contentDetailsSectionDirIsRow, 'wttf');
 
   return (
     <Grid
@@ -22,7 +23,7 @@ const GalleryContentDetailsSection = () => {
       <GalleryContentDetailSectionSecond />
     </Grid>
   )
-}
+})
 
 
 
@@ -138,7 +139,8 @@ const GalleryContentDetailSectionSecond = memo(() => {
 
         <>
           {projectDataCollection[currentSubjectViewing]?.links &&
-            Object.keys(projectDataCollection[currentSubjectViewing]?.links).map(key => projectDataCollection[currentSubjectViewing]?.links[key] &&
+            Object.keys(projectDataCollection[currentSubjectViewing]?.links).map(key =>
+              projectDataCollection[currentSubjectViewing]?.links[key] &&
               <div key={key}>
                 <Typography variant='h6'>
                   {capitalize(key)} repo

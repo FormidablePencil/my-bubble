@@ -24,6 +24,7 @@ function ImageSelection({ passedDownClasses }) {
     <div>
       {projectDataCollection[currentSubjectViewing].images.map((imageProps, index) =>
         <Grid
+          key={imageProps.url}
           container
           direction='row'
           onClick={() => onClickImage(index)}

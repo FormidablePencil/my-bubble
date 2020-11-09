@@ -6,7 +6,6 @@ import Navbar from './components/layouts/Navbar';
 import ContactsPage from './pages/contacts';
 import { makeStyles, useMediaQuery } from '@material-ui/core';
 import { tabEffectShadowProp } from './styles/materialUiStyles';
-import useFullHeightResponsive from './hooks/useFullHeightResponsive';
 import ImageModal from './components/image-modal/index';
 import BottomNav from './components/layouts/BottomNav';
 import ProjectsGalleryPage from './pages/project-gallery';
@@ -15,7 +14,7 @@ import { navbarHeight } from './styles/materialUiStyles';
 
 export function DemoRoutes() {
   const classes = useStyles();
-  const xs = useMediaQuery('(min-width:600px)');
+  const xs = useMediaQuery('(max-width:600px)');
 
   const height = xs ? '100vh' : `calc(100vh - ${navbarHeight})`
 
@@ -29,19 +28,13 @@ export function DemoRoutes() {
 
   return (
 
-    <div
-      className={classes.container}
-    >
-
+    <div className={classes.container}>
       <ImageModal />
-
       <Router>
 
         {!xs && <Navbar />}
 
-        <div
-          style={mobileHeightStyles}
-          className={classes.contentContainer}>
+        <div style={mobileHeightStyles} className={classes.contentContainer}>
 
           <Switch>
             <Route exact path="/">

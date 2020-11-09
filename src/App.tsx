@@ -21,4 +21,4 @@ function App() {
 export default App;
 
 //* lazy load images and large content. Remove any unnecessary rerenders
-//* replace material-ui's useMediaQuery with another library
+//* replace material-ui's useMediaQuery with another library. There are a few places where css media-queries are not enough

@@ -1,6 +1,6 @@
-import { useMediaQuery } from '@material-ui/core'
 import React from 'react'
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from '@material-ui/core'
 import { rootReducerT } from '../../store';
 import ImageInDevice from '../reusables/image-in-device/ImageInDevice';
 

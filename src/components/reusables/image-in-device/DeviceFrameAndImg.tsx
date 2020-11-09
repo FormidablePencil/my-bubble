@@ -1,6 +1,7 @@
-import React, { Children, cloneElement } from 'react'
+import React, { Children, cloneElement, Suspense } from 'react'
 import { makeStyles } from '@material-ui/core'
 import { projectDataT } from '../../../reducers/projectDataReducer';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 function DeviceFrameAndImg({
   indexOfImage,
@@ -44,14 +45,17 @@ function DeviceFrameAndImg({
         >
 
           {children ? childrenWithProps :
-            <img
+            <LazyLoadImage
               className={imageStyles(projectContent.type).contentImageStyles}
               src={projectContent.images && projectContent.images[indexOfImage]?.url}
-              alt='application' />
+              alt='application'
+            />
           }
-          <img className={imageStyles(projectContent.type).frameImgStyles}
-            src={projectContent.images?.[indexOfImage]?.device === 'mobile' ? galaxyPhoneFrame : macbookFrame}
-            alt='frame' />
+          <Suspense fallback={<div>Loading...</div>}>
+            <img className={imageStyles(projectContent.type).frameImgStyles}
+              src={projectContent.images?.[indexOfImage]?.device === 'mobile' ? galaxyPhoneFrame : macbookFrame}
+              alt='frame' />
+          </Suspense>
         </div>
       </div>
     )
@@ -86,6 +90,7 @@ const useStyles = makeStyles(() => ({
     objectFit: 'contain',
   },
   webFrame: {
+    height: '10em',
     width: '15em',
     objectFit: 'contain',
     position: 'relative',

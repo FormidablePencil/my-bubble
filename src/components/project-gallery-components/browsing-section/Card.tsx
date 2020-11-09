@@ -69,8 +69,8 @@ const Card = (
           >
             <Typography variant='h6'>
               Brief description:
-                </Typography>
-            <Typography className={classes.briefDescription} variant='body1'>
+            </Typography>
+            <div className={classes.briefDescription}>
               <LinesEllipsis
                 text={projectContent.description}
                 maxLine='5'
@@ -78,7 +78,7 @@ const Card = (
                 trimRight
                 basedOn='letters'
               />
-            </Typography>
+            </div>
           </Grid>
 
           <Grid
@@ -166,8 +166,13 @@ const useStyles = makeStyles((theme) => ({
     flex: 2
   },
   briefDescription: {
+    letterSpacing: '.05em',
+    lineHeight: '1.4em',
+    fontFamily: 'JosefinSans-Medium',
+    // fontFamily: theme.typography.fontFamily,
+    color: theme.palette.primary[800],
     marginLeft: '1em',
-    fontSize: '.8em',
+    fontSize: '.9em',
   },
 }));
 

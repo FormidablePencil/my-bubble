@@ -21,7 +21,7 @@ function GalleryBrowsingSection() {
         if (project.technologies.length >= 4) trimTech = true
         if (!project.showInPortfolio) return null
         return (
-          <Grid item>
+          <Grid item key={project._id}>
             <Card
               trimTech={trimTech}
               projectContent={project}
