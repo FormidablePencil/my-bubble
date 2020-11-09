@@ -8,7 +8,7 @@ import CompensateForSwipableTabHeight from '../../CompensateForSwipableTabHeight
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { accordionTitleColor } from '../../../../styles/materialUiStyles';
 import { GalleryContentDetailSectionFirst, GalleryContentDetailSectionSecond } from '../../../project-gallery-components/details-section';
-import ProjectContentImage from './project-content-image/Index';
+import ProjectContentImage from './project-content-image';
 
 function MobileContentDetailsSection() {
   const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)

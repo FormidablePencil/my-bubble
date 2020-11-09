@@ -7,7 +7,7 @@ import MobileContentDetailsSection from './content-details'
 import { SELECTED_SUBJECT, TOGGLE_DETAILS_SECTION_MOBILE } from '../../../actions/types'
 import CompensateForSwipableTabHeight from '../CompensateForSwipableTabHeight'
 import LineSeperator from '../../reusables/LineSeperator'
-import ImageInDevice from '../../reusables/image-in-device/ImageInDevice'
+import ImageInDevice from '../../reusables/image-in-device'
 
 function MobileProjectGallery() {
   const indexOfItemRendered: any = useRef(null)

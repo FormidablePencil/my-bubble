@@ -6,7 +6,7 @@ import { SELECTED_SUBJECT, TOGGLE_CONTENT_DETAILS_SECTION } from '../../../actio
 import LinesEllipsis from 'react-lines-ellipsis'
 import TechLogo from '../../reusables/TechLogo';
 import { projectDataT } from '../../../reducers/projectDataReducer';
-import ImageInDevice from '../../reusables/image-in-device/ImageInDevice';
+import ImageInDevice from '../../reusables/image-in-device';
 
 const Card = (
   { projectContent,

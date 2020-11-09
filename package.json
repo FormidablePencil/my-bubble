@@ -72,7 +72,9 @@
     "**/@typescript-eslint/parser": "^4.1.1"
   },
   "bit": {
-    "env": {},
+    "env": {
+      "compiler": "bit.envs/compilers/react-typescript@3.1.61"
+    },
     "componentsDefaultDirectory": "components/{name}",
     "packageManager": "yarn"
   }

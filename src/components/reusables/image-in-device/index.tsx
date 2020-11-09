@@ -1,5 +1,4 @@
 import React from 'react'
-import { projectDataT } from '../../../reducers/projectDataReducer'
 import DeviceFrameAndImg from './DeviceFrameAndImg'
 import SwipableImages from './SwipableImages'
 
@@ -9,7 +8,7 @@ function ImageInDevice({
   autoPlay,
   indexOfImageIfNotSwipable,
 }: {
-  projectData: projectDataT,
+  projectData: projectDataTBit,
   swipable: boolean,
   autoPlay?: boolean,
   indexOfImageIfNotSwipable: number
@@ -28,4 +27,30 @@ function ImageInDevice({
     </DeviceFrameAndImg>
   )
 }
+
+export interface projectDataTBit {
+  title: string
+  description: string
+  links: {
+    client?: string
+    server?: string
+    cms?: string
+    blog?: string
+  }
+  status: number
+  technologies: []
+  type: string
+  _id: number
+  showInPortfolio: boolean
+  images: {
+    [index: number]: {
+      url: string
+      device: string
+    }
+    map?: any
+    length?: any
+  }
+  video: string
+}
+
 export default ImageInDevice

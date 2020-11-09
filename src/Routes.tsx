@@ -38,13 +38,19 @@ export function DemoRoutes() {
 
           <Switch>
             <Route exact path="/">
-              <ContactsPage />
+              <div className='page-transition-anim'>
+                <ContactsPage />
+              </div>
             </Route>
             <Route path="/projects">
-              <ProjectsGalleryPage />
+              <div className='page-transition-anim'>
+                <ProjectsGalleryPage />
+              </div>
             </Route>
             <Route path="/technologies">
-              <TechnologiesPage />
+              <div className='page-transition-anim'>
+                <TechnologiesPage />
+              </div>
             </Route>
           </Switch>
 
