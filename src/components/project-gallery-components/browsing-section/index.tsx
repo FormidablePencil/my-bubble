@@ -41,6 +41,7 @@ export default GalleryBrowsingSection
 
 const useStyles = makeStyles(() => ({
   container: {
+    overflowX: 'hidden',
     marginTop: '1em',
     marginBottom: '1em',
   }

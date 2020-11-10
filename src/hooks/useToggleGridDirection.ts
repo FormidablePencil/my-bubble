@@ -1,18 +1,24 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { SET_FLEX_DIR_OF_CONTENT_DETAILS } from "../actions/types"
 
 const useToggleGridDirection = () => {
+  const [smScreen, setSmScreen] = useState(false)
   const dispatch = useDispatch()
 
   useEffect(() => {
     const resizeEventHandler = () => {
       dispatch(updateFlexDirOfContent())
+      if (window.innerWidth < 1300) {
+        setSmScreen(true)
+      }
     }
     resizeEventHandler()
     window.addEventListener('resize', resizeEventHandler)
     return () => window.removeEventListener('resize', resizeEventHandler)
   }, [])
+
+  return {smScreen}
 }
 
 const updateFlexDirOfContent = () => dispatch => {

@@ -23,6 +23,7 @@ const ReactSlider = () => {
   return (
     <Link to='/technologies'>
       <Slider
+        className='long-fade'
         slidesToShow={md ? 6 : 3}
         {...settings}>
         {techDataCollection.map((tech, index) =>

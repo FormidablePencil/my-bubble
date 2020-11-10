@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Grid, makeStyles, Typography } from '@material-ui/core'
 import staticData from '../../staticData'
 import { useHistory } from 'react-router-dom';
@@ -13,7 +13,10 @@ function ContactsPage() {
   const handleCallToAction = () => history.push('/projects')
 
   return (
-    <div className={classes.overflowX}>
+    <div className={`
+      ${classes.overflowX}
+      page-fade
+    `}>
       <AbsoluteProjectDemo />
       <div className={classes.container}>
         <Grid

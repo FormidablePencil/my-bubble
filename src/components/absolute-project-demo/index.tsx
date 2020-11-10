@@ -34,10 +34,10 @@ function AbsoluteProjectDemo() {
 
   return (
     <div>
-      <div style={leftStyles}>
+      <div className='long-fade' style={leftStyles}>
         {mdUp && <FrameAndImage />}
       </div>
-      <div style={rightStyles}>
+      <div className='long-fade' style={rightStyles}>
         {mdUp && <FrameAndImage />}
       </div>
     </div>

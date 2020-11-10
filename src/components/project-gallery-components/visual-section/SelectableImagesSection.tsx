@@ -1,7 +1,6 @@
 import { Grid, makeStyles } from '@material-ui/core'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
-import { useValidatorsRedux } from '.';
 import { rootReducerT } from '../../../store';
 import { imageBoardColor } from '../../../styles/materialUiStyles';
 import { AbsoluteSearchIcon } from '../../reusables/AbsoluteIcons';
@@ -10,7 +9,8 @@ function SelectableImagesSection({ mobilePlatformImages, onClick }) {
   const [onMouseEnterYoutubeIcon, setOnMouseEnterYoutubeIcon] = useState(null)
   const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)
   const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
-  const { subjectIsSelected, imagesExist } = useValidatorsRedux()
+  const subjectIsSelected = typeof currentSubjectViewing === 'number'
+  const imagesExist = projectDataCollection[currentSubjectViewing]
   const classes = useStyles();
 
   return (

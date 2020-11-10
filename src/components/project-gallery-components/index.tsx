@@ -6,7 +6,7 @@ import GalleryContentVisualSection from './visual-section'
 
 function ProjectGallery() {
   return (
-    <div>
+    <div className='not-visible-on-smDown'>
       <PageTemplate
         contentVisualSection={
           <GalleryContentVisualSection />

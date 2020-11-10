@@ -1,31 +1,58 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grid, makeStyles, Container } from '@material-ui/core'
 import { navbarHeight } from '../../styles/materialUiStyles';
-import useDetailsSectionAnim from '../../hooks/useDetailsSectionAnim';
 import { animated } from 'react-spring';
 import { useDispatch, useSelector } from 'react-redux';
-import { TOGGLE_CONTENT_DETAILS_SECTION, TOGGLE_IMAGE_MODAL } from '../../actions/types';
+import { CLOSE_CONTENT_DETAILS_SECTION, TOGGLE_CONTENT_DETAILS_SECTION, TOGGLE_IMAGE_MODAL } from '../../actions/types';
 import { rootReducerT } from '../../store';
 import DropdownBtn from './DropdownBtn';
 import { useLocation } from 'react-router-dom';
 
 function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatureSection, browsingSection }) {
   const contentDetailSectionIsClosed = useSelector((state: rootReducerT) => state.contentDetailSectionIsClosed)
+  const [contentDetailsClosed, setContentDetailsClosed] = useState<any>(null)
   const classes = useStyles();
   const dispatch = useDispatch()
   const { pathname } = useLocation()
-  const {
-    animToggleAppearenceOfDetailsSection,
-    browsingSectionRef,
-  } = useDetailsSectionAnim()
 
-  
-  const onClickContentVisualSection = () =>
+  const animToggleAppearenceOfDetailsSection = () => {
+    switch (contentDetailsClosed) {
+      case null:
+        return 'projectContentDetails-default'
+      case true:
+        return 'projectContentDetails-out'
+      case false:
+        return 'projectContentDetails-in'
+      default:
+        break;
+    }
+    // contentDetailsClosed === null ? '' ? 'projectContentDetails-out' : 'projectContentDetails-in'
+  }
+
+  useEffect(() => {
+    if (!contentDetailSectionIsClosed) {
+      setContentDetailsClosed(false)
+      dispatch({ type: CLOSE_CONTENT_DETAILS_SECTION })
+    }
+  }, [contentDetailSectionIsClosed, dispatch])
+
+  const onClickContentVisualSection = () => {
     dispatch({ type: TOGGLE_IMAGE_MODAL })
+  }
 
-  const hideDetailsSection = () =>
-    !contentDetailSectionIsClosed &&
-    dispatch({ type: TOGGLE_CONTENT_DETAILS_SECTION })
+  const hideDetailsSection = () => {
+    if (!contentDetailsClosed) {
+      setContentDetailsClosed(true)
+      // if (scrollEventFired.current === 'sdfgh') {
+      //   console.log('fired')
+      //   if (!contentDetailsClosed) {
+      //     setTimeout(() => {
+      //       dispatch({ type: TOGGLE_CONTENT_DETAILS_SECTION })
+      //     }, 700);
+      //   }
+      // scrollEventFired.current = true
+    }
+  }
 
   const onClickDropdown = () =>
     dispatch({ type: TOGGLE_CONTENT_DETAILS_SECTION })
@@ -47,7 +74,7 @@ function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatu
             justify='flex-end'>
             {pathname === '/projects' &&
               <DropdownBtn
-                toggleOn={contentDetailSectionIsClosed}
+                toggleOn={contentDetailsClosed}
                 onClick={onClickDropdown} />
             }
           </Grid>
@@ -55,9 +82,9 @@ function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatu
       </Grid>
 
 
-      <animated.div
-        style={animToggleAppearenceOfDetailsSection}
-        className={classes.detailsSection}>
+      <div
+        // style={animToggleAppearenceOfDetailsSection}
+        className={`${classes.detailsSection} ${animToggleAppearenceOfDetailsSection()}`}>
         <Grid className={classes.contentDetailsContainer}
           container justify='center' direction='row' wrap='nowrap'>
           {/* //* ===== contentVisualSection ===== */}
@@ -77,11 +104,10 @@ function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatu
         </Grid>
         {/* </Grid> */}
 
-      </animated.div>
+      </div>
       {/* //* ===== browsingSection ===== */}
       <animated.div
         onScroll={hideDetailsSection}
-        ref={browsingSectionRef}
         className={classes.animatedWrapperBrowsingSection}>
         <Grid container justify='space-evenly'>
           {browsingSection}
@@ -196,6 +222,7 @@ const useStyles = makeStyles((theme) => ({
   // {/* //* ===== browsingSection ===== */}
   animatedWrapperBrowsingSection: {
     overflowY: 'scroll',
+    overflowX: 'hidden',
     width: '80%',
     height: `calc(100vh - ${navbarHeight} - 2em)`,
     background: theme.palette.background.default,

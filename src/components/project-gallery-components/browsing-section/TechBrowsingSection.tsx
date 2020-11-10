@@ -9,7 +9,7 @@ const TechBrowsingSection = memo(() => {
 
   const TechItemContainer = ({ tech }: { tech }) =>
     <Grid item>
-      <div className={classes.techContainer} id='hoverEffect'>
+      <div className={`${classes.techContainer} page-fade`} id='hoverEffect'>
         <img className={classes.techImg} src={tech.image} alt={tech.technology} />
       </div>
     </Grid>

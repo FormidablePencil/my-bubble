@@ -1,10 +1,10 @@
-import React, { useMemo, useRef } from 'react'
+import React, { useEffect, useMemo, useRef } from 'react'
 import { ContainerFullHeight, swipebarHeightInEm } from '../../../styles/materialUiStyles'
 import { Grid, makeStyles, Typography, useMediaQuery } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import { rootReducerT } from '../../../store'
 import MobileContentDetailsSection from './content-details'
-import { SELECTED_SUBJECT, TOGGLE_DETAILS_SECTION_MOBILE } from '../../../actions/types'
+import { SELECTED_SUBJECT, TOGGLE_DETAILS_SECTION_MOBILE, UPDATE_CONTACT_PAGE_RENDER } from '../../../actions/types'
 import CompensateForSwipableTabHeight from '../CompensateForSwipableTabHeight'
 import LineSeperator from '../../reusables/LineSeperator'
 import ImageInDevice from '../../reusables/image-in-device'
@@ -12,13 +12,21 @@ import ImageInDevice from '../../reusables/image-in-device'
 function MobileProjectGallery() {
   const indexOfItemRendered: any = useRef(null)
   const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
+  const contactPageRenderCount = useSelector((state: rootReducerT) => state.pageRenderAmounts.contact)
+  const xs = useMediaQuery((theme: any) => theme.breakpoints.down('xs'));
+  const classes = useStyles();
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    return () => {
+      dispatch({ type: UPDATE_CONTACT_PAGE_RENDER })
+    }
+  }, [])
+
   const amountOfShowableProjects = useMemo(() =>
     projectDataCollection.filter(item =>
       item.showInPortfolio && item).length, [projectDataCollection])
 
-  const xs = useMediaQuery((theme: any) => theme.breakpoints.down('xs'));
-  const classes = useStyles();
-  const dispatch = useDispatch()
 
   const onClickItem = (index) => {
     dispatch({ type: SELECTED_SUBJECT, payload: index })
@@ -37,46 +45,57 @@ function MobileProjectGallery() {
 
   return (
     <ContainerFullHeight
-      className={classes.container}
+      className={`${classes.container} not-visible-on-mdUp`}
       disableGutters>
       <Grid
         style={xs ? { paddingTop: swipebarHeightInEm } : {}}
         container direction='column'>
 
         {/* //~ ======= more details section ======= */}
-        <MobileContentDetailsSection />
+        <div
+          style={{ zIndex: 100 }}
+          className='page-translate-anim-reverse'>
+          <MobileContentDetailsSection />
+        </div>
 
-        {/* //~ ======= gallery section ======= */}
-        {projectDataCollection.map((project, index) => {
-          if (project.showInPortfolio) indexOfItemRendered.current++
-          if (!project.showInPortfolio) return null
-          else
-            return (
-              <Grid
-                key={project._id}
-                container direction='column' alignItems='center' wrap="nowrap">
-                <Grid item container direction='column' alignItems='center' className={classes.removeUserSelecting}>
-                  <Typography variant='h6'>{project.title}</Typography>
-                  <Typography variant='caption'>
-                    {project.type === 'mobile' ? '(App)' : '(Website)'}
-                  </Typography>
+        <div className={`
+          not-visible-on-mdUp
+          ${contactPageRenderCount
+            ? 'page-fade'
+            : 'page-translate-anim'
+          }`}>
+          {/* //~ ======= gallery section ======= */}
+          {projectDataCollection.map((project, index) => {
+            if (project.showInPortfolio) indexOfItemRendered.current++
+            if (!project.showInPortfolio) return null
+            else
+              return (
+                <Grid
+                  key={project._id}
+                  container direction='column' alignItems='center' wrap="nowrap">
+                  <Grid item container direction='column' alignItems='center' className={classes.removeUserSelecting}>
+                    <Typography variant='h6'>{project.title}</Typography>
+                    <Typography variant='caption'>
+                      {project.type === 'mobile' ? '(App)' : '(Website)'}
+                    </Typography>
+                  </Grid>
+                  <Grid item onClick={() => onClickItem(index)}>
+                    <ImageInDevice
+                      projectData={project}
+                      indexOfImageIfNotSwipable={0}
+                      swipable={false}
+                      autoPlay={false}
+                    />
+                  </Grid>
+
+
+                  <LineSeperatorComp index={index} />
+
+
                 </Grid>
-                <Grid item onClick={() => onClickItem(index)}>
-                  <ImageInDevice
-                    projectData={project}
-                    indexOfImageIfNotSwipable={0}
-                    swipable={false}
-                    autoPlay={false}
-                  />
-                </Grid>
-
-
-                <LineSeperatorComp index={index} />
-
-
-              </Grid>
-            )
-        })}
+              )
+          })}
+        </div>
         <Grid item>
           <CompensateForSwipableTabHeight moreHeight={'2em'} />
         </Grid>
@@ -91,7 +110,7 @@ const useStyles = makeStyles(() => ({
     pointerEvents: 'none'
   },
   container: {
-    display: 'block',
+    // display: 'none',
     paddingTop: '2em',
     overflowY: 'scroll',
     flexDirection: "column",
