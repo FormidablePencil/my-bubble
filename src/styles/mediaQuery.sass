@@ -1,7 +1,18 @@
 .not-visible-on-smDown
-  @media (max-width: 600px)
+  @media (max-width: 800px)
     display: none
 
 .not-visible-on-mdUp
-  @media (min-width: 600px)
+  @media (min-width: 800px)
     display: none
+
+.overflow-no-scrollbar-show
+  @media (min-width: 800px)
+    overflow-y: visible
+
+.fixed-mobile-100vh
+  overflow-y: hidden
+  height: 100vh
+  @media (min-width: 800px)
+    overflow-y: hidden
+    height: calc(100vh - #{$navbarHeight})

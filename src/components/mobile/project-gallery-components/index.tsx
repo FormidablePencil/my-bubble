@@ -13,7 +13,6 @@ function MobileProjectGallery() {
   const indexOfItemRendered: any = useRef(null)
   const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
   const contactPageRenderCount = useSelector((state: rootReducerT) => state.pageRenderAmounts.contact)
-  const xs = useMediaQuery((theme: any) => theme.breakpoints.down('xs'));
   const classes = useStyles();
   const dispatch = useDispatch()
 
@@ -48,15 +47,11 @@ function MobileProjectGallery() {
       className={`${classes.container} not-visible-on-mdUp`}
       disableGutters>
       <Grid
-        style={xs ? { paddingTop: swipebarHeightInEm } : {}}
+        style={{ paddingTop: swipebarHeightInEm }}
         container direction='column'>
 
         {/* //~ ======= more details section ======= */}
-        <div
-          style={{ zIndex: 100 }}
-          className='page-translate-anim-reverse'>
-          <MobileContentDetailsSection />
-        </div>
+        <MobileContentDetailsSection />
 
         <div className={`
           not-visible-on-mdUp
@@ -110,7 +105,7 @@ const useStyles = makeStyles(() => ({
     pointerEvents: 'none'
   },
   container: {
-    // display: 'none',
+    display: 'relative',
     paddingTop: '2em',
     overflowY: 'scroll',
     flexDirection: "column",

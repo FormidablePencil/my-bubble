@@ -1,19 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import MenuIcon from '@material-ui/icons/Menu';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { useHistory, useLocation } from 'react-router-dom';
-
-const useStyles = makeStyles({
-  root: {
-    width: '100vw',
-    position: 'fixed',
-    bottom: 0,
-  },
-});
+import { Fab, Action } from 'react-tiny-fab';
+import 'react-tiny-fab/dist/styles.css';
 
 function BottomNav() {
   const classes = useStyles();
@@ -24,37 +15,43 @@ function BottomNav() {
   const projectsOnClick = () => history.push('/projects')
   const techOnClick = () => history.push('/technologies')
 
-  const getValue = () => {
-    if (pathname === '/')
-      return 0
-    if (pathname === '/projects')
-      return 1
-    if (pathname === '/technologies')
-      return 2
-  }
+  const fabBtns = [
+    { bgColor: '#CF2C6E', component: <LocationOnIcon />, onClick: contactsOnClick, text: 'Contacts', route: '/' },
+    { bgColor: '#5F4EFF', component: <LocationOnIcon />, onClick: projectsOnClick, text: 'Projects', route: '/projects' },
+    { bgColor: '#3C78FF', component: <LocationOnIcon />, onClick: techOnClick, text: 'Technologies', route: '/technologies' },
+  ]
 
   return (
     <div
       className={classes.root}
-
     >
-      <BottomNavigation
-        value={getValue()}
-        showLabels
-      // onChange={(event, newValue) => { setValue(newValue) }}
+      <Fab
+        icon={<MenuIcon />}
+        event={'click'}
+        alwaysShowTitle={true}
+        mainButtonStyles={{ backgroundColor: '#48B5FF' }}
       >
-        <BottomNavigationAction
-          onClick={contactsOnClick}
-          label="Contacts" icon={<RestoreIcon />} />
-        <BottomNavigationAction
-          onClick={projectsOnClick}
-          label="Projects" icon={<FavoriteIcon />} />
-        <BottomNavigationAction
-          onClick={techOnClick}
-          label="Technologies" icon={<LocationOnIcon />} />
-      </BottomNavigation>
-    </div>
+        {fabBtns.map((item) => item.route !== pathname &&
+          <Action
+            text={item.text}
+            style={{ backgroundColor: item.bgColor }}
+            onClick={() => item.onClick()}
+          >
+            <LocationOnIcon />
+          </Action>
+        )}
+      </Fab>
+    </div >
   );
 }
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100vw',
+    position: 'fixed',
+    bottom: 0,
+  },
+}));
 
 export default BottomNav

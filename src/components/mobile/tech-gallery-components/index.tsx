@@ -22,8 +22,11 @@ function MobileTechGallery() {
       {/* <MobileContentDetailsSection
         viewingProjects={false}
       /> */}
-      <Grid container justify='center'
+      <Grid
+        container
+        justify='center'
         className={`
+        not-visible-on-mdUp
         ${classes.container}
         ${techPageRenderCount ? 'page-fade' : 'page-translate-anim'}
        `}>

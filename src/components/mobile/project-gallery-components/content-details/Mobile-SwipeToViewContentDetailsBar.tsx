@@ -6,37 +6,35 @@ import { BsArrowBarDown } from 'react-icons/bs';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
 import { rootReducerT } from '../../../../store';
-// import { config } from 'react-spring'
-// import { isChrome, isMobile, isFirefox } from "react-device-detect";
 import { TOGGLE_DETAILS_SECTION_MOBILE } from '../../../../actions/types';
-
-// const { innerHeight } = window
 
 const MobileSwipeToViewContentDetailsBar = memo(({ children }) => {
   const detailsSectionToggleMobile = useSelector((state: rootReducerT) => state.detailsSectionToggleMobile)
   const classes = useStyles();
 
-return (
-  <animated.div
-    style={{
-      //@ts-ignore
-      // transform: xy.interpolate((x, y) => `translateY(${y}px)`)
-    }}
-    className={`
+  return (
+    <animated.div
+      style={{
+        //@ts-ignore
+        // transform: xy.interpolate((x, y) => `translateY(${y}px)`)
+      }}
+      className={`
         ${classes.detailsSectionWrapper} 
         ${detailsSectionToggleMobile ? 'content-details-closed' : 'content-details-open'}
+        not-visible-on-mdUp
       `}
-  >
+    >
 
-    <ToggleDetailsSectionBtn />
+      <ToggleDetailsSectionBtn />
 
-    <div className={classes.content}>
-      {children}
-    </div>
-
-    <ToggleDetailsSectionBar />
-  </animated.div>
-)
+      <div className={classes.content}>
+        {children}
+      </div>
+      <div className="mobileContentDetailsBar">
+        <ToggleDetailsSectionBar />
+      </div>
+    </animated.div>
+  )
 })
 
 const ToggleDetailsSectionBtn = memo(() => {

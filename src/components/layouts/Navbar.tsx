@@ -27,7 +27,11 @@ function Navbar() {
   ]
 
   return (
-    <Grid container className={classes.navbar} justify='space-between' alignContent='center'>
+    <div 
+    // container
+      className={`${classes.navbar} not-visible-on-smDown`}
+      // justify='space-between' alignContent='center'
+      >
       <div className={classes.tabsContainer}>
         {tabs.map(tab =>
           <Link
@@ -47,7 +51,7 @@ function Navbar() {
             className={classes.name} variant='h4'>Dennis Aleksandrov</Typography>
         }
       </Grid>
-    </Grid>
+    </div>
   )
 }
 

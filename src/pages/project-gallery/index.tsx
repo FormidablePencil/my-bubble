@@ -14,8 +14,6 @@ function ProjectsGalleryPage() {
     <>
       <ProjectGallery />
       <MobileProjectGallery />
-      {/* <div className='not-visible-on-smDown'> */}
-      {/* </div> */}
     </>
   )
 }

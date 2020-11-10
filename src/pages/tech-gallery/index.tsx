@@ -10,26 +10,25 @@ function TechnologiesPage() {
   // const matches = useMediaQuery((theme: any) => theme.breakpoints.up('sm'));
   //* should be moved to seperate useHook file and move to main parent; DemoSection comp
 
-  if (matches) {
-    return (
-      <PageTemplate
-        contentVisualSection={
-          <></>
-        }
-        contentDetailsSection={
-          <></>
-        }
-        searchFeatureSection={<></>}
-        browsingSection={
-          <TechBrowsingSection />
-        }
-      />
-    )
-  } else {
-    return (
+  return (
+    <>
+      <div className='not-visible-on-smDown'>
+        <PageTemplate
+          contentVisualSection={
+            <></>
+          }
+          contentDetailsSection={
+            <></>
+          }
+          searchFeatureSection={<></>}
+          browsingSection={
+            <TechBrowsingSection />
+          }
+        />
+      </div>
       <MobileTechGallery />
-    )
-  }
+    </>
+  )
 }
 
 export default TechnologiesPage

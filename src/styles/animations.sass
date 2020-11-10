@@ -13,7 +13,8 @@
   transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1)
 
 .content-details-closed
-  transform: translateY(93vh)
+  // transform: translateY(calc(100vh - 6.5em))
+  transform: translateY(calc(100vh - 3em))
   transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1)
 
 .page-translate-anim
@@ -26,15 +27,15 @@
   100%
     transform: translateY(0px)
 
-.page-translate-anim-reverse
-  animation: translateInAnimationReverse ease 700ms
+.mobileContentDetailsBar
+  animation: translateInAnimationBar ease 700ms
   animation-iteration-count: 1
   animation-fill-mode: forwards
-@keyframes translateInAnimationReverse
+@keyframes translateInAnimationBar
   0%
-    transform: translateY(-100vh)
+    transform: translateY(-50px)
   100%
-    transform: translateY(-80px)
+    transform: translateY(0px)
 
 .page-fade
   animation: opacityInAnimation ease 1s

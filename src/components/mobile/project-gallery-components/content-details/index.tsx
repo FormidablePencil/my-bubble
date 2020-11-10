@@ -30,7 +30,9 @@ function MobileContentDetailsSection() {
     <MobileSwipeToViewContentDetailsBar>
       <Grid className={classes.container} container direction='column' wrap='nowrap'>
         <Grid item container className={classes.titleContainer}>
-          <Typography color='textPrimary' style={{ fontSize: 30 }}>{projectDataCollection[currentSubjectViewing]?.title}</Typography>
+          <Typography color='textPrimary' style={{ fontSize: 30 }}>
+            {projectDataCollection[currentSubjectViewing]?.title}
+          </Typography>
         </Grid>
         <Grid item>
           <LineSeperator />
@@ -38,8 +40,7 @@ function MobileContentDetailsSection() {
 
         {/* //~ ===== images section */}
         <Grid item container justify='center' className={classes.imageContainer}>
-        <ProjectContentImage accordionOpen={accordionOpen} onClickHandler={onClickHandler} />
- 
+          <ProjectContentImage accordionOpen={accordionOpen} onClickHandler={onClickHandler} />
         </Grid>
 
         {/* //~ ======= details section */}

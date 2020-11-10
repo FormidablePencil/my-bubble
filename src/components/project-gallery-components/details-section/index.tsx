@@ -9,7 +9,6 @@ import capitalize from 'lodash/capitalize';
 const GalleryContentDetailsSection = memo(() => {
   const classes = useStyles();
   const contentDetailsSectionDirIsRow = useSelector((state: rootReducerT) => state.contentDetailsSectionDirIsRow)
-  console.log(contentDetailsSectionDirIsRow, 'wttf');
 
   return (
     <Grid
@@ -58,11 +57,16 @@ function GalleryContentDetailSectionFirst() {
         ${classes.line}
         ${classes.shortLine}
         ${classes.top}
-        ${classes.left}
-        `: ''} />
+          ${classes.left}
+          `: ''} />
 
       <Grid
-        className={`${classes.constraintContainer} scrollbar-visible`}
+        className={`
+        scrollbar-visible
+        ${contentDetailsSectionDirIsRow && 'overflow-no-scrollbar-show'}
+        ${classes.constraintContainer}
+        
+        `}
         container
         ref={ref => toggleShowLine(ref)}
       >
@@ -194,10 +198,13 @@ const GalleryContentDetailSectionSecond = memo(() => {
 
 const useStyles = makeStyles((theme) => ({
   constraintContainer: {
-    borderTop: '1px solid',
-    paddingTop: '1em',
+    [theme.breakpoints.down('xs')]: {
+      borderTop: '1px solid',
+      paddingTop: '1em',
+      height: '15em',
+    },
     borderColor: theme.palette.primary[100],
-    height: '15em',
+    height: '18em',
     overflowY: 'scroll',
     overflowX: 'hidden',
   },

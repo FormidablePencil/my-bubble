@@ -1366,6 +1366,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@juggle/resize-observer@^3.0.2":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@juggle/resize-observer/-/resize-observer-3.2.0.tgz#5e0b448d27fe3091bae6216456512c5904d05661"
+  integrity sha512-fsLxt0CHx2HCV9EL8lDoVkwHffsA0snUpddYjdLyXcG5E41xaamn9ZyQqOE9TUJdrRlH8/hjIf+UdOdDeKCUgg==
+
 "@material-ui/core@^4.11.0":
   version "4.11.0"
   resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-4.11.0.tgz#b69b26e4553c9e53f2bfaf1053e216a0af9be15a"
@@ -9583,6 +9588,13 @@ react-dom@^16.13.1:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
+react-ellipsis-pjs@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/react-ellipsis-pjs/-/react-ellipsis-pjs-2.1.2.tgz#b0845ff56fbe6ab18fa48b183c520c580d32bfe4"
+  integrity sha512-YLxfApgzJTZAuUq4DGfCTC1Uy//wFCZvXFlkTtSRhxCKQyfSaAJHGyc0nEL8XvMUDOa40yJrMvK+gKLaW/y/TQ==
+  dependencies:
+    "@juggle/resize-observer" "^3.0.2"
+
 react-error-overlay@^6.0.7:
   version "6.0.8"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.8.tgz#474ed11d04fc6bda3af643447d85e9127ed6b5de"
@@ -9617,11 +9629,6 @@ react-lazy-load-image-component@^1.5.0:
   dependencies:
     lodash.debounce "^4.0.8"
     lodash.throttle "^4.1.1"
-
-react-lines-ellipsis@^0.14.1:
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/react-lines-ellipsis/-/react-lines-ellipsis-0.14.1.tgz#dbc045b9c3bd0c46d2c1dee893d46e9260d53969"
-  integrity sha512-4nEDEzzfXy2bqRhLc00DWYb39FKIpGqaIIh/YT3KdHyM9pqD8cSfDSCdGy657sB12alCdT7cKK48Uk0OsRMvHQ==
 
 react-modal-image@^2.5.0:
   version "2.5.0"
@@ -9785,6 +9792,11 @@ react-spring@^8.0.27:
   dependencies:
     "@babel/runtime" "^7.3.1"
     prop-types "^15.5.8"
+
+react-tiny-fab@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/react-tiny-fab/-/react-tiny-fab-4.0.2.tgz#c076e5aa025972aa2d0351a6922c0a3d69a86e06"
+  integrity sha512-ddzI4VwDUNt1FgJEiihQP8Zv3FRpE5+qIx/UjKslzj6RPD8FqAXe5lDPJWeJ3qm78IcjHIS4SqBnZICYA8SrYg==
 
 react-transition-group@^4.4.0, react-transition-group@^4.4.1:
   version "4.4.1"

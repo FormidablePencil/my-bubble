@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Grid, makeStyles, Container } from '@material-ui/core'
+import { Grid, makeStyles } from '@material-ui/core'
 import { navbarHeight } from '../../styles/materialUiStyles';
 import { animated } from 'react-spring';
 import { useDispatch, useSelector } from 'react-redux';
-import { CLOSE_CONTENT_DETAILS_SECTION, TOGGLE_CONTENT_DETAILS_SECTION, TOGGLE_IMAGE_MODAL } from '../../actions/types';
+import { CLOSE_CONTENT_DETAILS_SECTION, TOGGLE_IMAGE_MODAL } from '../../actions/types';
 import { rootReducerT } from '../../store';
-import DropdownBtn from './DropdownBtn';
-import { useLocation } from 'react-router-dom';
 
 function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatureSection, browsingSection }) {
   const contentDetailSectionIsClosed = useSelector((state: rootReducerT) => state.contentDetailSectionIsClosed)
   const [contentDetailsClosed, setContentDetailsClosed] = useState<any>(null)
   const classes = useStyles();
   const dispatch = useDispatch()
-  const { pathname } = useLocation()
 
   const animToggleAppearenceOfDetailsSection = () => {
     switch (contentDetailsClosed) {
@@ -54,9 +51,6 @@ function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatu
     }
   }
 
-  const onClickDropdown = () =>
-    dispatch({ type: TOGGLE_CONTENT_DETAILS_SECTION })
-
   return (
     <Grid container justify='center'
       style={{
@@ -66,19 +60,6 @@ function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatu
       }}>
 
       <Grid container className={classes.tabbar}>
-        <Container>
-          <Grid
-            className={classes.dropdownContainer}
-            item
-            container
-            justify='flex-end'>
-            {pathname === '/projects' &&
-              <DropdownBtn
-                toggleOn={contentDetailsClosed}
-                onClick={onClickDropdown} />
-            }
-          </Grid>
-        </Container>
       </Grid>
 
 

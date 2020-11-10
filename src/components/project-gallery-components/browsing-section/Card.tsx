@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Paper, Grid, makeStyles, Typography } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux';
 import { rootReducerT } from '../../../store';
 import { SELECTED_SUBJECT, TOGGLE_CONTENT_DETAILS_SECTION } from '../../../actions/types';
-import LinesEllipsis from 'react-lines-ellipsis'
 import TechLogo from '../../reusables/TechLogo';
 import { projectDataT } from '../../../reducers/projectDataReducer';
 import ImageInDevice from '../../reusables/image-in-device';
+import Ellipsis from 'react-ellipsis-pjs';
+
 
 const Card = (
   { projectContent,
@@ -63,23 +64,7 @@ const Card = (
 
         {/* second section */}
         <Grid className={classes.secondSection} container direction='column'>
-          <Grid item container
-            className={classes.flex2}
-            direction='column'
-          >
-            <Typography variant='h6'>
-              Brief description:
-            </Typography>
-            <div className={classes.briefDescription}>
-              <LinesEllipsis
-                text={projectContent.description}
-                maxLine='5'
-                ellipsis='...'
-                trimRight
-                basedOn='letters'
-              />
-            </div>
-          </Grid>
+          <ContentDescription projectContent={projectContent} />
 
           <Grid
             item container
@@ -120,6 +105,31 @@ const Card = (
   )
 }
 
+const ContentDescription = memo(({ projectContent }: any) => {
+  const classes = useStyles();
+  return (
+    <Grid item container
+      className={classes.flex2}
+      direction='column'
+    >
+      <Typography variant='h6'>
+        Brief description:
+      </Typography>
+      <div className={classes.briefDescription}>
+        <Ellipsis text={projectContent.description} lines={5} suffix="..." />
+
+        {/* <LinesEllipsis
+          text={projectContent.description}
+          maxLine='5'
+          ellipsis='...'
+          trimRight
+          basedOn='letters'
+        /> */}
+      </div>
+    </Grid>
+  )
+})
+
 const useStyles = makeStyles((theme) => ({
   card: {
     height: '15em',
@@ -156,6 +166,8 @@ const useStyles = makeStyles((theme) => ({
 
 
   secondSection: {
+    display: 'flex',
+    flexDirection: 'column',
     backgroundColor: theme.palette.primary[100],
     padding: '1em',
   },
