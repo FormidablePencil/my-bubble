@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef } from 'react'
 import { ContainerFullHeight, swipebarHeightInEm } from '../../../styles/materialUiStyles'
-import { Grid, makeStyles, Typography, useMediaQuery } from '@material-ui/core'
+import { Grid, makeStyles, Typography } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import { rootReducerT } from '../../../store'
 import MobileContentDetailsSection from './content-details'

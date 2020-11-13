@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Button, Grid, makeStyles, Typography } from '@material-ui/core'
 import staticData from '../../staticData'
 import { useHistory } from 'react-router-dom';
 import ReactSlider from '../../components/carousel-tech';
 import AbsoluteProjectDemo from '../../components/absolute-project-demo';
 
-function ContactsPage() {
+function ContactsPage({ slidesToShow }) {
   const classes = useStyles();
   let history = useHistory();
   /* Contacts: github, linkedIn & email. Get to know me: self presentation site link. */
@@ -66,7 +66,7 @@ function ContactsPage() {
           </Grid>
         </Grid>
       </div>
-      <ReactSlider />
+      <ReactSlider slidesToShow={slidesToShow} />
     </div>
   )
 }

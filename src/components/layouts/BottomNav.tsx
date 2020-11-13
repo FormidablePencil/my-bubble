@@ -33,6 +33,7 @@ function BottomNav() {
       >
         {fabBtns.map((item) => item.route !== pathname &&
           <Action
+            key={item.text}
             text={item.text}
             style={{ backgroundColor: item.bgColor }}
             onClick={() => item.onClick()}

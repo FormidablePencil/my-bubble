@@ -33,11 +33,13 @@ function SwipableImages(props) {
         <MemoizedSlider
           {...settings}>
           {projectContent.images.map(imageProps => {
-            if (imageProps.device === 'mobile' && showMobileImages)
-              return <ImageComp imageProps={imageProps} />
-            else if (imageProps.device === 'web' && !showMobileImages)
-              return <ImageComp imageProps={imageProps} />
-            else return null
+            switch (true) {
+              case imageProps.device === 'mobile' && showMobileImages:
+              case imageProps.device === 'web' && !showMobileImages:
+                return <ImageComp key={imageProps} imageProps={imageProps} />
+              default:
+                return null
+            }
           }
           )}
         </MemoizedSlider>

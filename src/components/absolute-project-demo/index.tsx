@@ -1,28 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import { useMediaQuery } from '@material-ui/core'
 import { rootReducerT } from '../../store';
 import ImageInDevice from '../reusables/image-in-device';
 
 function AbsoluteProjectDemo() {
   const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
-  const mdDown = useMediaQuery((theme: any) => theme.breakpoints.down('md'))
-  const mdUp = useMediaQuery((theme: any) => theme.breakpoints.up('md'))
-
-  const leftStyles: any = {
-    position: "absolute",
-    left: mdDown ? '5%' : '10%',
-    top: "33%",
-    transform: mdDown ? 'scale(1)' : 'scale(1.5)',
-    // opacity: sm ? 0 : 1
-  }
-  const rightStyles: any = {
-    position: "absolute",
-    right: mdDown ? '5%' : '10%',
-    top: "30%",
-    transform: mdDown ? 'scale(1)' : 'scale(1.5)',
-    // opacity: sm ? 0 : 1
-  }
 
   const FrameAndImage = () =>
     <ImageInDevice
@@ -34,11 +16,11 @@ function AbsoluteProjectDemo() {
 
   return (
     <div>
-      <div className='long-fade' style={leftStyles}>
-        {mdUp && <FrameAndImage />}
+      <div className='long-fade absoluteProjectDemo'>
+        <FrameAndImage />
       </div>
-      <div className='long-fade' style={rightStyles}>
-        {mdUp && <FrameAndImage />}
+      <div className='long-fade absoluteProjectDemo-right'>
+        <FrameAndImage />
       </div>
     </div>
   )

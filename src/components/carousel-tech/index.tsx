@@ -4,11 +4,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useSelector } from "react-redux";
 import { rootReducerT } from "../../store";
-import { makeStyles, useMediaQuery } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import { Link } from 'react-router-dom'
 
-const ReactSlider = () => {
-  const md = useMediaQuery((theme: any) => theme.breakpoints.up('md'))
+const ReactSlider = ({ slidesToShow }) => {
   const techDataCollection = useSelector((state: rootReducerT) => state.techDataCollection)
   const classes = useStyles();
 
@@ -22,9 +21,10 @@ const ReactSlider = () => {
 
   return (
     <Link to='/technologies'>
+
       <Slider
         className='long-fade'
-        slidesToShow={md ? 6 : 3}
+        slidesToShow={slidesToShow ?? 3}
         {...settings}>
         {techDataCollection.map((tech, index) =>
           <div

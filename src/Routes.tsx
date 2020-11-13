@@ -37,7 +37,7 @@ export function DemoRoutes() {
 
           <Switch>
             <Route exact path="/">
-              <ContactsPage />
+              <ContactsPage slidesToShow={6} />
             </Route>
             <Route path="/projects">
               <ProjectsGalleryPage />
