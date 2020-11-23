@@ -10,7 +10,7 @@ function ContactsPage({ slidesToShow }) {
   let history = useHistory();
   /* Contacts: github, linkedIn & email. Get to know me: self presentation site link. */
 
-  const handleCallToAction = () => history.push('/mybubble/projects')
+  const handleCallToAction = () => history.push('/projects')
 
   return (
     <div className={`

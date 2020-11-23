@@ -11,14 +11,14 @@ function BottomNav() {
   const { pathname } = useLocation()
   const history = useHistory()
 
-  const contactsOnClick = () => history.push('/mybubble')
-  const projectsOnClick = () => history.push('/mybubble/projects')
-  const techOnClick = () => history.push('/mybubble/technologies')
+  const contactsOnClick = () => history.push('/')
+  const projectsOnClick = () => history.push('/projects')
+  const techOnClick = () => history.push('/technologies')
 
   const fabBtns = [
-    { bgColor: '#CF2C6E', component: <LocationOnIcon />, onClick: contactsOnClick, text: 'Contacts', route: '/mybubble' },
-    { bgColor: '#5F4EFF', component: <LocationOnIcon />, onClick: projectsOnClick, text: 'Projects', route: '/mybubble/projects' },
-    { bgColor: '#3C78FF', component: <LocationOnIcon />, onClick: techOnClick, text: 'Technologies', route: '/mybubble/technologies' },
+    { bgColor: '#CF2C6E', component: <LocationOnIcon />, onClick: contactsOnClick, text: 'Contacts', route: '/' },
+    { bgColor: '#5F4EFF', component: <LocationOnIcon />, onClick: projectsOnClick, text: 'Projects', route: '/projects' },
+    { bgColor: '#3C78FF', component: <LocationOnIcon />, onClick: techOnClick, text: 'Technologies', route: '/technologies' },
   ]
 
   return (
