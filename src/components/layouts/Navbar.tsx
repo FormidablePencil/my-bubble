@@ -14,15 +14,15 @@ function Navbar() {
   const tabs = [
     {
       tabTitle: 'Home',
-      path: '/',
+      path: '/mybubble',
     },
     {
       tabTitle: 'Project Gallery',
-      path: '/projects',
+      path: '/mybubble/projects',
     },
     {
       tabTitle: 'Technologies',
-      path: '/technologies',
+      path: '/mybubble/technologies',
     },
   ]
 

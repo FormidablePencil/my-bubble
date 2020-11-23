@@ -36,13 +36,13 @@ export function DemoRoutes() {
         >
 
           <Switch>
-            <Route exact path="/">
+            <Route exact path="/mybubble">
               <ContactsPage slidesToShow={6} />
             </Route>
-            <Route path="/projects">
+            <Route path="/mybubble/projects">
               <ProjectsGalleryPage />
             </Route>
-            <Route path="/technologies">
+            <Route path="/mybubble/technologies">
               <TechnologiesPage />
             </Route>
           </Switch>
