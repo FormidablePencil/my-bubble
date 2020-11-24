@@ -11,8 +11,10 @@ const useNavigateWithAnim = () => {
 
     setTimeout(() => {
       history.push(path)
-      dispatch({ type: TRANSITION_IN_PAGE })
-    }, 300);
+      setTimeout(() => {
+        dispatch({ type: TRANSITION_IN_PAGE })
+      }, 300)
+    }, 200);
 
   }
 

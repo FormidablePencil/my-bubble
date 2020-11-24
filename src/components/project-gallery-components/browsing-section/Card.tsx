@@ -32,7 +32,7 @@ const Card = (
   return (
     <div
       onClick={onCardClick}
-      className="ohHoverAnim page-fade">
+      className="ohHoverAnim">
       <Paper className={classes.card} id='hoverEffect'>
 
 

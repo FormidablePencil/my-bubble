@@ -12,6 +12,7 @@ import ProjectsGalleryPage from './pages/project-gallery';
 import useKeyTrigger from './hooks/useKeyTrigger';
 import { useSelector } from 'react-redux';
 import { rootReducerT } from './store';
+import MobileTechGallery from './components/mobile/tech-gallery-components';
 
 export function DemoRoutes() {
   const classes = useStyles();
@@ -62,11 +63,11 @@ export function DemoRoutes() {
     </div >
   )
 }
-
-const TransitionalAnim = ({ children }) => {
+interface T { children, overRideClassName?: string }
+const TransitionalAnim = ({ children, overRideClassName }: T) => {
   const leavingPageAnim = useSelector((state: rootReducerT) => state.leavingPageAnim)
 
-  return <div className={leavingPageAnim ? 'page-trans-out' : 'page-trans-in'}>{children}</div>
+  return <div className={`${leavingPageAnim ? 'page-trans-out' : 'page-trans-in'} ${overRideClassName}`}>{children}</div>
 }
 
 

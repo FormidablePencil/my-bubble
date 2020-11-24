@@ -7,7 +7,7 @@ function TechnologiesPage() {
 
   return (
     <>
-      <div className='not-visible-on-smDown'>
+      <div className="not-visible-on-smDown scrollOnSmDown">
         <PageTemplate
           contentVisualSection={
             <></>
