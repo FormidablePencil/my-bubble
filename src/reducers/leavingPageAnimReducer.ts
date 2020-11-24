@@ -1,14 +1,13 @@
-import { TRANSITION_IN_PAGE, TRANSITION_OUT_PAGE } from "../actions/types"
+import { TRANSITION_PAGE } from "../actions/types"
 
-const initialState = false
+export type leavingPageAnimT = { leavingFromPage: boolean, prevLocation: string, nextLocation: string }
+const initialState = { leavingFromPage: false, prevLocation: '', nextLocation: '' }
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
 
-    case TRANSITION_OUT_PAGE:
-      return true
-    case TRANSITION_IN_PAGE:
-      return false
+    case TRANSITION_PAGE:
+      return payload
 
     default:
       return state

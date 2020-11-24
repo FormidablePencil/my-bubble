@@ -1,20 +1,27 @@
 import { useDispatch } from "react-redux"
-import { useHistory } from "react-router-dom"
-import { TRANSITION_IN_PAGE, TRANSITION_OUT_PAGE } from "../actions/types"
+import { useHistory, useLocation } from "react-router-dom"
+import { TRANSITION_PAGE } from "../actions/types"
 
 const useNavigateWithAnim = () => {
   const history = useHistory()
   const dispatch = useDispatch()
+  const location = useLocation()
 
   const onClickNavigateWithAnim = (path) => {
-    dispatch({ type: TRANSITION_OUT_PAGE })
+    dispatch({
+      type: TRANSITION_PAGE,
+      payload: { leavingFromPage: true, prevLocation: location, nextLocation: path }
+    })
 
     setTimeout(() => {
       history.push(path)
       setTimeout(() => {
-        dispatch({ type: TRANSITION_IN_PAGE })
+        dispatch({
+          type: TRANSITION_PAGE,
+          payload: { leavingFromPage: false, prevLocation: location, nextLocation: path }
+        })
       }, 300)
-    }, 200);
+    }, 100);
 
   }
 

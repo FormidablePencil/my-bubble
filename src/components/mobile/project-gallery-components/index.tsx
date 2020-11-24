@@ -8,6 +8,7 @@ import { SELECTED_SUBJECT, TOGGLE_DETAILS_SECTION_MOBILE, UPDATE_CONTACT_PAGE_RE
 import CompensateForSwipableTabHeight from '../CompensateForSwipableTabHeight'
 import LineSeperator from '../../reusables/LineSeperator'
 import ImageInDevice from '../../reusables/image-in-device'
+import TransitionalAnim from '../../layouts/TransitionalAnim'
 
 function MobileProjectGallery() {
   const indexOfItemRendered: any = useRef(null)
@@ -59,37 +60,39 @@ function MobileProjectGallery() {
             ? 'page-fade'
             : 'page-translate-anim'
           }`}>
-          {/* //~ ======= gallery section ======= */}
-          {projectDataCollection.map((project, index) => {
-            if (project.showInPortfolio) indexOfItemRendered.current++
-            if (!project.showInPortfolio) return null
-            else
-              return (
-                <Grid
-                  key={project._id}
-                  container direction='column' alignItems='center' wrap="nowrap">
-                  <Grid item container direction='column' alignItems='center' className={classes.removeUserSelecting}>
-                    <Typography variant='h6'>{project.title}</Typography>
-                    <Typography variant='caption'>
-                      {project.type === 'mobile' ? '(App)' : '(Website)'}
-                    </Typography>
+          <TransitionalAnim>
+            {/* //~ ======= gallery section ======= */}
+            {projectDataCollection.map((project, index) => {
+              if (project.showInPortfolio) indexOfItemRendered.current++
+              if (!project.showInPortfolio) return null
+              else
+                return (
+                  <Grid
+                    key={project._id}
+                    container direction='column' alignItems='center' wrap="nowrap">
+                    <Grid item container direction='column' alignItems='center' className={classes.removeUserSelecting}>
+                      <Typography variant='h6'>{project.title}</Typography>
+                      <Typography variant='caption'>
+                        {project.type === 'mobile' ? '(App)' : '(Website)'}
+                      </Typography>
+                    </Grid>
+                    <Grid item onClick={() => onClickItem(index)}>
+                      <ImageInDevice
+                        projectData={project}
+                        indexOfImageIfNotSwipable={0}
+                        swipable={false}
+                        autoPlay={false}
+                      />
+                    </Grid>
+
+
+                    <LineSeperatorComp index={index} />
+
+
                   </Grid>
-                  <Grid item onClick={() => onClickItem(index)}>
-                    <ImageInDevice
-                      projectData={project}
-                      indexOfImageIfNotSwipable={0}
-                      swipable={false}
-                      autoPlay={false}
-                    />
-                  </Grid>
-
-
-                  <LineSeperatorComp index={index} />
-
-
-                </Grid>
-              )
-          })}
+                )
+            })}
+          </TransitionalAnim>
         </div>
         <Grid item>
           <CompensateForSwipableTabHeight moreHeight={'2em'} />

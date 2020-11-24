@@ -10,16 +10,13 @@ import ImageModal from './components/image-modal/index';
 import BottomNav from './components/layouts/BottomNav';
 import ProjectsGalleryPage from './pages/project-gallery';
 import useKeyTrigger from './hooks/useKeyTrigger';
-import { useSelector } from 'react-redux';
-import { rootReducerT } from './store';
-import MobileTechGallery from './components/mobile/tech-gallery-components';
+import TransitionalAnim, { RoseComp } from './components/layouts/TransitionalAnim';
 
 export function DemoRoutes() {
   const classes = useStyles();
 
   useFetchAllPortfolioData()
   useKeyTrigger()
-
 
   return (
 
@@ -45,14 +42,13 @@ export function DemoRoutes() {
             </TransitionalAnim>
           </Route>
           <Route path="/projects">
-            <TransitionalAnim>
-              <ProjectsGalleryPage />
-            </TransitionalAnim>
+            {/* scrollOnSmDown */}
+            <ProjectsGalleryPage />
           </Route>
           <Route path="/technologies">
-            <TransitionalAnim>
+            {/* <TransitionalAnim compHere={<RoseComp />}> */}
               <TechnologiesPage />
-            </TransitionalAnim>
+            {/* </TransitionalAnim> */}
           </Route>
 
           <div className='not-visible-on-mdUp'>
@@ -63,14 +59,6 @@ export function DemoRoutes() {
     </div >
   )
 }
-interface T { children, overRideClassName?: string }
-const TransitionalAnim = ({ children, overRideClassName }: T) => {
-  const leavingPageAnim = useSelector((state: rootReducerT) => state.leavingPageAnim)
-
-  return <div className={`${leavingPageAnim ? 'page-trans-out' : 'page-trans-in'} ${overRideClassName}`}>{children}</div>
-}
-
-
 
 
 const useStyles = makeStyles(() => ({

@@ -38,7 +38,7 @@ function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatu
   }
 
   const hideDetailsSection = () => {
-    if (!contentDetailsClosed) {
+    if (!contentDetailsClosed && contentDetailsClosed !== null) {
       setContentDetailsClosed(true)
       // if (scrollEventFired.current === 'sdfgh') {
       //   console.log('fired')
@@ -94,6 +94,7 @@ function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatu
           {browsingSection}
         </Grid>
       </animated.div>
+
     </Grid >
   )
 }

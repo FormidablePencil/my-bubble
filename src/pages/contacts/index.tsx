@@ -16,59 +16,74 @@ function ContactsPage({ slidesToShow }) {
     <div className={`
       ${classes.overflowX}
     `}>
-      <AbsoluteProjectDemo />
+      {/* <AbsoluteProjectDemo /> */}
       <div className={classes.container}>
         <Grid
-          justify='center'
           container
           direction='column'
           wrap='nowrap'
           className={classes.wrapper}>
 
           <Grid
-            spacing={1}
+            // spacing={3}
             container
-            alignItems='center'
             direction='column'
             className={classes.textContainer}>
+
+
+
             <Grid item>
-              <Typography color='textPrimary' variant='h3'>{staticData.homeAbout.name}</Typography>
+              <Typography color='textPrimary' variant='h2'>{staticData.homeAbout.name}</Typography>
             </Grid>
+
             <div className={`${classes.horizontalDivider} ${classes.longDivider}`} />
+
+
             <Grid item>
               <Typography color='textPrimary' variant='h4'>{staticData.homeAbout.paragraph2}</Typography>
             </Grid>
+
+
             <div className={`${classes.horizontalDivider} ${classes.regDivider}`} />
-            <Grid container direction='column' item alignItems='center' style={{ marginBottom: '1em' }}>
-              <Typography color='textSecondary' style={{ fontSize: 24 }}>
-                Email:
-                formidablepencil@gmail.com
-              </Typography>
-              <Typography color='textSecondary' style={{ fontSize: 24 }}>
-                Checkout my code on <a href="www.google.com">github</a>
-              </Typography>
-              <Typography color='textSecondary' style={{ fontSize: 24 }}>
-                Access my resume <a href="www.google.com">here</a>
-              </Typography>
-              <Typography color='textSecondary' style={{ fontSize: 24 }}>
-                Ping me on <a href="www.google.com">LinkedIn</a>
-              </Typography>
-            </Grid>
-            <Button
-              onClick={handleCallToAction}
-              className={classes.callToAction}
-              variant='contained'
-              color='primary'
-            >
-              View Projects
-            </Button>
+
           </Grid>
+
+
+          <PersonalContacts />
+
+
+          {/* <Button
+            onClick={handleCallToAction}
+            className={classes.callToAction}
+            variant='contained'
+            color='primary'
+          >
+            View Projects
+            </Button> */}
         </Grid>
       </div>
-      <ReactSlider slidesToShow={slidesToShow} />
+      {/* <ReactSlider slidesToShow={slidesToShow} /> */}
     </div>
   )
 }
+
+const PersonalContacts = () =>
+  <Grid container direction='column' justify='center' item style={{ marginTop: '1em' }}>
+    <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
+      Email:
+      formidablepencil@gmail.com
+  </Typography>
+    <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
+      Checkout my code on <a href="www.google.com">github</a>
+    </Typography>
+    <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
+      Access my resume <a href="www.google.com">here</a>
+    </Typography>
+    <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
+      Ping me on <a href="www.google.com">LinkedIn</a>
+    </Typography>
+  </Grid>
+
 
 const useStyles = makeStyles((theme) => ({
   overflowX: {
@@ -79,7 +94,8 @@ const useStyles = makeStyles((theme) => ({
     overflowX: 'hidden'
   },
   wrapper: {
-    height: '100%'
+    marginTop: '3em',
+    marginLeft: '5em'
   },
   textContainer: {
     margin: '3em 0 3em 0'

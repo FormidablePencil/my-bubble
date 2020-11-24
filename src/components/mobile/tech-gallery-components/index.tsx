@@ -26,9 +26,9 @@ function MobileTechGallery() {
         container
         justify='center'
         className={`
-        not-visible-on-mdUp
-        ${classes.container}
-        ${techPageRenderCount ? 'page-fade' : 'page-translate-anim'}
+          not-visible-on-mdUp
+          ${classes.container}
+          ${techPageRenderCount ? 'page-fade' : 'page-translate-anim'}
        `}>
         <TechBrowsingSection />
         <CompensateForSwipableTabHeight moreHeight={'3em'} />
