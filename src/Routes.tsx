@@ -10,7 +10,7 @@ import ImageModal from './components/image-modal/index';
 import BottomNav from './components/layouts/BottomNav';
 import ProjectsGalleryPage from './pages/project-gallery';
 import useKeyTrigger from './hooks/useKeyTrigger';
-import TransitionalAnim, { RoseComp } from './components/layouts/TransitionalAnim';
+import TransitionalAnim from './components/layouts/TransitionalAnim';
 
 export function DemoRoutes() {
   const classes = useStyles();
@@ -21,6 +21,7 @@ export function DemoRoutes() {
   return (
 
     <div className={classes.container}>
+
       <div className='not-visible-on-mdDown'>
         <ImageModal />
       </div>

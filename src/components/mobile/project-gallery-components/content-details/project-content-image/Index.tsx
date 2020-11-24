@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { config, animated, useSpring } from 'react-spring'
 import { rootReducerT } from '../../../../../store'
-import ImageInDevice from '../../../../reusables/image-in-device'
+import ImageInDevice from '@bit/formidablepencil.device-in-screen.image-in-device'
 
 function ProjectContentImage({ accordionOpen, onClickHandler }) {
   const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
@@ -24,20 +24,13 @@ function ProjectContentImage({ accordionOpen, onClickHandler }) {
       style={imageAnim}
       onClick={() => onClickHandler(0)}
     >
-      {/* 
-        //~ make library
-
-//~ render frame depending on images[?].device
-//~ add a switch to toggle between image and desktop images
-*/}
-
-      <ImageInDevice
-        projectData={projectDataCollection[currentSubjectViewing]}
-        indexOfImageIfNotSwipable={1}
+    <ImageInDevice
+        deviceType={projectDataCollection[currentSubjectViewing]?.type === 'web' ? 'web' : 'mobile'}
+        images={projectDataCollection[currentSubjectViewing]?.images}
+        indexOfImageIfNotSwipable={0}
         swipable={true}
         autoPlay={true}
       />
-
     </animated.div>
   )
 }

@@ -5,8 +5,9 @@ import { rootReducerT } from '../../../store';
 import { SELECTED_SUBJECT, TOGGLE_CONTENT_DETAILS_SECTION } from '../../../actions/types';
 import TechLogo from '../../reusables/TechLogo';
 import { projectDataT } from '../../../reducers/projectDataReducer';
-import ImageInDevice from '../../reusables/image-in-device';
 import Ellipsis from 'react-ellipsis-pjs';
+// import ImageInDevice from '../../reusables/image-in-device';
+import ImageInDevice from '@bit/formidablepencil.device-in-screen.image-in-device'
 
 
 const Card = (
@@ -54,9 +55,11 @@ const Card = (
           </Typography>
           <Grid item className={classes.techImagePositioning}>
             <ImageInDevice
-              projectData={projectContent}
+              deviceType={projectContent.type === 'web' ? 'web' : 'mobile'}/* dynamic */
+              images={projectContent.images}
               indexOfImageIfNotSwipable={0}
               swipable={false}
+              autoPlay={true}
             />
           </Grid>
         </Grid>

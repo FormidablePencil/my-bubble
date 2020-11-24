@@ -7,8 +7,10 @@ import MobileContentDetailsSection from './content-details'
 import { SELECTED_SUBJECT, TOGGLE_DETAILS_SECTION_MOBILE, UPDATE_CONTACT_PAGE_RENDER } from '../../../actions/types'
 import CompensateForSwipableTabHeight from '../CompensateForSwipableTabHeight'
 import LineSeperator from '../../reusables/LineSeperator'
-import ImageInDevice from '../../reusables/image-in-device'
+// import ImageInDevice from '../../reusables/image-in-device'
 import TransitionalAnim from '../../layouts/TransitionalAnim'
+import ImageInDevice from '@bit/formidablepencil.device-in-screen.image-in-device'
+
 
 function MobileProjectGallery() {
   const indexOfItemRendered: any = useRef(null)
@@ -78,10 +80,11 @@ function MobileProjectGallery() {
                     </Grid>
                     <Grid item onClick={() => onClickItem(index)}>
                       <ImageInDevice
-                        projectData={project}
+                        deviceType={project.type === 'web' ? 'web' : 'mobile'}
+                        images={project.images}
                         indexOfImageIfNotSwipable={0}
                         swipable={false}
-                        autoPlay={false}
+                        autoPlay={true}
                       />
                     </Grid>
 

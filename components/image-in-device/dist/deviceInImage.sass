@@ -1,0 +1,52 @@
+.container
+  position: relative
+  height: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+
+.mobileFrame
+  pointer-events: none
+  width: 11.6em
+  object-fit: contain
+  position: relative
+  margin-top: -5
+  margin-bottom: -5
+
+.webFrame
+  pointer-events: none
+  height: 10em
+  width: 15em
+  object-fit: contain
+  position: relative
+
+$mobileWidthImg: 4.15em
+
+.mobileImg
+  background: black
+  object-fit: contain
+  object-position: 50% 50%
+  margin-top: 10px
+  height: 8.9em
+  width: $mobileWidthImg
+  overflow: hidden
+
+.webImg
+  object-fit: cover
+  object-position: 100% 100%
+  height: 100%
+  width: 9em
+  overflow: hidden
+
+.swipeableContainerMobile
+  top: -1px
+  position: absolute
+  width: $mobileWidthImg
+  height: 10em
+
+.swipeableContainerDesktop
+  top: 8px
+  position: absolute
+  width: 9em
+
+// show message comp when hover over project images

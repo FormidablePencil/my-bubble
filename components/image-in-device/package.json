@@ -1,0 +1,92 @@
+{
+  "name": "@bit/formidablepencil.device-in-screen.image-in-device",
+  "version": "0.0.2",
+  "homepage": "https://bit.dev/formidablepencil/device-in-screen/image-in-device",
+  "main": "dist/index.js",
+  "componentId": {
+    "scope": "formidablepencil.device-in-screen",
+    "name": "image-in-device",
+    "version": "0.0.2"
+  },
+  "dependencies": {
+    "react-lazy-load-image-component": "^1.5.0",
+    "@types/react": "^16.9.0",
+    "react-slick": "^0.27.13",
+    "slick-carousel": "^1.8.1"
+  },
+  "devDependencies": {
+    "@types/react-lazy-load-image-component": "^1.5.1",
+    "@types/react-slick": "^0.23.4"
+  },
+  "peerDependencies": {
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "@types/react": "16.9.11",
+    "@types/react-dom": "16.9.4"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "bit": {
+    "env": {
+      "compiler": {
+        "bit.envs/compilers/react-typescript@3.1.61": {
+          "rawConfig": {
+            "compilerPath": "typescript/bin/tsc",
+            "compilerArguments": [
+              "--declaration"
+            ],
+            "compiledFileTypes": [
+              ".ts",
+              ".tsx"
+            ],
+            "configFileName": "tsconfig.json",
+            "tsconfig": {
+              "compilerOptions": {
+                "outDir": "dist",
+                "target": "ES2015",
+                "sourceMap": false,
+                "moduleResolution": "Node",
+                "esModuleInterop": true,
+                "module": "ES6",
+                "allowSyntheticDefaultImports": true,
+                "resolveJsonModule": true,
+                "declaration": true,
+                "experimentalDecorators": true,
+                "inlineSourceMap": false,
+                "inlineSources": false,
+                "lib": [
+                  "dom",
+                  "es2015"
+                ],
+                "jsx": "react",
+                "rootDir": "./",
+                "removeComments": true,
+                "typeRoots": [
+                  "./node_modules/@types"
+                ],
+                "importHelpers": false
+              },
+              "include": [
+                "./**/*"
+              ],
+              "exclude": [
+                "node_modules",
+                ".dependencies",
+                "dist"
+              ]
+            },
+            "development": false,
+            "copyPolicy": {
+              "ignorePatterns": [
+                "package.json",
+                "package-lock.json",
+                "tsconfig.json"
+              ],
+              "disable": false
+            }
+          },
+          "options": {}
+        }
+      }
+    }
+  }
+}
