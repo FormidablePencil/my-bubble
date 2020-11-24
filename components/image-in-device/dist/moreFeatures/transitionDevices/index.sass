@@ -1,0 +1,33 @@
+  
+.projectInFrame-container
+  width: 40%
+.mobile-image-in-device
+  transform: scale(1.8) !important
+  @media only screen and (max-width: 900px)
+    transform: scale(2.3) !important
+.desktop-image-in-device
+  transform: scale(1.8) !important
+  @media only screen and (max-width: 900px)
+    transform: scale(2.3) !important
+
+.mobile-image-in-device-display-none
+  @media only screen and (max-width: 900px)
+    position: absolute
+    opacity: 0
+    // transform: translate(-100px) scale(1.8) !important
+    transform: scale(1.8) !important
+    transition: transform 1s, opacity 1s
+.desktop-image-in-device-display-none
+  @media only screen and (max-width: 900px)
+    opacity: 0
+    position: absolute
+    // transform: translate(100px) scale(1.8) !important
+    transform: scale(1.8) !important
+    transition: transform 1s, opacity 1s
+
+.mobile-image-in-device-display-true, .desktop-image-in-device-display-true
+  @media only screen and (max-width: 900px)
+    z-index: 10
+    opacity: 1
+    transform: translate(10px)
+    transition: transform 1s 500ms, opacity 1s 500ms
