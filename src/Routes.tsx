@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 import useFetchAllPortfolioData from './hooks/useFetchAllPortfolioData';
 import TechnologiesPage from './pages/tech-gallery';
 import Navbar from './components/layouts/Navbar';
@@ -10,12 +10,15 @@ import ImageModal from './components/image-modal/index';
 import BottomNav from './components/layouts/BottomNav';
 import ProjectsGalleryPage from './pages/project-gallery';
 import useKeyTrigger from './hooks/useKeyTrigger';
+import { useSelector } from 'react-redux';
+import { rootReducerT } from './store';
 
 export function DemoRoutes() {
   const classes = useStyles();
 
   useFetchAllPortfolioData()
   useKeyTrigger()
+
 
   return (
 
@@ -35,26 +38,38 @@ export function DemoRoutes() {
           `}
         >
 
-          <Switch>
-            <Route exact path="/">
+          <Route exact path="/">
+            <TransitionalAnim>
               <ContactsPage slidesToShow={6} />
-            </Route>
-            <Route path="/projects">
+            </TransitionalAnim>
+          </Route>
+          <Route path="/projects">
+            <TransitionalAnim>
               <ProjectsGalleryPage />
-            </Route>
-            <Route path="/technologies">
+            </TransitionalAnim>
+          </Route>
+          <Route path="/technologies">
+            <TransitionalAnim>
               <TechnologiesPage />
-            </Route>
-          </Switch>
+            </TransitionalAnim>
+          </Route>
 
           <div className='not-visible-on-mdUp'>
             <BottomNav />
           </div>
         </div>
       </Router>
-    </div>
+    </div >
   )
 }
+
+const TransitionalAnim = ({ children }) => {
+  const leavingPageAnim = useSelector((state: rootReducerT) => state.leavingPageAnim)
+
+  return <div className={leavingPageAnim ? 'page-trans-out' : 'page-trans-in'}>{children}</div>
+}
+
+
 
 
 const useStyles = makeStyles(() => ({

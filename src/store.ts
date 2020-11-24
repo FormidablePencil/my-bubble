@@ -10,6 +10,7 @@ import contentDetailSectionIsClosedReducer from './reducers/contentDetailSection
 import modalImageSelectedReducer from './reducers/modalImageSelectedReducer'
 import detailsSectionToggleMobileReducer from './reducers/detailsSectionToggleMobileReducer'
 import pagesLoadedAtLeastOnceReducer, { pagesLoadedAtLeastOnceT } from './reducers/pagesLoadedAtLeastOnceReducer'
+import leavingPageAnimReducer from './reducers/leavingPageAnimReducer'
 
 export interface rootReducerT {
   projectDataCollection: projectDataT[],
@@ -22,6 +23,7 @@ export interface rootReducerT {
   modalImageSelected: number,
   detailsSectionToggleMobile: boolean,
   pageRenderAmounts: pagesLoadedAtLeastOnceT,
+  leavingPageAnim: boolean,
 }
 const rootReducer = combineReducers<rootReducerT>({
   projectDataCollection: projectDataReducer,
@@ -34,6 +36,7 @@ const rootReducer = combineReducers<rootReducerT>({
   modalImageSelected: modalImageSelectedReducer,
   detailsSectionToggleMobile: detailsSectionToggleMobileReducer,
   pageRenderAmounts: pagesLoadedAtLeastOnceReducer,
+  leavingPageAnim: leavingPageAnimReducer,
 })
 
 const initialState = {}

@@ -15,7 +15,6 @@ function ContactsPage({ slidesToShow }) {
   return (
     <div className={`
       ${classes.overflowX}
-      page-fade
     `}>
       <AbsoluteProjectDemo />
       <div className={classes.container}>

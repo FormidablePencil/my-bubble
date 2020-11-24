@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link, makeStyles, Grid, Typography } from '@material-ui/core'
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { tabEffectShadowProp } from '../../styles/materialUiStyles';
+import useNavigateWithAnim from '../../hooks/useNavigateWithAnim';
 
 
 function Navbar() {
@@ -26,23 +27,26 @@ function Navbar() {
     },
   ]
 
+  // modularize
+  const onClickNavigateWithAnim = useNavigateWithAnim()
+
   return (
-    <div 
-    // container
+    <div
+      // container
       className={`${classes.navbar} not-visible-on-smDown`}
-      // justify='space-between' alignContent='center'
-      >
+    // justify='space-between' alignContent='center'
+    >
       <div className={classes.tabsContainer}>
         {tabs.map(tab =>
-          <Link
+          <div
             key={tab.tabTitle}
-            href={tab.path}
+            onClick={() => onClickNavigateWithAnim(tab.path)}
             className={`${classes.tab} ${pathName === tab.path && classes.activeTab}`}
           >
             <Grid className={classes.fullHeight} container justify='center' alignItems='center'>
               <Typography color='textPrimary' variant='body1'>{tab.tabTitle}</Typography>
             </Grid>
-          </Link>
+          </div>
         )}
       </div>
       <Grid item className={classes.rightSide}>
