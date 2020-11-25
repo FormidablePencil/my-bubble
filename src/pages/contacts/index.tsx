@@ -1,9 +1,7 @@
 import React from 'react'
-import { Button, Grid, makeStyles, Typography } from '@material-ui/core'
+import { Grid, makeStyles, Typography, Box } from '@material-ui/core'
 import staticData from '../../staticData'
 import { useHistory } from 'react-router-dom';
-import ReactSlider from '../../components/carousel-tech';
-import AbsoluteProjectDemo from '../../components/absolute-project-demo';
 
 function ContactsPage({ slidesToShow }) {
   const classes = useStyles();
@@ -29,18 +27,21 @@ function ContactsPage({ slidesToShow }) {
             direction='column'
             className={classes.textContainer}>
             <Grid item>
-              <Typography color='textPrimary' variant='h2'>{staticData.homeAbout.name}</Typography>
+              <Typography
+                color='textPrimary' variant='h2'>{staticData.homeAbout.name}</Typography>
             </Grid>
             <Grid item>
-              <Typography color='textPrimary' variant='h4'>{staticData.homeAbout.paragraph2}</Typography>
-            </Grid>
+              <Box fontStyle="italic">
+                <Typography color='textPrimary' variant='h4'>{staticData.homeAbout.paragraph2}</Typography>
+              </Box>
           </Grid>
+        </Grid>
 
 
-          <PersonalContacts />
+        <PersonalContacts />
 
 
-          {/* <Button
+        {/* <Button
             onClick={handleCallToAction}
             className={classes.callToAction}
             variant='contained'
@@ -49,17 +50,16 @@ function ContactsPage({ slidesToShow }) {
             View Projects
             </Button> */}
         </Grid>
-      </div>
-      {/* <ReactSlider slidesToShow={slidesToShow} /> */}
     </div>
+      {/* <ReactSlider slidesToShow={slidesToShow} /> */ }
+    </div >
   )
 }
 
 const PersonalContacts = () =>
   <Grid container direction='column' justify='center' item style={{ marginTop: '1em' }}>
     <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
-      Email:
-      formidablepencil@gmail.com
+      Contact me via formidablepencil@gmail.com
   </Typography>
     <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
       Checkout my code in <a href="www.google.com">github</a>

@@ -4,6 +4,7 @@ import { imagesT } from './ImageInDevice';
 import macbookFrame from './images/macbookFrame.png';
 import galaxyPhoneFrame from './images/galaxys8Frame.png';
 import './deviceInImage.sass';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 function DeviceFrameAndImg({
@@ -16,11 +17,11 @@ function DeviceFrameAndImg({
   indexOfImage: number,
   images: imagesT,
   mobileContentDetailsSection?,
-  deviceType: string
+  deviceType: 'mobile' | 'web',
   children?
 }) {
   const contentStyles = {
-    imagesStyles: deviceType === 'mobile' ? 'mobileImg' : 'webImg',
+    imagesStyles: deviceType === 'web' ? 'webImg' : 'mobileImg',
     swipeableContainerStyles: deviceType === 'mobile' ? 'swipeableContainerMobile' : 'swipeableContainerDesktop'
   }
   const frameImgStyles = deviceType === 'web' ? 'mobileFrame' : 'webFrame'
@@ -47,8 +48,8 @@ function DeviceFrameAndImg({
 
           {children ? childrenWithProps :
             <div className={contentStyles.swipeableContainerStyles}>
-              <LazyLoadImage
-                delayTime={3000}
+              <img
+                // height={120}
                 className={contentStyles.imagesStyles}
                 src={images && images[indexOfImage]?.url}
                 alt='application'
@@ -56,6 +57,8 @@ function DeviceFrameAndImg({
             </div>
           }
           <img
+            // delayTime={1000}
+            // effect="blur"
             className={frameImgStyles}
             src={deviceType === 'mobile' ? galaxyPhoneFrame : macbookFrame}
             alt='frame' />

@@ -23,7 +23,7 @@ function SwipableImages(props) {
     autoplay: autoPlay ? true : false,
     slidesToShow: 1,
     slidesToScroll: 1,
-    draggable: false
+    draggable: false,
   }
 
   const ImageComp = ({ imageProps }) =>
