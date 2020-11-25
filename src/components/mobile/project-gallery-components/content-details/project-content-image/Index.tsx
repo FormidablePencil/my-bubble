@@ -39,7 +39,7 @@ function ProjectContentImage({ accordionOpen, onClickHandler }) {
 
   return (
     <div>
-      <div className={classes.switchDevicesBtnContainer}>
+      <div className='switchDevicesBtnContainer'>
         <SwitchDeviceTypeBtns
           iconSize={40}
           whatIconsToDisplay={imageAvailability({ mobileImages, desktopImages })}
@@ -48,7 +48,8 @@ function ProjectContentImage({ accordionOpen, onClickHandler }) {
         />
       </div>
       <animated.div
-        style={{ ...imageAnim, display: 'flex', flexDirection: 'row' }}
+        className='imageShowcaseContainer'
+        style={{ ...imageAnim, }}
         onClick={() => onClickHandler(0)}
       >
         <TransitionsWrapper>
@@ -91,10 +92,11 @@ function ProjectContentImage({ accordionOpen, onClickHandler }) {
 
 
 const useStyles = makeStyles(() => ({
-  switchDevicesBtnContainer: {
-    position: 'absolute',
-    top: 40,
-    right: 20,
+  imageShowcaseContainer: {
+    background: 'orange',
+    display: 'flex',
+    flexDirection: 'row',
+    overflowX: "hidden",
   }
 }));
 

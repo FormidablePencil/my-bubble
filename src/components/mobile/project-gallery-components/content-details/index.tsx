@@ -100,8 +100,9 @@ const useStyles = makeStyles((theme) => ({
   container: {
     height: '100%',
     width: '100vw',
-    background: theme.palette.primary[800],
     overflowY: 'scroll',
+    overflowX: 'hidden',
+    background: theme.palette.primary[800],
   },
   titleContainer: {
     padding: '5em 3em 0em 3em'

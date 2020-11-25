@@ -13,11 +13,7 @@ const MobileSwipeToViewContentDetailsBar = memo(({ children }) => {
   const classes = useStyles();
 
   return (
-    <animated.div
-      style={{
-        //@ts-ignore
-        // transform: xy.interpolate((x, y) => `translateY(${y}px)`)
-      }}
+    <div
       className={`
         ${classes.detailsSectionWrapper} 
         ${detailsSectionToggleMobile ? 'content-details-closed' : 'content-details-open'}
@@ -33,7 +29,7 @@ const MobileSwipeToViewContentDetailsBar = memo(({ children }) => {
       <div className="mobileContentDetailsBar">
         <ToggleDetailsSectionBar />
       </div>
-    </animated.div>
+    </div>
   )
 })
 
@@ -121,7 +117,7 @@ const useStyles = makeStyles((theme) => ({
     // marginTop: - swipebarHeightInEm,
   },
   content: {
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
     height: '100vh',
   },
 

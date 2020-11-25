@@ -22,30 +22,18 @@ function ContactsPage({ slidesToShow }) {
           container
           direction='column'
           wrap='nowrap'
-          className={classes.wrapper}>
+          className='contacts-text-wrapper'>
 
           <Grid
-            // spacing={3}
             container
             direction='column'
             className={classes.textContainer}>
-
-
-
             <Grid item>
               <Typography color='textPrimary' variant='h2'>{staticData.homeAbout.name}</Typography>
             </Grid>
-
-            <div className={`${classes.horizontalDivider} ${classes.longDivider}`} />
-
-
             <Grid item>
               <Typography color='textPrimary' variant='h4'>{staticData.homeAbout.paragraph2}</Typography>
             </Grid>
-
-
-            <div className={`${classes.horizontalDivider} ${classes.regDivider}`} />
-
           </Grid>
 
 
@@ -74,7 +62,7 @@ const PersonalContacts = () =>
       formidablepencil@gmail.com
   </Typography>
     <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
-      Checkout my code on <a href="www.google.com">github</a>
+      Checkout my code in <a href="www.google.com">github</a>
     </Typography>
     <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
       Access my resume <a href="www.google.com">here</a>
@@ -93,12 +81,8 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     overflowX: 'hidden'
   },
-  wrapper: {
-    marginTop: '3em',
-    marginLeft: '5em'
-  },
   textContainer: {
-    margin: '3em 0 3em 0'
+    margin: '3em 0px 3em 0px'
   },
   absolute: {
     position: 'absolute',
