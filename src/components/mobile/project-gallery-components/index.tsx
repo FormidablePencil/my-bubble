@@ -9,8 +9,7 @@ import CompensateForSwipableTabHeight from '../CompensateForSwipableTabHeight'
 import LineSeperator from '../../reusables/LineSeperator'
 // import ImageInDevice from '../../reusables/image-in-device'
 import TransitionalAnim from '../../layouts/TransitionalAnim'
-import ImageInDevice from '@bit/formidablepencil.device-in-screen.image-in-device'
-
+import ImageInDevice from '@bit/formidablepencil.react-reusables.image-in-device'
 
 function MobileProjectGallery() {
   const indexOfItemRendered: any = useRef(null)

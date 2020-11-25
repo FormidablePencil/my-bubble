@@ -1,6 +1,6 @@
 import React, { Children, cloneElement } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { imagesT } from '.';
+import { imagesT } from './ImageInDevice';
 import macbookFrame from './images/macbookFrame.png';
 import galaxyPhoneFrame from './images/galaxys8Frame.png';
 import './deviceInImage.sass';

@@ -1,62 +1,9 @@
-import React from 'react'
-import DeviceFrameAndImg from './DeviceFrameAndImg'
-import SwipableImages from './SwipableImages'
+import ImageInDevice from './ImageInDevice'
+import SwitchDeviceTypeBtns from './moreFeatures/switchDeviceTypeBtns/index'
+import TransitionDevices from './moreFeatures/transitionDevices'
 
-function ImageInDevice({
-  images,
-  swipable,
-  autoPlay,
-  indexOfImageIfNotSwipable,
-  deviceType,
-}: {
-  images: imagesT | void,
-  swipable: boolean,
-  autoPlay?: boolean,
-  indexOfImageIfNotSwipable: number
-  deviceType: 'mobile' | 'web'
-}) {
-
-  if (!images || !images[0])
-    return null
-  else
-    return (
-      <>
-        <DeviceFrameAndImg
-          deviceType={deviceType}
-          indexOfImage={indexOfImageIfNotSwipable}
-          images={images}
-        >
-          {swipable && <SwipableImages autoPlay={autoPlay} images={images} />}
-        </DeviceFrameAndImg>
-      </>
-    )
+export {
+  SwitchDeviceTypeBtns,
+  TransitionDevices
 }
-
-export interface imagesT { [index: number]: { device: string, url: string } }
-
-export interface projectDataTBit {
-  title: string
-  description: string
-  links: {
-    client?: string
-    server?: string
-    cms?: string
-    blog?: string
-  }
-  status: number
-  technologies: []
-  type: string
-  _id: number
-  showInPortfolio: boolean
-  images: {
-    [index: number]: {
-      url: string
-      device: string
-    }
-    map?: any
-    length?: any
-  }
-  video: string
-}
-
 export default ImageInDevice

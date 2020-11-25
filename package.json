@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@bit/formidablepencil.react-reusables.image-in-device": "file:./components/image-in-device",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
@@ -38,8 +39,7 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
-    "typescript": "^4.0.3",
-    "@bit/formidablepencil.device-in-screen.image-in-device": "file:./components/image-in-device"
+    "typescript": "^4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",

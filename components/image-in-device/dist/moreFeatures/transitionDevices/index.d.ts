@@ -1,8 +1,9 @@
 /// <reference types="react" />
 import './index.sass';
-declare const TransitionDevices: ({ children, deviceType, show }: {
+interface T {
     children: any;
-    deviceType: any;
-    show: any;
-}) => JSX.Element;
+    deviceType: 'desktop' | 'mobile';
+    show: boolean;
+}
+declare const TransitionDevices: ({ children, deviceType, show }: T) => JSX.Element;
 export default TransitionDevices;

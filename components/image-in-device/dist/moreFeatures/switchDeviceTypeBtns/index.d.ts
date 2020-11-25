@@ -1,8 +1,10 @@
 /// <reference types="react" />
 import './index.sass';
-declare const SwitchDeviceTypeBtns: ({ whatIconsToDisplay, isMobile, onClickHandler }: {
-    whatIconsToDisplay: any;
-    isMobile: any;
-    onClickHandler: any;
-}) => JSX.Element;
+interface T {
+    iconSize: number;
+    whatIconsToDisplay: 'both' | 'mobile' | 'desktop';
+    isMobile: boolean;
+    onClickHandler: () => void;
+}
+declare const SwitchDeviceTypeBtns: ({ iconSize, whatIconsToDisplay, isMobile, onClickHandler }: T) => JSX.Element;
 export default SwitchDeviceTypeBtns;

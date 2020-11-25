@@ -19,6 +19,7 @@ export interface projectDataT {
       url: string
       device: string
     }
+    filter?: any
     map?: any
     length?: any
   }

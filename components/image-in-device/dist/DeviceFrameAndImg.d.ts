@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { imagesT } from '.';
+import { imagesT } from './ImageInDevice';
 import './deviceInImage.sass';
 declare function DeviceFrameAndImg({ indexOfImage, images, mobileContentDetailsSection, deviceType, children }: {
     indexOfImage: number;

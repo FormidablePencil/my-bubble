@@ -6,9 +6,7 @@ import { SELECTED_SUBJECT, TOGGLE_CONTENT_DETAILS_SECTION } from '../../../actio
 import TechLogo from '../../reusables/TechLogo';
 import { projectDataT } from '../../../reducers/projectDataReducer';
 import Ellipsis from 'react-ellipsis-pjs';
-// import ImageInDevice from '../../reusables/image-in-device';
-import ImageInDevice from '@bit/formidablepencil.device-in-screen.image-in-device'
-
+import ImageInDevice from '@bit/formidablepencil.react-reusables.image-in-device'
 
 const Card = (
   { projectContent,
