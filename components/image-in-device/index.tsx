@@ -1,9 +1,10 @@
 import ImageInDevice from './ImageInDevice'
 import SwitchDeviceTypeBtns from './moreFeatures/switchDeviceTypeBtns/index'
-import TransitionDevices from './moreFeatures/transitionDevices'
+import TransitionDevices, { TransitionsWrapper } from './moreFeatures/transitionDevices'
 
 export {
   SwitchDeviceTypeBtns,
-  TransitionDevices
+  TransitionDevices,
+  TransitionsWrapper,
 }
 export default ImageInDevice
