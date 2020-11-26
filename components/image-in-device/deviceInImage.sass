@@ -26,7 +26,7 @@ $mobileWidthImg: 4.15em
   background: black
   object-fit: contain
   object-position: 50% 50%
-  margin-top: 10px
+  // margin-top: 10px
   height: 8.9em
   width: $mobileWidthImg
   overflow: hidden
@@ -43,10 +43,34 @@ $mobileWidthImg: 4.15em
   position: absolute
   width: $mobileWidthImg
   height: 10em
+  display: flex
+  justify-content: center
+  align-items: center
 
 .swipeableContainerDesktop
-  top: 8px
+  top: 0px
   position: absolute
   width: 9em
+  display: flex
+  justify-content: center
+  align-items: center
 
-// show message comp when hover over project images
+.logo-desktop-bg, .logo-mobile-bg
+  background: rgba(0,0,0,.6)
+  position: absolute
+  display: flex
+  justify-content: center
+  align-items: center
+  
+.logo-mobile-bg
+  width: $mobileWidthImg
+  height: 8.5em
+
+.logo-desktop-bg
+  width: 9em
+  height: 100%
+
+.logo
+  position: absolute
+  height: 3em
+  width: 3em

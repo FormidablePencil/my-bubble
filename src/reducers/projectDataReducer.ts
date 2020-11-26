@@ -1,6 +1,7 @@
 import { FETCHED_ALL_PROJECT_DATA } from "../actions/types"
 
 export interface projectDataT {
+  logo: string
   title: string
   description: string
   links: {

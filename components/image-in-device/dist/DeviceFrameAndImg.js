@@ -3,7 +3,7 @@ import macbookFrame from './images/macbookFrame.png';
 import galaxyPhoneFrame from './images/galaxys8Frame.png';
 import './deviceInImage.sass';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-function DeviceFrameAndImg({ indexOfImage, images, mobileContentDetailsSection, deviceType, children }) {
+function DeviceFrameAndImg({ indexOfImage, images, logo, mobileContentDetailsSection, deviceType, children }) {
     var _a;
     const contentStyles = {
         imagesStyles: deviceType === 'web' ? 'webImg' : 'mobileImg',
@@ -26,6 +26,9 @@ function DeviceFrameAndImg({ indexOfImage, images, mobileContentDetailsSection, 
                     } : {} },
                 children ? childrenWithProps :
                     React.createElement("div", { className: contentStyles.swipeableContainerStyles },
+                        logo &&
+                            React.createElement("div", { className: deviceType === 'mobile' ? 'logo-mobile-bg' : 'logo-desktop-bg' },
+                                React.createElement("img", { src: logo, alt: "logo", className: "logo" })),
                         React.createElement("img", { className: contentStyles.imagesStyles, src: images && ((_a = images[indexOfImage]) === null || _a === void 0 ? void 0 : _a.url), alt: 'application' })),
                 React.createElement("img", { className: frameImgStyles, src: deviceType === 'mobile' ? galaxyPhoneFrame : macbookFrame, alt: 'frame' }))));
     }

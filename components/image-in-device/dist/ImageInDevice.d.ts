@@ -1,10 +1,11 @@
 /// <reference types="react" />
-declare function ImageInDevice({ images, swipable, autoPlay, indexOfImageIfNotSwipable, deviceType, }: {
+declare function ImageInDevice({ images, swipable, autoPlay, indexOfImageIfNotSwipable, deviceType, logo, }: {
     images: imagesT | void;
     swipable: boolean;
     autoPlay?: boolean;
     indexOfImageIfNotSwipable: number;
     deviceType: 'mobile' | 'web';
+    logo?: string;
 }): JSX.Element;
 export interface imagesT {
     [index: number]: {

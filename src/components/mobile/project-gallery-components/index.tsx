@@ -47,15 +47,17 @@ function MobileProjectGallery() {
         {/* //~ ======= more details section ======= */}
         <MobileContentDetailsSection />
 
-        <div className={`
-            ${classes.marginTop}
-            not-visible-on-mdUp
-            ${contactPageRenderCount
-            ? 'page-fade'
-            : 'page-translate-anim'
-          }`
-        }>
-          <TransitionalAnim>
+        <div
+          className={`${classes.marginTop}`}
+        // className={`
+        //     ${classes.marginTop}
+        //     not-visible-on-mdUp
+        //     ${contactPageRenderCount
+        //     ? 'page-fade'
+        //     : 'page-translate-anim'
+        //   }`}
+        >
+          <TransitionalAnim onRender={true}>
             {/* //~ ======= gallery section ======= */}
             {projectDataCollection.map((project, index) => {
               if (project.showInPortfolio) indexOfItemRendered.current.push(indexOfItemRendered.current.length)
@@ -72,7 +74,7 @@ function MobileProjectGallery() {
                       alignItems='center'
                       className={classes.removeUserSelecting}
                     >
-                      <Typography variant='h5' style={{marginBottom: 10}}>{project.title}</Typography>
+                      <Typography variant='h5' style={{ marginBottom: 10 }}>{project.title}</Typography>
                       <Typography variant='h5'>
                         {project.type === 'mobile' ? '(App)' : '(Website)'}
                       </Typography>

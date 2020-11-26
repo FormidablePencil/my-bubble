@@ -1,5 +1,4 @@
 import React, { memo } from 'react'
-import { animated } from 'react-spring'
 import { makeStyles, Grid, Typography, Button } from '@material-ui/core'
 import { swipebarHeightInEm, swipebarHeightInPx } from '../../../../styles/materialUiStyles';
 import { BsArrowBarDown } from 'react-icons/bs';
@@ -85,7 +84,7 @@ const AppLogo = () => {
       className={classes.selectedContentImg}
       src={
         projectDataCollection[currentSubjectViewing]
-          ? projectDataCollection[currentSubjectViewing].images[0].url
+          ? projectDataCollection[currentSubjectViewing].logo
           : ''
       }
       alt=''

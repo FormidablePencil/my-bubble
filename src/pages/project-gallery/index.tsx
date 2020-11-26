@@ -2,7 +2,6 @@ import React from 'react'
 import MobileProjectGallery from '../../components/mobile/project-gallery-components'
 import useToggleGridDirection from '../../hooks/useToggleGridDirection'
 import ProjectGallery from '../../components/project-gallery-components'
-import TransitionalAnim from '../../components/layouts/TransitionalAnim'
 
 //~ focus on making this component and it's sub components work
 

@@ -20,7 +20,6 @@ const Card = (
   const contentDetailSectionIsClosed = useSelector((state: rootReducerT) => state.contentDetailSectionIsClosed)
   const classes = useStyles();
   const dispatch = useDispatch()
-
   const onCardClick = async () => {
     await dispatch({ type: SELECTED_SUBJECT, payload: techIndexInCollection })
 
@@ -53,6 +52,7 @@ const Card = (
           </Typography>
           <Grid item className={classes.techImagePositioning}>
             <ImageInDevice
+              logo={projectContent.logo}
               deviceType={projectContent.type === 'web' ? 'web' : 'mobile'}/* dynamic */
               images={projectContent.images}
               indexOfImageIfNotSwipable={0}

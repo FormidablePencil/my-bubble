@@ -8,12 +8,14 @@ function ImageInDevice({
   autoPlay,
   indexOfImageIfNotSwipable,
   deviceType,
+  logo,
 }: {
   images: imagesT | void,
   swipable: boolean,
   autoPlay?: boolean,
   indexOfImageIfNotSwipable: number
-  deviceType: 'mobile' | 'web'
+  deviceType: 'mobile' | 'web',
+  logo?: string,
 }) {
 
   if (!images || !images[0])
@@ -22,6 +24,7 @@ function ImageInDevice({
     return (
       <>
         <DeviceFrameAndImg
+          logo={logo}
           deviceType={deviceType}
           indexOfImage={indexOfImageIfNotSwipable}
           images={images}

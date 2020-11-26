@@ -10,12 +10,14 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 function DeviceFrameAndImg({
   indexOfImage,
   images,
+  logo,
   mobileContentDetailsSection,
   deviceType,
   children
 }: {
   indexOfImage: number,
   images: imagesT,
+  logo?: string,
   mobileContentDetailsSection?,
   deviceType: 'mobile' | 'web',
   children?
@@ -44,12 +46,15 @@ function DeviceFrameAndImg({
               margin: '1em, 0em 1em, 0em'
             } : {}}
         >
-          {/* <NavBtn isMobile={true} next={true} /> */}
 
           {children ? childrenWithProps :
             <div className={contentStyles.swipeableContainerStyles}>
+              {logo &&
+                <div className={deviceType === 'mobile' ? 'logo-mobile-bg' : 'logo-desktop-bg'}>
+                  <img src={logo} alt="logo" className="logo" />
+                </div>
+              }
               <img
-                // height={120}
                 className={contentStyles.imagesStyles}
                 src={images && images[indexOfImage]?.url}
                 alt='application'
@@ -57,12 +62,9 @@ function DeviceFrameAndImg({
             </div>
           }
           <img
-            // delayTime={1000}
-            // effect="blur"
             className={frameImgStyles}
             src={deviceType === 'mobile' ? galaxyPhoneFrame : macbookFrame}
             alt='frame' />
-          {/* <NavBtn isMobile={true} next={false} /> */}
 
         </div>
       </>
