@@ -9,6 +9,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { accordionTitleColor } from '../../../../styles/materialUiStyles';
 import { GalleryContentDetailSectionFirst, GalleryContentDetailSectionSecond } from '../../../project-gallery-components/details-section';
 import ProjectContentImage from './project-content-image';
+import NavigationFabs from './project-content-image/NavigationFabs';
 
 function MobileContentDetailsSection() {
   const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)
@@ -64,7 +65,7 @@ function MobileContentDetailsSection() {
               </Accordion>
             </Grid>
 
-            <Grid item container justify='center'>
+            <Grid className={classes.extraSpaceForNavFabs} item container justify='center'>
               <Accordion
                 expanded={accordionOpen === 2}
                 className={classes.accordionContainer}
@@ -84,6 +85,8 @@ function MobileContentDetailsSection() {
           </Grid>
 
         </Grid>
+
+        <NavigationFabs />
 
         <Grid item container>
           <CompensateForSwipableTabHeight />
@@ -122,5 +125,8 @@ const useStyles = makeStyles((theme) => ({
   },
   accordionTitle: {
     color: accordionTitleColor,
+  },
+  extraSpaceForNavFabs: {
+marginBottom: '5em'
   },
 }));

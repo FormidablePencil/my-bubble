@@ -4,7 +4,7 @@ import { Grid, makeStyles, Typography } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import { rootReducerT } from '../../../store'
 import MobileContentDetailsSection from './content-details'
-import { SELECTED_SUBJECT, TOGGLE_DETAILS_SECTION_MOBILE, UPDATE_CONTACT_PAGE_RENDER } from '../../../actions/types'
+import { SELECTED_PROJECT, TOGGLE_DETAILS_SECTION_MOBILE, UPDATE_CONTACT_PAGE_RENDER } from '../../../actions/types'
 import CompensateForSwipableTabHeight from '../CompensateForSwipableTabHeight'
 import LineSeperator from '../../reusables/LineSeperator'
 // import ImageInDevice from '../../reusables/image-in-device'
@@ -25,7 +25,7 @@ function MobileProjectGallery() {
   }, [])
 
   const onClickItem = (index) => {
-    dispatch({ type: SELECTED_SUBJECT, payload: index })
+    dispatch({ type: SELECTED_PROJECT, payload: index })
     dispatch({ type: TOGGLE_DETAILS_SECTION_MOBILE })
   }
 

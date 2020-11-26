@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import { Paper, Grid, makeStyles, Typography } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux';
 import { rootReducerT } from '../../../store';
-import { SELECTED_SUBJECT, TOGGLE_CONTENT_DETAILS_SECTION } from '../../../actions/types';
+import { SELECTED_PROJECT, TOGGLE_CONTENT_DETAILS_SECTION } from '../../../actions/types';
 import TechLogo from '../../reusables/TechLogo';
 import { projectDataT } from '../../../reducers/projectDataReducer';
 import Ellipsis from 'react-ellipsis-pjs';
@@ -21,7 +21,7 @@ const Card = (
   const classes = useStyles();
   const dispatch = useDispatch()
   const onCardClick = async () => {
-    await dispatch({ type: SELECTED_SUBJECT, payload: techIndexInCollection })
+    await dispatch({ type: SELECTED_PROJECT, payload: techIndexInCollection })
 
     if (contentDetailSectionIsClosed)
       dispatch({ type: TOGGLE_CONTENT_DETAILS_SECTION })
