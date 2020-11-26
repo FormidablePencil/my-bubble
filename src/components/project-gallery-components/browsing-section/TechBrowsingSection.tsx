@@ -29,6 +29,7 @@ const useStyles = makeStyles(() => ({
     height: '7.5em',
     background: 'white',
     margin: '2em',
+    padding: '.5em',
     borderRadius: '5em',
     display: 'flex',
     justifyContent: 'center',

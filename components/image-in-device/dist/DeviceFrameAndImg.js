@@ -28,7 +28,7 @@ function DeviceFrameAndImg({ indexOfImage, images, logo, mobileContentDetailsSec
                     React.createElement("div", { className: `${contentStyles.swipeableContainerStyles} containerWithlogo` },
                         logo &&
                             React.createElement("div", { className: deviceType === 'mobile' ? 'logo-mobile-bg' : 'logo-desktop-bg' },
-                                React.createElement("img", { src: logo, alt: "logo", className: "logo" })),
+                                React.createElement("img", { src: logo, alt: "logo", className: "project-logo" })),
                         React.createElement("img", { className: contentStyles.imagesStyles, src: images && ((_a = images[indexOfImage]) === null || _a === void 0 ? void 0 : _a.url), alt: 'application' })),
                 React.createElement("img", { className: frameImgStyles, src: deviceType === 'mobile' ? galaxyPhoneFrame : macbookFrame, alt: 'frame' }))));
     }

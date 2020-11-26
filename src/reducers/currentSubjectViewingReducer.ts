@@ -3,7 +3,7 @@ import { SELECTED_SUBJECT } from "../actions/types"
 
 export type currentlyViewingT = number  //This will be id of object
 
-const initialState = 3
+const initialState = 0
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {

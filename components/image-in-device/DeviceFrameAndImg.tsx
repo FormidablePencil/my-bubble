@@ -1,5 +1,4 @@
 import React, { Children, cloneElement } from 'react'
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { imagesT } from './ImageInDevice';
 import macbookFrame from './images/macbookFrame.png';
 import galaxyPhoneFrame from './images/galaxys8Frame.png';
@@ -51,7 +50,7 @@ function DeviceFrameAndImg({
             <div className={`${contentStyles.swipeableContainerStyles} containerWithlogo`}>
               {logo &&
                 <div className={deviceType === 'mobile' ? 'logo-mobile-bg' : 'logo-desktop-bg'}>
-                  <img src={logo} alt="logo" className="logo" />
+                  <img src={logo} alt="logo" className="project-logo" />
                 </div>
               }
               <img

@@ -84,6 +84,7 @@ function MobileProjectGallery() {
                       className={classes.imageInDeviceContainer}
                     >
                       <ImageInDevice
+                        logo={project.logo}
                         deviceType={project.type === 'web' ? 'web' : 'mobile'}
                         images={project.images}
                         indexOfImageIfNotSwipable={0}
@@ -121,6 +122,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
   },
   imageInDeviceContainer: {
+    cursor: 'pointer',
     margin: '4em',
     transform: 'scale(1.4)'
   },
