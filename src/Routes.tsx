@@ -12,11 +12,10 @@ import ProjectsGalleryPage from './pages/project-gallery';
 import useKeyTrigger from './hooks/useKeyTrigger';
 import TransitionalAnim from './components/layouts/TransitionalAnim';
 
-/* create icons for the apps */
-/* The icons and projects are too abrupt when the page is initially redirected there especially the projects page. 
+/* The tech and projects are too abrupt when the page is initially redirected there especially the projects page. 
 the gallaxy frame does some funky business. */
 /* change theme perhaps */
-/* mavigate from mobile contentDetailsSection */
+/* mavigation for mobile contentDetailsSection */
 
 export function DemoRoutes() {
   const classes = useStyles();

@@ -25,7 +25,7 @@ function DeviceFrameAndImg({ indexOfImage, images, logo, mobileContentDetailsSec
                         margin: '1em, 0em 1em, 0em'
                     } : {} },
                 children ? childrenWithProps :
-                    React.createElement("div", { className: contentStyles.swipeableContainerStyles },
+                    React.createElement("div", { className: `${contentStyles.swipeableContainerStyles} containerWithlogo` },
                         logo &&
                             React.createElement("div", { className: deviceType === 'mobile' ? 'logo-mobile-bg' : 'logo-desktop-bg' },
                                 React.createElement("img", { src: logo, alt: "logo", className: "logo" })),

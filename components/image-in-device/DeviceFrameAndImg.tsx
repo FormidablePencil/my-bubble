@@ -48,7 +48,7 @@ function DeviceFrameAndImg({
         >
 
           {children ? childrenWithProps :
-            <div className={contentStyles.swipeableContainerStyles}>
+            <div className={`${contentStyles.swipeableContainerStyles} containerWithlogo`}>
               {logo &&
                 <div className={deviceType === 'mobile' ? 'logo-mobile-bg' : 'logo-desktop-bg'}>
                   <img src={logo} alt="logo" className="logo" />
