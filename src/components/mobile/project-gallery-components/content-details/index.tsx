@@ -18,6 +18,7 @@ const mobileContentDetailsAnim = {
   navInLeft: 'mobile-content-details-nav-in-left',
   navInRight: 'mobile-content-details-nav-in-right'
 }
+const switchProjectsDelay = 400
 
 function MobileContentDetailsSection() {
   const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)
@@ -38,20 +39,20 @@ function MobileContentDetailsSection() {
 
   const onClickFabPrevHandler = () => {
     if (!ifCanGoAnyFarther({ direction: 'previous' })) return
-      setNavigatingProjectAnimation(mobileContentDetailsAnim.navOutLeft)
-    setTimeout(() => {
-      navigatePrevProject()
-      setNavigatingProjectAnimation(mobileContentDetailsAnim.navInLeft)
-    }, 1000);
+    // setNavigatingProjectAnimation(mobileContentDetailsAnim.navOutLeft)
+    // setTimeout(() => {
+    navigatePrevProject()
+    // setNavigatingProjectAnimation(mobileContentDetailsAnim.navInLeft)
+    // }, switchProjectsDelay);
   }
 
   const onClickFabNextHandler = () => {
     if (!ifCanGoAnyFarther({ direction: 'next' })) return
-    setNavigatingProjectAnimation(mobileContentDetailsAnim.navOutRight)
-    setTimeout(() => {
-      navigateNextProject()
-      setNavigatingProjectAnimation(mobileContentDetailsAnim.navInRight)
-    }, 1000);
+    // setNavigatingProjectAnimation(mobileContentDetailsAnim.navOutRight)
+    // setTimeout(() => {
+    navigateNextProject()
+    // setNavigatingProjectAnimation(mobileContentDetailsAnim.navInRight)
+    // }, switchProjectsDelay);
   }
 
   return (
