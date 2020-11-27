@@ -15,8 +15,8 @@ import TransitionalAnim from './components/layouts/TransitionalAnim';
 /* The tech and projects are too abrupt when the page is initially redirected there especially the projects page. 
 the gallaxy frame does some funky business. */
 /* change theme perhaps */
-/* mavigation for mobile contentDetailsSection */
 
+/* make it loop: useNavigateProjects */
 export function DemoRoutes() {
   const classes = useStyles();
 

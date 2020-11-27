@@ -6,7 +6,7 @@ import ImageInDevice, { SwitchDeviceTypeBtns, TransitionDevices, TransitionsWrap
 import { makeStyles } from '@material-ui/core'
 import { filterImagesForSpecifiedDevice, imageAvailability } from './deviceInImgUlilities'
 
-function ProjectContentImage({ accordionOpen, onClickHandler }) {
+function ProjectContentImage({ accordionOpen, onClickHandler, navigatingProjectAnimation }) {
   const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
   const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)
   const [isViewingMobileImgs, setIsViewingMobileImgs] = useState(true)
@@ -48,7 +48,7 @@ function ProjectContentImage({ accordionOpen, onClickHandler }) {
         />
       </div>
       <animated.div
-        className='imageShowcaseContainer'
+        className={`${navigatingProjectAnimation} imageShowcaseContainer`}
         style={{ ...imageAnim, }}
         onClick={() => onClickHandler(0)}
       >

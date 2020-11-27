@@ -2,10 +2,20 @@ import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
 import { rootReducerT } from '../../../store';
 import { makeStyles, Grid } from '@material-ui/core';
+import { animated } from 'react-spring'
+import useTrailOnFirstRender from '../../../hooks/useTrailOnFirstRender';
 
 const TechBrowsingSection = memo(() => {
   const techDataCollection = useSelector((state: rootReducerT) => state.techDataCollection)
+  const techPageRenderCount = useSelector((state: rootReducerT) => state.pageRenderAmounts.tech)
   const classes = useStyles();
+
+  const trail = useTrailOnFirstRender({
+    pageRendered: techPageRenderCount,
+    trailLength: techDataCollection.length,
+    trailDelay: 200,
+  })
+
 
   const TechItemContainer = ({ tech }: { tech }) =>
     <Grid item>
@@ -14,10 +24,14 @@ const TechBrowsingSection = memo(() => {
       </div>
     </Grid>
 
+
   return (
     <Grid container justify='center'>
-      {techDataCollection.map((tech) =>
-        <TechItemContainer key={tech._id} tech={tech} />
+
+      {trail.map((trailProps, index) =>
+        <animated.div style={trailProps}>
+          <TechItemContainer key={techDataCollection[index]._id} tech={techDataCollection[index]} />
+        </animated.div>
       )}
     </Grid>
   )
