@@ -15,7 +15,7 @@ function MobileTechGallery() {
     return () => {
       dispatch({ type: UPDATE_TECH_PAGE_RENDER })
     }
-  }, [])
+  }, [dispatch])
 
   return (
     <>

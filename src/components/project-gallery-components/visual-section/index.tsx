@@ -28,6 +28,7 @@ function GalleryContentVisualSection() {
   const classes = useStyles()
   const dispatch = useDispatch()
   const { isMobile } = useValidatorsRedux()
+  const projectIsWeb = projectDataCollection[currentSubjectViewing]?.type === 'web'
 
   let mobilePlatformImages = false
   if (projectDataCollection[currentSubjectViewing])
@@ -55,7 +56,7 @@ function GalleryContentVisualSection() {
           item
           container
           justify='center'
-          style={{ margin: '.5em', }}
+          style={!projectIsWeb ? { margin: '.5em', } : { marginRight: '.5em', }}
         >
           <PrimaryProjectImage />
         </Grid>

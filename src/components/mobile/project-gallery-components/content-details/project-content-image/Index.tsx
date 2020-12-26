@@ -3,14 +3,12 @@ import { useSelector } from 'react-redux'
 import { config, animated, useSpring } from 'react-spring'
 import { rootReducerT } from '../../../../../store'
 import ImageInDevice, { SwitchDeviceTypeBtns, TransitionDevices, TransitionsWrapper } from '@bit/formidablepencil.react-reusables.image-in-device'
-import { makeStyles } from '@material-ui/core'
 import { filterImagesForSpecifiedDevice, imageAvailability } from './deviceInImgUlilities'
 
 function ProjectContentImage({ accordionOpen, onClickHandler, navigatingProjectAnimation }) {
   const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
   const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)
   const [isViewingMobileImgs, setIsViewingMobileImgs] = useState(true)
-  const classes = useStyles();
 
   const desktopImages = projectDataCollection[currentSubjectViewing]
     ? filterImagesForSpecifiedDevice(projectDataCollection[currentSubjectViewing], 'web')
@@ -27,6 +25,7 @@ function ProjectContentImage({ accordionOpen, onClickHandler, navigatingProjectA
         else return true
       })
     }
+    // eslint-disable-next-line
   }, [currentSubjectViewing])
 
   // const whatTypeOfImagesAvailableRef: whatTypeOfImagesAvailableRefT = useRef([])
@@ -94,15 +93,5 @@ function ProjectContentImage({ accordionOpen, onClickHandler, navigatingProjectA
     </div>
   )
 }
-
-
-const useStyles = makeStyles(() => ({
-  imageShowcaseContainer: {
-    background: 'orange',
-    display: 'flex',
-    flexDirection: 'row',
-    overflowX: "hidden",
-  }
-}));
 
 export default ProjectContentImage

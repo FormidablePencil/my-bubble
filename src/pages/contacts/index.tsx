@@ -1,14 +1,13 @@
 import React from 'react'
 import { Grid, makeStyles, Typography, Box } from '@material-ui/core'
 import staticData from '../../staticData'
-import { useHistory } from 'react-router-dom';
 
-function ContactsPage({ slidesToShow }) {
+function ContactsPage() {
   const classes = useStyles();
-  let history = useHistory();
+  // let history = useHistory();
   /* Contacts: github, linkedIn & email. Get to know me: self presentation site link. */
 
-  const handleCallToAction = () => history.push('/projects')
+  // const handleCallToAction = () => history.push('/projects')
 
   return (
     <div className={`

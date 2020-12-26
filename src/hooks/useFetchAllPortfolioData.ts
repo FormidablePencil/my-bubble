@@ -7,7 +7,7 @@ function useFetchAllPortfolioData() {
 
   useEffect(() => {
     dispatch(fetchAllProjectData())
-  }, [])
+  }, [dispatch])
 
 }
 

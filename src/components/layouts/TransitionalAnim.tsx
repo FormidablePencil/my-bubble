@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { } from 'react'
 import { useSelector } from 'react-redux';
 import { rootReducerT } from '../../store';
 import rose from '../../assets/rose.png';
-import { useLocation } from 'react-router-dom';
 
 interface T { children, overRideClassName?: string, compHere?: any, onRender?: boolean, onRenderDelay?: number }
-const TransitionalAnim = ({ children, overRideClassName, compHere, onRender, onRenderDelay }: T) => {
-  const { leavingFromPage, nextLocation, prevLocation } = useSelector((state: rootReducerT) => state.leavingPageAnim)
+const TransitionalAnim = ({ children, overRideClassName, compHere }: T) => {
+  const leavingFromPage = useSelector((state: rootReducerT) => state.leavingPageAnim.leavingFromPage)
 
   return (
     <div

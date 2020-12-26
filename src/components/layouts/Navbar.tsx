@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link, makeStyles, Grid, Typography } from '@material-ui/core'
-import { useHistory, useLocation } from 'react-router-dom';
+import { makeStyles, Grid, Typography } from '@material-ui/core'
+import { useLocation } from 'react-router-dom';
 import { tabEffectShadowProp } from '../../styles/materialUiStyles';
 import useNavigateWithAnim from '../../hooks/useNavigateWithAnim';
 

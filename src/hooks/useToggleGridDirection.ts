@@ -16,6 +16,7 @@ const useToggleGridDirection = () => {
     resizeEventHandler()
     window.addEventListener('resize', resizeEventHandler)
     return () => window.removeEventListener('resize', resizeEventHandler)
+    // eslint-disable-next-line
   }, [])
 
   return {smScreen}

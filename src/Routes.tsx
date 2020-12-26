@@ -44,7 +44,7 @@ export function DemoRoutes() {
 
           <Route exact path="/">
             <TransitionalAnim>
-              <ContactsPage slidesToShow={6} />
+              <ContactsPage />
             </TransitionalAnim>
           </Route>
           <Route path="/projects">

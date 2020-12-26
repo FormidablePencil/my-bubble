@@ -12,19 +12,19 @@ import ProjectContentImage from './project-content-image';
 import NavigationFabs from './project-content-image/NavigationFabs';
 import useNavigateProjects from './project-content-image/useNavigateProjects';
 
-const mobileContentDetailsAnim = {
-  navOutLeft: 'mobile-content-details-nav-out-left',
-  navOutRight: 'mobile-content-details-nav-out-right',
-  navInLeft: 'mobile-content-details-nav-in-left',
-  navInRight: 'mobile-content-details-nav-in-right'
-}
-const switchProjectsDelay = 400
+// const mobileContentDetailsAnim = {
+//   navOutLeft: 'mobile-content-details-nav-out-left',
+//   navOutRight: 'mobile-content-details-nav-out-right',
+//   navInLeft: 'mobile-content-details-nav-in-left',
+//   navInRight: 'mobile-content-details-nav-in-right'
+// }
+// const switchProjectsDelay = 400
 
 function MobileContentDetailsSection() {
   const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)
   const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
   const classes = useStyles();
-  const [navigatingProjectAnimation, setNavigatingProjectAnimation] = useState('')
+  const [navigatingProjectAnimation] = useState('')
 
   // const { accordionOpen, imageAnim, onClickHandler } = useContentDetailsImageAnim()
   const { navigatePrevProject, navigateNextProject, ifCanGoAnyFarther } = useNavigateProjects()
