@@ -1,12 +1,12 @@
 import React from 'react'
 import { makeStyles, Typography } from "@material-ui/core"
 
-const TextFormated = ({ title, content, content2, multiline, fontSizeParagraph }:
-  { title, content, content2?, multiline?, fontSizeParagraph? }) => {
+const TextFormated = ({ title, content, content2, multiline, fontSizeParagraph, isflexCol }:
+  { title, content, content2?, multiline?, fontSizeParagraph?, isflexCol? }) => {
   const classes = useStyles();
 
   return (
-    <div>
+    <div className={isflexCol ? classes.flexCol : ''}>
       <Typography
         className={multiline && classes.multilineTitle}
         variant='h6' display='inline'>
@@ -25,10 +25,15 @@ const TextFormated = ({ title, content, content2, multiline, fontSizeParagraph }
 
 
 const useStyles = makeStyles(() => ({
+  flexCol: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
   multilineTitle: {
     display: 'block'
   },
   multilineParagraph: {
+    display: 'block',
     marginLeft: '1em'
   }
 }));

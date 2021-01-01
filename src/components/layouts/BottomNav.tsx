@@ -1,7 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import ImportantDevicesIcon from '@material-ui/icons/ImportantDevices';
+import HomeIcon from '@material-ui/icons/Home';
+import GrainIcon from '@material-ui/icons/Grain';
 import { useLocation } from 'react-router-dom';
 import { Fab, Action } from 'react-tiny-fab';
 import 'react-tiny-fab/dist/styles.css';
@@ -14,9 +16,9 @@ function BottomNav() {
   const onClickNavigateWithAnim = useNavigateWithAnim()
 
   const fabBtns = [
-    { bgColor: '#CF2C6E', component: <LocationOnIcon />, onClickValue: '/', text: 'Contacts', route: '/' },
-    { bgColor: '#5F4EFF', component: <LocationOnIcon />, onClickValue: '/projects', text: 'Projects', route: '/projects' },
-    { bgColor: '#3C78FF', component: <LocationOnIcon />, onClickValue: '/technologies', text: 'Technologies', route: '/technologies' },
+    { bgColor: '#CF2C6E', component: <HomeIcon />, onClickValue: '/', text: 'Contacts', route: '/' },
+    { bgColor: '#5F4EFF', component: <ImportantDevicesIcon />, onClickValue: '/projects', text: 'Projects', route: '/projects' },
+    { bgColor: '#3C78FF', component: <GrainIcon />, onClickValue: '/technologies', text: 'Technologies', route: '/technologies' },
   ]
 
   return (
@@ -36,7 +38,7 @@ function BottomNav() {
             style={{ backgroundColor: item.bgColor }}
             onClick={() => onClickNavigateWithAnim(item.onClickValue)}
           >
-            <LocationOnIcon />
+            {item.component}
           </Action>
         )}
       </Fab>

@@ -49,6 +49,7 @@ const Card = (
             && classes.multilineTitle}`
           }>
             {projectContent.title}
+            {projectContent.subtitle && <div><h6>({projectContent.subtitle})</h6></div>}
           </Typography>
           <Grid item className={classes.techImagePositioning}>
             <ImageInDevice
@@ -85,7 +86,7 @@ const Card = (
                 {projectContent.technologies.map((techTitle, index) => {
                   if (trimTech && index >= 4) {
                     if (index === 4)
-                      return <>...</>
+                      return <p className={classes.ellipsis}>...</p>
                     else if (index > 4)
                       return null
                   }
@@ -117,7 +118,7 @@ const ContentDescription = memo(({ projectContent }: any) => {
         Brief description:
       </Typography>
       <div className={classes.briefDescription}>
-        <Ellipsis text={projectContent.description} lines={5} suffix="..." />
+        <Ellipsis style={{ fontSize: 14 }} text={projectContent.description} lines={5} suffix="..." />
 
         {/* <LinesEllipsis
           text={projectContent.description}
@@ -141,7 +142,11 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
     background: theme.palette.primary[400]
   },
-
+  ellipsis: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
 
   firstSection: {
     position: "relative",

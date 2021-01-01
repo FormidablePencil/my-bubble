@@ -18,13 +18,13 @@ function ProjectContentImage({ accordionOpen, onClickHandler, navigatingProjectA
     : []
 
   useEffect(() => {
-    if (desktopImages.length === 0) {
+    // if (desktopImages.length === 0) {
       setIsViewingMobileImgs(() => {
         if (mobileImages.length > 0) return true
         if (desktopImages.length > 0) return false
         else return true
       })
-    }
+    // }
     // eslint-disable-next-line
   }, [currentSubjectViewing])
 

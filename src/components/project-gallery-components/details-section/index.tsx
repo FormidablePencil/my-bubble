@@ -85,9 +85,17 @@ function GalleryContentDetailSectionFirst() {
                   'Android' : 'Web'}
               />
             </Grid>
+            <Grid item container direction='row' alignItems='center'>
+              <TextFormated
+                title='Lines of code: '
+                content={projectDataCollection[currentSubjectViewing]?.codeLines}
+              />
+            </Grid>
+            <Grid item>
+              <TextFormated isflexCol={true} title='Description: ' content={projectDataCollection[currentSubjectViewing]?.description} />
+            </Grid>
           </Grid>
         </Grid>
-        <TextFormated title='Description: ' content={projectDataCollection[currentSubjectViewing]?.description} />
       </Grid>
 
       <div className={
@@ -147,7 +155,7 @@ const GalleryContentDetailSectionSecond = memo(() => {
               projectDataCollection[currentSubjectViewing]?.links[key] &&
               <div key={key}>
                 <Typography variant='h6'>
-                  {capitalize(key)} repo
+                  {capitalize(key)}
                 </Typography>
                 <Typography
                   className={classes.href}
@@ -254,7 +262,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1em'
   },
   body: {
-    marginLeft: '1em'
+    // marginLeft: '1em'
   },
   href: {
     marginLeft: '1em',

@@ -41,7 +41,7 @@ function MobileProjectGallery() {
         >
           <TransitionalAnim onRender={true}>
             {/* //~ ======= gallery section ======= */}
-      <ProjectDisplay />
+            <ProjectDisplay />
           </TransitionalAnim>
         </div>
         <Grid item>
