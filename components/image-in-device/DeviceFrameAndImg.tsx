@@ -54,6 +54,7 @@ function DeviceFrameAndImg({
                 </div>
               }
               <img
+              style={{marginTop: 2}}
                 className={contentStyles.imagesStyles}
                 src={images && images[indexOfImage]?.url}
                 alt='application'

@@ -6,7 +6,6 @@ import { rootReducerT } from '../../../../store';
 import LineSeperator from '../../../reusables/LineSeperator';
 import CompensateForSwipableTabHeight from '../../CompensateForSwipableTabHeight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { accordionTitleColor } from '../../../../styles/materialUiStyles';
 import { GalleryContentDetailSectionFirst, GalleryContentDetailSectionSecond } from '../../../project-gallery-components/details-section';
 import ProjectContentImage from './project-content-image';
 import NavigationFabs from './project-content-image/NavigationFabs';
@@ -86,7 +85,8 @@ function MobileContentDetailsSection() {
                 onClick={() => onClickProjectHandler(1)}
               >
                 <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}>
+                  className={classes.accordionTitleContainer}
+                  expandIcon={<ExpandMoreIcon color='primary' />}>
                   <Typography
                     className={classes.accordionTitle}
                     variant='h6'>Details</Typography>
@@ -104,7 +104,8 @@ function MobileContentDetailsSection() {
                 onClick={() => onClickProjectHandler(2)}
               >
                 <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}>
+                  className={classes.accordionTitleContainer}
+                  expandIcon={<ExpandMoreIcon color='primary' />}>
                   <Typography
                     className={classes.accordionTitle}
                     variant='h6'>More details</Typography>
@@ -151,12 +152,16 @@ const useStyles = makeStyles((theme) => ({
   contentDetails: {
 
   },
+  accordionTitleContainer: {
+    backgroundColor: theme.palette.primary[500],
+  },
   accordionContainer: {
+    backgroundColor: theme.palette.background.default,
     width: '90%',
     margin: '.5em 0em .5em 0em',
   },
   accordionTitle: {
-    color: accordionTitleColor,
+    color: theme.typography.h1.color,
   },
   extraSpaceForNavFabs: {
     marginBottom: '5em'

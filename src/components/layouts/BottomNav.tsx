@@ -16,9 +16,9 @@ function BottomNav() {
   const onClickNavigateWithAnim = useNavigateWithAnim()
 
   const fabBtns = [
-    { bgColor: '#CF2C6E', component: <HomeIcon />, onClickValue: '/', text: 'Contacts', route: '/' },
-    { bgColor: '#5F4EFF', component: <ImportantDevicesIcon />, onClickValue: '/projects', text: 'Projects', route: '/projects' },
-    { bgColor: '#3C78FF', component: <GrainIcon />, onClickValue: '/technologies', text: 'Technologies', route: '/technologies' },
+    { bgColor: '#FF0C67', component: <HomeIcon />, onClickValue: '/', text: 'Contacts', route: '/' },
+    { bgColor: '#8143DA', component: <ImportantDevicesIcon />, onClickValue: '/projects', text: 'Projects', route: '/projects' },
+    { bgColor: '#246DFF', component: <GrainIcon />, onClickValue: '/technologies', text: 'Technologies', route: '/technologies' },
   ]
 
   return (
@@ -29,7 +29,7 @@ function BottomNav() {
         icon={<MenuIcon />}
         event={'click'}
         alwaysShowTitle={true}
-        mainButtonStyles={{ backgroundColor: '#48B5FF' }}
+        mainButtonStyles={{backgroundColor: '#9D0551'}}
       >
         {fabBtns.map((item) => item.route !== pathname &&
           <Action
@@ -47,7 +47,7 @@ function BottomNav() {
 }
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     width: '100vw',
     position: 'fixed',

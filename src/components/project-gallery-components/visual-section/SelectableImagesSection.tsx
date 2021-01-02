@@ -2,7 +2,6 @@ import { Grid, makeStyles } from '@material-ui/core'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { rootReducerT } from '../../../store';
-import { imageBoardColor } from '../../../styles/materialUiStyles';
 import { AbsoluteSearchIcon } from '../../reusables/AbsoluteIcons';
 
 function SelectableImagesSection({ mobilePlatformImages, onClick }) {
@@ -56,8 +55,7 @@ const useStyles = makeStyles(() => ({
   imageContainer: {
     cursor: 'pointer',
     border: '1px solid',
-    borderColor: imageBoardColor,
-    background: 'white',
+    borderColor: 'transparent',
     position: 'relative',
     opacity: 1,
 

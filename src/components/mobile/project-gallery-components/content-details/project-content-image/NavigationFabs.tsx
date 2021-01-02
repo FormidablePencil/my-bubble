@@ -15,13 +15,18 @@ function NavigationFabs({ onClickPrevFab, onClickNextFab }) {
   )
 }
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   fabContainer: {
     position: 'absolute',
     bottom: swipebarHeightInPx + 10,
     right: 35,
   },
   fab: {
+    backgroundColor: theme.palette.primary[700],
+    '&:hover': {
+      backgroundColor: theme.palette.primary[500],
+    },
+    color: 'white',
     margin: '1em'
   }
 }));

@@ -37,11 +37,11 @@ const TechBrowsingSection = memo(() => {
   )
 })
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   techContainer: {
     width: '7.5em',
     height: '7.5em',
-    background: 'white',
+    background: theme.typography.h6.color,
     margin: '2em',
     padding: '.5em',
     borderRadius: '5em',

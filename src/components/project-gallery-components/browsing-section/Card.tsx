@@ -188,7 +188,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '1.4em',
     fontFamily: 'JosefinSans-Medium',
     // fontFamily: theme.typography.fontFamily,
-    color: theme.palette.primary[800],
+    color: theme.palette.primary[900],
     marginLeft: '1em',
     fontSize: '.9em',
   },

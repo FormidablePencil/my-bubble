@@ -75,7 +75,7 @@ const useStyles = makeStyles(() => ({
     position: "relative",
     overflow: 'hidden',
     zIndex: 1,
-    background: 'linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(99,161,255,1) 0%, rgba(99,122,185,1) 100%)',
+    background: 'linear-gradient(0deg, rgba(2,0,36,1) 0%, #5E0D35 0%, #85184e 100%)',
     boxShadow: tabEffectShadowProp
   },
   navIcon: {
