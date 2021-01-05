@@ -24,12 +24,14 @@ function MobileProjectGallery() {
       disableGutters>
       <Grid
         style={{ paddingTop: swipebarHeightInEm }}
-        container direction='column'>
+        container
+        direction='column'>
 
         {/* //~ ======= more details section ======= */}
         <MobileContentDetailsSection />
 
         <div
+          style={{ width: '100%' }}
           className={`${classes.marginTop}`}
         // className={`
         //     ${classes.marginTop}
@@ -39,7 +41,8 @@ function MobileProjectGallery() {
         //     : 'page-translate-anim'
         //   }`}
         >
-          <TransitionalAnim onRender={true}>
+          <TransitionalAnim
+            onRender={true}>
             {/* //~ ======= gallery section ======= */}
             <ProjectDisplay />
           </TransitionalAnim>

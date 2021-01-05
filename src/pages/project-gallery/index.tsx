@@ -6,6 +6,7 @@ import ProjectGallery from '../../components/project-gallery-components'
 //~ focus on making this component and it's sub components work
 
 function ProjectsGalleryPage() {
+
   useToggleGridDirection()
 
   //~ rename sortedProjectData

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Grid, makeStyles } from '@material-ui/core'
+import { Button, Grid, makeStyles } from '@material-ui/core'
 import { navbarHeight } from '../../styles/materialUiStyles';
-import { animated } from 'react-spring';
 import { useDispatch, useSelector } from 'react-redux';
 import { CLOSE_CONTENT_DETAILS_SECTION, TOGGLE_IMAGE_MODAL } from '../../actions/types';
 import { rootReducerT } from '../../store';
+import CancelPresentationIcon from '@material-ui/icons/CancelPresentation';
+import { animated } from 'react-spring';
 
 function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatureSection, browsingSection }) {
   const contentDetailSectionIsClosed = useSelector((state: rootReducerT) => state.contentDetailSectionIsClosed)
@@ -60,6 +61,14 @@ function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatu
       }}>
 
       <Grid container className={classes.tabbar}>
+        <div className={`${!contentDetailsClosed && contentDetailsClosed !== null ? 'closeBtn' : 'closeBtn-notPresent'}`}>
+          <Button
+            style={{ height: 31 }}
+            onClick={() => setContentDetailsClosed(true)}>
+            {/* slide in anim */}
+            <CancelPresentationIcon style={{ color: '#F9ACCB' }} />
+          </Button>
+        </div>
       </Grid>
 
 

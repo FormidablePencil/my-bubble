@@ -8,7 +8,9 @@ import { filterImagesForSpecifiedDevice, imageAvailability } from './deviceInImg
 function ProjectContentImage({ accordionOpen, onClickHandler, navigatingProjectAnimation }) {
   const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
   const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)
+  const detailsSectionToggleMobile = useSelector((state: rootReducerT) => state.detailsSectionToggleMobile)
   const [isViewingMobileImgs, setIsViewingMobileImgs] = useState(true)
+  const [delayedDisplayOfProjectContent, setDelayedDisplayOfProjectContent] = useState(false)
 
   const desktopImages = projectDataCollection[currentSubjectViewing]
     ? filterImagesForSpecifiedDevice(projectDataCollection[currentSubjectViewing], 'web')
@@ -19,14 +21,22 @@ function ProjectContentImage({ accordionOpen, onClickHandler, navigatingProjectA
 
   useEffect(() => {
     // if (desktopImages.length === 0) {
-      setIsViewingMobileImgs(() => {
-        if (mobileImages.length > 0) return true
-        if (desktopImages.length > 0) return false
-        else return true
-      })
+    setIsViewingMobileImgs(() => {
+      if (mobileImages.length > 0) return true
+      if (desktopImages.length > 0) return false
+      else return true
+    })
     // }
     // eslint-disable-next-line
   }, [currentSubjectViewing])
+
+  useEffect(() => {
+    if (detailsSectionToggleMobile) {
+      setTimeout(() => {
+        setDelayedDisplayOfProjectContent(true)
+      }, 200);
+    } else setDelayedDisplayOfProjectContent(false)
+  }, [detailsSectionToggleMobile])
 
   // const whatTypeOfImagesAvailableRef: whatTypeOfImagesAvailableRefT = useRef([])
 
@@ -52,41 +62,45 @@ function ProjectContentImage({ accordionOpen, onClickHandler, navigatingProjectA
       <div className={`${navigatingProjectAnimation} `}>
         <animated.div
           className={`imageShowcaseContainer`}
-          style={{ ...imageAnim, }}
+          style={{
+            ...imageAnim,
+          }}
           onClick={() => onClickHandler(0)}
         >
           <TransitionsWrapper>
-            {desktopImages.length > 0 &&
-              <TransitionDevices
-                deviceType='desktop'
-                // deviceType={projectDataCollection[currentSubjectViewing]?.type}
-                show={!isViewingMobileImgs}
-              >
-                <ImageInDevice
-                  deviceType={'web'}
-                  images={desktopImages}
-                  indexOfImageIfNotSwipable={0}
-                  swipable={true}
-                  autoPlay={true}
-                />
-              </TransitionDevices>
-            }
-            {mobileImages.length > 0 &&
-              <TransitionDevices
-                deviceType={'mobile'}
-                // deviceType={projectDataCollection[currentSubjectViewing]?.type}
-                show={isViewingMobileImgs}
-              >
-                <ImageInDevice
+            <div className={delayedDisplayOfProjectContent ? 'display-delay' : 'display-none'}>
+              {desktopImages.length > 0 &&
+                <TransitionDevices
+                  deviceType='desktop'
+                  // deviceType={projectDataCollection[currentSubjectViewing]?.type}
+                  show={!isViewingMobileImgs}
+                >
+                  <ImageInDevice
+                    deviceType={'web'}
+                    images={desktopImages}
+                    indexOfImageIfNotSwipable={0}
+                    swipable={true}
+                    autoPlay={true}
+                  />
+                </TransitionDevices>
+              }
+              {mobileImages.length > 0 &&
+                <TransitionDevices
                   deviceType={'mobile'}
-                  // images={projectDataCollection[currentSubjectViewing]?.images}
-                  images={mobileImages}
-                  indexOfImageIfNotSwipable={0}
-                  swipable={true}
-                  autoPlay={true}
-                />
-              </TransitionDevices>
-            }
+                  // deviceType={projectDataCollection[currentSubjectViewing]?.type}
+                  show={isViewingMobileImgs}
+                >
+                  <ImageInDevice
+                    deviceType={'mobile'}
+                    // images={projectDataCollection[currentSubjectViewing]?.images}
+                    images={mobileImages}
+                    indexOfImageIfNotSwipable={0}
+                    swipable={true}
+                    autoPlay={true}
+                  />
+                </TransitionDevices>
+              }
+            </div>
           </TransitionsWrapper>
         </animated.div>
       </div>

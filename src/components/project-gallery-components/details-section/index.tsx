@@ -207,8 +207,9 @@ const GalleryContentDetailSectionSecond = memo(() => {
 const useStyles = makeStyles((theme) => ({
   constraintContainer: {
     [theme.breakpoints.down('xs')]: {
-      borderTop: '1px solid',
-      paddingTop: '1em',
+      // marginTop: -5,
+      // borderTop: '1px solid',
+      // borderBottom: '1px solid',
       height: '15em',
     },
     borderColor: theme.palette.primary[100],

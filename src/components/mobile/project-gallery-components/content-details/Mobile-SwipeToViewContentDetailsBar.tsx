@@ -6,6 +6,7 @@ import { IoIosArrowRoundBack } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
 import { rootReducerT } from '../../../../store';
 import { TOGGLE_DETAILS_SECTION_MOBILE } from '../../../../actions/types';
+import { isSafari } from 'react-device-detect';
 
 const MobileSwipeToViewContentDetailsBar = memo(({ children }) => {
   const detailsSectionToggleMobile = useSelector((state: rootReducerT) => state.detailsSectionToggleMobile)
@@ -19,13 +20,12 @@ const MobileSwipeToViewContentDetailsBar = memo(({ children }) => {
         not-visible-on-mdUp
       `}
     >
-
       <ToggleDetailsSectionBtn />
 
       <div className={classes.content}>
         {children}
       </div>
-      <div className="mobileContentDetailsBar">
+      <div className={!isSafari ? "mobileContentDetailsBar" : ''}>
         <ToggleDetailsSectionBar />
       </div>
     </div>
@@ -63,7 +63,7 @@ const ToggleDetailsSectionBar = memo(() => {
             <BsArrowBarDown color='white' />
             <div>
               <Typography className={classes.disableSelecting} color='textPrimary' variant='caption'>
-                Press a project to see more details
+                Press on a project to see more details
             </Typography>
             </div>
           </Grid>
@@ -78,13 +78,15 @@ const AppLogo = () => {
   const currentSubjectViewing = useSelector((state: rootReducerT) => state.currentSubjectViewing)
   const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
   const classes = useStyles();
+
+  if (!projectDataCollection[currentSubjectViewing]) return null
   return (
     <img
       draggable="false"
       className={classes.selectedContentImg}
       src={
         projectDataCollection[currentSubjectViewing]
-          ? projectDataCollection[currentSubjectViewing].logo
+          ? projectDataCollection[currentSubjectViewing]?.logo
           : ''
       }
       alt=''

@@ -71,12 +71,13 @@ const Card = (
           <Grid
             item container
             className={classes.flex1}
+            wrap='nowrap'
             direction='column'
           >
             <Typography
-              variant='h5'
-              display='inline'
-            >Technologies:
+              variant='h6'
+              display='inline'>
+              Technologies:
             </Typography>
             <Grid
               container
@@ -113,6 +114,7 @@ const ContentDescription = memo(({ projectContent }: any) => {
     <Grid item container
       className={classes.flex2}
       direction='column'
+      wrap='nowrap'
     >
       <Typography variant='h6'>
         Brief description:
@@ -173,6 +175,7 @@ const useStyles = makeStyles((theme) => ({
 
   secondSection: {
     display: 'flex',
+    flexWrap: 'nowrap',
     flexDirection: 'column',
     backgroundColor: theme.palette.primary[100],
     padding: '1em',

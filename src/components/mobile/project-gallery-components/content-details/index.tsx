@@ -7,9 +7,10 @@ import LineSeperator from '../../../reusables/LineSeperator';
 import CompensateForSwipableTabHeight from '../../CompensateForSwipableTabHeight';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { GalleryContentDetailSectionFirst, GalleryContentDetailSectionSecond } from '../../../project-gallery-components/details-section';
-import ProjectContentImage from './project-content-image';
 import NavigationFabs from './project-content-image/NavigationFabs';
 import useNavigateProjects from './project-content-image/useNavigateProjects';
+import ProjectContentImage from './project-content-image';
+import './index.sass'
 
 // const mobileContentDetailsAnim = {
 //   navOutLeft: 'mobile-content-details-nav-out-left',
@@ -24,7 +25,6 @@ function MobileContentDetailsSection() {
   const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
   const classes = useStyles();
   const [navigatingProjectAnimation] = useState('')
-
   // const { accordionOpen, imageAnim, onClickHandler } = useContentDetailsImageAnim()
   const { navigatePrevProject, navigateNextProject, ifCanGoAnyFarther } = useNavigateProjects()
   const [accordionOpen, setAccordionOpen] = useState(null)
@@ -125,7 +125,7 @@ function MobileContentDetailsSection() {
           <CompensateForSwipableTabHeight />
         </Grid>
       </Grid>
-    </MobileSwipeToViewContentDetailsBar>
+    </MobileSwipeToViewContentDetailsBar >
   )
 }
 

@@ -11,7 +11,7 @@ import LineSeperator from '../../../reusables/LineSeperator'
 function ProjectDisplay() {
   const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
   const projectsPageRenderCount = useSelector((state: rootReducerT) => state.pageRenderAmounts.projects)
-  const indexOfItemRendered: any = useRef([])
+  const indexOfItemRendered = useRef('odd')
   const dispatch = useDispatch()
   const trail = useTrailOnFirstRender({
     pageRendered: projectsPageRenderCount,
@@ -23,14 +23,16 @@ function ProjectDisplay() {
 
   const onClickItem = (index) => {
     dispatch({ type: SELECTED_PROJECT, payload: index })
-    dispatch({ type: TOGGLE_DETAILS_SECTION_MOBILE })
+    // setTimeout(() => {
+      dispatch({ type: TOGGLE_DETAILS_SECTION_MOBILE })
+    // }, 1000);
   }
 
   const ProjectTitle = ({ project }) =>
     <>
       <Typography variant='h5' style={{ marginBottom: 10 }}>{project.title}</Typography>
       <Typography variant='h5'>
-        {project.type === 'mobile' ? '(App)' : '(Website)'}
+        {project.type === 'mobile' ? '(Android app)' : '(Website)'}
       </Typography>
     </>
 
@@ -38,7 +40,10 @@ function ProjectDisplay() {
     <>
       {trail.map((trailProps, index) => {
         let project = projectDataCollection[index]
-        if (project.showInPortfolio) indexOfItemRendered.current.push(indexOfItemRendered.current.length)
+        if (project.showInPortfolio)
+          indexOfItemRendered.current === 'odd'
+            ? indexOfItemRendered.current = 'even'
+            : indexOfItemRendered.current = 'odd'
         if (!project.showInPortfolio) return null
         else
           return (
@@ -73,7 +78,7 @@ function ProjectDisplay() {
               <LineSeperator
                 overrideStyles={{
                   margin: '5em 0em 5em 0em',
-                  alignSelf: indexOfItemRendered.current[index] % 2 === 0 ? 'flex-start' : 'flex-end',
+                  alignSelf: indexOfItemRendered.current === 'odd' ? 'flex-start' : 'flex-end',
                 }} />
 
             </Grid>

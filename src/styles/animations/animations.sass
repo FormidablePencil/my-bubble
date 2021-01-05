@@ -76,3 +76,12 @@
     transform: translateY(0px)
   100%
     transform: translateY(-400px)
+
+.closeBtn
+  opacity: 1
+  transform: translateX(10px)
+  transition: transform 1s, opacity 1s
+  &-notPresent
+    opacity: 0
+    transform: translateX(-100px)
+    transition: transform 1s, opacity 1s

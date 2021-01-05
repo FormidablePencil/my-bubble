@@ -33,14 +33,14 @@ function ContactsPage() {
               <Box fontStyle="italic">
                 <Typography color='textPrimary' variant='h4'>{staticData.homeAbout.paragraph2}</Typography>
               </Box>
+            </Grid>
           </Grid>
-        </Grid>
 
 
-        <PersonalContacts />
+          <PersonalContacts />
 
 
-        {/* <Button
+          {/* <Button
             onClick={handleCallToAction}
             className={classes.callToAction}
             variant='contained'
@@ -49,8 +49,8 @@ function ContactsPage() {
             View Projects
             </Button> */}
         </Grid>
-    </div>
-      {/* <ReactSlider slidesToShow={slidesToShow} /> */ }
+      </div>
+      {/* <ReactSlider slidesToShow={slidesToShow} /> */}
     </div >
   )
 }
@@ -58,16 +58,16 @@ function ContactsPage() {
 const PersonalContacts = () =>
   <Grid container direction='column' justify='center' item style={{ marginTop: '1em' }}>
     <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
-      Contact me via formidablepencil@gmail.com
+      Contact me via email at formidablepencil@gmail.com
   </Typography>
     <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
-      Checkout my code in <a href="www.google.com">github</a>
+      <a href="https://github.com/FormidablePencil">Check out my source codes on github</a>
     </Typography>
     <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
-      Access my resume <a href="www.google.com">here</a>
+      <a href="http://www.dennisaleksandrov.com/">Learn a little more about me</a>
     </Typography>
     <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
-      Ping me on <a href="www.google.com">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/dennis-aleksandrov-b6a940167/">Ping me on LinkedIn</a>
     </Typography>
   </Grid>
 

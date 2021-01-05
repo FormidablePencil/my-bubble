@@ -54,15 +54,16 @@ function DeviceFrameAndImg({
                 </div>
               }
               <img
-              style={{marginTop: 2}}
-                className={contentStyles.imagesStyles}
+                style={{ marginTop: 2, userSelect: 'none' }}
+                className={`${contentStyles.imagesStyles} `}
                 src={images && images[indexOfImage]?.url}
                 alt='application'
               />
             </div>
           }
           <img
-            className={frameImgStyles}
+            className={`${frameImgStyles}`}
+            style={{ userSelect: 'none' }}
             src={deviceType === 'mobile' ? galaxyPhoneFrame : macbookFrame}
             alt='frame' />
 
