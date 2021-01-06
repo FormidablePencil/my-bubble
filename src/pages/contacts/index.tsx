@@ -61,13 +61,13 @@ const PersonalContacts = () =>
       Contact me via email at formidablepencil@gmail.com
   </Typography>
     <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
-      <a href="https://github.com/FormidablePencil">Check out my source codes on github</a>
+      Check out my source codes on <a href="https://github.com/FormidablePencil">github</a>
     </Typography>
     <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
-      <a href="http://www.dennisaleksandrov.com/">Learn a little more about me</a>
+      Learn a little more <a href="http://www.dennisaleksandrov.com/">about me</a>
     </Typography>
     <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
-      <a href="https://www.linkedin.com/in/dennis-aleksandrov-b6a940167/">Ping me on LinkedIn</a>
+      Ping me on <a href="https://www.linkedin.com/in/dennis-aleksandrov-b6a940167/">LinkedIn</a>
     </Typography>
   </Grid>
 
