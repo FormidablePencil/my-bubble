@@ -3,6 +3,7 @@ import './index.sass';
 
 interface T { children, deviceType: 'desktop' | 'mobile', show: boolean }
 const TransitionDevices = ({ children, deviceType, show }: T) =>
+
   <div
     className={`
       ${deviceType}-image-in-device

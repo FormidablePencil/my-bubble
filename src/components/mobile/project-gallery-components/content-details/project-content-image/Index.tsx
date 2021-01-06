@@ -67,8 +67,9 @@ function ProjectContentImage({ accordionOpen, onClickHandler, navigatingProjectA
           }}
           onClick={() => onClickHandler(0)}
         >
-          <TransitionsWrapper>
-            <div className={delayedDisplayOfProjectContent ? 'display-delay' : 'display-none'}>
+          <div className={!delayedDisplayOfProjectContent ? 'display-delay' : 'display-none'} style={{ height: '13em' }} />
+          <div className={delayedDisplayOfProjectContent ? 'display-delay' : 'display-none'}>
+            <TransitionsWrapper>
               {desktopImages.length > 0 &&
                 <TransitionDevices
                   deviceType='desktop'
@@ -100,8 +101,8 @@ function ProjectContentImage({ accordionOpen, onClickHandler, navigatingProjectA
                   />
                 </TransitionDevices>
               }
-            </div>
-          </TransitionsWrapper>
+            </TransitionsWrapper>
+          </div>
         </animated.div>
       </div>
     </div>
