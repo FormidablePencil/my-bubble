@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
 import { rootReducerT } from '../../../store';
-import { makeStyles, Grid } from '@material-ui/core';
+import { makeStyles, Grid, Tooltip } from '@material-ui/core';
 import { animated } from 'react-spring'
 import useTrailOnFirstRender from '../../../hooks/useTrailOnFirstRender';
 
@@ -20,7 +20,9 @@ const TechBrowsingSection = memo(() => {
   const TechItemContainer = ({ tech }: { tech }) =>
     <Grid item>
       <div className={`${classes.techContainer}`} id='hoverEffect'>
-        <img className={classes.techImg} src={tech.image} alt={tech.technology} />
+        <Tooltip title={tech.technology} arrow>
+          <img className={classes.techImg} src={tech.image} alt={tech.technology} />
+        </Tooltip>
       </div>
     </Grid>
 
