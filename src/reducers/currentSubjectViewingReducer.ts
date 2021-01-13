@@ -3,7 +3,7 @@ import { NEXT_PROJECT, PREV_PROJECT, SELECTED_PROJECT } from "../actions/types"
 
 export type currentlyViewingT = number  //This will be id of object
 
-const initialState = 8
+const initialState = 4
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {

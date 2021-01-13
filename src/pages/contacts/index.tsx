@@ -61,10 +61,10 @@ const PersonalContacts = () =>
       Contact me via email at formidablepencil@gmail.com
   </Typography>
     <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
-      Check out my source codes on <a href="https://github.com/FormidablePencil">github</a>
+      Check out my code through <a href="https://github.com/FormidablePencil">github</a>
     </Typography>
     <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
-      Learn a little more <a href="http://www.dennisaleksandrov.com/">about me</a>
+      Get to know a little <a href="http://www.dennisaleksandrov.com/">about me</a>
     </Typography>
     <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
       Ping me on <a href="https://www.linkedin.com/in/dennis-aleksandrov-b6a940167/">LinkedIn</a>

@@ -145,6 +145,7 @@ const GalleryContentDetailSectionSecond = memo(() => {
       <Grid
         className={`${classes.constraintContainer} scrollbar-visible`}
         container item
+        style={{ height: '100%' }}
         direction='column'
         ref={ref => toggleShowLine(ref)}
       >
@@ -218,7 +219,7 @@ const useStyles = makeStyles((theme) => ({
     overflowX: 'hidden',
   },
   relative: {
-    position: 'relative'
+    position: 'relative',
   },
   parentContainer: {
     height: '100%',

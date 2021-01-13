@@ -108,7 +108,7 @@ function MobileContentDetailsSection() {
                   expandIcon={<ExpandMoreIcon color='primary' />}>
                   <Typography
                     className={classes.accordionTitle}
-                    variant='h6'>More details</Typography>
+                    variant='h6'>Links & Tech</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <GalleryContentDetailSectionSecond />
