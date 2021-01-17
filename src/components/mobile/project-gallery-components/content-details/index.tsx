@@ -27,7 +27,7 @@ function MobileContentDetailsSection() {
   const [navigatingProjectAnimation] = useState('')
   // const { accordionOpen, imageAnim, onClickHandler } = useContentDetailsImageAnim()
   const { navigatePrevProject, navigateNextProject, ifCanGoAnyFarther } = useNavigateProjects()
-  const [accordionOpen, setAccordionOpen] = useState(null)
+  const [accordionOpen, setAccordionOpen] = useState(1)
 
   const onClickProjectHandler = (num) => {
     setAccordionOpen(prev => {

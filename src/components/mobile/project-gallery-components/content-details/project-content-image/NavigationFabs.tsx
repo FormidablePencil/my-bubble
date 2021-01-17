@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   fab: {
     backgroundColor: theme.palette.primary[700],
     '&:hover': {
-      backgroundColor: theme.palette.primary[500],
+      backgroundColor: '#6A0340',
     },
     color: 'white',
     margin: '1em'

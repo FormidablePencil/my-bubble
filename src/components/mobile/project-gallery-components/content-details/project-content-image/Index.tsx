@@ -4,6 +4,7 @@ import { config, animated, useSpring } from 'react-spring'
 import { rootReducerT } from '../../../../../store'
 import ImageInDevice, { SwitchDeviceTypeBtns, TransitionDevices, TransitionsWrapper } from '@bit/formidablepencil.react-reusables.image-in-device'
 import { filterImagesForSpecifiedDevice, imageAvailability } from './deviceInImgUlilities'
+import { isMobile } from "react-device-detect";
 
 function ProjectContentImage({ accordionOpen, onClickHandler, navigatingProjectAnimation }) {
   const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
@@ -62,9 +63,7 @@ function ProjectContentImage({ accordionOpen, onClickHandler, navigatingProjectA
       <div className={`${navigatingProjectAnimation} `}>
         <animated.div
           className={`imageShowcaseContainer`}
-          style={{
-            ...imageAnim,
-          }}
+          style={!isMobile ? imageAnim : {}}
           onClick={() => onClickHandler(0)}
         >
           <div className={!delayedDisplayOfProjectContent ? 'display-delay' : 'display-none'} style={{ height: '13em' }} />
@@ -105,7 +104,7 @@ function ProjectContentImage({ accordionOpen, onClickHandler, navigatingProjectA
           </div>
         </animated.div>
       </div>
-    </div>
+    </div >
   )
 }
 
