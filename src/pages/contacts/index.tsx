@@ -64,7 +64,7 @@ const PersonalContacts = () =>
       Check out my code through <a href="https://github.com/FormidablePencil">github</a>
     </Typography>
     <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
-      Get to know a little <a href="http://www.dennisaleksandrov.com/">about me</a>
+      Get to know a little <a href="https://www.dennisaleksandrov.com/">about me</a>
     </Typography>
     <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
       Ping me on <a href="https://www.linkedin.com/in/dennis-aleksandrov-b6a940167/">LinkedIn</a>
