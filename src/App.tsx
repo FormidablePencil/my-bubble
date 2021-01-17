@@ -10,7 +10,7 @@ import ReactGA from 'react-ga';
 
 export const clickProjectGA = ({ projectName }) => {
   ReactGA.event({
-    category: "projectClicked",
+    category: "project viewed",
     action: projectName,
   });
 }

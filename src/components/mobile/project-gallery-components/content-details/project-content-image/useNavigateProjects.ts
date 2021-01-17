@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SELECTED_PROJECT } from "../../../../../actions/types";
 import { rootReducerT } from "../../../../../store";
+import { clickProjectGA } from '../../../../../App'
 
 const useNavigateProjects = () => {
   const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
@@ -36,6 +37,7 @@ const useNavigateProjects = () => {
     const getSmallestNum = (prevValue, currentValue) => prevValue > currentValue ? prevValue : currentValue
     let prevProject = indexOfPossiblePrevProjects.reduce(getSmallestNum)
     if (typeof prevProject !== 'number') return
+    clickProjectGA({projectName: projectDataCollection[prevProject].title})
     dispatch({ type: SELECTED_PROJECT, payload: prevProject })
   }
 
