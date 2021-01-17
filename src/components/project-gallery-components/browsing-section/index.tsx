@@ -15,7 +15,7 @@ function GalleryBrowsingSection() {
     trailLength: projectDataCollection.length,
     trailDelay: 200,
   })
-
+  
   return (
     <Grid
       spacing={6}

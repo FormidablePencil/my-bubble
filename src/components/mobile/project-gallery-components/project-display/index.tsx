@@ -4,6 +4,7 @@ import React, { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { animated } from 'react-spring'
 import { SELECTED_PROJECT, TOGGLE_DETAILS_SECTION_MOBILE } from '../../../../actions/types'
+import { clickProjectGA } from '../../../../App'
 import useTrailOnFirstRender from '../../../../hooks/useTrailOnFirstRender'
 import { rootReducerT } from '../../../../store'
 import LineSeperator from '../../../reusables/LineSeperator'
@@ -22,6 +23,7 @@ function ProjectDisplay() {
   const classes = useStyles();
 
   const onClickItem = (index) => {
+    clickProjectGA({ projectName: projectDataCollection[index].title })
     dispatch({ type: SELECTED_PROJECT, payload: index })
     // setTimeout(() => {
       dispatch({ type: TOGGLE_DETAILS_SECTION_MOBILE })

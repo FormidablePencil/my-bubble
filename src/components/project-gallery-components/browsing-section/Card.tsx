@@ -7,6 +7,7 @@ import TechLogo from '../../reusables/TechLogo';
 import { projectDataT } from '../../../reducers/projectDataReducer';
 import Ellipsis from 'react-ellipsis-pjs';
 import ImageInDevice from '@bit/formidablepencil.react-reusables.image-in-device'
+import { clickProjectGA } from '../../../App';
 
 const Card = (
   { projectContent,
@@ -18,9 +19,12 @@ const Card = (
     trimTech
   }) => {
   const contentDetailSectionIsClosed = useSelector((state: rootReducerT) => state.contentDetailSectionIsClosed)
+  const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
+
   const classes = useStyles();
   const dispatch = useDispatch()
   const onCardClick = async () => {
+    clickProjectGA({ projectName: projectDataCollection[techIndexInCollection].title })
     await dispatch({ type: SELECTED_PROJECT, payload: techIndexInCollection })
 
     if (contentDetailSectionIsClosed)
