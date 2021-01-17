@@ -1,44 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# My Bubble
 
-## Available Scripts
+Website hosted on Go Daddy ~ https://mybubble.dennisaleksandrov.com
 
-In the project directory, you can run:
+Built with the MERN Stack
 
-### `yarn start`
+## Technologies utilized
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Fontend
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- React <img src="https://i.ibb.co/nb965ST/react-Logo.png" width="20" title="">
+- TypeScript <img src="https://i.ibb.co/RBfMh8f/typescript.png" width="20" title="">
+- Redux <img src="https://i.ibb.co/dbQkwZM/redux.png" width="20" title="">
+- React Spring <img src="https://i.ibb.co/DM6b0gQ/react-spring.png" width="20" title="">
+- Bit <img src="https://i.ibb.co/gZX3hH4/bit.png" width="20" title="">
+- Material Ui <img src="https://i.ibb.co/VQD5cY6/material-ui.png" width="20" title="">
 
-### `yarn test`
+### Server
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Server repo [here](https://github.com/FormidablePencil/portfolio-server)
 
-### `yarn build`
+- Mongo <img src="https://i.ibb.co/mqJXvJq/mongodb.png" width="20" title="">
+- Express <img src="https://i.ibb.co/CJfJN1D/express-Logo.png" width="20" title="">
+- Google Cloud Platform <img src="https://i.ibb.co/qjpWtZc/google-cloud-platform.png" width="20" title="">
+- Go Daddy <img src="https://i.ibb.co/sqfrGN4/Go-Daddy-Logo.png" width="20" title="">
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Wireframe
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+App's wireframe [here](https://www.figma.com/file/qvnYQdzU5jVwFSYZTUu7U3/Portfolio-redesign?node-id=25%3A13) 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Figma <img src="https://i.ibb.co/rb0ygKN/Figma.png" width="20" title="">
