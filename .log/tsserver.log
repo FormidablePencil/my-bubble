@@ -1,0 +1,117 @@
+Info 0    [23:17:22.573] Starting TS Server
+Info 1    [23:17:22.574] Version: 4.1.3
+Info 2    [23:17:22.574] Arguments: /usr/local/bin/node /Users/dennisaleksandrov/Documents/code/websites/my-bubble/node_modules/.bin/tsserver --logFile /Users/dennisaleksandrov/Documents/code/websites/my-bubble/.log/tsserver.log --logVerbosity info --cancellationPipeName /private/var/folders/gv/nz486zr944j7vtjv3m62wzp40000gn/T/81baba9f8bb1fe988febe0597ce0c851/tscancellation*
+Info 3    [23:17:22.574] Platform: darwin NodeVersion: 14 CaseSensitive: false
+Info 4    [23:17:22.574] ServerMode: undefined syntaxOnly: false hasUnknownServerMode: undefined
+Info 5    [23:17:22.746] Search path: /Users/dennisaleksandrov/Documents/code/websites/my-bubble/src
+Info 6    [23:17:22.747] For info: /Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/App.tsx :: Config file name: /Users/dennisaleksandrov/Documents/code/websites/my-bubble/tsconfig.json
+Info 7    [23:17:22.747] Opened configuration file /Users/dennisaleksandrov/Documents/code/websites/my-bubble/tsconfig.json
+Info 8    [23:17:22.813] Config: /Users/dennisaleksandrov/Documents/code/websites/my-bubble/tsconfig.json : {
+ "rootNames": [
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/App.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/Routes.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/index.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/react-app-env.d.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/serviceWorker.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/setupTests.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/staticData.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/store.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/actions/fetchAllPortfolioData.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/actions/types.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/carousel-tech/index.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/image-modal/ImageSelection.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/image-modal/YoutubeVideoPlayer.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/image-modal/index.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/layouts/BottomNav.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/layouts/Navbar.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/layouts/TransitionalAnim.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/mobile/CompensateForSwipableTabHeight.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/mobile/project-gallery-components/index.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/mobile/project-gallery-components/content-details/Mobile-SwipeToViewContentDetailsBar.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/mobile/project-gallery-components/content-details/index.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/mobile/project-gallery-components/content-details/project-content-image/NavigationFabs.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/mobile/project-gallery-components/content-details/project-content-image/deviceInImgUlilities.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/mobile/project-gallery-components/content-details/project-content-image/index.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/mobile/project-gallery-components/content-details/project-content-image/useNavigateProjects.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/mobile/project-gallery-components/project-display/index.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/mobile/tech-gallery-components/index.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/project-gallery-components/index.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/project-gallery-components/browsing-section/Card.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/project-gallery-components/browsing-section/TechBrowsingSection.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/project-gallery-components/browsing-section/index.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/project-gallery-components/details-section/AccordionTemplate.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/project-gallery-components/details-section/TextFormated.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/project-gallery-components/details-section/index.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/project-gallery-components/visual-section/PrimaryProjectImage.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/project-gallery-components/visual-section/SelectableImagesSection.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/project-gallery-components/visual-section/index.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/reusables/AbsoluteIcons.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/reusables/LineSeperator.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/components/reusables/TechLogo.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/hooks/useContentDetailsImageAnim.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/hooks/useDetailsSectionAnim.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/hooks/useFetchAllPortfolioData.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/hooks/useKeyTrigger.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/hooks/useNavigateWithAnim.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/hooks/useOnScreen.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/hooks/usePrevious.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/hooks/useToggleGridDirection.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/hooks/useTrailOnFirstRender.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/pages/contacts/index.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/pages/project-gallery/index.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/pages/tech-gallery/index.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/pages/template/DropdownBtn.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/pages/template/index.tsx",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/reducers/contentDetailSectionIsClosedReducer.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/reducers/contentDetailsSectionDirIsRowReducer.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/reducers/currentSubjectViewingReducer.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/reducers/currentTechViewingReducer.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/reducers/detailsSectionToggleMobileReducer.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/reducers/imageModelToggleReducer.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/reducers/leavingPageAnimReducer.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/reducers/modalImageSelectedReducer.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/reducers/pagesLoadedAtLeastOnceReducer.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/reducers/projectDataReducer.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/reducers/techDataReducer.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/styles/materialUiStyles.ts",
+  "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/typescript/index.ts"
+ ],
+ "options": {
+  "target": 1,
+  "lib": [
+   "lib.dom.d.ts",
+   "lib.dom.iterable.d.ts",
+   "lib.esnext.d.ts"
+  ],
+  "allowJs": true,
+  "skipLibCheck": true,
+  "esModuleInterop": true,
+  "allowSyntheticDefaultImports": true,
+  "strict": false,
+  "forceConsistentCasingInFileNames": true,
+  "noFallthroughCasesInSwitch": true,
+  "module": 99,
+  "moduleResolution": 2,
+  "resolveJsonModule": true,
+  "isolatedModules": true,
+  "noEmit": true,
+  "checkJs": true,
+  "jsx": 4,
+  "configFilePath": "/Users/dennisaleksandrov/Documents/code/websites/my-bubble/tsconfig.json"
+ }
+}
+Info 9    [23:17:22.907] Starting updateGraphWorker: Project: /Users/dennisaleksandrov/Documents/code/websites/my-bubble/tsconfig.json
+Info 10   [23:17:27.636] Finishing updateGraphWorker: Project: /Users/dennisaleksandrov/Documents/code/websites/my-bubble/tsconfig.json Version: 1 structureChanged: true Elapsed: 4729.07508701086ms
+Info 11   [23:17:27.637] Project '/Users/dennisaleksandrov/Documents/code/websites/my-bubble/tsconfig.json' (Configured)
+Info 12   [23:17:27.637] 	Files (610)
+
+Info 13   [23:17:27.637] -----------------------------------------------
+Info 14   [23:17:27.698] Starting updateGraphWorker: Project: /dev/null/autoImportProviderProject1*
+Info 15   [23:17:29.388] Finishing updateGraphWorker: Project: /dev/null/autoImportProviderProject1* Version: 1 structureChanged: true Elapsed: 1690.371247023344ms
+Info 16   [23:17:29.389] Project '/dev/null/autoImportProviderProject1*' (AutoImportProvider)
+Info 17   [23:17:29.389] 	Files (400)
+
+Info 18   [23:17:29.389] -----------------------------------------------
+Info 19   [23:17:29.400] Before ensureProjectForOpenFiles:
+Info 20   [23:17:29.400] After ensureProjectForOpenFiles:
+Info 21   [23:17:29.400] got projects updated in background, updating diagnostics for /Users/dennisaleksandrov/Documents/code/websites/my-bubble/src/App.tsx

@@ -7,7 +7,7 @@ const staticData = {
 }
 
 export const sortProjects = (projectsArr) => {
-  const orderOfProjects = ['Portfolio', 'My Bubble', "Pao System", 'Emoji Tack Toes', 'Simple Pokedex', 'Crackalackin', "Cinematographer's portfolio", 'Server for Todolist', 'Starbucks Replica']
+  const orderOfProjects = ['Movie App', 'My Bubble', "Pao System", 'Emoji Tack Toes', 'Simple Pokedex', 'Crackalackin', "Cinematographer's portfolio", 'Server for Todolist', 'Starbucks Replica', 'Portfolio']
   let sorted: any = []
 
   orderOfProjects.forEach(orderedItem => {
