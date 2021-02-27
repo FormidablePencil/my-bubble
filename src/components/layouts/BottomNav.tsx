@@ -29,7 +29,7 @@ function BottomNav() {
         icon={<MenuIcon />}
         event={'click'}
         alwaysShowTitle={true}
-        mainButtonStyles={{ backgroundColor: '#9D0551' }}
+        mainButtonStyles={{ backgroundColor: '#C42B3E' }}
       >
         {fabBtns.map((item) => item.route !== pathname &&
           <Action

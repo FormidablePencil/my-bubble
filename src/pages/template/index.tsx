@@ -66,7 +66,7 @@ function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatu
             style={{ height: 31 }}
             onClick={() => setContentDetailsClosed(true)}>
             {/* slide in anim */}
-            <CancelPresentationIcon style={{ color: '#F9ACCB' }} />
+            <CancelPresentationIcon style={{ color: '#ffffff' }} />
           </Button>
         </div>
       </Grid>

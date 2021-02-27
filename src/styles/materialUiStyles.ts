@@ -5,45 +5,45 @@ import MuiAccordion from '@material-ui/core/Accordion';
 const customTheme = createMuiTheme({
   palette: {
     primary: {
-      main: '#FDE6F1',
-      100: '#7C1649',
-      200: '#E1E1E1',
-      300: '#7D2550',
-      400: '#A44C69',
+      main: '#FFF4F4',
+      200: '#FFBDBD',
+      300: '#8D202E',
+      100: '#A92637',
+      400: '#E15C5C',
       // 96476E
-      500: '#3F0628',
-      600: '#CE91AF',
-      700: '#5E0339',
-      800: '#85184e',
-      900: '#EAC5D7',
+      500: '#460B0F',
+      600: '#EC837F',
+      700: '#8D202E',
+      800: '#A92637',
+      900: '#FFF4F4',
     },
     secondary: {
       main: '#3C4068',
     },
     background: {
-      default: '#B55E7B',
+      default: '#EF8080',
 
     },
     text: {
-      primary: '#FDD2E7',
-      secondary: '#FDE6F1',
+      primary: '#FFFBF2',
+      secondary: '#FFFBF2',
     }
   },
 
   typography: {
     allVariants: {
       fontFamily: 'JosefinSans-Medium',
-      color: '#FDE6F1'
+      color: '#FFFBF2'
     },
     h5: {
       fontSize: '1.2em',
       lineHeight: 1,
     },
     h6: {
-      color: '#EBBDC6'
+      color: '#FFD2D2'
     },
     body1: {
-      color: '#FDE6F1'
+      color: '#ffffff'
     },
   }
 })
