@@ -1,6 +1,6 @@
-import React from 'react'
-import { Grid, makeStyles, Typography, Box } from '@material-ui/core'
-import staticData from '../../staticData'
+import React from "react";
+import { Grid, makeStyles, Typography, Box } from "@material-ui/core";
+import staticData from "../../staticData";
 
 function ContactsPage() {
   const classes = useStyles();
@@ -10,37 +10,44 @@ function ContactsPage() {
   // const handleCallToAction = () => history.push('/projects')
 
   return (
-    <div className={`
+    <div
+      className={`
       ${classes.overflowX}
-    `}>
+    `}
+    >
+      <video controls={false} autoPlay={true} loop className={classes.video}>
+        <source
+          src={require("../../assets/VideoGlitch_20210321_210539174.mp4")}
+          type="video/mp4"
+        />
+      </video>
+
       {/* <AbsoluteProjectDemo /> */}
-      <div className={classes.container}>
-        <Grid
-          container
-          direction='column'
-          wrap='nowrap'
-          className='contacts-text-wrapper'>
+      {/* <div className={classes.container}> */}
+      {/*   <Grid */}
+      {/*     container */}
+      {/*     direction="column" */}
+      {/*     wrap="nowrap" */}
+      {/*     className="contacts-text-wrapper" */}
+      {/*   > */}
+      {/*     <Grid container direction="column" className={classes.textContainer}> */}
+      {/*       <Grid item> */}
+      {/*         <Typography color="textPrimary" variant="h2"> */}
+      {/*           {staticData.homeAbout.name} */}
+      {/*         </Typography> */}
+      {/*       </Grid> */}
+      {/*       <Grid item> */}
+      {/*         <Box fontStyle="italic"> */}
+      {/*           <Typography color="textPrimary" variant="h4"> */}
+      {/*             {staticData.homeAbout.paragraph2} */}
+      {/*           </Typography> */}
+      {/*         </Box> */}
+      {/*       </Grid> */}
+      {/*     </Grid> */}
 
-          <Grid
-            container
-            direction='column'
-            className={classes.textContainer}>
-            <Grid item>
-              <Typography
-                color='textPrimary' variant='h2'>{staticData.homeAbout.name}</Typography>
-            </Grid>
-            <Grid item>
-              <Box fontStyle="italic">
-                <Typography color='textPrimary' variant='h4'>{staticData.homeAbout.paragraph2}</Typography>
-              </Box>
-            </Grid>
-          </Grid>
+      {/*     <PersonalContacts /> */}
 
-
-          <PersonalContacts />
-
-
-          {/* <Button
+      {/* <Button
             onClick={handleCallToAction}
             className={classes.callToAction}
             variant='contained'
@@ -48,62 +55,92 @@ function ContactsPage() {
           >
             View Projects
             </Button> */}
-        </Grid>
-      </div>
+      {/* </Grid> */}
+      {/* </div> */}
       {/* <ReactSlider slidesToShow={slidesToShow} /> */}
-    </div >
-  )
+    </div>
+  );
 }
 
-const PersonalContacts = () =>
-  <Grid container direction='column' justify='center' item style={{ marginTop: '1em' }}>
-    <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
+const PersonalContacts = () => (
+  <Grid
+    container
+    direction="column"
+    justify="center"
+    item
+    style={{ marginTop: "1em" }}
+  >
+    <Typography
+      color="textSecondary"
+      style={{ fontSize: 24, marginBottom: ".5em" }}
+    >
       Contact me via email at formidablepencil@gmail.com
-  </Typography>
-    <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
-      Check out my code through <a href="https://github.com/FormidablePencil">github</a>
     </Typography>
-    <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
-      Get to know a little <a href="https://www.dennisaleksandrov.com/">about me</a>
+    <Typography
+      color="textSecondary"
+      style={{ fontSize: 24, marginBottom: ".5em" }}
+    >
+      Check out my code through{" "}
+      <a href="https://github.com/FormidablePencil">github</a>
     </Typography>
-    <Typography color='textSecondary' style={{ fontSize: 24, marginBottom: '.5em' }}>
-      Ping me on <a href="https://www.linkedin.com/in/dennis-aleksandrov-b6a940167/">LinkedIn</a>
+    <Typography
+      color="textSecondary"
+      style={{ fontSize: 24, marginBottom: ".5em" }}
+    >
+      Get to know a little{" "}
+      <a href="https://www.dennisaleksandrov.com/">about me</a>
+    </Typography>
+    <Typography
+      color="textSecondary"
+      style={{ fontSize: 24, marginBottom: ".5em" }}
+    >
+      Ping me on{" "}
+      <a href="https://www.linkedin.com/in/dennis-aleksandrov-b6a940167/">
+        LinkedIn
+      </a>
     </Typography>
   </Grid>
-
+);
 
 const useStyles = makeStyles((theme) => ({
   overflowX: {
-    overflowX: 'hidden'
+    // marginTop: "-2em",
+    overflowX: "hidden",
+    backgroundColor: "#080E15",
   },
   container: {
-    height: '100%',
-    overflowX: 'hidden'
+    height: "100%",
+    overflowX: "hidden",
   },
   textContainer: {
-    margin: '3em 0px 3em 0px'
+    margin: "3em 0px 3em 0px",
   },
   absolute: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 100,
   },
   horizontalDivider: {
-    marginBottom: '1em',
-    border: '1px solid',
+    marginBottom: "1em",
+    border: "1px solid",
     borderColor: theme.palette.primary[500],
   },
   shortDivider: {
-    width: 200
+    width: 200,
   },
   regDivider: {
-    width: 300
+    width: 300,
   },
   longDivider: {
-    width: 400
+    width: 400,
   },
   callToAction: {
-    marginTop: '1.5em'
+    marginTop: "1.5em",
+  },
+  video: {
+    height: "100vh",
+    width: "100vw",
+    objectFit: 'cover',
   },
 }));
 
-export default ContactsPage
+export default ContactsPage;
