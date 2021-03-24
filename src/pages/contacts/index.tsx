@@ -1,11 +1,29 @@
-import React from "react";
-import { Grid, makeStyles, Typography, Box } from "@material-ui/core";
-import staticData from "../../staticData";
+import { Grid, makeStyles, Typography } from "@material-ui/core";
+import React, { useEffect, useRef, useState } from "react";
+import imgOfSelf from "../../assets/imageOfSelf.png";
 
 function ContactsPage() {
   const classes = useStyles();
   // let history = useHistory();
   /* Contacts: github, linkedIn & email. Get to know me: self presentation site link. */
+  const [playVideo, setPlayVideo] = useState(true);
+  const [videoUrl, setVideoUrl] = useState(
+    require("../../assets/VideoGlitch_20210322_113055349.mp4")
+  );
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    // videoRef.current.play()
+  }, []);
+
+  const firstVidFinished = async () => {
+    setVideoUrl(require("../../assets/My Movie 1.mp4"));
+    setTimeout(() => {
+      videoRef.current.load();
+    }, 2000);
+    // setTimeout(() => {
+    // })
+  };
 
   // const handleCallToAction = () => history.push('/projects')
 
@@ -15,11 +33,16 @@ function ContactsPage() {
       ${classes.overflowX}
     `}
     >
-      <video controls={false} autoPlay={true} loop className={classes.video}>
-        <source
-          src={require("../../assets/VideoGlitch_20210321_210539174.mp4")}
-          type="video/mp4"
-        />
+      <video
+        onEnded={firstVidFinished}
+        controls={false}
+        autoPlay
+        muted
+        ref={videoRef}
+        // loop
+        className={classes.video}
+      >
+        <source src={videoUrl} type="video/mp4" />
       </video>
 
       {/* <AbsoluteProjectDemo /> */}
@@ -106,7 +129,12 @@ const useStyles = makeStyles((theme) => ({
   overflowX: {
     // marginTop: "-2em",
     overflowX: "hidden",
-    backgroundColor: "#080E15",
+    width: "100vw",
+    height: "100vh",
+    backgroundImage: "url(" + imgOfSelf + ")",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    // backgroundColor: "#080E15",
   },
   container: {
     height: "100%",
@@ -139,7 +167,7 @@ const useStyles = makeStyles((theme) => ({
   video: {
     height: "100vh",
     width: "100vw",
-    objectFit: 'cover',
+    objectFit: "cover",
   },
 }));
 
