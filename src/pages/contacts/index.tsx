@@ -1,6 +1,6 @@
-import {Grid, makeStyles, Typography} from "@material-ui/core";
-import React, {useRef, useState} from "react";
-import imgOfSelf from "../../assets/imageOfSelf.png";
+import { Grid, makeStyles, Typography } from "@material-ui/core";
+import React, { useRef, useState } from "react";
+import imgOfSelf from "../../assets/imageOfSelf.jpg";
 
 function ContactsPage() {
   const classes = useStyles();
