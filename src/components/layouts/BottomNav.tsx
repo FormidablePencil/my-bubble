@@ -16,9 +16,9 @@ function BottomNav() {
   const onClickNavigateWithAnim = useNavigateWithAnim()
 
   const fabBtns = [
-    { bgColor: '#FF0C67', component: <HomeIcon />, onClickValue: '/', text: 'Contacts', route: '/' },
-    { bgColor: '#8143DA', component: <ImportantDevicesIcon />, onClickValue: '/projects', text: 'Projects', route: '/projects' },
-    { bgColor: '#246DFF', component: <GrainIcon />, onClickValue: '/technologies', text: 'Technologies', route: '/technologies' },
+    { bgColor: '#506A44', component: <HomeIcon />, onClickValue: '/', text: 'Home', route: '/' },
+    { bgColor: '#506A44', component: <ImportantDevicesIcon />, onClickValue: '/projects', text: 'Projects', route: '/projects' },
+    { bgColor: '#506A44', component: <GrainIcon />, onClickValue: '/technologies', text: 'Technologies', route: '/technologies' },
   ]
 
   return (
