@@ -42,7 +42,7 @@ function Navbar() {
             key={tab.tabTitle}
             onClick={() => onClickNavigateWithAnim(tab.path)}
             className={`${classes.tab}
-            ${pathname !== "/" && classes.tabColor}
+              ${pathname !== "/" ? classes.tabColor : classes.tabNoColor}
             ${pathname === tab.path && classes.activeTab}`}
           >
             <Grid
@@ -76,11 +76,14 @@ const useStyles = makeStyles((theme) => ({
     height: "3.2em",
     zIndex: 50,
     backgroundColor: theme.palette.primary[500],
+    transition: "background-color 300ms",
   },
   homeNavbar: {
     position: "absolute",
     top: 0,
+    width: "100%",
     backgroundColor: "rgba(0,0,0,0)",
+    transition: "background-color 300ms",
   },
   tabsContainer: {
     marginLeft: "3em",
@@ -93,24 +96,30 @@ const useStyles = makeStyles((theme) => ({
   },
   tab: {
     color: "white",
-    height: "2.2em",
-    width: "9em",
+    height: "2.4em",
+    width: "11em",
     borderRadius: "1em 1em 0em 0em",
     margin: "0em 0em -.5px 1em",
     opacity: 0.7,
     boxShadow: "0px -1px 0px .5px rgba(0,0,0,.2)",
+    background: "rgba(0,0,0,0)",
     "&:hover": {
       opacity: 0.8,
       cursor: "pointer",
     },
   },
+  tabNoColor: {
+    backgroundColor: "rgba(0,0,0,0)",
+    transition: "background-color 300ms 300ms",
+  },
   tabColor: {
     background: theme.palette.primary[800],
+    // transition: "background-color 100ms 300ms",
   },
   activeTab: {
     zIndex: 20,
-    opacity: 1,
     pointerEvents: "none",
+    opacity: 1,
     boxShadow: tabEffectShadowProp,
     "&:hover": {
       cursor: "default",

@@ -156,7 +156,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary[500],
   },
   accordionContainer: {
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.primary[400],
     width: '90%',
     margin: '.5em 0em .5em 0em',
   },

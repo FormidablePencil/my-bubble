@@ -1,28 +1,21 @@
-import { Grid, makeStyles, Typography } from "@material-ui/core";
-import React, { useEffect, useRef, useState } from "react";
+import {Grid, makeStyles, Typography} from "@material-ui/core";
+import React, {useRef, useState} from "react";
 import imgOfSelf from "../../assets/imageOfSelf.png";
 
 function ContactsPage() {
   const classes = useStyles();
   // let history = useHistory();
   /* Contacts: github, linkedIn & email. Get to know me: self presentation site link. */
-  const [playVideo, setPlayVideo] = useState(true);
   const [videoUrl, setVideoUrl] = useState(
     require("../../assets/VideoGlitch_20210322_113055349.mp4")
   );
   const videoRef = useRef(null);
 
-  useEffect(() => {
-    // videoRef.current.play()
-  }, []);
-
   const firstVidFinished = async () => {
     setVideoUrl(require("../../assets/My Movie 1.mp4"));
     setTimeout(() => {
-      videoRef.current.load();
+      if (videoRef.current !== null) videoRef.current.load();
     }, 2000);
-    // setTimeout(() => {
-    // })
   };
 
   // const handleCallToAction = () => history.push('/projects')

@@ -7,21 +7,20 @@ const customTheme = createMuiTheme({
     primary: {
       main: '#FFF4F4',
       200: '#FFBDBD',
-      300: '#8D202E',
-      100: '#A92637',
-      400: '#E15C5C',
-      // 96476E
-      500: '#460B0F',
+      300: '#363F31',
+      100: '#444B43',
+      400: '#8C9B90', //card
+      500: '#3C4636',
       600: '#EC837F',
-      700: '#8D202E',
-      800: '#A92637',
-      900: '#FFF4F4',
+      700: '#668756',
+      800: '#161A15', //card
+      900: '#DCDCDC',
     },
     secondary: {
       main: '#3C4068',
     },
     background: {
-      default: '#EF8080',
+      default: '#B4BBB3',
 
     },
     text: {
@@ -32,7 +31,7 @@ const customTheme = createMuiTheme({
 
   typography: {
     allVariants: {
-      fontFamily: 'JosefinSans-Medium',
+      fontFamily: 'IBMPlexMono-Regular',
       color: '#FFFBF2'
     },
     h5: {
@@ -40,7 +39,7 @@ const customTheme = createMuiTheme({
       lineHeight: 1,
     },
     h6: {
-      color: '#FFD2D2'
+      color: '#E7ECE8',
     },
     body1: {
       color: '#ffffff'
