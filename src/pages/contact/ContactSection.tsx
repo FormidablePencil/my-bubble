@@ -1,4 +1,4 @@
-import {makeStyles} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import emailjs from "emailjs-com";
 import React from "react";
 
@@ -8,7 +8,7 @@ function ContactSection() {
   function sendEmail(e) {
     e.preventDefault();
 
-    emailjs.sendForm("service_w6bk0tf", "template_3pyf0pj", e.target).then(
+    emailjs.sendForm("service_qodb6gu", "template_oo3ywoa", e.target).then(
       function (response) {
         console.log("SUCCESS!", response.status, response.text);
       },
@@ -19,7 +19,7 @@ function ContactSection() {
   }
 
   return (
-    <div className="">
+    <div className={classes.container}>
       <div className={classes.formContainer}>
         <form className={classes.contactForm} onSubmit={sendEmail}>
           <label>Name</label>

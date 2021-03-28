@@ -37,6 +37,13 @@ function BottomNav() {
       text: "Technologies",
       route: "/technologies",
     },
+    {
+      bgColor: "#506A44",
+      component: <GrainIcon />,
+      onClickValue: "/contacts",
+      text: "Contacts",
+      route: "/contacts",
+    },
   ];
 
   return (
@@ -70,7 +77,7 @@ const useStyles = makeStyles(() => ({
     width: "100vw",
     position: "fixed",
     bottom: 0,
-    zIndex: 2
+    zIndex: 2,
   },
 }));
 
