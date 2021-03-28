@@ -16,12 +16,16 @@ function Navbar() {
       path: "/",
     },
     {
-      tabTitle: "Project Gallery",
+      tabTitle: "Portfolio",
       path: "/projects",
     },
     {
       tabTitle: "Technologies",
       path: "/technologies",
+    },
+    {
+      tabTitle: "Contacts",
+      path: "/contacts",
     },
   ];
 
@@ -97,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
   tab: {
     color: "white",
     height: "2.4em",
-    width: "11em",
+    width: "10em",
     borderRadius: "1em 1em 0em 0em",
     margin: "0em 0em -.5px 1em",
     opacity: 0.7,

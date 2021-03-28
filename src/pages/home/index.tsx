@@ -1,8 +1,12 @@
+import ImageInDevice, {
+  TransitionDevices,
+} from "@bit/formidablepencil.react-reusables.image-in-device";
 import { Grid, makeStyles, Typography } from "@material-ui/core";
 import React, { useRef, useState } from "react";
 import imgOfSelf from "../../assets/imageOfSelf.jpg";
+import ProjectsDemo from "./projects-demo";
 
-function ContactsPage() {
+function HomePage() {
   const classes = useStyles();
   // let history = useHistory();
   /* Contacts: github, linkedIn & email. Get to know me: self presentation site link. */
@@ -37,6 +41,25 @@ function ContactsPage() {
       >
         <source src={videoUrl} type="video/mp4" />
       </video>
+
+      <div className={classes.container}>
+        <Typography className={classes.textContainer}>
+          Need a mobile app, cms, some fontend or backend framework implemented?
+          I'm the guy! I'm a full stack self-taught developer, I have built many
+          end to end apps with various different tech stacks. My strong suit is
+          JavaScript How may I help you? Lets talk.
+        </Typography>
+        <div className={classes.btnsContainer}>
+          <button className={classes.actionBtn}>
+            <Typography>Portfolio</Typography>
+          </button>
+          <button className={classes.actionBtn}>
+            <Typography>Contacts</Typography>
+          </button>
+        </div>
+      </div>
+
+      <ProjectsDemo />
 
       {/* <AbsoluteProjectDemo /> */}
       {/* <div className={classes.container}> */}
@@ -77,65 +100,57 @@ function ContactsPage() {
     </div>
   );
 }
-
-const PersonalContacts = () => (
-  <Grid
-    container
-    direction="column"
-    justify="center"
-    item
-    style={{ marginTop: "1em" }}
-  >
-    <Typography
-      color="textSecondary"
-      style={{ fontSize: 24, marginBottom: ".5em" }}
-    >
-      Contact me via email at formidablepencil@gmail.com
-    </Typography>
-    <Typography
-      color="textSecondary"
-      style={{ fontSize: 24, marginBottom: ".5em" }}
-    >
-      Check out my code through{" "}
-      <a href="https://github.com/FormidablePencil">github</a>
-    </Typography>
-    <Typography
-      color="textSecondary"
-      style={{ fontSize: 24, marginBottom: ".5em" }}
-    >
-      Get to know a little{" "}
-      <a href="https://www.dennisaleksandrov.com/">about me</a>
-    </Typography>
-    <Typography
-      color="textSecondary"
-      style={{ fontSize: 24, marginBottom: ".5em" }}
-    >
-      Ping me on{" "}
-      <a href="https://www.linkedin.com/in/dennis-aleksandrov-b6a940167/">
-        LinkedIn
-      </a>
-    </Typography>
-  </Grid>
-);
-
 const useStyles = makeStyles((theme) => ({
   overflowX: {
     // marginTop: "-2em",
-    overflowX: "hidden",
     width: "100vw",
     height: "100vh",
     backgroundImage: "url(" + imgOfSelf + ")",
     backgroundSize: "cover",
-    backgroundPosition: "center",
+    backgroundPosition: "30% 50%",
     // backgroundColor: "#080E15",
   },
   container: {
-    height: "100%",
-    overflowX: "hidden",
+    top: "40%",
+    position: "absolute",
+    maxWidth: "30em",
+    zIndex: 1,
+    // background: 'black'
+    [theme.breakpoints.down(1200)]: {
+      top: "50%",
+    },
+    [theme.breakpoints.down(580)]: {
+      backgroundColor: "rgba(0, 0, 0, .5)",
+      width: "100vw",
+      maxWidth: "100vw",
+      padding: "1em",
+      margin: 0,
+    },
+  },
+  btnsContainer: {
+    display: "flex",
+  },
+  actionBtn: {
+    margin: "1em 0 0 2.5em",
+    width: "10em",
+    height: "2.3em",
+    borderRadius: ".7em",
+    border: 0,
+    backgroundColor: "#875C62",
+    outline: "none",
+    "&:hover": {
+      backgroundColor: "#98686E",
+    },
+    "&:active": {
+      background: "#755055",
+    },
   },
   textContainer: {
-    margin: "3em 0px 3em 0px",
+    color: theme.typography.h6.color,
+    margin: "auto 2em",
+    // margin: "3em 0px 3em 0px",
   },
+
   absolute: {
     position: "absolute",
     bottom: 100,
@@ -161,7 +176,8 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
     width: "100vw",
     objectFit: "cover",
+    objectPosition: "30% 50%",
   },
 }));
 
-export default ContactsPage;
+export default HomePage;

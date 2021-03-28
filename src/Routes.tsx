@@ -7,10 +7,11 @@ import Navbar from "./components/layouts/Navbar";
 import TransitionalAnim from "./components/layouts/TransitionalAnim";
 import useFetchAllPortfolioData from "./hooks/useFetchAllPortfolioData";
 import useKeyTrigger from "./hooks/useKeyTrigger";
-import ContactsPage from "./pages/contacts";
+import HomePage from "./pages/home";
 import ProjectsGalleryPage from "./pages/project-gallery";
 import TechnologiesPage from "./pages/tech-gallery";
 import { tabEffectShadowProp } from "./styles/materialUiStyles";
+import ContactPage from "./pages/contact";
 
 /* The tech and projects are too abrupt when the page is initially redirected there especially the projects page. 
 the gallaxy frame does some funky business. */
@@ -40,7 +41,7 @@ export function DemoRoutes() {
       >
         <Route exact path="/">
           <TransitionalAnim>
-            <ContactsPage />
+            <HomePage />
           </TransitionalAnim>
         </Route>
         <Route path="/projects">
@@ -50,6 +51,14 @@ export function DemoRoutes() {
         <Route path="/technologies">
           {/* <TransitionalAnim compHere={<RoseComp />}> */}
           <TechnologiesPage />
+          {/* </TransitionalAnim> */}
+        </Route>
+
+        <Route path="/contacts">
+          {/* <TransitionalAnim compHere={<RoseComp />}> */}
+          <TransitionalAnim>
+            <ContactPage />
+          </TransitionalAnim>
           {/* </TransitionalAnim> */}
         </Route>
 

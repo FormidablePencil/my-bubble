@@ -1,26 +1,38 @@
-import React from 'react'
-import { BsPhone } from 'react-icons/bs'
-import { AiOutlineDesktop } from 'react-icons/ai';
-import './index.sass';
+import React from "react";
+import { BsPhone } from "react-icons/bs";
+import { AiOutlineDesktop } from "react-icons/ai";
+import "./index.sass";
 
 interface T {
-  iconSize: number
-  whatIconsToDisplay: 'both' | 'mobile' | 'desktop'
-  isMobile: boolean
-  onClickHandler: () => void
+  iconSize: number;
+  whatIconsToDisplay: "both" | "mobile" | "desktop";
+  isMobile: boolean;
+  onClickHandler: () => void;
 }
 
-const SwitchDeviceTypeBtns = ({ iconSize, whatIconsToDisplay, isMobile, onClickHandler }: T) =>
-  <div className='switchDeviceTypeBtns'
-    onClick={onClickHandler}>
-    {(whatIconsToDisplay === 'both' || whatIconsToDisplay === 'mobile') &&
+const SwitchDeviceTypeBtns = ({
+  iconSize,
+  whatIconsToDisplay,
+  isMobile,
+  onClickHandler,
+}: T) => (
+  <div className="switchDeviceTypeBtns" onClick={onClickHandler}>
+    {(whatIconsToDisplay === "both" || whatIconsToDisplay === "mobile") && (
       <BsPhone
-        color={isMobile ? 'white' : '#B65F7B'} size={iconSize} style={{ margin: '0 0 1em 1em', zIndex: 20 }} />
-    }
-    {(whatIconsToDisplay === 'both' || whatIconsToDisplay === 'desktop') &&
+        color={isMobile ? "white" : "#7FA96D"}
+        size={iconSize}
+        style={{ margin: "0 0 1em 1em", zIndex: 20 }}
+      />
+    )}
+    {(whatIconsToDisplay === "both" || whatIconsToDisplay === "desktop") && (
       <AiOutlineDesktop
-        color={!isMobile ? 'white' : '#B65F7B'} size={iconSize} style={{ margin: '0 0 0 1em', zIndex: 200 }} />
-    }
+        color={!isMobile ? "white" : "#7FA96D"}
+        size={iconSize}
+        style={{ margin: "0 0 0 1em", zIndex: 200 }}
+      />
+    )}
   </div>
+);
 
-export default SwitchDeviceTypeBtns
+export default SwitchDeviceTypeBtns;
+
