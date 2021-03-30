@@ -1,14 +1,12 @@
-import ImageInDevice, {
-  TransitionDevices,
-} from "@bit/formidablepencil.react-reusables.image-in-device";
-import { Grid, makeStyles, Typography } from "@material-ui/core";
-import React, { useRef, useState } from "react";
+import {makeStyles, Typography} from "@material-ui/core";
+import React, {useRef, useState} from "react";
 import imgOfSelf from "../../assets/imageOfSelf.jpg";
+import useNavigateWithAnim from "../../hooks/useNavigateWithAnim";
 import ProjectsDemo from "./projects-demo";
 
 function HomePage() {
   const classes = useStyles();
-  // let history = useHistory();
+  const onClickNavigateWithAnim = useNavigateWithAnim();
   /* Contacts: github, linkedIn & email. Get to know me: self presentation site link. */
   const [videoUrl, setVideoUrl] = useState(
     require("../../assets/VideoGlitch_20210322_113055349.mp4")
@@ -50,10 +48,16 @@ function HomePage() {
           JavaScript How may I help you? Lets talk.
         </Typography>
         <div className={classes.btnsContainer}>
-          <button className={classes.actionBtn}>
+          <button
+            onClick={() => onClickNavigateWithAnim("/projects")}
+            className={classes.actionBtn}
+          >
             <Typography>Portfolio</Typography>
           </button>
-          <button className={classes.actionBtn}>
+          <button
+            onClick={() => onClickNavigateWithAnim("/contacts")}
+            className={classes.actionBtn}
+          >
             <Typography>Contacts</Typography>
           </button>
         </div>

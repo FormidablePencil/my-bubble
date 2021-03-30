@@ -1,9 +1,14 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Typography } from "@material-ui/core";
 import emailjs from "emailjs-com";
-import React from "react";
+import React, { useEffect } from "react";
+import { init } from "emailjs-com";
 
 function ContactSection() {
   const classes = useStyles();
+
+  useEffect(() => {
+    init("user_wI1MtDUVRWTqeKdhb4pDH");
+  }, []);
 
   function sendEmail(e) {
     e.preventDefault();
@@ -20,21 +25,31 @@ function ContactSection() {
 
   return (
     <div className={classes.container}>
-      <div className={classes.formContainer}>
-        <form className={classes.contactForm} onSubmit={sendEmail}>
-          <label>Name</label>
-          <input type="text" name="from_name" />
-          <label>Email</label>
-          <input type="email" name="user_email" />
-          <label>
+      <form className={classes.contactForm} onSubmit={sendEmail}>
+        <label className={classes.label}>
+          <Typography>Name</Typography>
+        </label>
+        <input className={classes.input} type="text" name="from_name" />
+        <label className={classes.label}>
+          <Typography>Email</Typography>
+        </label>
+        <input className={classes.input} type="email" name="user_email" />
+        <label className={classes.label}>
+          <Typography>
             Number <span className={classes.optional}>(optional)</span>
-          </label>
-          <input type="text" name="user_number" />
-          <label>Message</label>
-          <textarea name="message" />
-          <input className="submit" type="submit" value="Send" />
-        </form>
-      </div>
+          </Typography>
+        </label>
+        <input className={classes.input} type="text" name="user_number" />
+        <label className={classes.label}>
+          <Typography>Message</Typography>
+        </label>
+        <textarea className={classes.textarea} name="message" />
+        <input
+          className={`${classes.submit} ${classes.input}`}
+          type="submit"
+          value="Send"
+        />
+      </form>
     </div>
   );
 }
@@ -47,17 +62,14 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
-
-  formContainer: {
-    flex: 1,
-    display: "flex",
-    justifyContent: "center",
-  },
-
   contactForm: {
     display: "flex",
-    width: "20em",
+    width: "30em",
     flexDirection: "column",
+    [theme.breakpoints.down(475)]: {
+      width: "20em",
+      alignSelf: "center",
+    },
   },
 
   label: {
@@ -65,26 +77,37 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     paddingLeft: "1em",
-    background: "white",
+    background: "#B8CDAA",
     border: "0px",
     borderRadius: "1em",
     outline: "none",
     height: "2em",
   },
   textarea: {
-    background: "white",
+    background: "#B8CDAA",
   },
 
   submit: {
-    width: "100%",
+    alignSelf: "flex-end",
+    width: "10em",
     paddingLeft: 0,
-    margin: "1.5em 0",
+    paddingTop: "3px",
+    margin: "2em 0",
     height: "2.5em",
+    color: "white",
+    background: "#129447",
+    fontFamily: theme.typography.h6.fontFamily,
+    "&:hover": {
+      background: "#139E4B",
+    },
+    "&:active": {
+      background: "#107E3C",
+    },
     // @extend .primaryBtn
   },
 
   optional: {
-    color: "grey",
+    color: "#C5CDBD",
   },
 }));
 
