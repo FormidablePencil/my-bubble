@@ -21,7 +21,7 @@ function ProjectsDemo() {
   ];
 
   return (
-    <div className={classes.container}>
+    <div className={`${classes.container} animate-in-home-proj-showcase`}>
       {desktopImages[0] && (
         <div className={classes.desktopContainer}>
           <div>
