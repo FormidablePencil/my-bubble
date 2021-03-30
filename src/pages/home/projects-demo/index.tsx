@@ -12,19 +12,22 @@ function ProjectsDemo() {
     },
     {
       device: "web",
-      url: "https://i.ibb.co/HYcQx7M/Screen-Shot-2021-03-02-at-8-56-14-PM.jpg",
+      url: "https://i.ibb.co/Fmd08CR/movie-Inspired-Desktop2.jpg",
     },
   ];
   const mobileImages = [
     { device: "mobile", url: "https://i.ibb.co/c1b7w8T/mobile3.jpg" },
-    { device: "mobile", url: "https://i.ibb.co/c1b7w8T/mobile3.jpg" },
+    {
+      device: "mobile",
+      url: "https://i.ibb.co/nmBLQ7C/movie-inspired-2.jpg",
+    },
   ];
 
   return (
     <div className={`${classes.container} animate-in-home-proj-showcase`}>
       {desktopImages[0] && (
         <div className={classes.desktopContainer}>
-          <div>
+          <div style={{ pointerEvents: "none" }}>
             <ImageInDevice
               images={desktopImages}
               deviceType={"web"}
@@ -36,7 +39,10 @@ function ProjectsDemo() {
         </div>
       )}
       {mobileImages[0] && (
-        <div className={classes.mobileContainer}>
+        <div
+          style={{ pointerEvents: "none" }}
+          className={classes.mobileContainer}
+        >
           {/* <TransitionDevices deviceType="mobile" show={viewingMobile}> */}
           <ImageInDevice
             images={mobileImages}
