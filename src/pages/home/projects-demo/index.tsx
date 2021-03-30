@@ -12,14 +12,38 @@ function ProjectsDemo() {
     },
     {
       device: "web",
+      url: "https://i.ibb.co/X36fs5h/Screen-Shot-2021-03-30-at-3-22-38-AM.jpg",
+    },
+    {
+      device: "web",
       url: "https://i.ibb.co/Fmd08CR/movie-Inspired-Desktop2.jpg",
+    },
+    {
+      device: "web",
+      url: "https://i.ibb.co/xgyvd84/starbucks3.jpg",
+    },
+    {
+      device: "web",
+      url: "https://i.ibb.co/fv870sW/Screen-Shot-2021-03-30-at-2-33-49-AM.jpg",
     },
   ];
   const mobileImages = [
     { device: "mobile", url: "https://i.ibb.co/c1b7w8T/mobile3.jpg" },
     {
       device: "mobile",
+      url: "https://i.ibb.co/drgm6Bh/Screenshot-20210330-032330-Brave.jpg",
+    },
+    {
+      device: "mobile",
       url: "https://i.ibb.co/nmBLQ7C/movie-inspired-2.jpg",
+    },
+    {
+      device: "mobile",
+      url: "https://i.ibb.co/mTcRwPp/starbuck4.jpg",
+    },
+    {
+      device: "mobile",
+      url: "https://i.ibb.co/dr28pdR/Screenshot-20210330-023824-Brave.jpg",
     },
   ];
 
