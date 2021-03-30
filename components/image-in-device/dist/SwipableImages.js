@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Fragment, Suspense } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TheSlider from "react-slick";
@@ -13,18 +13,18 @@ function SwipableImages(props) {
         slidesToScroll: 1,
         draggable: false,
     };
-    const ImageComp = ({ imageProps }) => React.createElement("img", { key: imageProps.url, className: contentStyles.imagesStyles, src: images && imageProps.url, alt: 'application' });
+    const ImageComp = ({ imageProps }) => (React.createElement("img", { key: imageProps.url, className: contentStyles.imagesStyles, src: images && imageProps.url, alt: "application" }));
     if (!images)
         return null;
     return (React.createElement(React.Fragment, null,
         React.createElement("div", { className: contentStyles.swipeableContainerStyles },
             React.createElement(Suspense, { fallback: React.createElement("div", null, "kayy") },
-                React.createElement(TheSlider, Object.assign({}, settings), images.map(imageProps => {
+                React.createElement(TheSlider, Object.assign({}, settings), images.map((imageProps, index) => {
                     switch (true) {
-                        case imageProps.device === 'mobile' && showMobileImages:
-                        case imageProps.device === 'web' && !showMobileImages:
-                            return React.createElement(React.Fragment, null,
-                                React.createElement(ImageComp, { key: imageProps, imageProps: imageProps }));
+                        case imageProps.device === "mobile" && showMobileImages:
+                        case imageProps.device === "web" && !showMobileImages:
+                            return (React.createElement(Fragment, { key: index },
+                                React.createElement(ImageComp, { key: imageProps, imageProps: imageProps })));
                         default:
                             return null;
                     }

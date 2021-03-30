@@ -1,6 +1,4 @@
-import ImageInDevice, {
-  TransitionDevices,
-} from "@bit/formidablepencil.react-reusables.image-in-device";
+import ImageInDevice from "@bit/formidablepencil.react-reusables.image-in-device";
 import { makeStyles } from "@material-ui/core";
 import React from "react";
 import "./index.scoped.sass";
@@ -21,7 +19,6 @@ function ProjectsDemo() {
     { device: "mobile", url: "https://i.ibb.co/c1b7w8T/mobile3.jpg" },
     { device: "mobile", url: "https://i.ibb.co/c1b7w8T/mobile3.jpg" },
   ];
-  const viewingMobile = false;
 
   return (
     <div className={classes.container}>
