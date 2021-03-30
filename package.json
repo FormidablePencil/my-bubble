@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@agney/react-loading": "^0.1.2",
     "@bit/formidablepencil.react-reusables.image-in-device": "file:./components/image-in-device",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",

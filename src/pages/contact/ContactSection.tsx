@@ -1,26 +1,48 @@
 import { makeStyles, Typography } from "@material-ui/core";
 import emailjs from "emailjs-com";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { init } from "emailjs-com";
+import { useLoading, Oval } from "@agney/react-loading";
 
 function ContactSection() {
   const classes = useStyles();
+  const [isLoading, setIsLoading] = useState(false);
+  const { containerProps, indicatorEl }: any = useLoading({
+    loading: isLoading,
+    indicator: (
+      <div className={classes.loadingIconContainer}>
+        <Oval />
+      </div>
+    ),
+  });
 
   useEffect(() => {
     init("user_wI1MtDUVRWTqeKdhb4pDH");
   }, []);
 
   function sendEmail(e) {
+    setIsLoading(true);
+    const { from_name, user_email, message } = e.target;
+
     e.preventDefault();
 
-    emailjs.sendForm("service_qodb6gu", "template_oo3ywoa", e.target).then(
-      function (response) {
-        console.log("SUCCESS!", response.status, response.text);
-      },
-      function (error) {
-        console.log("FAILED...", error);
-      }
-    );
+    if (from_name.value && user_email.value && message.value)
+      emailjs.sendForm("service_qodb6gu", "template_oo3ywoa", e.target).then(
+        function (response) {
+          console.log("SUCCESS!", response.status, response.text);
+          setIsLoading(false);
+          alert("Message has been sent. We'll get back to you shortly.");
+        },
+        function (error) {
+          console.log("FAILED...", error);
+          setIsLoading(false);
+          alert("Sorry, something went wrong.");
+        }
+      );
+    else {
+      setIsLoading(false);
+      alert("Please fill in all the input fields. A phone number is optional.");
+    }
   }
 
   return (
@@ -44,19 +66,25 @@ function ContactSection() {
           <Typography>Message</Typography>
         </label>
         <textarea className={classes.textarea} name="message" />
-        <input
-          className={`${classes.submit} ${classes.input}`}
-          type="submit"
-          value="Send"
-        />
+        <button className={`${classes.submit} ${classes.input}`} type="submit">
+          Send
+          <section {...containerProps}>
+            {indicatorEl} {/* renders only while loading */}
+          </section>
+        </button>
       </form>
     </div>
   );
 }
 
 const useStyles = makeStyles((theme) => ({
+  loadingIconContainer: {
+    width: 10,
+    position: "absolute",
+    right: 25,
+    top: 10,
+  },
   container: {
-    height: "100vh",
     flex: 1,
     display: "flex",
     alignItems: "center",
@@ -88,6 +116,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   submit: {
+    position: "relative",
     alignSelf: "flex-end",
     width: "10em",
     paddingLeft: 0,

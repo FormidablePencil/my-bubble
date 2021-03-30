@@ -55,9 +55,11 @@ function Navbar() {
               justify="center"
               alignItems="center"
             >
-              <Typography color="textPrimary" variant="body1">
-                {tab.tabTitle}
-              </Typography>
+              <a>
+                <Typography color="textPrimary" variant="body1">
+                  {tab.tabTitle}
+                </Typography>
+              </a>
             </Grid>
           </div>
         ))}
