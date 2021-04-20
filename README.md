@@ -1,6 +1,6 @@
 # My Bubble
 
-Website hosted on Go Daddy ~ https://mybubble.dennisaleksandrov.com
+Website hosted on Go Daddy ~ https://dennisaleksandrov.com/
 
 Built with the MERN Stack
 
