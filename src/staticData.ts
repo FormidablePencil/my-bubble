@@ -8,8 +8,10 @@ const staticData = {
 
 export const sortProjects = (projectsArr) => {
   const orderOfProjects = [
+    "Gestalt Replica",
     "TR Legacy",
     "Movie App",
+    "Elon Mars",
     "My Bubble",
     "Pao System",
     "Emoji Tack Toes",
