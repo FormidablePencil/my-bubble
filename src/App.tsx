@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import { DemoRoutes } from "./Routes";
 import configureStore from "./store";
-import "./styles/main.sass";
+import "./styles/index.sass";
 import customTheme from "./styles/materialUiStyles";
 
 export const clickProjectGA = ({ projectName }) => {
