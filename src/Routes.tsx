@@ -8,7 +8,7 @@ import TransitionalAnim from "./components/layouts/TransitionalAnim";
 import useFetchAllPortfolioData from "./hooks/useFetchAllPortfolioData";
 import useKeyTrigger from "./hooks/useKeyTrigger";
 import HomePage from "./pages/home";
-import ProjectsGalleryPage from "./pages/project-gallery";
+import ProjectsGalleryPage from "./pages/project-gallery/Main";
 import TechnologiesPage from "./pages/tech-gallery";
 import { tabEffectShadowProp } from "./styles/materialUiStyles";
 import ContactPage from "./pages/contact";

@@ -1,5 +1,5 @@
 import React from 'react'
-import MobileProjectGallery from '../../components/mobile/project-gallery-components'
+import MobileProjectGallery from '../../components/mobile/project-gallery-components/Main'
 import useToggleGridDirection from '../../hooks/useToggleGridDirection'
 import ProjectGallery from '../../components/project-gallery-components'
 

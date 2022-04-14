@@ -9,7 +9,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { GalleryContentDetailSectionFirst, GalleryContentDetailSectionSecond } from '../../../project-gallery-components/details-section';
 import NavigationFabs from './project-content-image/NavigationFabs';
 import useNavigateProjects from './project-content-image/useNavigateProjects';
-import ProjectContentImage from './project-content-image';
+import ProjectContentImage from './project-content-image/Main';
 import './index.sass'
 
 // const mobileContentDetailsAnim = {

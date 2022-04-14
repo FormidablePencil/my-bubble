@@ -8,6 +8,8 @@ const staticData = {
 
 export const sortProjects = (projectsArr) => {
   const orderOfProjects = [
+    "Julia",
+    // "Talking Parents",
     "Gestalt Replica",
     "TR Legacy",
     "Movie App",
@@ -21,6 +23,7 @@ export const sortProjects = (projectsArr) => {
     "Server for Todolist",
     "Starbucks Replica",
     "Portfolio",
+    // "Live Clean Today",
   ];
   let sorted: any = [];
 

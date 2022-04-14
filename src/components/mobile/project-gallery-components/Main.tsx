@@ -1,7 +1,7 @@
 import React from 'react'
 import { ContainerFullHeight, swipebarHeightInEm } from '../../../styles/materialUiStyles'
 import { Grid, makeStyles } from '@material-ui/core'
-import MobileContentDetailsSection from './content-details'
+import MobileContentDetailsSection from './content-details/Main'
 import CompensateForSwipableTabHeight from '../CompensateForSwipableTabHeight'
 import TransitionalAnim from '../../layouts/TransitionalAnim'
 import ProjectDisplay from './project-display'
