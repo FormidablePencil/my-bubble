@@ -1,3 +1,10 @@
+// @use './scrollBarVisible.sass'
+// @use './animations/animations.sass'
+// @use './animations/pageAnim.sass'
+// @use './mediaQuery.sass'
+// @use './absoluteProjectDemo.sass'
+
+
 html
   background: #000
   height: -webkit-fill-available
@@ -30,14 +37,13 @@ a
   font-family: 'IBMPlexMono-Regular'
   src: local('IBMPlexMono-Regular'), url('../assets/fonts/Spartan-Light.ttf') format('truetype')
 
-
 $fontFamilyBasic: JosefinSans-Medium
 $fontFamilyCursive: KaushanScript-Regular
 $navbarHeight: 3.2em
 
-// @import ./scrollBarVisible.sass
-// @import ./animations/animations.sass
-// @import ./animations/pageAnim.sass
-// @import ./mediaQuery.sass
-// @import ./absoluteProjectDemo.sass
-// @import ./various
+@import ./scrollBarVisible.sass
+@import ./animations/animations.sass
+@import ./animations/pageAnim.sass
+@import ./mediaQuery.sass
+@import ./absoluteProjectDemo.sass
+@import ./various
