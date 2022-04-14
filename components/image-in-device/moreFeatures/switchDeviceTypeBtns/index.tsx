@@ -19,14 +19,14 @@ const SwitchDeviceTypeBtns = ({
   <div className="switchDeviceTypeBtns" onClick={onClickHandler}>
     {(whatIconsToDisplay === "both" || whatIconsToDisplay === "mobile") && (
       <BsPhone
-        color={isMobile ? "white" : "#7FA96D"}
+        color={isMobile ? "white" : "#D77A66"}
         size={iconSize}
         style={{ margin: "0 0 1em 1em", zIndex: 20 }}
       />
     )}
     {(whatIconsToDisplay === "both" || whatIconsToDisplay === "desktop") && (
       <AiOutlineDesktop
-        color={!isMobile ? "white" : "#7FA96D"}
+        color={!isMobile ? "white" : "#D77A66"}
         size={iconSize}
         style={{ margin: "0 0 0 1em", zIndex: 200 }}
       />

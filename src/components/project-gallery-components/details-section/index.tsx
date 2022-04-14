@@ -271,6 +271,7 @@ const useStyles = makeStyles((theme) => ({
     width: '25em',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
+    color: "#FAFAFA",
     textOverflow: 'ellipsis'
   },
 }));

@@ -22,9 +22,9 @@ const useStyles = makeStyles(theme => ({
     right: 35,
   },
   fab: {
-    backgroundColor: theme.palette.primary[700],
+    backgroundColor: "#D2392C",
     '&:hover': {
-      backgroundColor: '#8EA982',
+      backgroundColor: '#FF4040',
     },
     color: 'white',
     margin: '1em'

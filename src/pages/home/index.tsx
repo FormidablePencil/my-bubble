@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import React, { useRef, useState } from "react";
-import imgOfSelf from "../../assets/imageOfSelf.jpg";
+import imgOfSelf from "../../assets/imageOfSelf.jpeg";
 import HomeContent from "./home-content";
 import ProjectsDemo from "./projects-demo";
 
@@ -8,12 +8,12 @@ function HomePage() {
   const classes = useStyles();
   /* Contacts: github, linkedIn & email. Get to know me: self presentation site link. */
   const [videoUrl, setVideoUrl] = useState(
-    require("../../assets/VideoGlitch_20210322_113055349.mp4")
+    require("../../assets/MyMovie.mp4")
   );
   const videoRef = useRef(null);
 
   const firstVidFinished = async () => {
-    setVideoUrl(require("../../assets/My Movie 1.mp4"));
+    setVideoUrl(require("../../assets/MyMovie.mp4"));
     setTimeout(() => {
       if (videoRef.current !== null) videoRef.current.load();
     }, 2000);
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
     backgroundImage: "url(" + imgOfSelf + ")",
     backgroundSize: "cover",
-    backgroundPosition: "30% 50%",
+    backgroundPosition: "50% 50%",
     // backgroundColor: "#080E15",
   },
 
@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
     width: "100vw",
     objectFit: "cover",
-    objectPosition: "30% 50%",
+    objectPosition: "50% 50%",
   },
 }));
 

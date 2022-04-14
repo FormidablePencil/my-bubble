@@ -31,7 +31,7 @@ function ContactSection() {
         function (response) {
           console.log("SUCCESS!", response.status, response.text);
           setIsLoading(false);
-          alert("Message has been sent. We'll get back to you shortly.");
+          alert("Message has been sent. I'll get back to you shortly.");
         },
         function (error) {
           console.log("FAILED...", error);
@@ -105,14 +105,14 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     paddingLeft: "1em",
-    background: "#B8CDAA",
+    background: theme.palette.background.default,
     border: "0px",
     borderRadius: "1em",
     outline: "none",
     height: "2em",
   },
   textarea: {
-    background: "#B8CDAA",
+    background: theme.palette.background.default,
   },
 
   submit: {
@@ -124,13 +124,13 @@ const useStyles = makeStyles((theme) => ({
     margin: "2em 0",
     height: "2.5em",
     color: "white",
-    background: "#129447",
+    background: "#D60A32",
     fontFamily: theme.typography.h6.fontFamily,
     "&:hover": {
-      background: "#139E4B",
+      background: "#EB0835",
     },
     "&:active": {
-      background: "#107E3C",
+      background: "#EB0835",
     },
     // @extend .primaryBtn
   },

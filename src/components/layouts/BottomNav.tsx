@@ -17,28 +17,28 @@ function BottomNav() {
 
   const fabBtns = [
     {
-      bgColor: "#506A44",
+      bgColor: "#D2392C",
       component: <HomeIcon />,
       onClickValue: "/",
       text: "Home",
       route: "/",
     },
     {
-      bgColor: "#506A44",
+      bgColor: "#D2392C",
       component: <ImportantDevicesIcon />,
       onClickValue: "/projects",
       text: "Projects",
       route: "/projects",
     },
     {
-      bgColor: "#506A44",
+      bgColor: "#D2392C",
       component: <GrainIcon />,
       onClickValue: "/technologies",
       text: "Technologies",
       route: "/technologies",
     },
     {
-      bgColor: "#506A44",
+      bgColor: "#D2392C",
       component: <GrainIcon />,
       onClickValue: "/contacts",
       text: "Contacts",
@@ -52,7 +52,7 @@ function BottomNav() {
         icon={<MenuIcon />}
         event={"click"}
         alwaysShowTitle={true}
-        mainButtonStyles={{ backgroundColor: "#7FA96D" }}
+        mainButtonStyles={{ backgroundColor: "#FF6556" }}
       >
         {fabBtns.map(
           (item) =>

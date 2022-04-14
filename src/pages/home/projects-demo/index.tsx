@@ -131,7 +131,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 1,
     bottom: "-1em",
     right: 0,
-    background: "#BB7174",
+    background: "white",
     width: "23em",
     height: "1px",
     [theme.breakpoints.down(1200)]: {

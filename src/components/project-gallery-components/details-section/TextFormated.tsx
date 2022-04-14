@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles, Typography } from "@material-ui/core"
 
 const TextFormated = ({ title, content, content2, multiline, fontSizeParagraph, isflexCol }:
-  { title, content, content2?, multiline?, fontSizeParagraph?, isflexCol? }) => {
+  { title, content, content2?, multiline?, fontSizeParagraph?, isflexCol?}) => {
   const classes = useStyles();
 
   return (
@@ -13,7 +13,7 @@ const TextFormated = ({ title, content, content2, multiline, fontSizeParagraph, 
         {title}
       </Typography>
       <Typography
-        style={fontSizeParagraph ? { fontSize: fontSizeParagraph } : {}}
+        style={fontSizeParagraph ? { fontSize: fontSizeParagraph, color: "#952A1F" } : {color: "#952A1F"}}
         className={multiline && classes.multilineParagraph}
         variant='body1' display='inline'>
         {content}
@@ -27,14 +27,14 @@ const TextFormated = ({ title, content, content2, multiline, fontSizeParagraph, 
 const useStyles = makeStyles(() => ({
   flexCol: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   multilineTitle: {
-    display: 'block'
+    display: 'block',
   },
   multilineParagraph: {
     display: 'block',
-    marginLeft: '1em'
+    marginLeft: '1em',
   }
 }));
 

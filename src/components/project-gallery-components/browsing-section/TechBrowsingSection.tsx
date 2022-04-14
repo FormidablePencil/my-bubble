@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   techContainer: {
     width: '7.5em',
     height: '7.5em',
-    background: theme.typography.h6.color,
+    background: theme.palette.primary[100],
     margin: '2em',
     padding: '.5em',
     borderRadius: '5em',

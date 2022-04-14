@@ -7,20 +7,20 @@ const customTheme = createMuiTheme({
     primary: {
       main: '#FFF4F4',
       200: '#FFBDBD',
-      300: '#363F31',
-      100: '#444B43',
-      400: '#8C9B90', //card
-      500: '#3C4636',
+      300: '#641C15',
+      100: '#f6b695',
+      400: '#eba079', //card
+      500: '#81241B',
       600: '#EC837F',
       700: '#668756',
-      800: '#161A15', //card
-      900: '#DCDCDC',
+      800: '#641C15', //card
+      900: '#952A1F', //card paragraph
     },
     secondary: {
       main: '#3C4068',
     },
     background: {
-      default: '#B4BBB3',
+      default: '#D77A66',
 
     },
     text: {
@@ -39,7 +39,7 @@ const customTheme = createMuiTheme({
       lineHeight: 1,
     },
     h6: {
-      color: '#E7ECE8',
+      color: '#3e0f0a',
     },
     body1: {
       color: '#ffffff'

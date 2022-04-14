@@ -16,7 +16,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/react-scrollbar": "^0.5.1",
     "emailjs-com": "^2.6.4",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.1",
     "postcss": "^8.1.4",
     "postcss-100vh-fix": "^1.0.2",
     "radium": "^0.26.1",
@@ -33,7 +33,7 @@
     "react-redux": "^7.2.1",
     "react-responsive": "^8.1.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
+    "react-scripts": "5.0.1",
     "react-scrollbar": "^0.5.6",
     "react-slick": "^0.27.12",
     "react-spring": "^8.0.27",
@@ -80,7 +80,7 @@
   },
   "bit": {
     "env": {
-      "compiler": "bit.envs/compilers/react-typescript@3.1.61"
+      "compiler": "bit.envs/compilers/react-typescript@3.2.1"
     },
     "componentsDefaultDirectory": "components/{name}",
     "packageManager": "yarn"

@@ -10,11 +10,9 @@ function HomeContent() {
 
   return (
     <div className={`${classes.container} animate-in-home-content`}>
-      <Typography className={classes.textContainer}>
-        Need a mobile app, cms, some fontend or backend framework implemented?
-        I'm the guy! I'm a full stack self-taught developer, I have built many
-        end to end apps with various different tech stacks. My strong suit is
-        JavaScript How may I help you? Lets talk.
+      <Typography className={classes.textContainer} style={{marginTop: 20}}>
+        Do you need a mobile app, some CMS, frontend or backend functionality implemented?
+        My name is Dennis, I'm a full stack software engineer and how may I assist you?
       </Typography>
       <div className={classes.btnsContainer}>
         <button
@@ -63,17 +61,17 @@ const useStyles = makeStyles((theme) => ({
     height: "2.3em",
     borderRadius: ".7em",
     border: 0,
-    backgroundColor: "#875C62",
+    backgroundColor: "#D60A32",
     outline: "none",
     "&:hover": {
-      backgroundColor: "#98686E",
+      backgroundColor: "#EB0835",
     },
     "&:active": {
-      background: "#755055",
+      background: "#EB0835",
     },
   },
   textContainer: {
-    color: theme.typography.h6.color,
+    color: theme.palette.text.primary,
     margin: "auto 2em",
     // margin: "3em 0px 3em 0px",
   },
