@@ -1,6 +1,6 @@
 # My Bubble
 
-Website: https://dennisaleksandrov.com/
+Website: https://dennisaleksandrov.netlify.app/
 
 Built with the MERN Stack
 
