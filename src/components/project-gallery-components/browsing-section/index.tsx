@@ -1,10 +1,13 @@
-import React from 'react'
-import { makeStyles, Grid } from '@material-ui/core'
-import Card from './Card';
+import ReactLoading from 'react-loading';
+
+import { Grid, makeStyles } from '@material-ui/core';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { rootReducerT } from '../../../store';
-import useTrailOnFirstRender from '../../../hooks/useTrailOnFirstRender';
 import { animated } from 'react-spring';
+
+import useTrailOnFirstRender from '../../../hooks/useTrailOnFirstRender';
+import { rootReducerT } from '../../../store';
+import Card from './Card';
 
 function GalleryBrowsingSection() {
   const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
@@ -15,7 +18,7 @@ function GalleryBrowsingSection() {
     trailLength: projectDataCollection.length,
     trailDelay: 200,
   })
-  
+ 
   return (
     <Grid
       spacing={6}
@@ -23,7 +26,8 @@ function GalleryBrowsingSection() {
       justify='center'
       className={classes.container}
     >
-      {trail.map((trailProps, index) => {
+      {projectsPageRenderCount
+       ? trail.map((trailProps, index) => {
         let trimTech = false
         let project = projectDataCollection[index]
         if (project.technologies.length >= 4) trimTech = true
@@ -40,7 +44,10 @@ function GalleryBrowsingSection() {
             </animated.div>
           </Grid>
         )
-      })}
+      })
+      : 
+        <ReactLoading className='mt-12' type='spinningBubbles' height={200} width={150} />
+    }
     </Grid>
   )
 }

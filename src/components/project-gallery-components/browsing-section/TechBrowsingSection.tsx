@@ -1,9 +1,10 @@
-import React, { memo } from 'react'
-import { useSelector } from 'react-redux'
-import { rootReducerT } from '../../../store';
-import { makeStyles, Grid, Tooltip } from '@material-ui/core';
-import { animated } from 'react-spring'
+import { Grid, makeStyles, Tooltip } from '@material-ui/core';
+import React, { memo } from 'react';
+import { useSelector } from 'react-redux';
+import { animated } from 'react-spring';
+
 import useTrailOnFirstRender from '../../../hooks/useTrailOnFirstRender';
+import { rootReducerT } from '../../../store';
 
 const TechBrowsingSection = memo(() => {
   const techDataCollection = useSelector((state: rootReducerT) => state.techDataCollection)
@@ -28,8 +29,9 @@ const TechBrowsingSection = memo(() => {
 
 
   return (
-    <Grid container justify='center'>
-
+    <Grid container
+     justify='center'>
+        {/* <ReactLoading className='mt-12' type='spinningBubbles' height={200} width={150} /> */}
       {trail.map((trailProps, index) =>
         <animated.div style={trailProps}>
           <TechItemContainer key={techDataCollection[index]._id} tech={techDataCollection[index]} />

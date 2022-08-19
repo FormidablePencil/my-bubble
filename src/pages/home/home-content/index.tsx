@@ -12,7 +12,7 @@ function HomeContent() {
     <div className={`${classes.container} animate-in-home-content`}>
       <Typography className={classes.textContainer} style={{marginTop: 20}}>
         Do you need a mobile app, some CMS, frontend or backend functionality implemented?
-        My name is Dennis, I'm a full stack software engineer and how may I assist you?
+        My name is Dennis, I'm a full-stack software engineer. How may I assist you?
       </Typography>
       <div className={classes.btnsContainer}>
         <button

@@ -6,7 +6,7 @@ Built with the MERN Stack
 
 ## Technologies utilized
 
-### Fontend
+### Frontend
 
 - React <img src="https://i.ibb.co/nb965ST/react-Logo.png" width="20" title="">
 - TypeScript <img src="https://i.ibb.co/RBfMh8f/typescript.png" width="20" title="">
