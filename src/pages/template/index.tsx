@@ -13,8 +13,8 @@ function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatu
   const [contentDetailsClosed, setContentDetailsClosed] = useState<any>(null)
   const classes = useStyles();
   const dispatch = useDispatch()
-  const loadingPage = useSelector((state: rootReducerT) => state.pageRenderAmounts.projects)
-//   console.log(loadingPage, "loadingPage");
+  const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
+  console.log(projectDataCollection.length, "projectDataCollection length");
 
   const animToggleAppearenceOfDetailsSection = () => {
     switch (contentDetailsClosed) {
@@ -100,7 +100,7 @@ function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatu
       </div>
       {/* //* ===== browsingSection ===== */}
 
-      {loadingPage ?
+      {projectDataCollection.length !== 0 ?
       <animated.div
         onScroll={hideDetailsSection}
         className={classes.animatedWrapperBrowsingSection}>
