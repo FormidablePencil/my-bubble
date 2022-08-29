@@ -6,12 +6,15 @@ import { CLOSE_CONTENT_DETAILS_SECTION, TOGGLE_IMAGE_MODAL } from '../../actions
 import { rootReducerT } from '../../store';
 import CancelPresentationIcon from '@material-ui/icons/CancelPresentation';
 import { animated } from 'react-spring';
+import ReactLoading from 'react-loading';
 
 function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatureSection, browsingSection }) {
   const contentDetailSectionIsClosed = useSelector((state: rootReducerT) => state.contentDetailSectionIsClosed)
   const [contentDetailsClosed, setContentDetailsClosed] = useState<any>(null)
   const classes = useStyles();
   const dispatch = useDispatch()
+  const loadingPage = useSelector((state: rootReducerT) => state.pageRenderAmounts.projects)
+//   console.log(loadingPage, "loadingPage");
 
   const animToggleAppearenceOfDetailsSection = () => {
     switch (contentDetailsClosed) {
@@ -46,7 +49,7 @@ function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatu
       //   if (!contentDetailsClosed) {
       //     setTimeout(() => {
       //       dispatch({ type: TOGGLE_CONTENT_DETAILS_SECTION })
-      //     }, 700);
+      //     }, 700)browsingSection;
       //   }
       // scrollEventFired.current = true
     }
@@ -96,6 +99,8 @@ function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatu
 
       </div>
       {/* //* ===== browsingSection ===== */}
+
+      {loadingPage ?
       <animated.div
         onScroll={hideDetailsSection}
         className={classes.animatedWrapperBrowsingSection}>
@@ -103,6 +108,9 @@ function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatu
           {browsingSection}
         </Grid>
       </animated.div>
+      :
+        <ReactLoading className='mt-12' type='spinningBubbles' color="pink" height={200} width={150} />
+      }
 
     </Grid >
   )
