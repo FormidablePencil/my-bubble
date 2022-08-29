@@ -14,7 +14,7 @@ function PageTemplate({ contentVisualSection, contentDetailsSection, searchFeatu
   const classes = useStyles();
   const dispatch = useDispatch()
   const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
-  console.log(projectDataCollection.length, "projectDataCollection length");
+//   console.log(projectDataCollection.length, "projectDataCollection length");
 
   const animToggleAppearenceOfDetailsSection = () => {
     switch (contentDetailsClosed) {
