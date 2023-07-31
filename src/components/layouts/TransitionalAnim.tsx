@@ -38,7 +38,7 @@ export const RoseComp = () => {
 
   return (
     <div className="elementBetweenPgTrans">
-      <img
+      {/* <img
         className={`
         ${
           leavingFromPage && nextLocation === "/"
@@ -48,7 +48,7 @@ export const RoseComp = () => {
       `}
         src={rose}
         alt="rose"
-      />
+      /> */}
     </div>
   );
 };

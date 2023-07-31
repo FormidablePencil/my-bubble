@@ -2,12 +2,18 @@ import { FETCHED_ALL_TECH_DATA } from "../actions/types"
 
 export interface techDataT {
   technology: string
-  description: string
+  description?: string
   _id: string
   image: string
 }
 
-const initialState = []
+const initialState: techDataT[] = [
+  {
+    _id: "0",
+    technology: "",
+    image: ""
+  }
+]
 
 export default (state: techDataT[] = initialState, { type, payload }) => {
   switch (type) {
