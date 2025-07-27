@@ -44,6 +44,13 @@ function BottomNav() {
       text: "Contacts",
       route: "/contacts",
     },
+        {
+      bgColor: "#D2392C",
+      component: <GrainIcon />,
+      onClickValue: "/resumes",
+      text: "Resumes",
+      route: "/resumes",
+    },
   ];
 
   return (

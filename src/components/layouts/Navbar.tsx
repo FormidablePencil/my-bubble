@@ -27,6 +27,10 @@ function Navbar() {
       tabTitle: "Contacts",
       path: "/contacts",
     },
+        {
+      tabTitle: "Resumes",
+      path: "/resumes",
+    },
   ];
 
   // modularize

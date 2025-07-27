@@ -12,6 +12,7 @@ import ProjectsGalleryPage from "./pages/project-gallery/Main";
 import TechnologiesPage from "./pages/tech-gallery";
 import { tabEffectShadowProp } from "./styles/materialUiStyles";
 import ContactPage from "./pages/contact";
+import ResumesPage from "./pages/resumes";
 
 /* The tech and projects are too abrupt when the page is initially redirected there especially the projects page. 
 the gallaxy frame does some funky business. */
@@ -60,6 +61,12 @@ export function DemoRoutes() {
             <ContactPage />
           </TransitionalAnim>
           {/* </TransitionalAnim> */}
+        </Route>
+
+        <Route path="/resumes">
+          <TransitionalAnim>
+            <ResumesPage />
+          </TransitionalAnim>
         </Route>
 
         <div className="not-visible-on-mdUp">
